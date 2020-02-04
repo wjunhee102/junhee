@@ -1,0 +1,142 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+
+
+/* 변수 */
+
+/* margin / padding */
+/* font */
+$defaultFont: 'Margun-gothic', '맑은-고딕', 'Dotum', '돋움', sans-serif;
+$noto: 'Noto Sans KR';
+$bebas:'Bebas Neue', cursive;
+/* background-color */
+$mainbg: #fff;
+$bg0: transparent;
+/* border */
+$border: 1px solid #000;
+
+/* mixin */
+@mixin box {
+    width: 100%;
+    height: auto;
+}
+@mixin inner {
+    max-width: 1024px;
+    margin:0 auto;
+    position: relative;
+    background-color: $bg0;
+}
+@mixin rela {
+    position: relative;
+}
+@mixin flexBox($justify) {
+    display: flex;
+    justify-content: $justify;
+}
+@mixin blind {
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    z-index: -2;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+@mixin clearfix {
+    &::after {
+        display: block; 
+        content:""; 
+        line-height:0;
+        clear: both;
+    }
+}
+
+body {
+    @include box();
+    font-family: $noto, $defaultFont;
+    background-color: $mainbg;
+}
+
+.wrap {
+    @include box();
+    height: 4000px;
+}
+ 
+
+#header {
+    @include box();
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 20;
+    color: #000;
+    border-bottom: $border;
+    .inner {
+        @include inner();
+        @include flexBox(space-between);
+        height: 50px;
+        .logo {
+            position: relative;
+            line-height: 50px;
+            a {
+                display: table-cell;
+                color: #000;
+            }
+            span {
+                @include blind();
+            }
+        }
+        .gnb {
+            height: 50px;
+            .menu_gnb {
+                @include flexBox(space-between);
+                line-height: 50px;
+                width: 500px;
+                a {
+                    color: #000;
+                }
+            }
+        }
+    }
+}
+
+#main {
+    @include box();
+    position: relative;
+    .intro {
+        width: 100%;
+        height: 1800px;
+        position: relative;
+        background-color: #fff;
+        .main_visual {
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            top:0;
+            left: 0;
+            background: url("../images/winter_day.jpg") no-repeat center center;
+            background-size: 1920px 1080px;
+            .tit {
+                width: 100%;
+                text-align: center;
+                font-size: 300px;
+                font-weight: 500;
+                letter-spacing: 50px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                color: #fff;
+                text-shadow: rgba(0, 0 ,0, 0.7) 10px 20px 20px;
+            }
+        }
+    }
+    .section02 {
+        width: 100%;
+        height: 800px;
+        background-color: #f0f;
+    }
+    
+}
+

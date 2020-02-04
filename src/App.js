@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+// import Intro from './elements/intro';
+import Header from './elements/header';
+import Intro from './elements/intro';
 
 function App() {
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  function loading() {
+    setIsLoading(false);
+  }
+  useEffect(()=> {
+    document.title = `황준희`;
+    setTimeout(loading,5000);
+  });
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      {isLoading ? (
+        <span>Loading....</span>
+      ) : (
+        <div className="wrap">
+          <Header />
+          <main id="main" className="main">
+            <Intro />
+            <section className="section02"></section>
+          </main>
+        </div>
+      ) }
+    </div> 
   );
 }
 
