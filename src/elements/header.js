@@ -43,13 +43,13 @@ gnb_info.propTypes = {
     title: PropTypes.string.isRequired
 };
 
-function Header({scroll}) {
+function Header() {
     return (
         <header id="header" className="header">
             <div className="inner">
                 <h1 className="logo">
                     <a href="#">
-                        junhee{scroll}
+                        Junhee
                         <span>황준희 포트폴리오 로고</span>
                     </a>
                 </h1>

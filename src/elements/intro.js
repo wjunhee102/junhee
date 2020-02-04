@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from "framer-motion";
 
 function MainVisual() {
     const [y, setY] = useState(0);
@@ -33,9 +34,9 @@ function MainVisual() {
 
     return (
         <section className="intro"> 
-            <div className="main_visual" style={{transform : `translateY(${y}px) scale(${s})`, transition: `1s ease-in-out`}}>
+            <motion.div className="main_visual" animate={{y : y ,scale: s}} transition={{duration: 1}}>
                 <h2 className="tit" style={{opacity : op, transition: '0.5s'}}>JUN HEE</h2>
-            </div>
+            </motion.div>
         </section>
     )
 }
