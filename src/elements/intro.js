@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion } from "framer-motion";
 
 function MainVisual({valueY, valueS, valueOp, valuePos}) {
     return (
