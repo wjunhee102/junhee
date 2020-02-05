@@ -1,7 +1,6 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
 
 /* 변수 */
 
@@ -9,7 +8,7 @@
 /* font */
 $defaultFont: 'Margun-gothic', '맑은-고딕', 'Dotum', '돋움', sans-serif;
 $noto: 'Noto Sans KR';
-$bebas:'Bebas Neue', cursive;
+$poppins: 'Poppins', sans-serif;
 /* background-color */
 $mainbg: #fff;
 $bg0: transparent;
@@ -51,6 +50,11 @@ $border: 1px solid #000;
         clear: both;
     }
 }
+@mixin after {
+    display: block;
+    position: absolute;
+    content: "";
+}
 
 body {
     @include box();
@@ -79,9 +83,24 @@ body {
         .logo {
             position: relative;
             line-height: 50px;
+            &::after {
+                @include after();
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background-color: rgb(255, 211, 65);
+                left: 65%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
             a {
                 display: table-cell;
                 color: #000;
+                font-family: $poppins;
+                font-style: italic;
+                font-weight: 600;
+                position: relative;
+                z-index: 4;
             }
             span {
                 @include blind();
@@ -94,7 +113,11 @@ body {
                 line-height: 50px;
                 width: 500px;
                 a {
+                    font-family: $poppins;
+                    font-style: italic;
+                    font-weight: 600;
                     color: #000;
+                    text-transform: uppercase;
                 }
             }
         }
@@ -112,16 +135,17 @@ body {
         .main_visual {
             width: 100%;
             height: 100vh;
-            position: absolute;
-            top:0;
+            bottom:0;
             left: 0;
             background: url("../images/winter_day.jpg") no-repeat center center;
             background-size: 1920px 1080px;
             .tit {
                 width: 100%;
                 text-align: center;
+                font-family: $poppins;
                 font-size: 300px;
-                font-weight: 500;
+                font-style: italic;
+                font-weight: 800;
                 letter-spacing: 50px;
                 position: absolute;
                 left: 50%;

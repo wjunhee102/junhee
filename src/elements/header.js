@@ -13,27 +13,27 @@ const gnb_info = [
     {
         id : "btn_gnb" ,
         link : "section" ,
-        title : "소개"
+        title : "intro"
     },
     {
         id : "btn_gnb" ,
         link : "section" ,
-        title : "기술"
+        title : "skill"
     },
     {
         id : "btn_gnb" ,
         link : "section" ,
-        title : "웹"
+        title : "web"
     },
     {
         id : "btn_gnb" ,
         link : "section" ,
-        title : "디자인"
+        title : "design"
     },
     {
         id : "btn_gnb" ,
         link : "section" ,
-        title : "연결"
+        title : "connect"
     }
 ]
 

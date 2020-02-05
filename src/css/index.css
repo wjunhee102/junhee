@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap");
 /* 변수 */
 /* margin / padding */
 /* font */
@@ -50,9 +50,28 @@ body {
   line-height: 50px;
 }
 
+#header .inner .logo::after {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ffd341;
+  left: 65%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 #header .inner .logo a {
   display: table-cell;
   color: #000;
+  font-family: "Poppins", sans-serif;
+  font-style: italic;
+  font-weight: 600;
+  position: relative;
+  z-index: 4;
 }
 
 #header .inner .logo span {
@@ -81,7 +100,11 @@ body {
 }
 
 #header .inner .gnb .menu_gnb a {
+  font-family: "Poppins", sans-serif;
+  font-style: italic;
+  font-weight: 600;
   color: #000;
+  text-transform: uppercase;
 }
 
 #main {
@@ -100,8 +123,7 @@ body {
 #main .intro .main_visual {
   width: 100%;
   height: 100vh;
-  position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   background: url("../images/winter_day.jpg") no-repeat center center;
   background-size: 1920px 1080px;
@@ -110,8 +132,10 @@ body {
 #main .intro .main_visual .tit {
   width: 100%;
   text-align: center;
+  font-family: "Poppins", sans-serif;
   font-size: 300px;
-  font-weight: 500;
+  font-style: italic;
+  font-weight: 800;
   letter-spacing: 50px;
   position: absolute;
   left: 50%;
