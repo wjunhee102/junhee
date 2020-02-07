@@ -21,28 +21,29 @@ function Intro() {
 
     function move(scroll_pos) {
         if (scroll_pos < 800) {
-            setS(scroll_pos);
             if (scroll_pos <= 150) {
-            setOp(1);
+                setOp(1);
             } else {
                 setOp(0);
             }
         } 
     }
-
     window.addEventListener('scroll', ()=> {
         let scrollY = window.pageYOffset;
             setTimeout(()=> {
                 move(scrollY);
                 if (scrollY < 800) {
+                    setS(scrollY);
                     setPosi("fixed");
                     setY(0);
                 } else {
+                    setS(800);
                     setY(800);
                     setPosi("absolute");
                 }
             },0)
         });
+
     return (
         <MainVisual valueY={y} valueS={s} valueOp={op} valuePos={posi}/>
     )
