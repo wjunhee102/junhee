@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import Intro from './elements/intro';
 import Header from './elements/header';
 import Intro from './elements/intro';
 
