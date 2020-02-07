@@ -13,27 +13,27 @@ const gnb_info = [
     {
         id : "btn_gnb" ,
         link : "section" ,
-        title : "소개"
+        title : "intro"
     },
     {
         id : "btn_gnb" ,
         link : "section" ,
-        title : "기술"
+        title : "skill"
     },
     {
         id : "btn_gnb" ,
         link : "section" ,
-        title : "웹"
+        title : "web"
     },
     {
         id : "btn_gnb" ,
         link : "section" ,
-        title : "디자인"
+        title : "design"
     },
     {
         id : "btn_gnb" ,
         link : "section" ,
-        title : "연결"
+        title : "connect"
     }
 ]
 
@@ -43,13 +43,13 @@ gnb_info.propTypes = {
     title: PropTypes.string.isRequired
 };
 
-function Header({scroll}) {
+function Header() {
     return (
         <header id="header" className="header">
             <div className="inner">
                 <h1 className="logo">
                     <a href="#">
-                        junhee{scroll}
+                        Junhee
                         <span>황준희 포트폴리오 로고</span>
                     </a>
                 </h1>
