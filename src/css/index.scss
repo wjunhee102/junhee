@@ -91,22 +91,38 @@ body {
             line-height: 50px;
             &::after {
                 @include after();
-                width: 40px;
-                height: 2px;
-                background: linear-gradient( to right, rgba(255, 121, 135,0) 0%, rgba(255, 121, 135,1) 50%);
-                left: 82%;
-                top: 48%;
+                width: 30px;
+                height: 30px;
+                box-sizing: border-box;
+                border-radius: 50%;
+                background-color: #f7df1d;
+                text-align: center;
+                font-family: $poppins;
+                font-weight: 600;
+                position: absolute;
+                top: 50%;
+                left: 65%;
+                font-size: 8px;
                 transform: translate(-50%, -50%);
             }
-            &::before {
-                @include after();
-                width: 40px;
-                height: 2px;
-                background: linear-gradient( to right, rgba(68, 147, 255,0) 0%, rgba(68, 147, 255,1) 50%);
-                left: 74%;
-                top: 56%;
-                transform: translate(-50%, -50%);
-            }
+            // &::after {
+            //     @include after();
+            //     width: 40px;
+            //     height: 2px;
+            //     background: linear-gradient( to right, rgba(255, 121, 135,0) 0%, rgba(255, 121, 135,1) 50%);
+            //     left: 82%;
+            //     top: 48%;
+            //     transform: translate(-50%, -50%);
+            // }
+            // &::before {
+            //     @include after();
+            //     width: 40px;
+            //     height: 2px;
+            //     background: linear-gradient( to right, rgba(68, 147, 255,0) 0%, rgba(68, 147, 255,1) 50%);
+            //     left: 74%;
+            //     top: 56%;
+            //     transform: translate(-50%, -50%);
+            // }
             a {
                 display: table-cell;
                 color: #000;

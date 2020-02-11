@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Header from './elements/header';
-import Intro from './elements/intro';
-import Connect from './elements/connect';
+import Header from './component/header';
+import Intro from './component/intro';
+import Skill from './component/skill';
+import Web from './component/web';
+import Connect from './component/connect';
 
 function App() {
   
@@ -15,7 +17,8 @@ function App() {
           <Header />
           <main id="main" className="main">
             <Intro />
-            <section className="section02"></section>
+            <Skill />
+            <Web />
             <Connect />
           </main>
         </div>
