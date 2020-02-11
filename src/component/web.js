@@ -46,13 +46,13 @@ function Port({title, divi, content, img, lang, personnel}) {
                 <h3 className="tit">{title}</h3>
                 <ul className="lang_menu">
                     {lang.map((ele , idx)=> (
-                        <li className={`lang${idx}`}>{ele}</li>
+                        <li className={`lang${idx}`} key={idx}>{ele}</li>
                     ))}
                 </ul>
                 <h4 className="divi">{divi}</h4>
                 <ul className="pers_menu">
                     {personnel.map((ele , idx)=> (
-                        <li className={`pers${idx}`}>{ele}</li>
+                        <li className={`pers${idx}`} key={idx}>{ele}</li>
                     ))}
                 </ul>
                 <p className="exp">{content}</p>
@@ -64,6 +64,12 @@ function Port({title, divi, content, img, lang, personnel}) {
 function Web() {
     return (
         <section className="web">
+            <div className="foreword">
+                <h2 className="tit">Portfolio</h2>
+                <p className="exp">
+                    포트폴리오입니다. 
+                </p>
+            </div>
             {port_site.map((ele,idx) => (
                 <Port 
                     title={ele.title} 
