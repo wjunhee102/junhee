@@ -142,12 +142,29 @@ body {
                 @include flexBox(space-between);
                 line-height: 50px;
                 width: 500px;
+                li {
+                    position: relative;
+                    &::after {
+                        @include after();
+                        width: 0%;
+                        height: 2px;
+                        top: 70%;
+                        left: 0;
+                        transform: translate(0, -50%);
+                        background-color: #000;
+                        transition: 0.4s ease-in-out;
+                    }
+                    &:hover::after {
+                        width: 100%;
+                    }
+                }
                 a {
                     font-family: $poppins;
                     font-style: italic;
                     font-weight: 600;
                     color: #000;
                     text-transform: uppercase;
+                    font-size: 14px;
                 }
             }
         }
@@ -214,12 +231,68 @@ body {
         width: 100%;
         height: auto;
         background-color: #ccc;
+        .foreword {
+            width: 100%;
+            height: auto;
+            .inner {
+                @include inner();
+                .tit {
+                    font-size: 30px;
+                    font-weight: 600;
+                    font-family: $poppins;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                }
+            }
+        }
         .port_site {
             width: 100%;
             height: 900px;
-        }
-        .naver {
-            background-color: #000;
+            .inner {
+                @include inner();
+                height: 900px;
+                @include flexBox(center);
+                align-items: center;
+                .imgbox {
+                    width: 50%;
+                }
+                .contents {
+                    width: 50%;
+                    .tit {
+                        text-transform: capitalize;
+                        margin-bottom: 30px;
+                        font-size: 3em;
+                        font-weight: 600;
+                    }
+                    .lang_menu {
+                        @include flexBox(flex-start);
+                        margin-bottom: 10px;
+                        li {
+                            margin-right: 10px;
+                            font-weight: 500;
+                        }
+                    }
+                    .divi {
+                        margin-bottom: 10px;
+                    }
+                    .pers_menu {
+                        @include flexBox(flex-start);
+                        margin-bottom: 10px;
+                        li {
+                            margin-right: 10px;
+                            font-weight: 500;
+                        }
+                    }
+                    .exp {
+                        font-size: 20px;
+                        font-weight: 400;
+                        font-style: italic;
+                        line-height: 1.5;
+                        margin-bottom: 20px;
+                        color: #3d3d3d;
+                    }
+                }
+            }
         }
     }
     
