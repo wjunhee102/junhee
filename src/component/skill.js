@@ -1,23 +1,50 @@
 import React, { useState } from 'react';
+import './../css/slide.css';
+
+const slide_item = [
+    {
+        title : "slide" ,
+        content : 1,
+        img : ""
+    },
+    {
+        title : "slide" ,
+        content : 1,
+        img : ""
+    },
+    {
+        title : "slide" ,
+        content : 1,
+        img : ""
+    },
+    {
+        title : "slide" ,
+        content : 1,
+        img : ""
+    },
+    {
+        title : "slide" ,
+        content : 1,
+        img : ""
+    }
+]
+
+
 
 function Slide() {
     return (
         <div class="main_slide">
 
             <div class="slide_wrap">
-                <div class="slide_item">1</div>
-                <div class="slide_item">2</div>
-                <div class="slide_item">3</div>
-                <div class="slide_item">4</div>
-                <div class="slide_item">5</div>
+                {slide_item.map((ele, idx)=>(
+                    <div class={`slide_item item${idx}`} key="idx">{ele.title}</div>
+                ))}
             </div>
 
             <div class="slide_dots">
-                <div class="slide_dot"><a href="javascript:;">1</a></div>
-                <div class="slide_dot"><a href="javascript:;">2</a></div>
-                <div class="slide_dot"><a href="javascript:;">3</a></div>
-                <div class="slide_dot"><a href="javascript:;">4</a></div>
-                <div class="slide_dot"><a href="javascript:;">5</a></div>
+                {slide_item.map((ele, idx)=>(
+                    <div class={`slide_dot slide_dot${idx}`} key="idx"><a href="javascript:;">{ele.content}</a></div>
+                ))}
             </div>
 
             <button class="btn_prev slide_arrows">prev</button>
@@ -35,7 +62,7 @@ function Skill() {
     return (
         <section className="skill">
             <h2>workmanship</h2>
-
+            <Slide />
         </section>
     )
 }

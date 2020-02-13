@@ -228,10 +228,15 @@ body {
             
         }
     }
+    .skill {
+        position: relative;
+        height: 600px;
+    }
     .web {
         width: 100%;
         height: auto;
-        background-color: #ccc;
+        position: relative;
+        background-color: #fff;
         .foreword {
             width: 100%;
             height: auto;

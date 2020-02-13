@@ -205,10 +205,16 @@ body {
   text-shadow: rgba(0, 0, 0, 0.7) 10px 20px 20px;
 }
 
+#main .skill {
+  position: relative;
+  height: 600px;
+}
+
 #main .web {
   width: 100%;
   height: auto;
-  background-color: #ccc;
+  position: relative;
+  background-color: #fff;
 }
 
 #main .web .foreword {
