@@ -88,7 +88,7 @@ function Foreword() {
             <div className="inner">
                 <h2 className="tit">Portfolio</h2>
                 <p className="exp">
-                    포트폴리오입니다. 
+                    웹 포트폴리오입니다. 
                 </p>
             </div>
         </div>
