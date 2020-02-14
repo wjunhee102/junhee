@@ -37,13 +37,13 @@ function Slide() {
 
             <div className="slide_wrap">
                 {slide_item.map((ele, idx)=>(
-                    <div className={`slide_item item${idx}`} key="idx">{ele.title}</div>
+                    <div className={`slide_item item${idx}`} key={idx}>{ele.title}</div>
                 ))}
             </div>
 
             <div className="slide_dots">
                 {slide_item.map((ele, idx)=>(
-                    <div className={`slide_dot slide_dot${idx}`} key="idx"><a href="javascript:;">{ele.content}</a></div>
+                    <div className={`slide_dot slide_dot${idx}`} key={idx}><a href="javascript:;">{ele.content}</a></div>
                 ))}
             </div>
 

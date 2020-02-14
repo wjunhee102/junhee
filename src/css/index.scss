@@ -240,14 +240,24 @@ body {
         .foreword {
             width: 100%;
             height: auto;
+            margin-bottom: 100px;
             .inner {
                 @include inner();
                 .tit {
-                    font-size: 30px;
+                    font-size: 4.0625em;
                     font-weight: 600;
-                    font-family: $poppins;
+                    color: #000;
                     text-transform: uppercase;
-                    letter-spacing: 0.1em;
+                    border-bottom: 1px solid #888;
+                    // letter-spacing: 0.1em;
+                }
+                .exp {
+                    
+                    font-size: 1.875em;
+                    font-weight: 600;
+                    line-height: 1.5;
+                    margin-bottom: 20px;
+                    color: #888;
                 }
             }
         }
@@ -256,9 +266,27 @@ body {
             margin: 50px 0;
             .inner {
                 @include inner();
+                .tit {
+                    text-transform: capitalize;
+                    margin-bottom: 30px;
+                    font-size: 4.0625em;
+                    font-weight: 600;
+                    color: #888;
+                    margin: 60px 0 100px;
+                    .tit_top {
+                        font-weight: 600;
+                        color: #888;
+                        display: block;
+                    }
+                    .key {
+                        font-weight: 600;
+                        color: #000;
+                    }
+                }
                 .imgbox {
                     width: 100%;
                     height: auto;
+                    margin-bottom: 50px;
                     position: relative;
                     box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.4), 
                         0 8px 16px -8px rgba(0,0,0,.7),0 -6px 16px -6px rgba(0,0,0,0.08);
@@ -273,22 +301,13 @@ body {
                 }
                 .contents {
                     width: 100%;
-                    .tit {
-                        text-transform: capitalize;
-                        margin-bottom: 30px;
-                        font-size: 4.0625em;
+                    .exp {
+                        border-bottom: 1px solid #888;
+                        font-size: 1.875em;
                         font-weight: 600;
+                        line-height: 1.5;
+                        margin-bottom: 20px;
                         color: #888;
-                        margin: 40px 0;
-                        .tit_top {
-                            font-weight: 600;
-                            color: #888;
-                            display: block;
-                        }
-                        .key {
-                            font-weight: 600;
-                            color: #262626;
-                        }
                     }
                     .lang_menu {
                         @include flexBox(flex-start);
@@ -296,7 +315,8 @@ body {
                         li.lang {
                             margin-right: 10px;
                             padding: 0 10px;
-                            height: 12px;
+                            width: 30px;
+                            height: 40px;
                             padding-top: 40px;
                             position: relative;
                             &.html5 {
@@ -318,12 +338,12 @@ body {
                                 background-size: 34px 34px;
                                 text-transform: capitalize;
                             }
-                            span {
-                                font-size: 12px;
-                                line-height: 12px;
-                                text-align: center;
-                                font-weight: 500;
-                            }
+                            // span {
+                            //     font-size: 12px;
+                            //     line-height: 12px;
+                            //     text-align: center;
+                            //     font-weight: 500;
+                            // }
                         }
                     }
                     .divi {
@@ -337,14 +357,7 @@ body {
                             font-weight: 500;
                         }
                     }
-                    .exp {
-                        font-size: 20px;
-                        font-weight: 400;
-                        font-style: italic;
-                        line-height: 1.5;
-                        margin-bottom: 20px;
-                        color: #3d3d3d;
-                    }
+                    
                 }
             }
         }

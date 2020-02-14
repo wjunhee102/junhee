@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const port_site = [
     {
         title : "네이버에 ",
-        keyword : "블랙모드",
+        keyword : "다크모드",
         title2 : "가 있다면 어떨까?",
         lang : ["html5", "css3"],
         divice : "데스크탑",
@@ -13,9 +13,9 @@ const port_site = [
         link : "https://wjunhee102.github.io/port_sub/naver/index.html"
     },
     {
-        title : "apple",
-        keyword : "",
-        title2 : "블랙모드가 있다면 어떨까?",
+        title : "항상 만들고 싶었던,",
+        keyword : "애플",
+        title2 : "",
         lang : ["html5", "css3"],
         divice : "반응형",
         personnel : ["황준희"],
@@ -26,7 +26,7 @@ const port_site = [
     {
         title : "포도팟",
         keyword : "",
-        title2 : "블랙모드가 있다면 어떨까?",
+        title2 : "",
         lang : ["html5", "css3","jQuery"],
         divice : "데스크탑 / 모바일",
         personnel : ["황준희"],
@@ -36,8 +36,8 @@ const port_site = [
     },
     {
         title : "CGV",
-        keyword : "",
-        title2 : "블랙모드가 있다면 어떨까?",
+        keyword : "팀 프로젝트",
+        title2 : "",
         lang : ["html5", "css3", "javascript"],
         divice : "데스크탑",
         personnel : ["황준희", "서정린", "김영훈", "이제현", "홍승표"],
@@ -52,20 +52,20 @@ function Port({title, divi, content, img, lang, personnel, link, title2, keyword
     return (
         <article className={`port_site ${title}`}>
             <div className="inner">
+                <h3 className="tit">
+                    <span className="tit_top">{title}</span>
+                    <span className="key">{keyword}</span>{title2}
+                </h3>
                 <div className="imgbox">
                     <a href={link} target="_blink">
                         <img src={img} title={title} alt={title} />
                     </a>
                 </div>
                 <div className="contents">
-                    <h3 className="tit">
-                        <span className="tit_top">{title}</span>
-                        <span className="key">{keyword}</span>{title2}
-                    </h3>
                     <p className="exp">{content}</p>
                     <ul className="lang_menu">
                         {lang.map((ele , idx)=> (
-                            <li className={`lang ${ele}`} key={idx}><span>{ele}</span></li>
+                            <li className={`lang ${ele}`} key={idx}></li>
                         ))}
                     </ul>
                     <h4 className="divi">{divi}</h4>
