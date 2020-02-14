@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 
 const port_site = [
@@ -21,7 +21,7 @@ const port_site = [
         lang : ["html5", "css3"],
         divice : "반응형",
         personnel : ["황준희"],
-        content : ' 웹 퍼블리싱를 알기 전부터 많이 관심이 있었고 꼭 한번 만들어 보고 싶었던 사이트 입니다. 반응형으로 제작하였고, HTML5/CSS3로만 만들었습니다.',
+        content : ' 웹 퍼블리싱을 알기 전부터 많이 관심이 있었고 꼭 한번 만들어 보고 싶었던 사이트 입니다. 반응형으로 제작하였고, HTML5/CSS3로만 만들었습니다.',
         img : "./images/apple_large.jpg",
         link : "https://wjunhee102.github.io/port_sub/applemain/appleindex.html",
         sub : false
@@ -49,30 +49,32 @@ const port_site = [
         kind : [
             {
                 title : "web",
+                sub : "웹",
                 img : "./images/cgv_large.jpg",
                 link : "https://wjunhee102.github.io/TeamProJ/"
             },
             {
                 title : "psd",
+                sub : "디자인 시안",
                 img : "./images/podo_large.jpg",
                 link : "https://wjunhee102.github.io/TeamProJ/"
             },
             {
                 title : "word",
+                sub : "기획서",
                 img : "./images/naver_large.jpg",
                 link : "https://wjunhee102.github.io/TeamProJ/"
             }
         ],
-        sub : true,
-        img2 : ""
+        sub : true
     }
 ]
 
 
 function ImgBox({idx, img, title, link, on}) {
     
-    return(
-        <li className={`img img${idx}`} style={{opacity : on}}>
+    return (
+        <li className={`img img${idx} ${on}`} >
             <a href={link} className={`img${idx}`} target="_blink">
                 <img src={img} title={title} alt={title} />
             </a>
@@ -80,16 +82,39 @@ function ImgBox({idx, img, title, link, on}) {
     )
 }
 
-function Team() {
-    const btn_team = ["웹", "시안", "기획서"]
+function Btn_team({title, value, sub, on}) {
+    return (
+        <button className={`btn_team ${title} ${on}`} onClick={value}>{sub}</button>
+    )
+}
+
+
+function Team({kind}) {
     const [con, setCon] = useState(0);
-    const { kind } = port_site[3]
-    
+    const [activeW, setActivW] = useState(0);
+    const width = useCallback(node => {
+        if (node !== null) {
+          setActivW(node.getBoundingClientRect().width);
+        }},[])
+
     function onClass(x) {
         if(con == x) {
-            return "1"
+            return "on"
         } else {
-            return "0"
+            return ''
+        }
+    }
+
+    function active(x) {
+        console.log(activeW);
+        return activeW*x
+    }
+
+    function onClass(x) {
+        if(con == x) {
+            return "on"
+        } else {
+            return ''
         }
     }
 
@@ -108,16 +133,27 @@ function Team() {
                 ))}
             </ul>
             <div className="menu_team">
-                <button className={`btn_team web`} onClick={()=> setCon(0)}>{btn_team[0]}</button>
-                <button className={`btn_team web`} onClick={()=> setCon(1)}>{btn_team[1]}</button>
-                <button className={`btn_team web`} onClick={()=> setCon(2)}>{btn_team[2]}</button>
+                <div className="inner">
+                {kind.map((ele, idx)=>(
+                    <Btn_team 
+                        title={ele.title}  
+                        value={()=>setCon(idx)}
+                        sub={ele.sub}
+                        on={onClass(idx)}
+                        key={idx}
+                    />
+                ))}
+                </div>
+                <div className="active">
+                    <span className="active_bar" style={{transform: `translate(${active(con)}px)`}} ref={width}></span>
+                </div>
             </div>
         </div>
         
     )
 }
 
-function Port({title, divi, content, img, lang, personnel, link, title2, keyword, sub ,idx}) {  
+function Port({title, divi, content, img, lang, personnel, link, title2, keyword, sub ,idx, kind}) {  
     return (
         <article className={`port_site site${idx}`}>
             <div className="inner">
@@ -126,12 +162,12 @@ function Port({title, divi, content, img, lang, personnel, link, title2, keyword
                     <span className="key">{keyword}</span>{title2}
                 </h3>
                 <div className="imgbox">
-                    { sub == false ? (
+                    { !sub ? (
                         <a href={link} className="img01" target="_blink">
                             <img src={img} title={title} alt={title} />
                         </a>
                     ):(
-                        <Team />
+                        <Team kind={kind}/>
                     )}  
                 </div>
                 <div className="contents">
@@ -187,6 +223,7 @@ function Web() {
                     key={idx}
                     sub={ele.sub}
                     idx={idx}
+                    kind={ele.kind}
                 />
             ))}
         </section>
