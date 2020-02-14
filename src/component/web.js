@@ -54,12 +54,12 @@ const port_site = [
             },
             {
                 title : "psd",
-                img : "./images/cgv_large.jpg",
+                img : "./images/podo_large.jpg",
                 link : "https://wjunhee102.github.io/TeamProJ/"
             },
             {
                 title : "word",
-                img : "./images/cgv_large.jpg",
+                img : "./images/naver_large.jpg",
                 link : "https://wjunhee102.github.io/TeamProJ/"
             }
         ],
@@ -69,7 +69,7 @@ const port_site = [
 ]
 
 
-function ImgBox(idx, img, title, link, on) {
+function ImgBox({idx, img, title, link, on}) {
     
     return(
         <li className={`img img${idx}`} style={{opacity : on}}>
@@ -103,6 +103,7 @@ function Team() {
                         title={ele.title}
                         link={ele.kind}
                         on={onClass(idx)}
+                        key={idx}
                     />
                 ))}
             </ul>
