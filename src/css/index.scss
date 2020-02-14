@@ -253,27 +253,20 @@ body {
         }
         .port_site {
             width: 100%;
-            height: 900px;
+            margin: 50px 0;
             .inner {
                 @include inner();
-                height: 900px;
-                // @include flexBox(center);
-                align-items: center;
                 .imgbox {
                     width: 100%;
-                    height: 300px;
+                    height: auto;
                     position: relative;
+                    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.4), 
+                        0 8px 16px -8px rgba(0,0,0,.7),0 -6px 16px -6px rgba(0,0,0,0.08);
                     a {
-                        box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25), 
-                        0 8px 16px -8px rgba(0,0,0,.3),0 -6px 16px -6px rgba(0,0,0,0.025);
-                        position: absolute;
-                        left: 50%;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
                         img {
                             display: block;
-                            width: 700px;
-                            height: 300px;                           
+                            width: 1024px;
+                            height: 700px;                           
                         }
                     }
                     
@@ -283,8 +276,19 @@ body {
                     .tit {
                         text-transform: capitalize;
                         margin-bottom: 30px;
-                        font-size: 3em;
+                        font-size: 4.0625em;
                         font-weight: 600;
+                        color: #888;
+                        margin: 40px 0;
+                        .tit_top {
+                            font-weight: 600;
+                            color: #888;
+                            display: block;
+                        }
+                        .key {
+                            font-weight: 600;
+                            color: #262626;
+                        }
                     }
                     .lang_menu {
                         @include flexBox(flex-start);

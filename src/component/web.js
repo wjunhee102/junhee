@@ -2,45 +2,53 @@ import React, { useState } from 'react';
 
 const port_site = [
     {
-        title : "naver",
+        title : "네이버에 ",
+        keyword : "블랙모드",
+        title2 : "가 있다면 어떨까?",
         lang : ["html5", "css3"],
         divice : "데스크탑",
         personnel : ["황준희"],
-        content : ' HTML5/CSS를 배우고 만든 웹입니다. “네이버에 블랙모드가 있다면 어떨까?”라는 생각으로 만들었습니다.',
-        img : "./images/naver.jpg",
+        content : ' HTML5/CSS를 배우고 만든 웹입니다.',
+        img : "./images/naver_large.jpg",
         link : "https://wjunhee102.github.io/port_sub/naver/index.html"
     },
     {
         title : "apple",
+        keyword : "",
+        title2 : "블랙모드가 있다면 어떨까?",
         lang : ["html5", "css3"],
         divice : "반응형",
         personnel : ["황준희"],
         content : ' 웹 퍼블리싱를 알기 전부터 많이 관심이 있었고 꼭 한번 만들어 보고 싶었던 사이트 입니다. 반응형으로 제작하였고, HTML5/CSS3로만 만들었습니다.',
-        img : "./images/applemain2.jpg",
+        img : "./images/apple_large.jpg",
         link : "https://wjunhee102.github.io/port_sub/applemain/appleindex.html"
     },
     {
         title : "포도팟",
+        keyword : "",
+        title2 : "블랙모드가 있다면 어떨까?",
         lang : ["html5", "css3","jQuery"],
         divice : "데스크탑 / 모바일",
         personnel : ["황준희"],
         content : ' jQuery를 배우고 만든 사이트입니다. 각 섹션마다 애니메이션을 넣어서 동적인 느낌을 들게 만들었습니다.',
-        img : "./images/naver.jpg",
+        img : "./images/podo_large.jpg",
         link : "https://wjunhee102.github.io/port_sub/podo/index.html"
     },
     {
         title : "CGV",
+        keyword : "",
+        title2 : "블랙모드가 있다면 어떨까?",
         lang : ["html5", "css3", "javascript"],
         divice : "데스크탑",
         personnel : ["황준희", "서정린", "김영훈", "이제현", "홍승표"],
         content : ' 팀 프로젝트로 만든 CGV리뉴얼 사이트입니다. 저는 이 프로젝트에서 기획 및 제작 총괄을 맡았습니다. 넷플릭스와 롯데시네마를 벤치마킹하여 디자인하였고, 웹 접근성을 고려하여 만들었습니다. 동적 기능은 라이브러리와 플러그인을 사용하지 않고 만들었습니다.',
-        img : "./images/naver.jpg",
+        img : "./images/cgv_large.jpg",
         link: "https://wjunhee102.github.io/TeamProJ/"
     }
 ]
 
 
-function Port({title, divi, content, img, lang, personnel, link }) {  
+function Port({title, divi, content, img, lang, personnel, link, title2, keyword }) {  
     return (
         <article className={`port_site ${title}`}>
             <div className="inner">
@@ -50,7 +58,10 @@ function Port({title, divi, content, img, lang, personnel, link }) {
                     </a>
                 </div>
                 <div className="contents">
-                    <h3 className="tit">{title}</h3>
+                    <h3 className="tit">
+                        <span className="tit_top">{title}</span>
+                        <span className="key">{keyword}</span>{title2}
+                    </h3>
                     <p className="exp">{content}</p>
                     <ul className="lang_menu">
                         {lang.map((ele , idx)=> (
@@ -90,6 +101,8 @@ function Web() {
             {port_site.map((ele,idx) => (
                 <Port 
                     title={ele.title} 
+                    keyword={ele.keyword}
+                    title2={ele.title2}
                     divi={ele.divice} 
                     content={ele.content} 
                     lang={ele.lang}
