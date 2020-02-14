@@ -55,6 +55,15 @@ $border: 1px solid #000;
     position: absolute;
     content: "";
 }
+@mixin btn {
+    display: block;
+    border: none;
+    padding: 0;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 
 body {
     @include box();
@@ -183,6 +192,8 @@ body {
     }
 }
 
+
+
 #main {
     @include box();
     position: relative;
@@ -263,6 +274,7 @@ body {
         }
         .port_site {
             width: 100%;
+            padding-bottom: 100px;
             margin: 50px 0;
             .inner {
                 @include inner();
@@ -286,7 +298,7 @@ body {
                 .imgbox {
                     width: 100%;
                     height: auto;
-                    margin-bottom: 50px;
+                    margin-bottom: 100px;
                     position: relative;
                     box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.4), 
                         0 8px 16px -8px rgba(0,0,0,.7),0 -6px 16px -6px rgba(0,0,0,0.08);
@@ -306,7 +318,8 @@ body {
                         font-size: 1.875em;
                         font-weight: 600;
                         line-height: 1.5;
-                        margin-bottom: 20px;
+                        padding-bottom: 30px;
+                        margin-bottom: 30px;
                         color: #888;
                     }
                     .detail {
@@ -314,6 +327,18 @@ body {
                         .lang_menu {
                             @include flexBox(flex-start);
                             margin-bottom: 10px;
+                            padding-right: 50px;
+                            position: relative;
+                            &::after {
+                                @include after();
+                                background-color: #ccc;
+                                width: 2px;
+                                height: 20px;
+                                position: absolute;
+                                right: 25px;
+                                top: 50%;
+                                transform:  translate(0, -50%);
+                            }
                             li.lang {
                                 margin-right: 10px;
                                 padding: 0 10px;
@@ -339,6 +364,9 @@ body {
                                     background-size: 34px 34px;
                                     text-transform: capitalize;
                                 }
+                                &:last-child {
+                                margin-right:0;
+                                }
                             }
                         }
                         .divi {
@@ -346,7 +374,12 @@ body {
                             font-weight: 600;
                             font-size: 1.2em;
                             line-height: 40px;
-                            color: #888;
+                            color: #000;
+                            padding-right: 50px;
+                            position: relative;
+                            &::after {
+                                @extend .lang_menu::after
+                            }
                         }
                         .pers_menu {
                             @include flexBox(flex-start);
@@ -357,6 +390,9 @@ body {
                                 font-weight: 600;
                                 font-size: 1.2em;
                                 color: #888;
+                                &:first-child {
+                                    color: #262626;
+                                }
                             }
                         }
                     }
@@ -364,10 +400,47 @@ body {
                     
                 }
             }
+
+        &.site3 {
+            .imgbox {
+                position: relative;
+            }
+            .contents {
+                position: relative;
+                width: 1024px;
+                height: 700px;
+                .img {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    transition: 0.7s ease-in-out;
+                }
+
+            }
+            .menu_team {
+                @include flexBox(center);
+                position: absolute;
+                bottom: -50px;
+                left: 50%;
+                transform: translate(-50%, 0);
+                .btn_team {
+                    @include btn();
+                    width: 300px;
+                    height: 20px;
+                    line-height: 20px;
+                    font-size: 1.25em;
+                    font-weight: 600;
+                }
+                
+            }
+        }
+
         }
     }
     
 }
+
 
 
 @media screen and  (max-width: 960px) {

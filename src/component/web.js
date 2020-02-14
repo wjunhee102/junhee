@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 
+
 const port_site = [
     {
         title : "네이버에 ",
         keyword : "다크모드",
-        title2 : "가 있다면 어떨까?",
+        title2 : "가 있다면",
         lang : ["html5", "css3"],
         divice : "데스크탑",
         personnel : ["황준희"],
         content : ' HTML5/CSS를 배우고 만든 웹입니다.',
         img : "./images/naver_large.jpg",
-        link : "https://wjunhee102.github.io/port_sub/naver/index.html"
+        link : "https://wjunhee102.github.io/port_sub/naver/index.html",
+        sub : false
     },
     {
         title : "",
@@ -21,7 +23,8 @@ const port_site = [
         personnel : ["황준희"],
         content : ' 웹 퍼블리싱를 알기 전부터 많이 관심이 있었고 꼭 한번 만들어 보고 싶었던 사이트 입니다. 반응형으로 제작하였고, HTML5/CSS3로만 만들었습니다.',
         img : "./images/apple_large.jpg",
-        link : "https://wjunhee102.github.io/port_sub/applemain/appleindex.html"
+        link : "https://wjunhee102.github.io/port_sub/applemain/appleindex.html",
+        sub : false
     },
     {
         title : "포도팟",
@@ -32,7 +35,8 @@ const port_site = [
         personnel : ["황준희"],
         content : ' jQuery를 배우고 만든 사이트입니다. 각 섹션마다 애니메이션을 넣어서 동적인 느낌을 들게 만들었습니다.',
         img : "./images/podo_large.jpg",
-        link : "https://wjunhee102.github.io/port_sub/podo/index.html"
+        link : "https://wjunhee102.github.io/port_sub/podo/index.html",
+        sub : false
     },
     {
         title : "CGV",
@@ -42,24 +46,92 @@ const port_site = [
         divice : "데스크탑",
         personnel : ["황준희", "서정린", "김영훈", "이제현", "홍승표"],
         content : ' 팀 프로젝트로 만든 CGV리뉴얼 사이트입니다. 저는 이 프로젝트에서 기획 및 제작 총괄을 맡았습니다. 넷플릭스와 롯데시네마를 벤치마킹하여 디자인하였고, 웹 접근성을 고려하여 만들었습니다. 동적 기능은 라이브러리와 플러그인을 사용하지 않고 만들었습니다.',
-        img : "./images/cgv_large.jpg",
-        link: "https://wjunhee102.github.io/TeamProJ/"
+        kind : [
+            {
+                title : "web",
+                img : "./images/cgv_large.jpg",
+                link : "https://wjunhee102.github.io/TeamProJ/"
+            },
+            {
+                title : "psd",
+                img : "./images/cgv_large.jpg",
+                link : "https://wjunhee102.github.io/TeamProJ/"
+            },
+            {
+                title : "word",
+                img : "./images/cgv_large.jpg",
+                link : "https://wjunhee102.github.io/TeamProJ/"
+            }
+        ],
+        sub : true,
+        img2 : ""
     }
 ]
 
 
-function Port({title, divi, content, img, lang, personnel, link, title2, keyword }) {  
+function ImgBox(idx, img, title, link, on) {
+    
+    return(
+        <li className={`img img${idx}`} style={{opacity : on}}>
+            <a href={link} className={`img${idx}`} target="_blink">
+                <img src={img} title={title} alt={title} />
+            </a>
+        </li>
+    )
+}
+
+function Team() {
+    const btn_team = ["웹", "시안", "기획서"]
+    const [con, setCon] = useState(0);
+    const { kind } = port_site[3]
+    
+    function onClass(x) {
+        if(con == x) {
+            return "1"
+        } else {
+            return "0"
+        }
+    }
+
+    return(
+        <div className="wrap_team">
+            <ul className="contents">
+                {kind.map((ele,idx)=>(
+                    <ImgBox 
+                        idx={idx}
+                        img={ele.img}
+                        title={ele.title}
+                        link={ele.kind}
+                        on={onClass(idx)}
+                    />
+                ))}
+            </ul>
+            <div className="menu_team">
+                <button className={`btn_team web`} onClick={()=> setCon(0)}>{btn_team[0]}</button>
+                <button className={`btn_team web`} onClick={()=> setCon(1)}>{btn_team[1]}</button>
+                <button className={`btn_team web`} onClick={()=> setCon(2)}>{btn_team[2]}</button>
+            </div>
+        </div>
+        
+    )
+}
+
+function Port({title, divi, content, img, lang, personnel, link, title2, keyword, sub ,idx}) {  
     return (
-        <article className={`port_site ${title}`}>
+        <article className={`port_site site${idx}`}>
             <div className="inner">
                 <h3 className="tit">
                     <span className="tit_top">{title}</span>
                     <span className="key">{keyword}</span>{title2}
                 </h3>
                 <div className="imgbox">
-                    <a href={link} target="_blink">
-                        <img src={img} title={title} alt={title} />
-                    </a>
+                    { sub == false ? (
+                        <a href={link} className="img01" target="_blink">
+                            <img src={img} title={title} alt={title} />
+                        </a>
+                    ):(
+                        <Team />
+                    )}  
                 </div>
                 <div className="contents">
                     <p className="exp">{content}</p>
@@ -112,6 +184,8 @@ function Web() {
                     img={ele.img}
                     link={ele.link} 
                     key={idx}
+                    sub={ele.sub}
+                    idx={idx}
                 />
             ))}
         </section>
