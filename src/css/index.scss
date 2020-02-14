@@ -309,54 +309,58 @@ body {
                         margin-bottom: 20px;
                         color: #888;
                     }
-                    .lang_menu {
+                    .detail {
                         @include flexBox(flex-start);
-                        margin-bottom: 10px;
-                        li.lang {
-                            margin-right: 10px;
-                            padding: 0 10px;
-                            width: 30px;
-                            height: 40px;
-                            padding-top: 40px;
-                            position: relative;
-                            &.html5 {
-                                background: url("../images/html5.png") no-repeat center top;
-                                background-size: 30px 34px; 
-                                text-transform: uppercase;
+                        .lang_menu {
+                            @include flexBox(flex-start);
+                            margin-bottom: 10px;
+                            li.lang {
+                                margin-right: 10px;
+                                padding: 0 10px;
+                                width: 30px;
+                                height: 40px;
+                                position: relative;
+                                &.html5 {
+                                    background: url("../images/html5.png") no-repeat center center;
+                                    background-size: 30px 34px; 
+                                    text-transform: uppercase;
+                                }
+                                &.css3 {
+                                    background: url("../images/css3.png") no-repeat center center;
+                                    background-size: 30px 34px;
+                                    text-transform: uppercase;
+                                }
+                                &.jQuery {
+                                    background: url("../images/jquery.png") no-repeat center center;
+                                    background-size: 30px 34px;
+                                }
+                                &.javascript {
+                                    background: url("../images/js.jpg") no-repeat center center;
+                                    background-size: 34px 34px;
+                                    text-transform: capitalize;
+                                }
                             }
-                            &.css3 {
-                                background: url("../images/css3.png") no-repeat center top;
-                                background-size: 30px 34px;
-                                text-transform: uppercase;
+                        }
+                        .divi {
+                            margin-bottom: 10px;
+                            font-weight: 600;
+                            font-size: 1.2em;
+                            line-height: 40px;
+                            color: #888;
+                        }
+                        .pers_menu {
+                            @include flexBox(flex-start);
+                            margin-bottom: 10px;
+                            li {
+                                line-height: 40px;
+                                margin-right: 10px;
+                                font-weight: 600;
+                                font-size: 1.2em;
+                                color: #888;
                             }
-                            &.jQuery {
-                                background: url("../images/jquery.png") no-repeat center top;
-                                background-size: 30px 34px;
-                            }
-                            &.javascript {
-                                background: url("../images/js.jpg") no-repeat center top;
-                                background-size: 34px 34px;
-                                text-transform: capitalize;
-                            }
-                            // span {
-                            //     font-size: 12px;
-                            //     line-height: 12px;
-                            //     text-align: center;
-                            //     font-weight: 500;
-                            // }
                         }
                     }
-                    .divi {
-                        margin-bottom: 10px;
-                    }
-                    .pers_menu {
-                        @include flexBox(flex-start);
-                        margin-bottom: 10px;
-                        li {
-                            margin-right: 10px;
-                            font-weight: 500;
-                        }
-                    }
+                    
                     
                 }
             }

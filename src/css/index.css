@@ -306,7 +306,16 @@ body {
   color: #888;
 }
 
-#main .web .port_site .inner .contents .lang_menu {
+#main .web .port_site .inner .contents .detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+#main .web .port_site .inner .contents .detail .lang_menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -316,43 +325,46 @@ body {
   margin-bottom: 10px;
 }
 
-#main .web .port_site .inner .contents .lang_menu li.lang {
+#main .web .port_site .inner .contents .detail .lang_menu li.lang {
   margin-right: 10px;
   padding: 0 10px;
   width: 30px;
   height: 40px;
-  padding-top: 40px;
   position: relative;
 }
 
-#main .web .port_site .inner .contents .lang_menu li.lang.html5 {
-  background: url("../images/html5.png") no-repeat center top;
+#main .web .port_site .inner .contents .detail .lang_menu li.lang.html5 {
+  background: url("../images/html5.png") no-repeat center center;
   background-size: 30px 34px;
   text-transform: uppercase;
 }
 
-#main .web .port_site .inner .contents .lang_menu li.lang.css3 {
-  background: url("../images/css3.png") no-repeat center top;
+#main .web .port_site .inner .contents .detail .lang_menu li.lang.css3 {
+  background: url("../images/css3.png") no-repeat center center;
   background-size: 30px 34px;
   text-transform: uppercase;
 }
 
-#main .web .port_site .inner .contents .lang_menu li.lang.jQuery {
-  background: url("../images/jquery.png") no-repeat center top;
+#main .web .port_site .inner .contents .detail .lang_menu li.lang.jQuery {
+  background: url("../images/jquery.png") no-repeat center center;
   background-size: 30px 34px;
 }
 
-#main .web .port_site .inner .contents .lang_menu li.lang.javascript {
-  background: url("../images/js.jpg") no-repeat center top;
+#main .web .port_site .inner .contents .detail .lang_menu li.lang.javascript {
+  background: url("../images/js.jpg") no-repeat center center;
   background-size: 34px 34px;
   text-transform: capitalize;
 }
 
-#main .web .port_site .inner .contents .divi {
+#main .web .port_site .inner .contents .detail .divi {
   margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 1.2em;
+  line-height: 40px;
+  color: #888;
 }
 
-#main .web .port_site .inner .contents .pers_menu {
+#main .web .port_site .inner .contents .detail .pers_menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -362,9 +374,12 @@ body {
   margin-bottom: 10px;
 }
 
-#main .web .port_site .inner .contents .pers_menu li {
+#main .web .port_site .inner .contents .detail .pers_menu li {
+  line-height: 40px;
   margin-right: 10px;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1.2em;
+  color: #888;
 }
 
 @media screen and (max-width: 960px) {

@@ -13,7 +13,7 @@ const port_site = [
         link : "https://wjunhee102.github.io/port_sub/naver/index.html"
     },
     {
-        title : "항상 만들고 싶었던,",
+        title : "",
         keyword : "애플",
         title2 : "",
         lang : ["html5", "css3"],
@@ -63,17 +63,19 @@ function Port({title, divi, content, img, lang, personnel, link, title2, keyword
                 </div>
                 <div className="contents">
                     <p className="exp">{content}</p>
-                    <ul className="lang_menu">
-                        {lang.map((ele , idx)=> (
-                            <li className={`lang ${ele}`} key={idx}></li>
-                        ))}
-                    </ul>
-                    <h4 className="divi">{divi}</h4>
-                    <ul className="pers_menu">
-                        {personnel.map((ele , idx)=> (
-                            <li className={`pers${idx}`} key={idx}>{ele}</li>
-                        ))}
-                    </ul>
+                    <div className="detail">
+                        <ul className="lang_menu">
+                            {lang.map((ele , idx)=> (
+                                <li className={`lang ${ele}`} key={idx}></li>
+                            ))}
+                        </ul>
+                        <h4 className="divi">{divi}</h4>
+                        <ul className="pers_menu">
+                            {personnel.map((ele , idx)=> (
+                                <li className={`pers${idx}`} key={idx}>{ele}</li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </article>
