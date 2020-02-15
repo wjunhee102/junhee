@@ -75,7 +75,7 @@ function Header({introH, skillH, webH}) {
             start = Math.abs(scrollY - i),
             time = start/200
         ;
-        
+
         if(start <= 200) {
             time = 1 ;
         }
@@ -120,7 +120,6 @@ function Header({introH, skillH, webH}) {
                                 title={info.title} 
                                 key={idx} 
                                 move={moveSection} 
-                                intro={introH}
                             />
                         ))}
                     </ul>
