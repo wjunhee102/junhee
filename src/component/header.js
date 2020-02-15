@@ -1,14 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-function Gnb({id ,link , title , index, move}) {
-    return (
-        <li className={id + index}>
-            <a href={link} onClick={()=>move(index)}>{title}</a>
-        </li>
-    )
-}
-
 const gnb_info = [
     {
         id : "btn_gnb" ,
@@ -48,9 +40,16 @@ gnb_info.propTypes = {
     title: PropTypes.string.isRequired
 };
 
+function Gnb({id ,link , title , index, move}) {
+    return (
+        <li className={id + index}>
+            <a href={link} onClick={()=>move(index)}>{title}</a>
+        </li>
+    )
+}
+
 function Header({introH, skillH, webH}) {
     const 
-        [movePoint, setMov] = useState(0),
         [headerPos, setHPos] = useState(0)
         ;
 
@@ -60,27 +59,23 @@ function Header({introH, skillH, webH}) {
             setHPos(node.getBoundingClientRect().height);
         }},[])
         ;
+    const secH = [
+        0,
+        introH,
+        introH+skillH-headerPos,
+        introH+skillH+1000-headerPos,
+        introH+skillH+1200-headerPos
+    ]
+   
+
     function moveSection(x) {        
-        let scrollY = window.scrollY
-        let i = 0;
-        switch(x){
-            case 1 :
-                i = introH;
-                break;
-            case 2 :
-                i = introH+skillH-headerPos;
-                break;
-            case 3 :
-                i = introH+skillH+1000-headerPos;
-                break;  
-            case 4 :  
-                i = introH+skillH+1200-headerPos;
-                break;  
-            default :
-                i = 0;
-        }
-        let start = Math.abs(scrollY - i);
-        let time = start/200;
+        let 
+            scrollY = window.scrollY,
+            i = secH[x],
+            start = Math.abs(scrollY - i),
+            time = start/200
+        ;
+        
         if(start <= 200) {
             time = 1 ;
         }
