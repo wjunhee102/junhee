@@ -68,13 +68,13 @@ function Header({introH, skillH, webH}) {
                 i = introH;
                 break;
             case 2 :
-                i = introH+skillH;
+                i = introH+skillH-headerPos;
                 break;
             case 3 :
-                i = introH+skillH+500;
+                i = introH+skillH+1000-headerPos;
                 break;  
-            case 4 :
-                i = introH+skillH+400;
+            case 4 :  
+                i = introH+skillH+1200-headerPos;
                 break;  
             default :
                 i = 0;

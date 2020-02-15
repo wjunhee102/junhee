@@ -31,18 +31,17 @@ function App() {
     console.log(introPos,skillPos,webPos);
     window.addEventListener('scroll', ()=> {
         let scrollY = window.pageYOffset;
-            setTimeout(()=> {
-                move(scrollY);
-                if (scrollY < 800) {
-                    setS(scrollY);
-                    setPosi("fixed");
-                    setY(0);
-                } else {
-                    setS(800);
-                    setY(800);
-                    setPosi("absolute");
-                }
-            },0)
+            move(scrollY);
+            if (scrollY < 800) {
+                setS(scrollY);
+                setPosi("fixed");
+                setY(0);
+            } else {
+                setS(800);
+                setY(800);
+                setPosi("absolute");
+            }
+
         });
 
     useEffect(()=> {
