@@ -4,31 +4,31 @@ import PropTypes from 'prop-types';
 const gnb_info = [
     {
         id : "btn_gnb" ,
-        link : "javascript:;",
+        link : "section",
         //title : "소개",
         title : "intro"
     },
     {
         id : "btn_gnb" ,
-        link : "javascript:;",
+        link : "section",
         //title : "기술",
         title : "workmanship"
     },
     {
         id : "btn_gnb" ,
-        link : "javascript:;",
+        link : "section",
         //title : "웹",
         title : "web"
     },
     {
         id : "btn_gnb" ,
-        link : "javascript:;",
+        link : "section",
         //title : "디자인",
         title : "design"
     },
     {
         id : "btn_gnb" ,
-        link : "javascript:;",
+        link : "section",
         //title : "연결",
         title : "connect"
     }
@@ -43,7 +43,10 @@ gnb_info.propTypes = {
 function Gnb({id ,link , title , index, move}) {
     return (
         <li className={id + index}>
-            <a href={link} onClick={()=>move(index)}>{title}</a>
+            <a href={link} onClick={(e)=> (
+                e.preventDefault(),
+                move(index)
+                )}>{title}</a>
         </li>
     )
 }
@@ -68,7 +71,7 @@ function Header({introH, skillH, webH}) {
     ]
    
 
-    function moveSection(x) {        
+    function moveSection(x) {  
         let 
             scrollY = window.scrollY,
             i = secH[x],
