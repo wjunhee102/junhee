@@ -126,7 +126,7 @@ function Team({kind}) {
                         idx={idx}
                         img={ele.img}
                         title={ele.title}
-                        link={ele.kind}
+                        link={ele.link}
                         on={onClass(idx)}
                         key={idx}
                     />
