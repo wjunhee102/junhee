@@ -18,7 +18,7 @@ function Connect() {
     const name = useInput("")
     console.log(name);
     return (
-        <section className="connect" >
+        <section className="connect">
             <input {...name} placeholder="whats your name" />
         </section>
     )

@@ -90,12 +90,16 @@ function Btn_team({title, value, sub, on}) {
 
 
 function Team({kind}) {
-    const [con, setCon] = useState(0);
-    const [activeW, setActivW] = useState(0);
-    const width = useCallback(node => {
+    const 
+        [con, setCon] = useState(0),
+        [activeW, setActivW] = useState(0)
+        ;
+    const    
+        width = useCallback(node => {
         if (node !== null) {
           setActivW(node.getBoundingClientRect().width);
         }},[])
+        ;
 
     function onClass(x) {
         if(con == x) {
@@ -205,9 +209,16 @@ function Foreword() {
 }
 
 
-function Web() {
+function Web({wPos}) {
+    const
+        webH = useCallback(node => {
+        if (node !== null) {
+            wPos(node.getBoundingClientRect().height);
+        }},[])
+        ;
+
     return (
-        <section className="web">
+        <section className="web" ref={webH} >
             <Foreword />
             {port_site.map((ele,idx) => (
                 <Port 
