@@ -46,7 +46,7 @@ function Gnb({id ,link , title , index, move}) {
             <a href={link} onClick={(e)=> (
                 e.preventDefault(),
                 move(index)
-                )}>{title}</a>
+            )}>{title}</a>
         </li>
     )
 }
@@ -107,7 +107,7 @@ function Header({introH, skillH, webH}) {
         <header id="header" className="header" ref={headerH} >
             <div className="inner">
                 <h1 className="logo">
-                    <a href="#">
+                    <a href="https://wjunhee102.github.io/junhee/">
                         Junhee
                         <span>황준희 포트폴리오 로고</span>
                     </a>
