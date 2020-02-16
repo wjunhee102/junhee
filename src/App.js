@@ -74,7 +74,7 @@ function App() {
             ;
     
         if(start <= 100) {
-            time = 0.5 ;
+            time = 1 ;
         }
     
         console.log(time)
