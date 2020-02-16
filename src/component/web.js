@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 
-
+//내용
 const port_site = [
     {
         title : "네이버에 ",
@@ -70,7 +70,7 @@ const port_site = [
     }
 ]
 
-
+//이미지 박수
 function ImgBox({idx, img, title, link, on}) {
     
     return (
@@ -81,14 +81,14 @@ function ImgBox({idx, img, title, link, on}) {
         </li>
     )
 }
-
+//버튼
 function Btn_team({title, value, sub, on}) {
     return (
         <button className={`btn_team ${title} ${on}`} onClick={value}>{sub}</button>
     )
 }
 
-
+//팀프로젝트 요소 
 function Team({kind}) {
     const 
         [con, setCon] = useState(0),
@@ -157,6 +157,8 @@ function Team({kind}) {
     )
 }
 
+
+//기본 구성 요소
 function Port({title, divi, content, img, lang, personnel, link, title2, keyword, sub ,idx, kind}) {  
     return (
         <article className={`port_site site${idx}`}>

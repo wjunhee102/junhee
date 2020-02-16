@@ -52,7 +52,7 @@ function Gnb({id ,link , title , index, move}) {
 }
 
 function Header({setHPos , moveS}) {
-    
+    //헤더 height 값 가져오기
     const
         headerH = useCallback(node => {
         if (node !== null) {
