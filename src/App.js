@@ -71,6 +71,9 @@ function App() {
     window.addEventListener('wheel', ()=>{
         pause = false;
     })
+    window.addEventListener('touched', ()=>{
+        pause = false;
+    })
     // 섹션간 이동 함수
     function moveSection(x) {  
         let 
@@ -89,7 +92,7 @@ function App() {
         //가속도 
 
         function easeOut (t, b, c, d) {
-            return c * ( -Math.pow( 2, -13 * t/d ) + 1 ) + b;
+            return c * ( -Math.pow( 2, -12 * t/d ) + 1 ) + b;
         };
 
         //animate
