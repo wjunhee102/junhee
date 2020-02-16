@@ -51,58 +51,15 @@ function Gnb({id ,link , title , index, move}) {
     )
 }
 
-function Header({introH, skillH, webH}) {
-    const 
-        [headerPos, setHPos] = useState(0)
-        ;
-
+function Header({setHPos , moveS}) {
+    
     const
         headerH = useCallback(node => {
         if (node !== null) {
             setHPos(node.getBoundingClientRect().height);
         }},[])
         ;
-    const secH = [
-        0,
-        introH,
-        introH+skillH-headerPos,
-        introH+skillH+1000-headerPos,
-        introH+skillH+1200-headerPos
-    ]
-   
-
-    function moveSection(x) {  
-        let 
-            scrollY = window.scrollY,
-            i = secH[x],
-            start = Math.abs(scrollY - i),
-            time = start/200
-        ;
-
-        if(start <= 200) {
-            time = 1 ;
-        }
-        console.log(time)
-        function mov() {
-            if(scrollY < i-1) {
-                scrollY = scrollY+time
-                window.scrollTo(0, scrollY);
-            } else if(scrollY > i+1) {
-                scrollY = scrollY-time
-                window.scrollTo(0, scrollY);
-            } else {
-                scrollY = i
-                window.scrollTo(0, scrollY);
-                console.log(scrollY);
-            }
-            if (scrollY != i) {
-                requestAnimationFrame(mov);
-            }
-        }
-        mov();    
-    }
     
-
     return (
         <header id="header" className="header" ref={headerH} >
             <div className="inner">
@@ -122,7 +79,7 @@ function Header({introH, skillH, webH}) {
                                 link={info.link} 
                                 title={info.title} 
                                 key={idx} 
-                                move={moveSection} 
+                                move={moveS} 
                             />
                         ))}
                     </ul>

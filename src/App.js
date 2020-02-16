@@ -11,11 +11,24 @@ function App() {
         [valueY, setY] = useState(0),
         [valueS, setS] = useState(0),
         [valueOp, setOp] = useState(1)
-    ;
+        ;
     const 
+        [headerPos, setHPos] = useState(0),
         [introPos, setIPos] = useState(0),
         [skillPos, setSPos] = useState(0),
         [webPos, setWPos] = useState(0)
+        ;
+    const secH = [
+        0,
+        introPos,
+        introPos+skillPos-headerPos,
+        introPos+skillPos+1000-headerPos,
+        introPos+skillPos+1200-headerPos
+        ]
+
+    let 
+        lastScroll = 0,
+        ticking = false
         ;
     
     function move(scroll_pos) {
@@ -28,10 +41,8 @@ function App() {
             }
         } 
     }
-    console.log(introPos,skillPos,webPos);
-    window.addEventListener('scroll', ()=> {
-        let scrollY = window.pageYOffset;
-            move(scrollY);
+    function introMove(scrollY) {
+        move(scrollY);
             if (scrollY < 800) {
                 setS(scrollY);
                 setPosi("fixed");
@@ -41,8 +52,47 @@ function App() {
                 setY(800);
                 setPosi("absolute");
             }
+    }
 
-        });
+    console.log(introPos,skillPos,webPos);
+    window.addEventListener('scroll', (e)=> {
+        lastScroll = window.pageYOffset;
+        if(!ticking) {
+            window.requestAnimationFrame(()=> {
+                introMove(lastScroll);
+                ticking = false;
+        })}
+        ticking = true;
+    });
+
+    function moveSection(x) {  
+        let 
+            scrollY = window.pageYOffset,
+            i = secH[x],
+            start = Math.abs(scrollY - i),
+            time = start/100
+            ;
+    
+        if(start <= 100) {
+            time = 0.5 ;
+        }
+    
+        console.log(time)
+        function move() {
+            if(scrollY < i-1) {
+                scrollY = scrollY+time
+            } else if(scrollY > i+1) {
+                scrollY = scrollY-time
+            } else {
+                scrollY = i
+            }
+            window.scrollTo(0, scrollY);
+            if (scrollY != i) {
+                requestAnimationFrame(move);
+            }
+        }
+        move();
+    }
 
     useEffect(()=> {
         document.title = `황준희 포트폴리오`;
@@ -54,9 +104,8 @@ function App() {
         <div className="App">
             <div className="wrap">
                 <Header 
-                    introH={introPos}
-                    skillH={skillPos}
-                    webH={webPos} 
+                    setHPos={setHPos}
+                    moveS={moveSection}
                 />
                 <main id="main" className="main">
                 <Intro 
