@@ -25,11 +25,12 @@ function App() {
         introPos+skillPos+1000-headerPos,
         introPos+skillPos+1200-headerPos
         ]
-
+        
+    // scroll 변수   
     let 
         lastScroll = 0,
         ticking = false,
-        pause = false
+        moveStart = false
         ;
     
     // intro섹션 parallex함수
@@ -55,8 +56,6 @@ function App() {
                 setPosi("absolute");
             }
     }
-
-    // console.log(introPos,skillPos,webPos);
     
     window.addEventListener('scroll', (e)=> {
         
@@ -67,66 +66,46 @@ function App() {
                 ticking = false;
         })}
         ticking = true;
-    });
+	});
+	
+	// moveSection 정지 
     window.addEventListener('wheel', ()=>{
-        pause = false;
+        moveStart = false;
     })
     window.addEventListener('touched', ()=>{
-        pause = false;
+        moveStart = false;
     })
+
     // 섹션간 이동 함수
     function moveSection(x) {  
         let 
             scrollY = window.pageYOffset,
             i = secH[x],
-            // start = Math.abs(scrollY - i),
             start = i - scrollY,
-            time = start/100
+            startTime = null
             ;
-    
-        // if(start <= 100) {
-        //     time = 1 ;
-        // }
-    
-        // console.log(time)
-        //가속도 
+		// moveSection 재생
+			moveStart = true
 
+
+        //가속도 
         function easeOut (t, b, c, d) {
             return c * ( -Math.pow( 2, -12 * t/d ) + 1 ) + b;
         };
 
         //animate
-        let startTime = null;
-        pause = true
         function animate(timestamp) {
             
-            console.log(timestamp);
             if(!startTime) startTime = timestamp
-            console.log(startTime)
             let progress = timestamp - startTime
             let moving = easeOut(progress, scrollY, start, 2500)
 
             window.scrollTo(0, moving);
-            console.log(moving)
 
-            if (progress < 3000 && pause == true) {
+            if (progress < 2500 && moveStart == true) {
                 requestAnimationFrame(animate);
             }
         }
-        // function animate() {
-
-        //     if(scrollY < i-1) {
-        //         scrollY = scrollY+time
-        //     } else if(scrollY > i+1) {
-        //         scrollY = scrollY-time
-        //     } else {
-        //         scrollY = i
-        //     }
-        //     window.scrollTo(0, scrollY);
-        //     if (scrollY != i) {
-        //         requestAnimationFrame(animate);
-        //     }
-        // }
         window.requestAnimationFrame(animate);
     }
 
