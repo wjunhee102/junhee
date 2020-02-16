@@ -4,31 +4,32 @@
 /* slide */
 .main_slide {
    width: 1000px;
-   height: 600px;
+   height: auto;
    position: absolute;
    left: 50%;
-   top: 50%;
-   transform: translate(-50%, -50%);
+   top: 0;
+   transform: translate(-50%, 0);
    background-color: #ccc;
 }
 
 /* slide content */
 .slide_wrap {
-   width: 100%;
-   height: 100%;
-   overflow: hidden;
-   position: relative;
+   width: auto;
+   height: auto;
+   left: 0;
+   position: absolute;
+   display: flex;
+   justify-content: flex-start;
+   flex-wrap: nowrap;
 }
 .slide_item {
-   position: absolute;
-   width: 100%;
-   height: 100%;
+   position: relative;
+   width: 1000px;
+   height: 600px;
    text-align: center;
    line-height: 600px;
-   left: 50%;
-   top: 50%;
-   transform: translate(-50%, -50%) scale(0.6);
-   opacity: 0;
+   transform: translate(0, 0) scale(1);
+   opacity: 1;
    transition: 0.5s ease-in-out;
    font-size: 30px;
 }
@@ -36,25 +37,37 @@
 /* slide_item on */
 .slide_item.on {
    opacity: 1;
-   transform: translate(-50%, -50%) scale(1);
+   transform: translate(0, 0) scale(1);
    z-index: 5;
 }
 
 /* 데모를 위한 style */
-.slide_item:first-child {
+.item0 {
    background-color: turquoise;
 }
-.slide_item:nth-child(2) {
+.item1 {
    background-color: wheat;
 }
-.slide_item:nth-child(3) {
+.item2 {
    background-color: gold;
 }
-.slide_item:nth-child(4) {
+.item3 {
    background-color: coral;
 }
-.slide_item:last-child {
+.item4 {
    background-color: skyblue;
+}
+.vir {
+   position: absolute;
+   left: 0;
+   top: 50%;
+   transform: translate(-100%, -50%);
+}
+.vir2 {
+   position: absolute;
+   right: 0;
+   top: 50%;
+   transform: translate(100%, -50%);
 }
 
 /* slide dot */
@@ -75,6 +88,7 @@
    border-radius: 10px;
    text-align: center;
    line-height: 20px;
+   z-index: 10;
 }
 .slide_dot.on {
    background-color: red;

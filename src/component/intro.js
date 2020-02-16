@@ -23,7 +23,12 @@ function Intro({y, s, op, posi, iPos}) {
 
     return (
         <section className="intro" ref={introH}>
-            <MainVisual valueY={y} valueS={s} valueOp={op} valuePos={posi}/>
+            <MainVisual 
+                valueY={y} 
+                valueS={s} 
+                valueOp={op} 
+                valuePos={posi}
+            />
         </section>
     )
 }

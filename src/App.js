@@ -11,7 +11,7 @@ function App() {
         [valueY, setY] = useState(0),
         [valueS, setS] = useState(0),
         [valueOp, setOp] = useState(1)
-        ;
+		;
     const 
         [headerPos, setHPos] = useState(0),
         [introPos, setIPos] = useState(0),
@@ -20,7 +20,7 @@ function App() {
         ;
     const secH = [
         0,
-        introPos,
+        introPos-headerPos,
         introPos+skillPos-headerPos,
         introPos+skillPos+1000-headerPos,
         introPos+skillPos+1200-headerPos
@@ -55,17 +55,18 @@ function App() {
                 setY(800);
                 setPosi("absolute");
             }
-    }
+	}
+	
     
     window.addEventListener('scroll', (e)=> {
-        
         lastScroll = window.pageYOffset;
         if(!ticking) {
             window.requestAnimationFrame(()=> {
                 introMove(lastScroll);
-                ticking = false;
-        })}
-        ticking = true;
+				ticking = false;
+		});
+		}
+		ticking = true;		
 	});
 	
 	// moveSection 정지 

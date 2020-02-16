@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-
+import Slide from './skill/slide'
 
 
 function Skill({sPos}) {
@@ -13,7 +13,7 @@ function Skill({sPos}) {
     return (
         <section className="skill" ref={skillH}>
             <h2>workmanship</h2>
-            
+            <Slide />
         </section>
     )
 }

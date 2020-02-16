@@ -110,16 +110,7 @@ function Team({kind}) {
     }
 
     function active(x) {
-        console.log(activeW);
         return activeW*x
-    }
-
-    function onClass(x) {
-        if(con == x) {
-            return "on"
-        } else {
-            return ''
-        }
     }
 
     return(
