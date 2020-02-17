@@ -30,7 +30,7 @@
    line-height: 600px;
    transform: translate(0, 0) scale(1);
    opacity: 1;
-   transition: 0.5s ease-in-out;
+   /* transition: 0.5s ease-in-out; */
    font-size: 30px;
 }
 
