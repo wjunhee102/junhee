@@ -160,7 +160,14 @@ function Slide() {
                     null
                 )}
                 {slide_item.map((ele, idx)=>(
-                    <div ref={slideWidth} className={`slide_item item${idx} ${slideOn(idx)}`} key={idx}>{ele.title}</div>
+                    <div 
+                        ref={slideWidth} 
+                        className={`slide_item item${idx} ${slideOn(idx)}`} 
+                        key={idx}
+                        onMouseDown={e=>e.preventDefault}
+                    >
+                        {ele.title}
+                    </div>
                 ))}
                 {slideMove >= sWrapW-slideW ? (
                 <div ref={slideWidth} className={`slide_item item0 vir2`}>{slide_item[0].title}</div>):(
