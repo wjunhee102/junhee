@@ -70,7 +70,7 @@ const port_site = [
     }
 ]
 
-//이미지 박수
+//이미지 박스
 function ImgBox({idx, img, title, link, on}) {
     
     return (

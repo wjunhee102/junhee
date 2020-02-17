@@ -36,25 +36,29 @@ function Slide() {
         [slideMove, setSMove] = useState(0),
         [slideW, setSW] = useState(0),
         [slideIdx, setSIdx] = useState(0),
-        [slideStart, setSStart] = useState(false),
-        [slideStart1, setSStart1] = useState(false),
-        [mousePoint, setMPoint] = useState(0)
+        [slideStart, setSStart] = useState(true),
+        [sWrap, setWrap] = useState(0)
         ;
-    const 
-        slideWrap = useRef(null);
     const
         slideWidth = useCallback(node => {
             if (node !== null) {
                 setSW(node.getBoundingClientRect().width);
             }},[])
             ;
+    const 
+        slideWrap = useCallback(node => {
+            if (node !== null) {
+                setWrap(node);
+            }},[])
+            ;
+
     let 
+        mouseUp = false,
         mouseX = 0,
         mouseSX = 0,
-        ss = false,
-        s1 = false
+        inum = 0,
+        wrapMove = 0
         ;
-    let mouseUp = false;
 
     function slideOn(x) {
         if(slideIdx == x) {
@@ -63,49 +67,28 @@ function Slide() {
             return ''
             }
         }
-    
-    function slideMouseEvent(e) {
-        mouseUp = false;
-        window.addEventListener("mousedown", (e)=>{
+    function slideMouseEvent() {
+        sWrap.addEventListener("mousedown", (e)=>{
+            setSStart(false);
             mouseUp = true
             mouseSX = e.clientX;
-            console.log(mouseSX)
-            window.addEventListener("mousemove",(e)=>{
+            sWrap.addEventListener("mousemove",(e)=>{
                 if(!mouseUp) return false
-                    
-                    mouseX = mouseSX - e.clientX
-                    console.log(mouseX)
-                    setSMove(slideMove + mouseX);
+                    mouseX = e.clientX - mouseSX  ;
+                    wrapMove = slideMove - mouseX
+                    sWrap.style.transform = `translateX(${-wrapMove}px)`
+                    setSMove(wrapMove);
             })
         })
-        window.addEventListener("mouseup", (e)=>{
-            mouseUp = false
-            mouseSX = 0;
-            console.log(mouseSX)
+        sWrap.addEventListener("mouseup", ()=>{
+            setSStart(true);
+            mouseUp = false;
+            inum = Math.round(wrapMove/slideW);
+            console.log(inum);
+            moveing(inum);
         })
-        
     }
-    // function slideMouseEvent() {
-    //     setSStart1(true)
-    // }
-    // function slideMouseUp() {
-    //     setSStart1(false)
-    // }
-
-    // function slideOnMouse(e){
-    //     setSStart1(true)
-    //     mouseSX = e.clientX
-    //     setMPoint(mouseSX)
-    //     console.log(mousePoint)
-    //     ; 
-    // }
-    // function slideMoving(e) {
-    //     if (!slideStart1) return false;
-    //     mouseX = mousePoint - e.clientX
-    //     console.log(mouseX)
-    //     setSMove(slideMove + mouseX);
-    // }
-
+    
     function moveing(num) {
         setSStart(true);
         let 
@@ -123,29 +106,32 @@ function Slide() {
             if(!startTime) startTime = timestamp
             let progress = timestamp - startTime
             let moving = easeOut(progress, slideMove, start, 2500)
-
+            sWrap.style.transform = `translateX(${-moving}px)`
             setSMove(moving);
             if (slideStart) {
                 if (progress < 2500) {
                     requestAnimationFrame(animate);
                 } else {
                     setSMove(i);
+                    console.log(i);
                 }
             }
         }
         window.requestAnimationFrame(animate);
-
-        console.log(i)
     }    
-        
-
+    function init() {
+        sWrap.addEventListener('mouseenter', slideMouseEvent)
+        sWrap.addEventListener('mouseleave', ()=>{
+            mouseUp = false;
+        })
+    }
+    init();
     return (
         <div className="main_slide">
 
             <div 
                 className="slide_wrap" 
-                style={{transform : `translateX(${-slideMove}px)`}}  
-                onMouseEnter={slideMouseEvent}
+                ref={slideWrap}
             >
                 {slideIdx === 0 ? (
                 <div ref={slideWidth} className={`slide_item item4 vir`}>{slide_item[4].title}</div>):(
@@ -168,6 +154,7 @@ function Slide() {
                             href="#btn" 
                             onClick={(e)=>(
                             e.preventDefault,
+                            setSStart(true),
                             setSMove(slideW*idx),
                             setSIdx(idx),
                             moveing(idx)
