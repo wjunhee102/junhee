@@ -4,12 +4,13 @@
 /* slide */
 .main_slide {
    width: 1000px;
-   height: auto;
+   height: 800px;
    position: absolute;
    left: 50%;
    top: 0;
    transform: translate(-50%, 0);
    background-color: #ccc;
+   overflow: hidden;
 }
 
 /* slide content */

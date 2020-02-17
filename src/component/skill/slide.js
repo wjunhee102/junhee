@@ -37,7 +37,8 @@ function Slide() {
         [slideW, setSW] = useState(0),
         [slideIdx, setSIdx] = useState(0),
         [slideStart, setSStart] = useState(true),
-        [sWrap, setWrap] = useState(0)
+        [sWrap, setWrap] = useState(0),
+        [enter, setEnter] = useState(false);
         ;
     const
         slideWidth = useCallback(node => {
@@ -52,13 +53,7 @@ function Slide() {
             }},[])
             ;
 
-    let 
-        mouseUp = false,
-        mouseX = 0,
-        mouseSX = 0,
-        inum = 0,
-        wrapMove = 0
-        ;
+    
 
     function slideOn(x) {
         if(slideIdx == x) {
@@ -68,6 +63,14 @@ function Slide() {
             }
         }
     function slideMouseEvent() {
+        let 
+        mouseUp = false,
+        mouseX = 0,
+        mouseSX = 0,
+        inum = 0,
+        wrapMove = 0
+        ;
+
         sWrap.addEventListener("mousedown", (e)=>{
             setSStart(false);
             mouseUp = true
@@ -77,23 +80,28 @@ function Slide() {
                     mouseX = e.clientX - mouseSX  ;
                     wrapMove = slideMove - mouseX
                     sWrap.style.transform = `translateX(${-wrapMove}px)`
-                    setSMove(wrapMove);
+                    
             })
         })
         sWrap.addEventListener("mouseup", ()=>{
+            setSMove(wrapMove);
             setSStart(true);
             mouseUp = false;
             inum = Math.round(wrapMove/slideW);
-            console.log(inum);
-            moveing(inum);
+            console.log(wrapMove);
+            moveing(inum, wrapMove);
+            mouseX = 0;
+            mouseSX = 0;
+            inum = 0;
+            wrapMove = 0
         })
     }
     
-    function moveing(num) {
+    function moveing(num, x) {
         setSStart(true);
         let 
             i = slideW*num,
-            start = i - slideMove,
+            start = i - x,
             startTime = null
             ;
         function easeOut (t, b, c, d) {
@@ -105,14 +113,14 @@ function Slide() {
             
             if(!startTime) startTime = timestamp
             let progress = timestamp - startTime
-            let moving = easeOut(progress, slideMove, start, 2500)
+            let moving = easeOut(progress, x, start, 2500)
             sWrap.style.transform = `translateX(${-moving}px)`
-            setSMove(moving);
             if (slideStart) {
                 if (progress < 2500) {
                     requestAnimationFrame(animate);
                 } else {
                     setSMove(i);
+                    sWrap.style.transform = `translateX(${-i}px)`
                 }
             }
         }
@@ -126,11 +134,12 @@ function Slide() {
     // }
 
     return (
-        <div className="main_slide">
+        <div className="main_slide" >
 
             <div 
                 className="slide_wrap" 
                 ref={slideWrap}
+                onMouseEnter={slideMouseEvent}
             >
                 {slideIdx === 0 ? (
                 <div ref={slideWidth} className={`slide_item item4 vir`}>{slide_item[4].title}</div>):(
@@ -156,7 +165,7 @@ function Slide() {
                             setSStart(true),
                             setSMove(slideW*idx),
                             setSIdx(idx),
-                            moveing(idx)
+                            moveing(idx, slideMove)
                             )}
                         >
                             {ele.content}
