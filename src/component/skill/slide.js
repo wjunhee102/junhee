@@ -113,19 +113,18 @@ function Slide() {
                     requestAnimationFrame(animate);
                 } else {
                     setSMove(i);
-                    console.log(i);
                 }
             }
         }
         window.requestAnimationFrame(animate);
     }    
-    function init() {
-        sWrap.addEventListener('mouseenter', slideMouseEvent)
-        sWrap.addEventListener('mouseleave', ()=>{
-            mouseUp = false;
-        })
-    }
-    init();
+    // function init() {
+    //     sWrap.addEventListener('mouseenter', slideMouseEvent)
+    //     sWrap.addEventListener('mouseleave', ()=>{
+    //         mouseUp = false;
+    //     })
+    // }
+
     return (
         <div className="main_slide">
 
