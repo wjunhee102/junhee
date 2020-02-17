@@ -102,10 +102,14 @@ function App() {
             let moving = easeOut(progress, scrollY, start, 2500)
 
             window.scrollTo(0, moving);
-
-            if (progress < 2500 && moveStart == true) {
-                requestAnimationFrame(animate);
+            if (moveStart) {
+                if (progress < 2500) {
+                    requestAnimationFrame(animate);
+                } else {
+                    window.scrollTo(0, i);
+                }
             }
+            
         }
         window.requestAnimationFrame(animate);
     }

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import './slide.css';
 
 const slide_item = [
@@ -36,8 +36,12 @@ function Slide() {
         [slideMove, setSMove] = useState(0),
         [slideW, setSW] = useState(0),
         [slideIdx, setSIdx] = useState(0),
-        [slideStart, setSStart] = useState(true)
+        [slideStart, setSStart] = useState(false),
+        [slideStart1, setSStart1] = useState(false),
+        [mousePoint, setMPoint] = useState(0)
         ;
+    const 
+        slideWrap = useRef(null);
     const
         slideWidth = useCallback(node => {
             if (node !== null) {
@@ -47,8 +51,10 @@ function Slide() {
     let 
         mouseX = 0,
         mouseSX = 0,
-        mouseUp = true
+        ss = false,
+        s1 = false
         ;
+    let mouseUp = false;
 
     function slideOn(x) {
         if(slideIdx == x) {
@@ -58,23 +64,47 @@ function Slide() {
             }
         }
     
-    function slideMouseEvent() {
-    
+    function slideMouseEvent(e) {
+        mouseUp = false;
         window.addEventListener("mousedown", (e)=>{
             mouseUp = true
             mouseSX = e.clientX;
+            console.log(mouseSX)
             window.addEventListener("mousemove",(e)=>{
-                if(mouseUp) {
+                if(!mouseUp) return false
+                    
                     mouseX = mouseSX - e.clientX
+                    console.log(mouseX)
                     setSMove(slideMove + mouseX);
-                } 
             })
-            
         })
-        window.addEventListener("mouseUp", ()=>{
+        window.addEventListener("mouseup", (e)=>{
             mouseUp = false
+            mouseSX = 0;
+            console.log(mouseSX)
         })
+        
     }
+    // function slideMouseEvent() {
+    //     setSStart1(true)
+    // }
+    // function slideMouseUp() {
+    //     setSStart1(false)
+    // }
+
+    // function slideOnMouse(e){
+    //     setSStart1(true)
+    //     mouseSX = e.clientX
+    //     setMPoint(mouseSX)
+    //     console.log(mousePoint)
+    //     ; 
+    // }
+    // function slideMoving(e) {
+    //     if (!slideStart1) return false;
+    //     mouseX = mousePoint - e.clientX
+    //     console.log(mouseX)
+    //     setSMove(slideMove + mouseX);
+    // }
 
     function moveing(num) {
         setSStart(true);
@@ -115,8 +145,8 @@ function Slide() {
             <div 
                 className="slide_wrap" 
                 style={{transform : `translateX(${-slideMove}px)`}}  
-                
-                >
+                onMouseEnter={slideMouseEvent}
+            >
                 {slideIdx === 0 ? (
                 <div ref={slideWidth} className={`slide_item item4 vir`}>{slide_item[4].title}</div>):(
                     null
