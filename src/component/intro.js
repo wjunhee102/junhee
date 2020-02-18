@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useState, useEffect ,useCallback } from 'react';
 
 function MainVisual({valueY, valueS, valueOp, valuePos}) {
     return (
@@ -12,13 +12,18 @@ function MainVisual({valueY, valueS, valueOp, valuePos}) {
 
 
 function Intro({y, s, op, posi, iPos}) {
-    
+    const [ introHeight, setIH ] = useState(0);
+
     const
         introH = useCallback(node => {
         if (node !== null) {
-            iPos(node.getBoundingClientRect().height);
+            setIH(node.getBoundingClientRect().height);
         }},[])
         ;
+    
+    useEffect(()=>{
+        iPos(introHeight)
+    })
 
 
     return (
