@@ -36,7 +36,7 @@ function Slide() {
         [slideMove, setSMove] = useState(0),
         [slideW, setSW] = useState(0),
         [slideIdx, setSIdx] = useState(0),
-        [slideStart, setSStart] = useState(true),
+        [slideStart, setSStart] = useState(false),
         [sWrap, setWrap] = useState(0),
         [enter, setEnter] = useState(false),
         [sWrapW, setWW] = useState(0)
@@ -62,10 +62,8 @@ function Slide() {
         mouseSX = 0,
         inum = 0,
         wrapMove = 0,
-        ss = false,
         mouseEnter = true
         ;
-     
     
 
     function slideOn(x) {
@@ -85,6 +83,7 @@ function Slide() {
         mouseEnter = false;
         mouseSX = e.clientX;
     }
+
     function slideMoving(e) {
         if(!mouseUp) return false
         mouseX = e.clientX - mouseSX ;
@@ -95,6 +94,7 @@ function Slide() {
     function slideStop() {
         mouseUp = false;
         if(!mouseEnter) {
+            if(wrapMove == 0) return false
             inum = Math.round(wrapMove/slideW);
             moveing(inum, wrapMove);
         }
@@ -102,7 +102,6 @@ function Slide() {
 
     
     function moveing(num, x) {
-        ss = true;
         mouseUp = false;
         let 
             i = slideW*num,
@@ -120,20 +119,19 @@ function Slide() {
             let progress = timestamp - startTime
             let moving = easeOut(progress, x, start, 2000)
             setSMove(moving);
-            if (ss) {
-                if (progress < 2000) {
-                    requestAnimationFrame(animate);
+   
+            if (progress < 2000) {
+                requestAnimationFrame(animate);
+            } else {
+                if(i <= -slideW) {
+                    setSMove(sWrapW-slideW);
+                    setSIdx(slide_item.length-1);
+                } else if(i >= sWrapW){
+                    setSMove(0);
+                    setSIdx(0);
                 } else {
-                    if(i <= -slideW) {
-                        setSMove(sWrapW-slideW);
-                        setSIdx(slide_item.length-1);
-                    } else if(i >= sWrapW){
-                        setSMove(0);
-                        setSIdx(0);
-                    } else {
-                        setSMove(i);
-                        setSIdx(num);
-                    }
+                    setSMove(i);
+                    setSIdx(num);
                 }
             }
         }
@@ -147,6 +145,7 @@ function Slide() {
                 className="slide_wrap" 
                 style={{transform : `translateX(${-slideMove}px)`}}
                 ref={slideWrap}
+                onClick={slideEvent}
                 onMouseEnter={slideEvent}
                 onMouseDown={e=>(
                     e.preventDefault,
@@ -157,7 +156,7 @@ function Slide() {
                 onMouseLeave={slideStop}
             >
                 {slideMove <= 0 ? (
-                <div ref={slideWidth} className={`slide_item item4 vir`}>{slide_item[4].title}</div>):(
+                <div ref={slideWidth} className={`slide_item item4 vir`}>{slide_item[slide_item.length-1].title}</div>):(
                     null
                 )}
                 {slide_item.map((ele, idx)=>(
@@ -167,7 +166,7 @@ function Slide() {
                         key={idx}
                         onMouseDown={e=>e.preventDefault}
                     >
-                        {ele.title}
+                        <a>{ele.title}</a>
                     </div>
                 ))}
                 {slideMove >= sWrapW-slideW ? (
