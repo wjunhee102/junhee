@@ -165,10 +165,13 @@ function Slide() {
 
     useEffect(
         () => {
+            if(!slideNext){
+                return;
+            }
             const start = setTimeout(()=>{setSStart(true)},0)
             return ()=> clearTimeout(start);
         },
-        [slideStart]
+        [slideStart, slideNext]
     )
     
     useEffect(
