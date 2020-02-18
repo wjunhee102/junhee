@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState ,useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const gnb_info = [
@@ -43,23 +43,30 @@ gnb_info.propTypes = {
 function Gnb({id ,link , title , index, move}) {
     return (
         <li className={id + index}>
-            <a href={link} onClick={(e)=> (
+            <a href={link} 
+                onClick={ e => ((
                 e.preventDefault(),
                 move(index)
-            )}>{title}</a>
+                ))}>{title}</a>
         </li>
     )
 }
 
 function Header({setHPos , moveS}) {
+    const [hHeight , setHH] = useState(0)
+
     //헤더 height 값 가져오기
     const
         headerH = useCallback(node => {
         if (node !== null) {
-            setHPos(node.getBoundingClientRect().height);
+            setHH(node.getBoundingClientRect().height);
         }},[])
         ;
-    
+
+    useEffect(()=>{
+        setHPos(hHeight);
+    })
+
     return (
         <header id="header" className="header" ref={headerH} >
             <div className="inner">

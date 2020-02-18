@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 //내용
 const port_site = [
@@ -82,7 +82,7 @@ function ImgBox({idx, img, title, link, on}) {
     )
 }
 //버튼
-function Btn_team({title, value, sub, on}) {
+function BtnTeam({title, value, sub, on}) {
     return (
         <button className={`btn_team ${title} ${on}`} onClick={value}>{sub}</button>
     )
@@ -102,7 +102,7 @@ function Team({kind}) {
         ;
 
     function onClass(x) {
-        if(con == x) {
+        if(con === x) {
             return "on"
         } else {
             return ''
@@ -130,7 +130,7 @@ function Team({kind}) {
             <div className="menu_team">
                 <div className="inner">
                 {kind.map((ele, idx)=>(
-                    <Btn_team 
+                    <BtnTeam 
                         title={ele.title}  
                         value={()=>setCon(idx)}
                         sub={ele.sub}
@@ -203,12 +203,18 @@ function Foreword() {
 
 
 function Web({wPos}) {
+    const [webHeight , setWH] = useState(0);
+
     const
         webH = useCallback(node => {
         if (node !== null) {
-            wPos(node.getBoundingClientRect().height);
+            setWH(node.getBoundingClientRect().height);
         }},[])
         ;
+
+    useEffect(()=>{
+        wPos(webHeight);
+    })
 
     return (
         <section className="web" ref={webH} >
