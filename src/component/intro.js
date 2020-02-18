@@ -24,7 +24,9 @@ function Intro({iPos}) {
     
     // scroll 변수   
     let 
-        lastScroll = 0;
+        lastScroll = 0,
+        ticking = false
+        ;
     
     // intro섹션 parallex함수
     function move(scroll_pos) {
@@ -53,10 +55,14 @@ function Intro({iPos}) {
     
     function introScroll() {
         lastScroll = window.pageYOffset 
+        if(!ticking) {
             window.requestAnimationFrame(()=> {
                 introMove(lastScroll);
-	
-    })}
+            })
+            ticking = true ;
+        }
+            ticking = false ;
+        }
         
 
     const
@@ -73,7 +79,7 @@ function Intro({iPos}) {
     useEffect(()=>{
         window.addEventListener('scroll',introScroll)
         return ()=> window.removeEventListener('scroll',introScroll)
-    },[valuePos,valueY,valueS,valuePos])
+    },[valuePos,valueY,valueS,valueOp])
 
     return (
         <section className="intro" ref={introH}>
@@ -82,7 +88,6 @@ function Intro({iPos}) {
                 valueS={valueS} 
                 valueOp={valueOp} 
                 valuePos={valuePos}
-                
             />
         </section>
     )

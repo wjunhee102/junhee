@@ -85,10 +85,17 @@ function Slide() {
         mouseEnter = true;
     }
     function slideDown(e) {
-        
+        e.preventDefault()
         mouseUp = true;
         mouseEnter = false;
         mouseSX = e.clientX;
+
+    }
+    function slideDownT(e) {
+        const touch = e.changedTouches[0];
+        mouseUp = true;
+        mouseEnter = false;
+        mouseSX = touch.clientX;
 
     }
 
@@ -98,6 +105,14 @@ function Slide() {
         wrapMove = slideMove - mouseX ;
         sWrap.style.transform = `translateX(${-wrapMove}px)`
     }
+    function slideMovingT(e) {
+        if(!mouseUp) return false
+        const touch = e.changedTouches[0];
+        mouseX = touch.clientX - mouseSX ;
+        wrapMove = slideMove - mouseX ;
+        sWrap.style.transform = `translateX(${-wrapMove}px)`
+    }
+    
 
     function slideStop() {
         mouseUp = false;
@@ -197,13 +212,13 @@ function Slide() {
                     ref={slideWrap}
                     onClick={slideEvent}
                     onMouseEnter={slideEvent}
-                    onMouseDown={e=>((
-                        e.preventDefault,
-                        slideDown(e)
-                    ))}
+                    onMouseDown={slideDown}
                     onMouseMove={slideMoving}
                     onMouseUp={slideStop}
                     onMouseLeave={slideStop}
+                    onTouchStart={(e)=>(slideDownT(e),{passive : false})}
+                    onTouchMove={(e)=>(slideMovingT(e),{passive:false})}
+                    onTouchEnd={(e)=>(slideStop(e),{passive : false})}
                 >
                     {slideMove <= 0 ? (
                     <div ref={slideWidth} className={`slide_item item4 last`}>{slide_item[slide_item.length-1].title}</div>):(
