@@ -1,6 +1,7 @@
 import React, { useState, useEffect ,useCallback } from 'react';
 
 function MainVisual({valueY, valueS, valueOp, valuePos}) {
+
     return (
             <div className="main_visual" style={{position: `${valuePos}`, transform: `translateY(${valueY}px)` , perspective :`400px`}}>
                 <div className="visual" style={{transform: `translate3d(-50%, -50%, ${-(valueS)}px)`}}>
@@ -11,8 +12,52 @@ function MainVisual({valueY, valueS, valueOp, valuePos}) {
 }
 
 
-function Intro({y, s, op, posi, iPos}) {
+function Intro({iPos}) {
     const [ introHeight, setIH ] = useState(0);
+
+    const 
+        [valuePos, setPosi] = useState("fixed"),
+        [valueY, setY] = useState(0),
+        [valueS, setS] = useState(0),
+        [valueOp, setOp] = useState(1)
+        ;
+    
+    // scroll 변수   
+    let 
+        lastScroll = 0;
+    
+    // intro섹션 parallex함수
+    function move(scroll_pos) {
+        if (scroll_pos < 800) {
+            if (scroll_pos <= 150) {
+                setOp(1);
+            } else {
+                setOp(0);
+                
+            }
+        } 
+    }
+    function introMove(scrollY) {
+        move(scrollY);
+            if (scrollY < 800) {
+                setS(scrollY);
+                setPosi("fixed");
+                setY(0);
+            } else {
+                setS(800);
+                setY(800);
+                setPosi("absolute");
+            }
+	}
+	
+    
+    function introScroll() {
+        lastScroll = window.pageYOffset 
+            window.requestAnimationFrame(()=> {
+                introMove(lastScroll);
+	
+    })}
+        
 
     const
         introH = useCallback(node => {
@@ -25,14 +70,19 @@ function Intro({y, s, op, posi, iPos}) {
         iPos(introHeight)
     })
 
+    useEffect(()=>{
+        window.addEventListener('scroll',introScroll)
+        return ()=> window.removeEventListener('scroll',introScroll)
+    },[valuePos,valueY,valueS,valuePos])
 
     return (
         <section className="intro" ref={introH}>
             <MainVisual 
-                valueY={y} 
-                valueS={s} 
-                valueOp={op} 
-                valuePos={posi}
+                valueY={valueY} 
+                valueS={valueS} 
+                valueOp={valueOp} 
+                valuePos={valuePos}
+                
             />
         </section>
     )

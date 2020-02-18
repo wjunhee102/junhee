@@ -7,12 +7,6 @@ import Connect from './component/connect';
 
 function App() {
     const 
-        [valuePos, setPosi] = useState("fixed"),
-        [valueY, setY] = useState(0),
-        [valueS, setS] = useState(0),
-        [valueOp, setOp] = useState(1)
-		;
-    const 
         [headerPos, setHPos] = useState(0),
         [introPos, setIPos] = useState(0),
         [skillPos, setSPos] = useState(0),
@@ -25,49 +19,8 @@ function App() {
         introPos+skillPos+1000-headerPos,
         introPos+skillPos+1200-headerPos
         ]
-        
-    // scroll 변수   
-    let 
-        lastScroll = 0,
-        ticking = false,
-        moveStart = false
-        ;
+    let moveStart = false;
     
-    // intro섹션 parallex함수
-    function move(scroll_pos) {
-        if (scroll_pos < 800) {
-            if (scroll_pos <= 150) {
-                setOp(1);
-            } else {
-                setOp(0);
-                
-            }
-        } 
-    }
-    function introMove(scrollY) {
-        move(scrollY);
-            if (scrollY < 800) {
-                setS(scrollY);
-                setPosi("fixed");
-                setY(0);
-            } else {
-                setS(800);
-                setY(800);
-                setPosi("absolute");
-            }
-	}
-	
-    
-    window.addEventListener('scroll', (e)=> {
-        lastScroll = window.pageYOffset;
-        if(!ticking) {
-            window.requestAnimationFrame(()=> {
-                introMove(lastScroll);
-				ticking = false;
-		});
-		}
-		ticking = true;		
-	});
 	
 	// moveSection 정지 
     window.addEventListener('wheel', ()=>{
@@ -118,7 +71,6 @@ function App() {
         document.title = `황준희 포트폴리오`;
     });
 
-    
  
     return (
         <div className="App">
@@ -129,10 +81,6 @@ function App() {
                 />
                 <main id="main" className="main">
                 <Intro 
-                    y={valueY}  
-                    posi={valuePos}  
-                    s={valueS}
-                    op={valueOp}
                     iPos={setIPos}
                 />
                 <Skill
