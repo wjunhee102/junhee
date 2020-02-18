@@ -244,13 +244,19 @@ function Slide() {
             </div>
 
             <button 
-                onClick={()=>(moving(slideIdx-1,slideMove, 1000))}
+                onClick={()=>(
+                    slideMove < 0 ?(null) : (
+                    moving(slideIdx-1,slideMove, 1000))   
+                )}
                 className="btn_prev slide_arrows" 
                 type="button">
                     prev
             </button>
             <button 
-                onClick={()=>(moving(slideIdx+1,slideMove, 1000))}
+                onClick={()=>(
+                    slideMove > sWrapW-slideW ?(null) : (
+                    moving(slideIdx+1,slideMove, 1000))   
+                    )}
                 className="btn_next slide_arrows" 
                 type="button">
                     next
