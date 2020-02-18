@@ -36,10 +36,11 @@ function Slide() {
         [slideMove, setSMove] = useState(0),
         [slideW, setSW] = useState(0),
         [slideIdx, setSIdx] = useState(0),
-        [slideStart, setSStart] = useState(false),
+        [slideStart, setSStart] = useState(true),
         [sWrap, setWrap] = useState(0),
         [enter, setEnter] = useState(false),
-        [sWrapW, setWW] = useState(0)
+        [sWrapW, setWW] = useState(0),
+        [slideNext, setNext] = useState(true)
         ;
     const
         slideWidth = useCallback(node => {
@@ -54,15 +55,16 @@ function Slide() {
                 setWW(node.getBoundingClientRect().width);
             }},[])
             ;
- 
 
+    
     let 
         mouseUp = false,
         mouseX = 0,
         mouseSX = 0,
         inum = 0,
         wrapMove = 0,
-        mouseEnter = true
+        mouseEnter = true,
+        mouseStop = true
         ;
     
 
@@ -79,11 +81,15 @@ function Slide() {
         mouseEnter = true;
     }
     function slideDown(e) {
+        
         mouseUp = true;
         mouseEnter = false;
         mouseSX = e.clientX;
-    }
 
+    }
+    function aaa() {
+        setSStart(false)
+    }
     function slideMoving(e) {
         if(!mouseUp) return false
         mouseX = e.clientX - mouseSX ;
@@ -93,23 +99,42 @@ function Slide() {
 
     function slideStop() {
         mouseUp = false;
+        
         if(!mouseEnter) {
             if(wrapMove == 0) return false
             inum = Math.round(wrapMove/slideW);
-            moveing(inum, wrapMove);
+            moving(inum, wrapMove, 1000);
+        }
+        
+    }
+
+    function slideStartOn() {
+        if(slideNext === false) {
+            setSStart(false)
+        } else {
+            setSStart(true)
         }
     }
 
     
-    function moveing(num, x) {
+    function moving(num, x, second) {
         mouseUp = false;
         let 
             i = slideW*num,
             start = i - x,
             startTime = null
             ;
+        
+        if(i <= -slideW) {
+            setSIdx(slide_item.length-1);
+        } else if(i >= sWrapW){
+            setSIdx(0);
+        } else {
+            setSIdx(num);
+        }
+
         function easeOut (t, b, c, d) {
-            return c * ( -Math.pow( 2, -10 * t/d ) + 1 ) + b;
+            return c * ( -Math.pow( 2, -8 * t/d ) + 1 ) + b;
         };
 
         //animate
@@ -117,62 +142,76 @@ function Slide() {
             
             if(!startTime) startTime = timestamp
             let progress = timestamp - startTime
-            let moving = easeOut(progress, x, start, 2000)
-            setSMove(moving);
+            let move = easeOut(progress, x, start, second)
+            setSMove(move)
+           
    
-            if (progress < 2000) {
+            if (progress < second) {
                 requestAnimationFrame(animate);
             } else {
                 if(i <= -slideW) {
                     setSMove(sWrapW-slideW);
-                    setSIdx(slide_item.length-1);
                 } else if(i >= sWrapW){
                     setSMove(0);
-                    setSIdx(0);
                 } else {
                     setSMove(i);
-                    setSIdx(num);
                 }
             }
         }
         window.requestAnimationFrame(animate);
     }    
+    
+
+    useEffect(
+        () => {
+            if (!slideStart) {
+                return;
+            } 
+            const id = setInterval(()=>moving(slideIdx+1,slideMove, 1000), 2000)
+            return () => clearInterval(id);
+        },
+        [slideMove,slideIdx,slideStart]
+    );
+
 
     return (
+        
         <div className="main_slide" >
 
-            <div 
-                className="slide_wrap" 
-                style={{transform : `translateX(${-slideMove}px)`}}
-                ref={slideWrap}
-                onClick={slideEvent}
-                onMouseEnter={slideEvent}
-                onMouseDown={e=>(
-                    e.preventDefault,
-                    slideDown(e)
+            <div className="slide_view">
+                <div 
+                    className="slide_wrap" 
+                    style={{transform : `translateX(${-slideMove}px)`}}
+                    ref={slideWrap}
+                    onClick={slideEvent}
+                    onMouseEnter={slideEvent}
+                    onMouseDown={e=>(
+                        e.preventDefault,
+                        slideDown(e)
+                        )}
+                    onMouseMove={slideMoving}
+                    onMouseUp={slideStop}
+                    onMouseLeave={slideStop}
+                >
+                    {slideMove <= 0 ? (
+                    <div ref={slideWidth} className={`slide_item item4 last`}>{slide_item[slide_item.length-1].title}</div>):(
+                        null
                     )}
-                onMouseMove={slideMoving}
-                onMouseUp={slideStop}
-                onMouseLeave={slideStop}
-            >
-                {slideMove <= 0 ? (
-                <div ref={slideWidth} className={`slide_item item4 vir`}>{slide_item[slide_item.length-1].title}</div>):(
-                    null
-                )}
-                {slide_item.map((ele, idx)=>(
-                    <div 
-                        ref={slideWidth} 
-                        className={`slide_item item${idx} ${slideOn(idx)}`} 
-                        key={idx}
-                        onMouseDown={e=>e.preventDefault}
-                    >
-                        <a>{ele.title}</a>
-                    </div>
-                ))}
-                {slideMove >= sWrapW-slideW ? (
-                <div ref={slideWidth} className={`slide_item item0 vir2`}>{slide_item[0].title}</div>):(
-                    null
-                )}
+                    {slide_item.map((ele, idx)=>(
+                        <div 
+                            ref={slideWidth} 
+                            className={`slide_item item${idx} ${slideOn(idx)}`} 
+                            key={idx}
+                            onMouseDown={e=>e.preventDefault}
+                        >
+                            <a>{ele.title}</a>
+                        </div>
+                    ))}
+                    {slideMove >= sWrapW-slideW ? (
+                    <div ref={slideWidth} className={`slide_item item0 first`}>{slide_item[0].title}</div>):(
+                        null
+                    )}
+                </div>
             </div>
 
             <div className="slide_dots">
@@ -183,10 +222,9 @@ function Slide() {
                             href="#btn" 
                             onClick={(e)=>(
                             e.preventDefault,
-                            setSStart(true),
                             setSMove(slideW*idx+1),
                             setSIdx(idx),
-                            moveing(idx, slideMove)
+                            moving(idx, slideMove, 1000)
                             )}
                         >
                             {ele.content}
@@ -195,11 +233,21 @@ function Slide() {
                 ))}
             </div>
 
-            <button className="btn_prev slide_arrows">prev</button>
-            <button className="btn_next slide_arrows">next</button>
+            <button 
+                onClick={()=>(moving(slideIdx-1,slideMove, 1000))}
+                className="btn_prev slide_arrows" 
+                type="button">
+                    prev
+            </button>
+            <button 
+                onClick={()=>(moving(slideIdx+1,slideMove, 1000))}
+                className="btn_next slide_arrows" 
+                type="button">
+                    next
+            </button>
 
             <div className="auto_play">
-                <button className="btn_play">재생/일시정지</button>
+                <button className="btn_play" onClick={()=>(setSStart(!slideStart),setNext(!slideNext))}>재생/일시정지{`${slideStart}${slideNext}`}</button>
             </div>
 
         </div>

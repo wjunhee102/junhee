@@ -5,15 +5,19 @@
 .main_slide {
    width: 1000px;
    height: auto;
-   position: absolute;
-   left: 50%;
-   top: 0;
-   transform: translate(-50%, 0);
+   position: relative;
+   margin: 0 auto;
    background-color: #ccc;
    /* overflow: hidden; */
 }
 
 /* slide content */
+.slide_view {
+   width: 1000px;
+   height: 600px;
+   overflow: hidden;
+   position: relative;
+}
 .slide_wrap {
    width: auto;
    height: auto;
@@ -58,13 +62,13 @@
 .item4 {
    background-color: skyblue;
 }
-.vir {
+.last {
    position: absolute;
    left: 0;
    top: 50%;
    transform: translate(-100%, -50%);
 }
-.vir2 {
+.first {
    position: absolute;
    right: 0;
    top: 50%;
@@ -75,7 +79,7 @@
 .slide_dots {
    position: absolute;
    left: 50%;
-   top: 101%;
+   bottom: 0;
    display: flex;
    justify-content: center;
    transform: translate(-50%, 0);
