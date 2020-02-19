@@ -135,7 +135,6 @@ function Slide() {
 
     
     function moving(num, x, second) {
-        mouseUp = false;
         let 
             i = slideW*num,
             start = i - x,
