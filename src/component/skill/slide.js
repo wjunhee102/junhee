@@ -35,6 +35,18 @@ const SlideItem = ({cName , width, con})=>{
     )
 }
 
+function useStop(x) {
+    const [ moveStop, setMStop ] = useState(0);
+
+    function stop() {
+        setMStop(x)
+    }
+    useEffect(()=>{
+        stop()
+    },[])
+    return { moveStop }
+}
+
 function Slide() {
     const 
         [slideMove, setSMove] = useState(0),
@@ -45,6 +57,8 @@ function Slide() {
         [sWrapW, setWW] = useState(0),
         [slideNext, setNext] = useState(true)
         ;
+
+    
     const
         slideWidth = useCallback(node => {
             if (node !== null) {
@@ -85,11 +99,11 @@ function Slide() {
         mouseEnter = true;
     }
     function slideDown(e) {
-        e.preventDefault()
+        e.preventDefault();
         mouseUp = true;
         mouseEnter = false;
         mouseSX = e.clientX;
-
+        
     }
     function slideDownT(e) {
         const touch = e.changedTouches[0];
@@ -116,7 +130,6 @@ function Slide() {
 
     function slideStop() {
         mouseUp = false;
-        
         if(!mouseEnter) {
             if(wrapMove === 0) return false
             inum = Math.round(wrapMove/slideW);
@@ -125,13 +138,6 @@ function Slide() {
         
     }
 
-    function slideStartOn() {
-        if(slideNext === false) {
-            setSStart(false)
-        } else {
-            setSStart(true)
-        }
-    }
 
     
     function moving(num, x, second) {
@@ -161,18 +167,19 @@ function Slide() {
             let move = easeOut(progress, x, start, second)
             setSMove(move)
            
-   
-            if (progress < second) {
-                requestAnimationFrame(animate);
-            } else {
-                if(i <= -slideW) {
-                    setSMove(sWrapW-slideW);
-                } else if(i >= sWrapW){
-                    setSMove(0);
+
+                if (progress < second) {
+                    requestAnimationFrame(animate);
                 } else {
-                    setSMove(i);
+                    if(i <= -slideW) {
+                        setSMove(sWrapW-slideW);
+                    } else if(i >= sWrapW){
+                        setSMove(0);
+                    } else {
+                        setSMove(i);
+                    }
                 }
-            }
+            
         }
         window.requestAnimationFrame(animate);
     }   
@@ -198,6 +205,7 @@ function Slide() {
         },
         [slideStart, slideMove, slideIdx, slideW]
     );
+    
 
 
     return (
@@ -215,9 +223,9 @@ function Slide() {
                     onMouseMove={slideMoving}
                     onMouseUp={slideStop}
                     onMouseLeave={slideStop}
-                    onTouchStart={(e)=>(slideDownT(e),{passive : false})}
-                    onTouchMove={(e)=>(slideMovingT(e),{passive:false})}
-                    onTouchEnd={(e)=>(slideStop(e),{passive : false})}
+                    onTouchStart={(e)=>((slideDownT(e),{passive : false}))}
+                    onTouchMove={(e)=>((slideMovingT(e),{passive:false}))}
+                    onTouchEnd={(e)=>((slideStop(e),{passive : false}))}
                 >
                     {slideMove <= 0 ? (
                     <div ref={slideWidth} className={`slide_item item4 last`}>{slide_item[slide_item.length-1].title}</div>):(

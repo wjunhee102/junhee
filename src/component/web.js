@@ -214,7 +214,7 @@ function Web({wPos}) {
 
     useEffect(()=>{
         wPos(webHeight);
-    })
+    },[webHeight])
 
     return (
         <section className="web" ref={webH} >
