@@ -277,7 +277,9 @@ function Slide() {
             </button>
 
             <div className="auto_play">
-                <button className="btn_play" onClick={()=>((setSStart(!slideStart),setNext(!slideNext)))}>재생/일시정지{`${slideStart} ${slideNext}`}</button>
+                <button className="btn_play" onClick={()=>((setSStart(!slideStart),setNext(!slideNext)))}>
+                    재생/일시정지{`${slideStart +  slideNext}`}
+                </button>
             </div>
 
         </div>
