@@ -14,7 +14,7 @@ function MainVisual({valueY, valueS, valueOp, valuePos}) {
 
 const visualTypo = [
     "안녕하세요",
-    "신입 퍼블리셔",
+    "신입 프론트 엔드 개발자",
     "황준희입니다."
 ]
 
@@ -60,7 +60,7 @@ function Visual2({on}) {
                 </div>
                 <div className="text_box">
                     <h3>황준희</h3>
-                    <p>신입 웹 퍼블리셔</p>
+                    <p>프론트 엔드 개발자</p>
                 </div>
             </div>
         </article>
