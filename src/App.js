@@ -10,7 +10,8 @@ function App() {
         [headerPos, setHPos] = useState(0),
         [introPos, setIPos] = useState(0),
         [skillPos, setSPos] = useState(0),
-        [webPos, setWPos] = useState(0)
+        [webPos, setWPos] = useState(0),
+        [headerOn, setHOn] = useState(0)
         ;
     const secH = [
         0,
@@ -78,10 +79,12 @@ function App() {
                 <Header 
                     setHPos={setHPos}
                     moveS={moveSection}
+                    hOn={headerOn}
                 />
                 <main id="main" className="main">
                 <Intro 
                     iPos={setIPos}
+                    hOn={setHOn}
                 />
                 <Skill
                     sPos={setSPos}

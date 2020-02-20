@@ -40,6 +40,15 @@ gnb_info.propTypes = {
     title: PropTypes.string.isRequired
 };
 
+function headerOn(x) {
+    if(x === 3) {
+        return 'on'
+    } else {
+        return 'off'
+    }
+}
+
+
 function Gnb({id ,link , title , index, move}) {
     return (
         <li className={id + index}>
@@ -52,7 +61,7 @@ function Gnb({id ,link , title , index, move}) {
     )
 }
 
-function Header({setHPos , moveS}) {
+function Header({setHPos , moveS, hOn}) {
     const [hHeight , setHH] = useState(0)
 
     //헤더 height 값 가져오기
@@ -71,7 +80,7 @@ function Header({setHPos , moveS}) {
     })
 
     return (
-        <header id="header" className="header" ref={headerH} >
+        <header id="header" className={`header ${headerOn(hOn)}`} ref={headerH} >
             <div className="inner">
                 <h1 className="logo">
                     <a href="https://wjunhee102.github.io/junhee/">

@@ -48,6 +48,7 @@ function Connect() {
             <br />
             <input {...name} placeholder="whats your name" />
             <input value={name.value} onChange={name.onChange} placeholder="whats your name" />
+            <h4>{name.value}</h4>
             <br />
             {loading && <span>loading your cat</span>}
             {!loading && error && <span>{error}</span>}

@@ -4,9 +4,9 @@ import useHeight from './hooks/useHeight'
 //내용
 const port_site = [
     {
-        title : "네이버에 ",
+        title : "네이버",
         keyword : "다크모드",
-        title2 : "가 있다면",
+        title2 : "",
         lang : ["html5", "css3"],
         divice : "데스크탑",
         personnel : ["황준희"],
@@ -28,8 +28,8 @@ const port_site = [
         sub : false
     },
     {
-        title : "포도팟",
-        keyword : "",
+        title : "",
+        keyword : "포도팟",
         title2 : "",
         lang : ["html5", "css3","jQuery"],
         divice : "데스크탑 / 모바일",
