@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import useHeight from './hooks/useHeight'
 
 //내용
 const port_site = [
@@ -203,21 +204,12 @@ function Foreword() {
 
 
 function Web({wPos}) {
-    const [webHeight , setWH] = useState(0);
+    const web = useHeight();
 
-    const
-        webH = useCallback(node => {
-        if (node !== null) {
-            setWH(node.getBoundingClientRect().height);
-        }},[])
-        ;
-
-    useEffect(()=>{
-        wPos(webHeight);
-    },[webHeight])
-
+    wPos(web.height)
+    
     return (
-        <section className="web" ref={webH} >
+        <section className="web" ref={web.value} >
             <Foreword />
             {port_site.map((ele,idx) => (
                 <Port 

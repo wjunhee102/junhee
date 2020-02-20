@@ -203,10 +203,51 @@ body {
     position: relative;
     .intro {
         width: 100%;
-        height: 1800px;
+        height: auto;
         position: relative;
         overflow: hidden;
         background-color: #fff;
+        .typo {
+            width: 100%;
+            height:  100vh;
+            position: relative;
+            background-color: #000;
+            @include flexBox(center);
+            overflow: hidden;
+            h2 {
+                position: fixed;
+                left: 50%;
+                top: 500px;
+                transform: translate(-50%, 0);
+                text-align: center;
+                color: #fff;
+                font-weight: 600;
+                font-size: 7.5em;
+                opacity: 0;
+                transition: 0.2s ease-in-out ;
+                &.on {
+                    opacity: 1;
+                }
+            }
+        }
+        .main_visual2 {
+            width: 100%;
+            height:  400vh;
+            position: relative;
+            background-color: #000;
+            @include flexBox(center);
+            align-items: center;
+            transition: 1s ease-in-out;
+            &.on {
+                background-color: #fff;
+            }
+            h3 {
+                text-align: center;
+                color: #000;
+                font-weight: 600;
+                font-size: 7.5em;
+            }
+        }
         .main_visual {
             width: 100%;
             height: 0;

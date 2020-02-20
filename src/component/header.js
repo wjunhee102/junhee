@@ -60,6 +60,9 @@ function Header({setHPos , moveS}) {
         headerH = useCallback(node => {
         if (node !== null) {
             setHH(node.getBoundingClientRect().height);
+            window.addEventListener('resize', ()=>{
+                setHH(node.getBoundingClientRect().height);
+            })
         }},[])
         ;
 

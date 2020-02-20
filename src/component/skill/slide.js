@@ -35,17 +35,6 @@ const SlideItem = ({cName , width, con})=>{
     )
 }
 
-function useStop(x) {
-    const [ moveStop, setMStop ] = useState(0);
-
-    function stop() {
-        setMStop(x)
-    }
-    useEffect(()=>{
-        stop()
-    },[])
-    return { moveStop }
-}
 
 function Slide() {
     const 
@@ -58,11 +47,13 @@ function Slide() {
         [slideNext, setNext] = useState(true)
         ;
 
-    
     const
         slideWidth = useCallback(node => {
             if (node !== null) {
                 setSW(node.getBoundingClientRect().width);
+                window.addEventListener('resize', ()=>{
+                    setSW(node.getBoundingClientRect().width)
+                })
             }},[])
             ;
     
@@ -72,6 +63,9 @@ function Slide() {
             if (node !== null) {
                 setWrap(node);
                 setWW(node.getBoundingClientRect().width);
+                window.addEventListener('resize', ()=>{
+                    setWW(node.getBoundingClientRect().width)
+                })
             }},[])
             ;
 
@@ -164,25 +158,25 @@ function Slide() {
             
             if(!startTime) startTime = timestamp
             let progress = timestamp - startTime
+            
             let move = easeOut(progress, x, start, second)
             setSMove(move)
-           
 
-                if (progress < second) {
-                    requestAnimationFrame(animate);
+            if (progress < second) {
+                requestAnimationFrame(animate);
+            } else {
+                if(i <= -slideW) {
+                    setSMove(sWrapW-slideW);
+                } else if(i >= sWrapW){
+                    setSMove(0);
                 } else {
-                    if(i <= -slideW) {
-                        setSMove(sWrapW-slideW);
-                    } else if(i >= sWrapW){
-                        setSMove(0);
-                    } else {
-                        setSMove(i);
-                    }
+                    setSMove(i);
                 }
-            
+            }
         }
         window.requestAnimationFrame(animate);
-    }   
+    }
+    
 
     useEffect(
         () => {

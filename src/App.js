@@ -20,7 +20,7 @@ function App() {
         introPos+skillPos+1200-headerPos
         ]
     let moveStart = false;
-    
+
 	
 	// moveSection 정지 
     window.addEventListener('wheel', ()=>{
