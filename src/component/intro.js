@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import useHeight from './hooks/useHeight';
 
-function MainVisual({valueY, valueS, valueOp, valuePos}) {
+// function MainVisual({valueY, valueS, valueOp, valuePos}) {
 
-    return (
-            <div className="main_visual" style={{position: `${valuePos}`, transform: `translateY(${valueY}px)` , perspective :`400px`}}>
-                <div className="visual" style={{transform: `translate3d(-50%, -50%, ${-(valueS)}px)`}}>
-                    <h2 className="tit" style={{opacity : valueOp, transition: `0.5s`}}>HELLO, WORLD</h2>
-                </div>
-            </div>
-    )
-}
+//     return (
+//             <div className="main_visual" style={{position: `${valuePos}`, transform: `translateY(${valueY}px)` , perspective :`400px`}}>
+//                 <div className="visual" style={{transform: `translate3d(-50%, -50%, ${-(valueS)}px)`}}>
+//                     <h2 className="tit" style={{opacity : valueOp, transition: `0.5s`}}>HELLO, WORLD</h2>
+//                 </div>
+//             </div>
+//     )
+// }
 
 const visualTypo = [
     "안녕하세요",
@@ -26,8 +26,18 @@ function classOn(s,x){
     }
 }
 
+function mainOn(s,x){
+    if( s === x) {
+        return "on"
+    } else if (s > x){
+        return 'end'
+    } else {
+        return 'off'
+    }
+}
+
 function background(s){
-    if( s === 3) {
+    if( s >= 3) {
         return "#fff"
     } else {
         return '#000'
@@ -47,12 +57,15 @@ function Visual({typo, idx, on, height}) {
     )
 }
 
-function Visual2({on}) {
+function MainVisual({on, height}) {
     
+    const main_visual = useHeight();
+
+    height(main_visual.height)
 
     return (
-        <article className={`main_visual2`} >
-            <div className={`contents ${classOn(on,3)}`}>
+        <article className={`mainVisual`} ref={main_visual.value}>
+            <div className={`contents ${mainOn(on,3)}`}>
                 <div className="img_box">
                     <div className="img">
                         <span>황준희</span>
@@ -77,7 +90,9 @@ function Intro({iPos, hOn}) {
         [valueOn, setOn] = useState(0)
         ;
     const
-        [typo, setTypo] = useState(0);
+        [typo, setTypo] = useState(0),
+        [mainH, setMainH] = useState(0)
+        ;
 
     
     
@@ -89,16 +104,25 @@ function Intro({iPos, hOn}) {
     
     // intro섹션 parallex함수
     function move(scroll_pos) {
-        if (scroll_pos < typo-typo/2 ) {
+        let typoH = typo/2,
+            mainArea = (mainH+typo*3)-(typo-typo/3)
+            ;
+
+        if (scroll_pos < typo-typoH ) {
             setOn(0)
-        } else if(scroll_pos >= typo && scroll_pos < (typo*2-typo/2)) {
+        } else if(scroll_pos >= typo && scroll_pos <= (typo*2-typoH)) {
             setOn(1)
-        } else if(scroll_pos >= typo*2 && scroll_pos < (typo*3-typo/2)) {
+        } else if(scroll_pos >= typo*2 && scroll_pos <= (typo*3-typoH)) {
             setOn(2)
-        } else if(scroll_pos >= typo*3) {
+        } else if(scroll_pos >= typo*3 && scroll_pos <= mainArea ) {
             setOn(3)
+
         } else {
-            setOn(-1)
+            if (scroll_pos > mainArea) {
+                setOn(4)
+            } else {
+                setOn(-1)
+            }
         }
     }
    
@@ -123,14 +147,14 @@ function Intro({iPos, hOn}) {
     useEffect(()=>{
         window.addEventListener('scroll',introScroll)
         return ()=> window.removeEventListener('scroll',introScroll)
-    },[valueOn, typo])
+    },[valueOn, typo, mainH])
 
 
     return (
         <section 
             className="intro" 
             ref={introH.value} 
-            style={{background: `${background(valueOn)}`, transition: `0.5s ease-in-out`}}
+            style={{background: `${background(valueOn)}`, transition: `0.3s ease-in-out`}}
             >
             {visualTypo.map((ele, idx)=>(
                 <Visual 
@@ -141,7 +165,10 @@ function Intro({iPos, hOn}) {
                 height={setTypo}
                 />
             ))}
-            <Visual2  on={valueOn} />
+            <MainVisual  
+                on={valueOn} 
+                height={setMainH}
+            />
             
         </section>
     )

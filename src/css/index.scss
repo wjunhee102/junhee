@@ -215,7 +215,7 @@ body {
             width: 100%;
             height:  150vh;
             position: relative;
-            background: #000;
+            background: transparent;
             overflow: hidden;
             &.typo3 {
                 background-color: transparent
@@ -245,7 +245,7 @@ body {
             }
         }
 
-        .main_visual2 {
+        .mainVisual {
             width: 100%;
             height:  400vh;
             overflow: hidden;
@@ -253,22 +253,29 @@ body {
             background-color: transparent;
             @include flexBox(center);
             align-items: center;
-            overflow: hidden;
             .contents {
+                overflow: hidden;
                 width: 100%;
                 height: 100vh;
                 left: 50%;
                 transform: translateX(-50%);
-                transition: 1s ease-in-out 0.2s;
                 &.off {
                     position: absolute;
-                    bottom: 0px;
-                    opacity: 1;
+                    top:100px;
+                    opacity: 0;
                 }
                 &.on {
+                    transition: opacity 1s ease-in-out 0.3s;
                     position: fixed;
-                    top: 0px;
+                    bottom: 0px;
                     opacity: 1;
+                    background: #fff;
+                }
+                &.end {
+                    transition: opacity 0.3s ease-in-out;
+                    opacity: 0;
+                    position: absolute;
+                    bottom: 0px;
                 }
                 .img_box {
                     width: 100%;
