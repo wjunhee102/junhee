@@ -1,23 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import useHeight from './hooks/useHeight';
 
-// function MainVisual({valueY, valueS, valueOp, valuePos}) {
 
-//     return (
-//             <div className="main_visual" style={{position: `${valuePos}`, transform: `translateY(${valueY}px)` , perspective :`400px`}}>
-//                 <div className="visual" style={{transform: `translate3d(-50%, -50%, ${-(valueS)}px)`}}>
-//                     <h2 className="tit" style={{opacity : valueOp, transition: `0.5s`}}>HELLO, WORLD</h2>
-//                 </div>
-//             </div>
-//     )
-// }
-
+//타이포 텍스트
 const visualTypo = [
     "안녕하세요",
     "신입 프론트 엔드 개발자",
     "황준희입니다."
 ]
+//
 
+
+//on class 함수
 function classOn(s,x){
     if( s === x) {
         return "on"
@@ -43,7 +37,9 @@ function background(s){
         return '#000'
     }
 }
+//
 
+//타이포 컴포넌트
 function Visual({typo, idx, on, height}) {
     const typoEle = useHeight();
     height(typoEle.height)
@@ -56,32 +52,51 @@ function Visual({typo, idx, on, height}) {
         </article>
     )
 }
+//
 
+//메인 비주얼 컴포넌트
 function MainVisual({on, height}) {
-    
+    const [coverX , setCX] = useState(0);
+
+
     const main_visual = useHeight();
 
-    height(main_visual.height)
+    const contentsW = useCallback(node => {
+        if (node !== null) {
+            setCX(node.getBoundingClientRect().width);
+            window.addEventListener('resize',()=>{
+                setCX(node.getBoundingClientRect().width);
+            })
+        }},[]);
+    
+    height(main_visual.height);
+
+    
 
     return (
         <article className={`mainVisual`} ref={main_visual.value}>
-            <div className={`contents ${mainOn(on,3)}`}>
+            <div className={`contents ${mainOn(on,3)}`} ref={contentsW}>
                 <div className="img_box">
                     <div className="img">
                         <span>황준희</span>
                     </div>
-                    <div className="cover"></div>
                 </div>
                 <div className="text_box">
                     <h3>황준희</h3>
                     <p>프론트 엔드 개발자</p>
                 </div>
+                <div 
+                className="cover"
+                style={{transform: `translate(${-coverX}px, 0)`}}
+                ></div>
             </div>
         </article>
     )
 }
+//
 
 
+//intro 컴포넌트
 function Intro({iPos, hOn}) {
     const 
         [valuePos, setPosi] = useState("fixed"),
@@ -198,6 +213,6 @@ function Intro({iPos, hOn}) {
         </section>
     )
 }
-
+//
 
 export default Intro;

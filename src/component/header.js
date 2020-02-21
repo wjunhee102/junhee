@@ -1,5 +1,6 @@
 import React, { useState ,useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import useHeight from './hooks/useHeight';
 
 const gnb_info = [
     {
@@ -63,25 +64,15 @@ function Gnb({id ,link , title , index, move}) {
 }
 
 function Header({setHPos , moveS, hOn}) {
-    const [hHeight , setHH] = useState(0)
 
     //헤더 height 값 가져오기
     const
-        headerH = useCallback(node => {
-        if (node !== null) {
-            setHH(node.getBoundingClientRect().height);
-            window.addEventListener('resize', ()=>{
-                setHH(node.getBoundingClientRect().height);
-            })
-        }},[])
-        ;
+        headerH = useHeight();
 
-    useEffect(()=>{
-        setHPos(hHeight);
-    })
+        setHPos(headerH.height);
 
     return (
-        <header id="header" className={`header ${headerOn(hOn)}`} ref={headerH} >
+        <header id="header" className={`header ${headerOn(hOn)}`} ref={headerH.value} >
             <div className="inner">
                 <h1 className="logo">
                     <a href="https://wjunhee102.github.io/junhee/">

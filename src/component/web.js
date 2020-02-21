@@ -206,7 +206,7 @@ function Foreword() {
 function Web({wPos}) {
     const web = useHeight();
 
-    wPos(web.height)
+    wPos(web.height);
     
     return (
         <section className="web" ref={web.value} >
