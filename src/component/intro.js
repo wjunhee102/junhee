@@ -70,6 +70,7 @@ function MainVisual({on, height}) {
                     <div className="img">
                         <span>황준희</span>
                     </div>
+                    <div className="cover"></div>
                 </div>
                 <div className="text_box">
                     <h3>황준희</h3>
@@ -105,25 +106,48 @@ function Intro({iPos, hOn}) {
     // intro섹션 parallex함수
     function move(scroll_pos) {
         let typoH = typo/2,
-            mainArea = (mainH+typo*3)-(typo-typo/3)
+            mainArea = introH.height-(typo-typo/3)
             ;
-
-        if (scroll_pos < typo-typoH ) {
-            setOn(0)
-        } else if(scroll_pos >= typo && scroll_pos <= (typo*2-typoH)) {
-            setOn(1)
-        } else if(scroll_pos >= typo*2 && scroll_pos <= (typo*3-typoH)) {
-            setOn(2)
-        } else if(scroll_pos >= typo*3 && scroll_pos <= mainArea ) {
-            setOn(3)
-
-        } else {
-            if (scroll_pos > mainArea) {
-                setOn(4)
+        if(scroll_pos <= introH.height) {
+            if (scroll_pos < typo-typoH ) {
+                setOn(0)
+            } else if(scroll_pos >= typo && scroll_pos <= (typo*2-typoH)) {
+                setOn(1)
+            } else if(scroll_pos >= typo*2 && scroll_pos <= (typo*3-typoH)) {
+                setOn(2)
+            } else if(scroll_pos >= typo*3 && scroll_pos <= mainArea ) {
+                setOn(3)
+    
             } else {
-                setOn(-1)
+                if (scroll_pos > mainArea) {
+                    setOn(4)
+                } else {
+                    setOn(-1)
+                }
             }
-        }
+        } 
+    }
+
+    function moveRe(scroll_pos) {
+        let typoH = typo/2,
+            mainArea = introH.height-(typo-typo/3)
+            ;
+            if (scroll_pos < typo-typoH ) {
+                setOn(0)
+            } else if(scroll_pos >= typo && scroll_pos <= (typo*2-typoH)) {
+                setOn(1)
+            } else if(scroll_pos >= typo*2 && scroll_pos <= (typo*3-typoH)) {
+                setOn(2)
+            } else if(scroll_pos >= typo*3 && scroll_pos <= mainArea ) {
+                setOn(3)
+    
+            } else {
+                if (scroll_pos > mainArea) {
+                    setOn(4)
+                } else {
+                    setOn(-1)
+                }
+            }
     }
    
     function introScroll() {
@@ -137,14 +161,15 @@ function Intro({iPos, hOn}) {
         }
             ticking = false ;
         }
-        
+    
     
     const
         introH = useHeight();
         iPos(introH.height);
-
+    
 
     useEffect(()=>{
+        moveRe(window.pageYOffset);
         window.addEventListener('scroll',introScroll)
         return ()=> window.removeEventListener('scroll',introScroll)
     },[valueOn, typo, mainH])

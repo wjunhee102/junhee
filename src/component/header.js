@@ -41,12 +41,13 @@ gnb_info.propTypes = {
 };
 
 function headerOn(x) {
-    if(x >= 3) {
-        return 'on'
-    } else {
+    if(x < 3) {
         return 'off'
+    } else {
+        return 'on'
     }
 }
+
 
 
 function Gnb({id ,link , title , index, move}) {
