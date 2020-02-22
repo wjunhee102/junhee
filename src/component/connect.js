@@ -41,7 +41,6 @@ function useFetch(url){
 
 function Connect() {
     const name = useInput("")
-    const { payload, loading, error } = useFetch("https://aws.random.cat/meow")
     return (
         <section className="connect">
             <h1>use Hooks</h1>
@@ -50,9 +49,6 @@ function Connect() {
             <input value={name.value} onChange={name.onChange} placeholder="whats your name" />
             <h4>{name.value}</h4>
             <br />
-            {loading && <span>loading your cat</span>}
-            {!loading && error && <span>{error}</span>}
-            {!loading && payload && <img src={payload.title} width="150"/>}
         </section>
     )
 }

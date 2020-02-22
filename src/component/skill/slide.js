@@ -160,6 +160,7 @@ function Slide() {
             let progress = timestamp - startTime
             
             let move = easeOut(progress, x, start, second)
+            //setSMove(move)
             setSMove(move)
 
             if (progress < second) {
@@ -197,7 +198,7 @@ function Slide() {
             const id = setInterval(()=>{moving(slideIdx+1,slideMove, 1000)}, 2000)
             return () => clearInterval(id);
         },
-        [slideStart, slideMove, slideIdx, slideW]
+        [slideStart, slideMove, slideIdx, slideW, sWrap]
     );
     
 

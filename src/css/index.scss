@@ -215,7 +215,15 @@ body {
         height: auto;
         position: relative;
         overflow: hidden;
-        background-color: #fff;
+        background-color: #000;
+        .bg {
+            background-color: #fff;
+            width: 100%; 
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
         .typo {
             width: 100%;
             height:  150vh;
@@ -252,7 +260,7 @@ body {
 
         .mainVisual {
             width: 100%;
-            height:  400vh;
+            height:  800vh;
             overflow: hidden;
             position: relative;
             background-color: transparent;
@@ -263,22 +271,18 @@ body {
                 width: 100%;
                 height: 100vh;
                 left: 50%;
+                opacity: 0;
                 transform: translateX(-50%);
+                background: #fff;
                 &.off {
                     position: absolute;
                     top:100px;
-                    opacity: 0;
                 }
                 &.on {
-                    transition: opacity 1s ease-in-out 0.3s;
                     position: fixed;
                     bottom: 0px;
-                    opacity: 1;
-                    background: #fff;
                 }
                 &.end {
-                    transition: opacity 0.3s ease-in-out;
-                    opacity: 0;
                     position: absolute;
                     bottom: 0px;
                 }
@@ -303,6 +307,7 @@ body {
                     @include center(absolute);
                     transform: translate(-120%, -50%);
                     transition: 0.3s ease;
+                    background-color: transparent;
                     width: 500px;
                     height: 65px;
                     h3 {
@@ -315,7 +320,6 @@ body {
                         font-weight: 500;
                         font-size: 1.600em;
                         margin-bottom :10px;
-                        transition: 0.7s ease-out 0.6s;
                         opacity: 0;
                     }
                     p {
@@ -327,64 +331,30 @@ body {
                         color: #888;
                         font-weight: 500;
                         font-size: 1.5625em;
-                        transition: 0.7s ease-out 0.8s;
                         opacity: 0;
                     }
+                    &.on {
+                        transform: translate(-120%, -50%);
+                        transition: 0.3s ease;
+                        h3 {
+                            opacity: 1;
+                            transform: translate(0, 0);
+                            transition: 0.7s ease-out 0.6s;
+                        }
+                        p {
+                            opacity: 1;
+                            transform: translate(0, 0);
+                            transition: 0.7s ease-out 0.8s;
+                        }
                 }
-                &.on .text_box {
-                    transform: translate(-120%, -50%);
-                    h3 {
-                        opacity: 1;
-                        transform: translate(0, 0);
-                    }
-                    p {
-                        opacity: 1;
-                        transform: translate(0, 0);
-                    }
                 }
                 .cover {
                     position: absolute;
-                    left: 0;
+                    left: 100%;
                     bottom: 0;
                     width: 100%;
                     height: 100%;
-                    background-color: #fff;
-                }
-            }
-            
-        }
-
-        .main_visual {
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%;
-            overflow: hidden;
-            top:0;
-            left: 0;
-            .visual {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top:50%;
-                left: 50%;
-                transform: translate(-50%,-50%);
-                background: url("../images/winter_day.jpg") no-repeat center center;
-                background-size: cover;
-                .tit {
-                    width: 100%;
-                    text-align: center;
-                    font-family: $poppins;
-                    overflow: hidden;
-                    font-size: 18.75em;
-                    font-style: italic;
-                    font-weight: 800;
-                    letter-spacing: 0.25em;
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50%, -50%);
-                    color: #fff;
-                    text-shadow: rgba(0, 0 ,0, 0.7) 10px 20px 20px;
+                    background-color: #ccc;
                 }
             }
             
