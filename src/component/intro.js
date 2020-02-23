@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import useHeight from './hooks/useHeight';
 import useNode from './hooks/useNode';
 
@@ -62,7 +62,7 @@ function MainVisual({on ,height, typoH, intro}) {
     const 
         main_visual = useHeight(),
         contentNode = useNode(),
-        coverEle = useNode()
+        coverEle = useRef()
         ;
       
     height(main_visual.height);
@@ -95,11 +95,11 @@ function MainVisual({on ,height, typoH, intro}) {
             keyframe = Math.round((scroll_y - (typo + contentNode.width))/100)
             lateX = scroll_y - typo
             if(scroll_y <= typo + contentNode.width) {
-                coverEle.ele.style.transform = `translate(${-lateX}px, 0)`;
+                coverEle.current.style.transform = `translate(${-lateX}px, 0)`;
                 setOp(1)
                 setF(1)
             } else {
-                coverEle.ele.style.transform = `translate(${-contentNode.width}px,0)`;
+                coverEle.current.style.transform = `translate(${-contentNode.width}px,0)`;
                 setOp(0)
                 if (scroll_y > typo + contentNode.width) {
                     if (keyframe >= 65) {
@@ -113,7 +113,7 @@ function MainVisual({on ,height, typoH, intro}) {
             } 
 
         } else {
-            coverEle.ele.style.transform = `translate(0, ${0}px)`;
+            coverEle.current.style.transform = `translate(0, ${0}px)`;
             setOp(1)
             setF(1)
         }
@@ -141,7 +141,7 @@ function MainVisual({on ,height, typoH, intro}) {
                 </div>
                 <div 
                 className="cover"
-                ref={coverEle.nodeGet}
+                ref={coverEle}
                 >
                     <div className="video_box">
                         <div className="imgBox" style={{opacity : op}}>
