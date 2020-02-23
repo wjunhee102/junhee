@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect} from 'react';
 import './slide.css';
 
+// 슬라이드 콘텐츠 내용
 const slide_item = [
     {
         title : "slide" ,
@@ -29,6 +30,7 @@ const slide_item = [
     }
 ]
 
+// 슬라이드 콘텐츠 컴포넌트
 const SlideItem = ({cName , width, con})=>{
     return(
         <div className={cName} ref={width} onMouseDown={e=>e.preventDefault}>{con}</div>
@@ -36,6 +38,8 @@ const SlideItem = ({cName , width, con})=>{
 }
 
 
+
+// 슬라이드 컴포넌트
 function Slide() {
     const 
         [slideMove, setSMove] = useState(0),
