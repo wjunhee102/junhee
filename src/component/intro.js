@@ -47,9 +47,18 @@ function Visual({typo, idx, on, height}) {
 }
 //
 
+// 비디오 컴포넌트
+function MainVideo({num}) {
+    return(
+        <img src={`./video/keyframe/jun${num}.jpg`} />
+    )
+}
+
 //메인 비주얼 컴포넌트
-function MainVisual({on ,height, typoH}) {
+function MainVisual({on ,height, typoH, intro}) {
     const [visualOn, setVOn] = useState("off");
+    const [op, setOp] = useState(1)
+    const [frame , setF] = useState(1)
     const 
         main_visual = useHeight(),
         contentNode = useNode(),
@@ -63,11 +72,13 @@ function MainVisual({on ,height, typoH}) {
             startContent = typoH*3,
             scroll_y = window.pageYOffset,
             typo = typoH*4 + typoH/3,
-            lateX = scroll_y - typo,
-            opac = (scroll_y-startContent)/500
+            opac,
+            lateX,
+            keyframe
             ;
 
         if(startContent <= scroll_y) {
+            opac = (scroll_y-startContent)/500
             if(scroll_y <= startContent+500) {
                 contentNode.ele.style.opacity = opac;
                 setVOn('off')
@@ -80,16 +91,31 @@ function MainVisual({on ,height, typoH}) {
             setVOn('off')
         }
 
-        if( typo <= scroll_y ){
+        if( typo <= scroll_y && scroll_y <= intro){
+            keyframe = Math.round((scroll_y - (typo + contentNode.width))/100)
+            lateX = scroll_y - typo
             if(scroll_y <= typo + contentNode.width) {
                 coverEle.ele.style.transform = `translate(${-lateX}px, 0)`;
-    
+                setOp(1)
+                setF(1)
             } else {
                 coverEle.ele.style.transform = `translate(${-contentNode.width}px,0)`;
+                setOp(0)
+                if (scroll_y > typo + contentNode.width) {
+                    if (keyframe >= 65) {
+                        setF(65);
+                    } else if(keyframe <= 1) {
+                        setF(1)
+                    } else {
+                        setF(keyframe)
+                    }
+                } 
             } 
 
         } else {
             coverEle.ele.style.transform = `translate(0, ${0}px)`;
+            setOp(1)
+            setF(1)
         }
         
     }
@@ -98,7 +124,7 @@ function MainVisual({on ,height, typoH}) {
     useEffect(()=>{
         window.addEventListener('scroll',coverEvent);
         return ()=> window.removeEventListener('scroll', coverEvent);
-    },[typoH, contentNode.width, visualOn])
+    },[typoH, contentNode.width, visualOn, frame])
 
 
     return (
@@ -116,7 +142,17 @@ function MainVisual({on ,height, typoH}) {
                 <div 
                 className="cover"
                 ref={coverEle.nodeGet}
-                ></div>
+                >
+                    <div className="video_box">
+                        <div className="imgBox" style={{opacity : op}}>
+                            <img src="./video/junheeMain.jpg" />
+                        </div>
+                        <MainVideo num={frame} />
+                    </div>
+                    <div className="profile">
+                        <div className="inner"></div>
+                    </div>
+                </div>
             </div>
         </article>
     )
@@ -142,7 +178,6 @@ function Intro({iPos, hOn}) {
     
     // scroll 변수   
     let 
-        lastScroll = 0,
         ticking = false
         ;
     
@@ -207,6 +242,7 @@ function Intro({iPos, hOn}) {
                 on={valueOn} 
                 height={setMainH}
                 typoH={typo}
+                intro={introH.height}
             />
             
         </section>
