@@ -124,7 +124,7 @@ function MainVisual({on ,height, typoH, intro}) {
     useEffect(()=>{
         window.addEventListener('scroll',coverEvent);
         return ()=> window.removeEventListener('scroll', coverEvent);
-    },[typoH, contentNode.width, visualOn, frame])
+    },[typoH, contentNode.width, visualOn, frame, intro])
 
 
     return (
