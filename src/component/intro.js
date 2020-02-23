@@ -59,6 +59,7 @@ function MainVisual({on ,height, typoH, intro}) {
     const [visualOn, setVOn] = useState("off");
     const [op, setOp] = useState(1)
     const [frame , setF] = useState(1)
+    const [mainI , setMainI] = useState(1);
     const 
         main_visual = useHeight(),
         contentNode = useNode(),
@@ -68,6 +69,7 @@ function MainVisual({on ,height, typoH, intro}) {
     height(main_visual.height);
 
     function coverEvent() {
+        if(window.pageYOffset > intro) return false
         let 
             startContent = typoH*3,
             scroll_y = window.pageYOffset,
@@ -97,25 +99,37 @@ function MainVisual({on ,height, typoH, intro}) {
             if(scroll_y <= typo + contentNode.width) {
                 coverEle.current.style.transform = `translate(${-lateX}px, 0)`;
                 setOp(1)
+                setMainI(1);
                 setF(1)
             } else {
                 coverEle.current.style.transform = `translate(${-contentNode.width}px,0)`;
-                setOp(0)
+                setOp(0);
                 if (scroll_y > typo + contentNode.width) {
                     if (keyframe >= 65) {
                         setF(65);
+                        setMainI(2);
+                        setOp(1);
                     } else if(keyframe <= 1) {
-                        setF(1)
+                        setF(1);
+                        setMainI(1);
                     } else {
+                        if(keyframe > 40) {
+                            setMainI(2);
+                        }
                         setF(keyframe)
+                        setOp(0)
                     }
                 } 
             } 
 
         } else {
-            coverEle.current.style.transform = `translate(0, ${0}px)`;
-            setOp(1)
-            setF(1)
+            if(typo > scroll_y ) {
+                coverEle.current.style.transform = `translate(0, ${0}px)`;
+                setF(1)
+                setMainI(1)
+            } else {
+                setMainI(2)
+            }
         }
         
     }
@@ -124,7 +138,7 @@ function MainVisual({on ,height, typoH, intro}) {
     useEffect(()=>{
         window.addEventListener('scroll',coverEvent);
         return ()=> window.removeEventListener('scroll', coverEvent);
-    },[typoH, contentNode.width, visualOn, frame, intro])
+    },[typoH, contentNode.width, visualOn, frame, intro, mainI])
 
 
     return (
@@ -139,21 +153,20 @@ function MainVisual({on ,height, typoH, intro}) {
                     <h3>황준희</h3>
                     <p>프론트 엔드 개발자</p>
                 </div>
-                <div 
-                className="cover"
-                ref={coverEle}
-                >
-                    <div className="video_box">
-                        <div className="imgBox" style={{opacity : op}}>
-                            <img src="./video/junheeMain.jpg" />
+                <div className="cover" ref={coverEle}>
+                    <div className="inner">
+                        <div className="video_box">
+                            <div className="imgBox" style={{opacity : op}}>
+                                <img src={`./video/junheeMain${mainI}.jpg`} />
+                            </div>
+                            <MainVideo num={frame} />
                         </div>
-                        <MainVideo num={frame} />
-                    </div>
-                    <div className="profile">
-                        <div className="inner"></div>
+                        <div className="profile">
+                            <div className="inner"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </div>`
         </article>
     )
 }
@@ -183,26 +196,25 @@ function Intro({iPos, hOn}) {
     
     // intro섹션 parallex함수
     function move(scroll_pos) {
+        if(window.pageYOffset > introH + 4000 ) return false
         let typoH = typo/2,
             mainArea = introH.height - (typo-typo/3)
             ;
-        if(scroll_pos <= introH.height) {
             if (scroll_pos < typo-typoH ) {
                 setOn(0)
             } else if(scroll_pos >= typo && scroll_pos <= (typo*2-typoH)) {
                 setOn(1)
             } else if(scroll_pos >= typo*2 && scroll_pos <= (typo*3-typoH)) {
                 setOn(2)
-            } else if(scroll_pos >= typo*3 && scroll_pos <= mainArea ) {
+            } else if(scroll_pos >= typo*3 && scroll_pos < mainArea ) {
                 setOn(3)
             } else {
-                if (scroll_pos > mainArea) {
+                if (scroll_pos >= mainArea) {
                     setOn(4)
                 } else {
                     setOn(-1)
                 }
             }
-        } 
     }
    
     function introScroll() {
@@ -216,13 +228,13 @@ function Intro({iPos, hOn}) {
             ticking = false ;
     }
 
-
+    //resize시 문제가 있음.
     useEffect(()=>{
         move(window.pageYOffset);
+        console.log(mainH, typo);
         window.addEventListener('scroll',introScroll)
         return ()=> window.removeEventListener('scroll',introScroll)
     },[valueOn, typo, mainH])
-
 
     return (
         <section 
