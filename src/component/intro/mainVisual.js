@@ -1,26 +1,25 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
-import useHeight from './hooks/useHeight';
-import useNode from './hooks/useNode';
+import React, { useState, useEffect, useRef } from 'react';
+import useNode from '../hooks/useNode';
+import useHeight from '../hooks/useHeight';
 
-
-//타이포 텍스트
-const visualTypo = [
-    "안녕하세요",
-    "신입 프론트 엔드 개발자",
-    "황준희입니다."
-]
+// 비디오 컴포넌트
+function MainVideo({num}) {
+    return(
+        <img src={`./video/keyframe/jun${num}.jpg`} />
+    )
+}
 //
 
+// profile 컴포넌트
+function Profile() {
+    return (
+        <div className="profile">
+            <div className="inner"></div>
+        </div>
+    )
+} 
 
 //on class 함수
-function classOn(s,x){
-    if( s === x) {
-        return "on"
-    } else {
-        return 'off'
-    }
-}
-
 function mainOn(s,x){
     if( s === x) {
         return "on"
@@ -31,28 +30,6 @@ function mainOn(s,x){
     }
 }
 //
-
-//타이포 컴포넌트
-function Visual({typo, idx, on, height}) {
-    const typoEle = useHeight();
-    height(typoEle.height)
-    
-    return (
-        <article className={`typo typo${idx+1}`} ref={typoEle.value}>
-            <h2 className={classOn(on,idx)}>
-                {typo}
-            </h2>
-        </article>
-    )
-}
-//
-
-// 비디오 컴포넌트
-function MainVideo({num}) {
-    return(
-        <img src={`./video/keyframe/jun${num}.jpg`} />
-    )
-}
 
 //메인 비주얼 컴포넌트
 function MainVisual({on ,height, typoH, intro}) {
@@ -65,7 +42,6 @@ function MainVisual({on ,height, typoH, intro}) {
         contentNode = useNode(),
         coverEle = useRef()
         ;
-      
     height(main_visual.height);
 
     function coverEvent() {
@@ -78,7 +54,7 @@ function MainVisual({on ,height, typoH, intro}) {
             lateX,
             keyframe
             ;
-
+        
         if(startContent <= scroll_y) {
             opac = (scroll_y-startContent)/500
             if(scroll_y <= startContent+500) {
@@ -160,9 +136,7 @@ function MainVisual({on ,height, typoH, intro}) {
                                 <img src={`./video/junheeMain${mainI}.jpg`} />
                             </div>
                             <MainVideo num={frame} />
-                        </div>
-                        <div className="profile">
-                            <div className="inner"></div>
+                            <Profile />
                         </div>
                     </div>
                 </div>
@@ -170,96 +144,6 @@ function MainVisual({on ,height, typoH, intro}) {
         </article>
     )
 }
-//
 
 
-//intro 컴포넌트
-function Intro({iPos, hOn}) {
-    const 
-        [valueOn, setOn] = useState(0)
-        ;
-    const
-        [typo, setTypo] = useState(0),
-        [mainH, setMainH] = useState(0)
-        ;
-    const
-        introH = useHeight()
-        ;
-        
-        
-        iPos(introH.height);
-    
-    // scroll 변수   
-    let 
-        ticking = false
-        ;
-    
-    // intro섹션 parallex함수
-    function move(scroll_pos) {
-        if(window.pageYOffset > introH + 4000 ) return false
-        let typoH = typo/2,
-            mainArea = introH.height - (typo-typo/3)
-            ;
-            if (scroll_pos < typo-typoH ) {
-                setOn(0)
-            } else if(scroll_pos >= typo && scroll_pos <= (typo*2-typoH)) {
-                setOn(1)
-            } else if(scroll_pos >= typo*2 && scroll_pos <= (typo*3-typoH)) {
-                setOn(2)
-            } else if(scroll_pos >= typo*3 && scroll_pos < mainArea ) {
-                setOn(3)
-            } else {
-                if (scroll_pos >= mainArea) {
-                    setOn(4)
-                } else {
-                    setOn(-1)
-                }
-            }
-    }
-   
-    function introScroll() {
-        if(!ticking) {
-            window.requestAnimationFrame(()=> {
-                move(window.pageYOffset);
-                hOn(valueOn);
-            })
-            ticking = true ;
-        }
-            ticking = false ;
-    }
-
-    //resize시 문제가 있음.
-    useEffect(()=>{
-        move(window.pageYOffset);
-        console.log(mainH, typo);
-        window.addEventListener('scroll',introScroll)
-        return ()=> window.removeEventListener('scroll',introScroll)
-    },[valueOn, typo, mainH])
-
-    return (
-        <section 
-            className="intro" 
-            ref={introH.value} 
-            >
-            {visualTypo.map((ele, idx)=>(
-                <Visual 
-                idx={idx}
-                typo={ele}
-                key={idx}
-                on={valueOn}
-                height={setTypo}
-                />
-            ))}
-            <MainVisual  
-                on={valueOn} 
-                height={setMainH}
-                typoH={typo}
-                intro={introH.height}
-            />
-            
-        </section>
-    )
-}
-//
-
-export default Intro;
+export default MainVisual;

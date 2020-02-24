@@ -1,5 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import useHeight from './hooks/useHeight'
+import './css/web.css';
+import './css/team.css';
+import useHeight from '../hooks/useHeight';
 
 //내용
 const port_site = [

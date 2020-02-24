@@ -1,0 +1,166 @@
+@import "../../../css/index.scss";
+
+#main {
+    
+    .web {
+        width: 100%;
+        height: auto;
+        position: relative;
+        background-color: #fff;
+        .foreword {
+            width: 100%;
+            height: auto;
+            margin-bottom: 100px;
+            .inner {
+                @include inner();
+                .tit {
+                    font-size: 4.0625em;
+                    font-weight: 600;
+                    color: #000;
+                    text-transform: uppercase;
+                    border-bottom: 1px solid #888;
+                    // letter-spacing: 0.1em;
+                }
+                .exp {
+                    font-size: 1.875em;
+                    font-weight: 600;
+                    line-height: 1.5;
+                    margin-bottom: 20px;
+                    color: #888;
+                }
+            }
+        }
+        // 포트폴리오
+        .port_site {
+            width: 100%;
+            padding-bottom: 100px;
+            margin: 50px 0;
+            .inner {
+                @include inner();
+                .tit {
+                    text-transform: capitalize;
+                    margin-bottom: 30px;
+                    font-size: 4.0625em;
+                    font-weight: 600;
+                    color: #888;
+                    margin: 60px 0 100px;
+                    .tit_top {
+                        font-weight: 600;
+                        color: #888;
+                        display: block;
+                    }
+                    .key {
+                        font-weight: 600;
+                        color: #000;
+                    }
+                }
+                .imgbox {
+                    width: 100%;
+                    height: auto;
+                    margin-bottom: 100px;
+                    position: relative;
+                    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.4), 
+                        0 8px 16px -8px rgba(0,0,0,.7),0 -6px 16px -6px rgba(0,0,0,0.08);
+                    a {
+                        img {
+                            display: block;
+                            width: 1024px;
+                            height: 700px;                           
+                        }
+                    }
+                    
+                }
+                .contents {
+                    width: 100%;
+                    .exp {
+                        border-bottom: 1px solid #888;
+                        font-size: 1.875em;
+                        font-weight: 600;
+                        line-height: 1.5;
+                        padding-bottom: 30px;
+                        margin-bottom: 30px;
+                        color: #888;
+                    }
+                    .detail {
+                        @include flexBox(flex-start);
+                        .lang_menu {
+                            @include flexBox(flex-start);
+                            margin-bottom: 10px;
+                            padding-right: 50px;
+                            position: relative;
+                            &::after {
+                                @include after();
+                                background-color: #ccc;
+                                width: 2px;
+                                height: 20px;
+                                position: absolute;
+                                right: 25px;
+                                top: 50%;
+                                transform:  translate(0, -50%);
+                            }
+                            li.lang {
+                                margin-right: 10px;
+                                padding: 0 10px;
+                                width: 30px;
+                                height: 40px;
+                                position: relative;
+                                &.html5 {
+                                    background: url("../../../images/html5.png") no-repeat center center;
+                                    background-size: 30px 34px; 
+                                    text-transform: uppercase;
+                                }
+                                &.css3 {
+                                    background: url("../../../images/css3.png") no-repeat center center;
+                                    background-size: 30px 34px;
+                                    text-transform: uppercase;
+                                }
+                                &.jQuery {
+                                    background: url("../../../images/jquery.png") no-repeat center center;
+                                    background-size: 30px 34px;
+                                }
+                                &.javascript {
+                                    background: url("../../../images/js.jpg") no-repeat center center;
+                                    background-size: 34px 34px;
+                                    text-transform: capitalize;
+                                }
+                                &:last-child {
+                                margin-right:0;
+                                }
+                            }
+                        }
+                        .divi {
+                            margin-bottom: 10px;
+                            font-weight: 600;
+                            font-size: 1.2em;
+                            line-height: 40px;
+                            color: #000;
+                            padding-right: 50px;
+                            position: relative;
+                            &::after {
+                                @extend .lang_menu::after
+                            }
+                        }
+                        .pers_menu {
+                            @include flexBox(flex-start);
+                            margin-bottom: 10px;
+                            li {
+                                line-height: 40px;
+                                margin-right: 10px;
+                                font-weight: 600;
+                                font-size: 1.2em;
+                                color: #888;
+                                &:first-child {
+                                    color: #262626;
+                                }
+                            }
+                        }
+                    }
+                    
+                    
+                }
+            }
+
+        }
+    }
+    
+}

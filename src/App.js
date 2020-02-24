@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Header from './component/header';
-import Intro from './component/intro';
-import Skill from './component/skill';
-import Web from './component/web';
-import Connect from './component/connect';
+import Header from './component/header/header';
+import Intro from './component/intro/intro';
+import Skill from './component/skill/skill';
+import Web from './component/web/web';
+import Connect from './component/connect/connect';
 
 function App() {
     const 

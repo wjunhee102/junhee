@@ -26,4 +26,10 @@ body {
   height: auto;
   position: relative;
 }
-/*# sourceMappingURL=index.css.map */
+
+#main .skill {
+  position: relative;
+  height: 1000px;
+  background-color: #fff;
+}
+/*# sourceMappingURL=skill.css.map */

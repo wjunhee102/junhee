@@ -1,0 +1,98 @@
+@import '../../../css/index.scss';
+
+
+#header {
+    @include box();
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 20;
+    border-bottom: $border;
+    transition: 0.5s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #000;
+    &.off {
+        background-color: rgba(255, 255, 255, 0);
+        color: #fff ;
+    }
+    &.on {
+        background-color: rgba(255, 255, 255, 0.7);
+        color: #000;
+    }
+    .inner {
+        @include inner();
+        @include flexBox(space-between);
+        height: 50px;
+        .logo {
+            position: relative;
+            line-height: 50px;
+            &::after {
+                @include after();
+                width: 30px;
+                height: 30px;
+                box-sizing: border-box;
+                border-radius: 50%;
+                background: url("../../../images/logo6.svg") no-repeat center center;
+                text-align: center;
+                font-family: $poppins;
+                font-weight: 600;
+                position: absolute;
+                top: 50%;
+                left: 65%;
+                font-size: 8px;
+                transform: translate(-50%, -50%);
+            }
+            a {
+                display: table-cell;
+                color: inherit;
+                font-family: $poppins;
+                font-style: italic;
+                font-weight: 600;
+                position: relative;
+                z-index: 4;
+            }
+            span {
+                @include blind();
+            }
+        }
+        .gnb {
+            height: 50px;
+            .menu_gnb {
+                @include flexBox(space-between);
+                line-height: 50px;
+                width: 500px;
+                li {
+                    position: relative;
+                    &::after {
+                        @include after();
+                        width: 0%;
+                        height: 2px;
+                        top: 70%;
+                        left: 0;
+                        transform: translate(0, -50%);
+                        background-color: #000;
+                        transition: 0.4s ease-in-out;
+                    }
+                    &:hover::after {
+                        width: 100%;
+                    }
+                }
+                a {
+                    position: relative;
+                    display: table-cell;
+                    font-family: $poppins;
+                    line-height: 51px;
+                    font-style: italic;
+                    font-weight: 600;
+                    color: inherit;
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    z-index: 2;
+                }
+            }
+        }
+    }
+    &.off .gnb li::after {
+        background-color: #fff !important;
+    }
+}
