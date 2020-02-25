@@ -14,6 +14,7 @@ function App() {
         [webPos, setWPos] = useState(0),
         [headerOn, setHOn] = useState(0)
         ;
+        
     const secH = [
         0,
         introPos-(typoPos+headerPos),
@@ -21,6 +22,7 @@ function App() {
         introPos+skillPos+1000-headerPos,
         introPos+skillPos+1200-headerPos
         ]
+
     let moveStart = false;
 
 	
