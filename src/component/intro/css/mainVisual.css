@@ -29,7 +29,7 @@ body {
 
 #main .intro .mainVisual {
   width: 100%;
-  height: 1200vh;
+  height: 11000px;
   overflow: hidden;
   position: relative;
   background-color: transparent;
@@ -186,7 +186,7 @@ body {
   top: 50%;
   -webkit-transform: translate(0, -50%);
           transform: translate(0, -50%);
-  width: 50%;
+  width: 100%;
   height: 100%;
   z-index: 10;
   padding: 15px;
@@ -201,20 +201,50 @@ body {
 #main .mainVisual .contents .cover .video_box .imgBox {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 50%;
   width: 100%;
   height: 100%;
   opacity: 1;
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 15px;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
 }
 
 #main .mainVisual .contents .cover .video_box .imgBox img {
   display: block;
   height: 100%;
+  will-change: opacity;
+}
+
+#main .mainVisual .contents .cover .video_box .imgBox.off {
+  -webkit-transition: 1s ease;
+  transition: 1s ease;
+}
+
+#main .mainVisual .contents .cover .video_box .imgBox.on {
+  opacity: 0;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  left: calc(50% - 75px);
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  border-radius: 50%;
+  -webkit-animation: imgbox 1.5s ease forwards;
+          animation: imgbox 1.5s ease forwards;
+}
+
+#main .mainVisual .contents .cover .video_box .imgBox.on img {
+  width: 150px;
+  height: 267px;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 #main .mainVisual .contents .cover .profile {
@@ -231,7 +261,6 @@ body {
 }
 
 #main .mainVisual .contents .cover .profile .inner {
-  border: 1px solid red;
   width: 1024px;
   height: auto;
   position: absolute;
@@ -239,5 +268,23 @@ body {
   top: 50%;
   -webkit-transform: translate(-30%, -50%);
           transform: translate(-30%, -50%);
+}
+
+@-webkit-keyframes imgbox {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes imgbox {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=mainVisual.css.map */

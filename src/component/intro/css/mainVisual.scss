@@ -4,7 +4,7 @@
     .intro {
         .mainVisual {
             width: 100%;
-            height:  1200vh;
+            height:  11000px;
             overflow: hidden;
             position: relative;
             background-color: transparent;
@@ -132,7 +132,7 @@
                     left: 0;
                     top: 50%;
                     transform: translate(0 , -50%);
-                    width: 50%;
+                    width: 100%;
                     height: 100%;
                     z-index: 10;
                     padding: 15px;
@@ -143,17 +143,41 @@
                     .imgBox {
                         position: absolute;
                         left: 0;
-                        top: 0;
+                        top: 50%;
                         width: 100%;
                         height: 100%;
                         opacity: 1;
-                        transition: 0.5s ease;
                         box-sizing: border-box;
                         padding: 15px;
+                        transform: translate(0, -50%);
                         img {
                             display: block;
                             height: 100%;
+                            will-change: opacity;
                         }
+                        &.off {
+                            transition: 1s ease;
+                        }
+                        &.on {
+                            opacity: 0;
+                            width: 150px;
+                            height: 150px;
+                            overflow: hidden;
+                            left: calc(50% - 75px);
+                            top: 50%;
+                            transform: translate(0, -50%);
+                            border-radius: 50%;
+                            animation: imgbox 1.5s ease forwards;
+                            img {
+                                width: 150px;
+                                height: 267px;
+                                position: absolute;
+                                left: 50%;
+                                top: 40%;
+                                transform: translate(-50%, -50%);
+                            }
+                        }
+                        
                     }
                 }
                 //profile
@@ -167,7 +191,7 @@
                     box-sizing: border-box;
                     background-color: #fff;
                     .inner {
-                        border: 1px solid red;
+                        // border: 1px solid red;
                         width: 1024px;
                         height: auto;
                         position: absolute;
@@ -179,4 +203,9 @@
             }
         }
     }
+}
+
+@keyframes imgbox {
+    from { opacity:  0;}
+    to {opacity: 1;}
 }

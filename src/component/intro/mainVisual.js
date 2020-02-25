@@ -4,26 +4,71 @@ import useHeight from '../hooks/useHeight';
 import './css/mainVisual.css'
 
 // 비디오 컴포넌트
-function MainVideo({num}) {
+function MainVideo({num, on}) {
     return(
-        <img src={`./video/keyframe/jun${num}.jpg`} />
+        <img style={{opacity : on , transition: `0.3s ease-in-out`}} src={`./video/keyframe/jun${num}.jpg`} />
     )
 }
 //
+
+
+//skillkind 내용
+const skillKind = [
+    {
+        name : 'html5',
+        img : 'html5i.png'
+    },
+    {
+        name : 'css3',
+        img : 'css3i.png'
+    },
+    {
+        name : 'jQuery',
+        img : 'jq.png'
+    },
+    {
+        name : 'javascript',
+        img : 'js.png'
+    },
+    {
+        name : 'react',
+        img : 'react.png'
+    },
+    {
+        name : 'photoshop',
+        img : 'photoshop.png'
+    },
+    {
+        name : 'illustrater',
+        img : 'illu.png'
+    }
+]
+
+function Skills({classname}) {
+    return (
+        <li className={`icon ${classname}`}><span>{classname}</span></li>
+    )
+}
 
 // profile 컴포넌트
 function Profile() {
     return (
         <div className="profile">
             <div className="inner">
-                <h2> "" </h2>
-                <h3 className="name">
-                    
-                </h3>
+                <ul className={`iconBox`} >
+                    {skillKind.map((ele , idx)=>(
+                        <Skills 
+                            classname={ele.name}
+                            key={idx}
+                        />
+                    ))}
+                </ul>
             </div>
         </div>
     )
 } 
+
+
 
 //on class 함수
 function mainOn(s,x){
@@ -43,6 +88,7 @@ function MainVisual({on ,height, typoH, intro}) {
     const [op, setOp] = useState(1)
     const [frame , setF] = useState(1)
     const [mainI , setMainI] = useState(1);
+    const [proOn , setPOn] = useState("off");
     const 
         main_visual = useHeight(),
         contentNode = useNode(),
@@ -76,7 +122,7 @@ function MainVisual({on ,height, typoH, intro}) {
         }
 
         if( typo <= scroll_y && scroll_y <= intro){
-            keyframe = Math.round((scroll_y - (typo + contentNode.width))/100)
+            keyframe = Math.round((scroll_y - (typo + contentNode.width))/40)
             lateX = scroll_y - typo
             if(scroll_y <= typo + contentNode.width) {
                 coverEle.current.style.transform = `translate(${-lateX}px, 0)`;
@@ -86,15 +132,21 @@ function MainVisual({on ,height, typoH, intro}) {
             } else {
                 coverEle.current.style.transform = `translate(${-contentNode.width}px,0)`;
                 setOp(0);
+                setPOn("off");
                 if (scroll_y > typo + contentNode.width) {
                     if (keyframe >= 65) {
                         setF(65);
                         setMainI(2);
                         setOp(1);
+                        setPOn("off");
+                        if(keyframe >= 100) {
+                            setPOn("on");
+                        }
                     } else if(keyframe <= 1) {
                         setF(1);
                         setMainI(1);
                     } else {
+                        setPOn("off");
                         if(keyframe > 40) {
                             setMainI(2);
                         }
@@ -115,12 +167,18 @@ function MainVisual({on ,height, typoH, intro}) {
         }
         
     }
-
+    function prooff() {
+        if(frame === 65) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
 
     useEffect(()=>{
         window.addEventListener('scroll',coverEvent);
         return ()=> window.removeEventListener('scroll', coverEvent);
-    },[typoH, contentNode.width, visualOn, frame, intro, mainI])
+    },[typoH, contentNode.width, visualOn, frame, intro, mainI, proOn])
 
 
     return (
@@ -138,10 +196,10 @@ function MainVisual({on ,height, typoH, intro}) {
                 <div className="cover" ref={coverEle}>
                     <div className="inner">
                         <div className="video_box">
-                            <div className="imgBox" style={{opacity : op}}>
+                            <div className={`imgBox ${proOn}`} style={{opacity : op}}>
                                 <img src={`./video/junheeMain${mainI}.jpg`} />
                             </div>
-                            <MainVideo num={frame} />
+                            <MainVideo num={frame} on={prooff()} />
                         </div>
                         <Profile />
                     </div>
