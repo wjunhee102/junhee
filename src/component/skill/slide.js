@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect, useRef} from 'react';
-import './slide.css';
+import './css/slide.css';
 
 // 슬라이드 콘텐츠 내용
 const slide_item = [
