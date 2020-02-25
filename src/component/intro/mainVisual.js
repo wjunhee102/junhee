@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import useNode from '../hooks/useNode';
 import useHeight from '../hooks/useHeight';
+import './css/mainVisual.css'
 
 // 비디오 컴포넌트
 function MainVideo({num}) {
@@ -14,7 +15,12 @@ function MainVideo({num}) {
 function Profile() {
     return (
         <div className="profile">
-            <div className="inner"></div>
+            <div className="inner">
+                <h2></h2>
+                <h3 className="name">
+                    황준희
+                </h3>
+            </div>
         </div>
     )
 } 
@@ -136,8 +142,8 @@ function MainVisual({on ,height, typoH, intro}) {
                                 <img src={`./video/junheeMain${mainI}.jpg`} />
                             </div>
                             <MainVideo num={frame} />
-                            <Profile />
                         </div>
+                        <Profile />
                     </div>
                 </div>
             </div>`

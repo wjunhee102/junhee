@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect} from 'react';
+import React, { useState, useCallback, useEffect, useRef} from 'react';
 import './slide.css';
 
 // 슬라이드 콘텐츠 내용
@@ -72,8 +72,6 @@ function Slide() {
                 })
             }},[])
             ;
-
-    
     let 
         mouseUp = false,
         mouseX = 0,
@@ -97,7 +95,7 @@ function Slide() {
         mouseEnter = true;
     }
     function slideDown(e) {
-        e.preventDefault();
+        e.preventDefault(); 
         mouseUp = true;
         mouseEnter = false;
         mouseSX = e.clientX;
@@ -166,45 +164,43 @@ function Slide() {
             let move = easeOut(progress, x, start, second)
             //setSMove(move)
             setSMove(move)
-
-            if (progress < second) {
-                requestAnimationFrame(animate);
-            } else {
-                if(i <= -slideW) {
-                    setSMove(sWrapW-slideW);
-                } else if(i >= sWrapW){
-                    setSMove(0);
+                if (progress < second) {
+                    requestAnimationFrame(animate);
                 } else {
-                    setSMove(i);
+                    if(i <= -slideW) {
+                        setSMove(sWrapW-slideW);
+                    } else if(i >= sWrapW){
+                        setSMove(0);
+                    } else {
+                        setSMove(i);
+                    }
                 }
-            }
         }
         window.requestAnimationFrame(animate);
     }
     
 
-    useEffect(
-        () => {
-            if(!slideNext){
+    useEffect(() => {
+        if(!slideNext){
                 return;
-            }
+        }
             const start = setTimeout(()=>{setSStart(true)},0)
             return ()=> clearTimeout(start);
         },
         [slideStart, slideNext]
     )
     
-    useEffect(
-        () => {
-            if (!slideStart) {
+    useEffect(() => {
+        if (!slideStart) {
                 return;
-            } 
+        }  
             const id = setInterval(()=>{moving(slideIdx+1,slideMove, 1000)}, 2000)
             return () => clearInterval(id);
         },
         [slideStart, slideMove, slideIdx, slideW, sWrap]
     );
     
+
 
 
     return (
@@ -267,7 +263,7 @@ function Slide() {
             <button 
                 onClick={()=>(
                     slideMove < 0 ?(null) : (
-                    moving(slideIdx-1,slideMove, 1000))   
+                        moving(slideIdx-1,slideMove, 1000))   
                 )}
                 className="btn_prev slide_arrows" 
                 type="button">
@@ -276,7 +272,7 @@ function Slide() {
             <button 
                 onClick={()=>(
                     slideMove > sWrapW-slideW ?(null) : (
-                    moving(slideIdx+1,slideMove, 1000))   
+                        moving(slideIdx+1,slideMove, 1000))   
                     )}
                 className="btn_next slide_arrows" 
                 type="button">
