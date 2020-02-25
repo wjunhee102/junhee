@@ -44,7 +44,7 @@ function Visual({typo, idx, on, height}) {
 
 
 //intro 컴포넌트
-function Intro({iPos, hOn}) {
+function Intro({iPos, hOn, tPos}) {
 
     const 
         [valueOn, setOn] = useState(0)
@@ -59,7 +59,7 @@ function Intro({iPos, hOn}) {
         
     // App에 값 전달    
     iPos(introH.height);
-    
+    tPos(typo-typo/3);
     // scroll 변수   
     let 
         ticking = false

@@ -29,7 +29,7 @@ body {
 
 #main .intro .mainVisual {
   width: 100%;
-  height: 11000px;
+  height: 11400px;
   overflow: hidden;
   position: relative;
   background-color: transparent;
@@ -164,7 +164,7 @@ body {
   bottom: 0;
   width: 100%;
   height: 100%;
-  background-color: #d4d4d4;
+  background-color: white;
   will-change: transform;
 }
 
@@ -188,7 +188,6 @@ body {
           transform: translate(0, -50%);
   width: 100%;
   height: 100%;
-  z-index: 10;
   padding: 15px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -219,14 +218,17 @@ body {
 }
 
 #main .mainVisual .contents .cover .video_box .imgBox.off {
-  -webkit-transition: 1s ease;
-  transition: 1s ease;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
 
 #main .mainVisual .contents .cover .video_box .imgBox.on {
   opacity: 0;
   width: 150px;
   height: 150px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 4px solid #cbcbcb;
   overflow: hidden;
   left: calc(50% - 75px);
   top: 50%;
@@ -235,6 +237,8 @@ body {
   border-radius: 50%;
   -webkit-animation: imgbox 1.5s ease forwards;
           animation: imgbox 1.5s ease forwards;
+  -webkit-box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.4), 0 8px 16px -8px rgba(0, 0, 0, 0.7), 0 -6px 16px -6px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.4), 0 8px 16px -8px rgba(0, 0, 0, 0.7), 0 -6px 16px -6px rgba(0, 0, 0, 0.08);
 }
 
 #main .mainVisual .contents .cover .video_box .imgBox.on img {
@@ -245,29 +249,6 @@ body {
   top: 40%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-}
-
-#main .mainVisual .contents .cover .profile {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  right: 0;
-  top: 50%;
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  background-color: #fff;
-}
-
-#main .mainVisual .contents .cover .profile .inner {
-  width: 1024px;
-  height: auto;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-30%, -50%);
-          transform: translate(-30%, -50%);
 }
 
 @-webkit-keyframes imgbox {
@@ -286,5 +267,149 @@ body {
   to {
     opacity: 1;
   }
+}
+
+#main .contents .cover .profile {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#main .contents .cover .profile .inner {
+  width: 1024px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-30%, -50%);
+          transform: translate(-30%, -50%);
+}
+
+#main .contents .cover .profile .iconBox {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+#main .contents .cover .profile .iconBox::after {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 815px;
+  height: 815px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 0;
+  background: url("../../../images/border.png") no-repeat center center;
+}
+
+#main .contents .cover .profile .iconBox.off {
+  -webkit-transform: translate(-50%, -50%) scale(0);
+          transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  -webkit-transition: 0.5s cubic-bezier(0, 1.19, 1, 1.07);
+  transition: 0.5s cubic-bezier(0, 1.19, 1, 1.07);
+}
+
+#main .contents .cover .profile .iconBox.on {
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  -webkit-transition: 1s cubic-bezier(0, 1.44, 0.71, 0.8);
+  transition: 1s cubic-bezier(0, 1.44, 0.71, 0.8);
+}
+
+#main .contents .cover .profile .iconBox.on::after {
+  opacity: 1;
+  -webkit-transition: 0.6s ease-in-out 1.1s;
+  transition: 0.6s ease-in-out 1.1s;
+}
+
+#main .contents .cover .profile .iconBox .icon {
+  position: absolute;
+  left: calc(50% - 75px);
+  top: calc(50% - 75px);
+  width: 150px;
+  height: 150px;
+  border-radius: 70px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 5;
+  cursor: pointer;
+}
+
+#main .contents .cover .profile .iconBox .icon span {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  z-index: -2;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+#main .contents .cover .profile .iconBox .icon.html5 {
+  background-image: url("../../../images/html5i.png");
+  -webkit-transform: translate(-400px, 0);
+          transform: translate(-400px, 0);
+}
+
+#main .contents .cover .profile .iconBox .icon.css3 {
+  background-image: url("../../../images/css3i.png");
+  -webkit-transform: translate(-280px, -280px);
+          transform: translate(-280px, -280px);
+}
+
+#main .contents .cover .profile .iconBox .icon.jQuery {
+  background-image: url("../../../images/jq.png");
+  -webkit-transform: translate(0, -400px);
+          transform: translate(0, -400px);
+}
+
+#main .contents .cover .profile .iconBox .icon.javascript {
+  background-image: url("../../../images/js.png");
+  -webkit-transform: translate(280px, -280px);
+          transform: translate(280px, -280px);
+}
+
+#main .contents .cover .profile .iconBox .icon.react {
+  background-image: url("../../../images/react.png");
+  -webkit-transform: translate(400px, 0);
+          transform: translate(400px, 0);
+}
+
+#main .contents .cover .profile .iconBox .icon.photoshop {
+  background-image: url("../../../images/photoshop.png");
+  -webkit-transform: translate(280px, 280px);
+          transform: translate(280px, 280px);
+}
+
+#main .contents .cover .profile .iconBox .icon.illustrator {
+  background-image: url("../../../images/illu.png");
+  -webkit-transform: translate(0, 400px);
+          transform: translate(0, 400px);
+}
+
+#main .contents .cover .profile .iconBox .icon.scss {
+  background-image: url("../../../images/scss.png");
+  -webkit-transform: translate(-280px, 280px);
+          transform: translate(-280px, 280px);
 }
 /*# sourceMappingURL=mainVisual.css.map */

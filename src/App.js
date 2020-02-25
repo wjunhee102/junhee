@@ -9,13 +9,14 @@ function App() {
     const 
         [headerPos, setHPos] = useState(0),
         [introPos, setIPos] = useState(0),
+        [typoPos, setTPos] = useState(0),
         [skillPos, setSPos] = useState(0),
         [webPos, setWPos] = useState(0),
         [headerOn, setHOn] = useState(0)
         ;
     const secH = [
         0,
-        introPos-headerPos,
+        introPos-(typoPos+headerPos),
         introPos+skillPos-headerPos,
         introPos+skillPos+1000-headerPos,
         introPos+skillPos+1200-headerPos
@@ -85,6 +86,7 @@ function App() {
                 <Intro 
                     iPos={setIPos}
                     hOn={setHOn}
+                    tPos={setTPos}
                 />
                 <Skill
                     sPos={setSPos}

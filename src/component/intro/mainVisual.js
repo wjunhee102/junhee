@@ -3,14 +3,6 @@ import useNode from '../hooks/useNode';
 import useHeight from '../hooks/useHeight';
 import './css/mainVisual.css'
 
-// 비디오 컴포넌트
-function MainVideo({num, on}) {
-    return(
-        <img style={{opacity : on , transition: `0.3s ease-in-out`}} src={`./video/keyframe/jun${num}.jpg`} />
-    )
-}
-//
-
 
 //skillkind 내용
 const skillKind = [
@@ -39,8 +31,12 @@ const skillKind = [
         img : 'photoshop.png'
     },
     {
-        name : 'illustrater',
+        name : 'illustrator',
         img : 'illu.png'
+    },
+    {
+        name : 'scss',
+        img : 'scss.png'
     }
 ]
 
@@ -51,22 +47,31 @@ function Skills({classname}) {
 }
 
 // profile 컴포넌트
-function Profile() {
+function Profile({on}) {
     return (
         <div className="profile">
             <div className="inner">
-                <ul className={`iconBox`} >
-                    {skillKind.map((ele , idx)=>(
-                        <Skills 
-                            classname={ele.name}
-                            key={idx}
-                        />
-                    ))}
-                </ul>
+                
             </div>
+            <ul className={`iconBox ${on}`} >
+                {skillKind.map((ele , idx)=>(
+                    <Skills 
+                        classname={ele.name}
+                        key={idx}
+                    />
+                ))}
+            </ul>
         </div>
     )
 } 
+
+// 비디오 컴포넌트
+function MainVideo({num, on}) {
+    return(
+        <img style={{opacity : on , transition: `0.3s ease-in-out`}} src={`./video/keyframe/jun${num}.jpg`} />
+    )
+}
+//
 
 
 
@@ -84,11 +89,13 @@ function mainOn(s,x){
 
 //메인 비주얼 컴포넌트
 function MainVisual({on ,height, typoH, intro}) {
-    const [visualOn, setVOn] = useState("off");
-    const [op, setOp] = useState(1)
-    const [frame , setF] = useState(1)
-    const [mainI , setMainI] = useState(1);
-    const [proOn , setPOn] = useState("off");
+    const 
+        [visualOn, setVOn] = useState("off"),
+        [op, setOp] = useState(1),
+        [frame , setF] = useState(1),
+        [mainI , setMainI] = useState(1),
+        [proOn , setPOn] = useState("off")
+    ;
     const 
         main_visual = useHeight(),
         contentNode = useNode(),
@@ -167,7 +174,7 @@ function MainVisual({on ,height, typoH, intro}) {
         }
         
     }
-    function prooff() {
+    function profileOff() {
         if(frame === 65) {
             return 0;
         } else {
@@ -199,9 +206,9 @@ function MainVisual({on ,height, typoH, intro}) {
                             <div className={`imgBox ${proOn}`} style={{opacity : op}}>
                                 <img src={`./video/junheeMain${mainI}.jpg`} />
                             </div>
-                            <MainVideo num={frame} on={prooff()} />
+                            <MainVideo num={frame} on={profileOff()} />
                         </div>
-                        <Profile />
+                        <Profile on={proOn} />
                     </div>
                 </div>
             </div>`
