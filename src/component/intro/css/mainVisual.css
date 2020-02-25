@@ -80,7 +80,7 @@ body {
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background: url("../../../images/junhee4.png") no-repeat center bottom;
+  background: url("../../../images/junhee.png") no-repeat center bottom;
 }
 
 #main .intro .mainVisual .contents .img_box .img span {

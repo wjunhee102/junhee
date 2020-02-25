@@ -16,9 +16,9 @@ function Profile() {
     return (
         <div className="profile">
             <div className="inner">
-                <h2></h2>
+                <h2> "" </h2>
                 <h3 className="name">
-                    황준희
+                    
                 </h3>
             </div>
         </div>
