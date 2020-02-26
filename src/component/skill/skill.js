@@ -12,7 +12,7 @@ function Skill({sPos}) {
 
     return (
         <section className="skill" ref={skillH.value}>
-            <h2>workmanship</h2>
+            <h2>skill</h2>
             <Slide />
         </section>
     )

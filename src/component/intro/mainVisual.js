@@ -103,6 +103,11 @@ function Skills({classname}) {
 
 // profile 컴포넌트
 function Profile({on, text}) {
+
+    useEffect(()=>{
+        
+    })
+
     return (
         <div className="profile">
             <ProfileText on={text}/>
@@ -115,9 +120,13 @@ function Profile({on, text}) {
                 ))}
                 <li className="tit">
                     <h3>
-                        workmanship <br />
+                        skill <br />
                         <span>활용 가능한 기술</span>
                     </h3>
+                </li>   
+                <li className="box">
+                    <h4></h4>
+                    <p></p>
                 </li>
             </ul>
         </div>
@@ -127,7 +136,7 @@ function Profile({on, text}) {
 // 비디오 컴포넌트
 function MainVideo({num, on}) {
     return(
-        <img style={{opacity : on , transition: `0.3s ease-in-out`}} src={`./video/keyframe/jun${num}.jpg`} />
+        <img className="keyframe" style={{opacity : on , transition: `0.3s ease-in-out`}} src={`./video/keyframe/jun${num}.jpg`} />
     )
 }
 //
@@ -163,8 +172,13 @@ function MainVisual({on ,height, typoH, intro}) {
         ;
     height(main_visual.height);
 
+
+    // cover event
     function coverEvent() {
+        // intro 이외에 이벤트 발생 막기
         if(window.pageYOffset > intro) return false
+
+
         let 
             startContent = typoH*3,
             scroll_y = window.pageYOffset,
@@ -173,6 +187,7 @@ function MainVisual({on ,height, typoH, intro}) {
             lateX,
             keyframe
             ;
+        
         
         if(startContent <= scroll_y) {
             opac = (scroll_y-startContent)/500
@@ -199,7 +214,6 @@ function MainVisual({on ,height, typoH, intro}) {
                 setTC(0);
             } else {
                 coverEle.current.style.transform = `translate(${-contentNode.width}px,0)`;
-                
                 setOp(0);
                 setPOn("off");
                 if (scroll_y > typo + contentNode.width) {
@@ -214,7 +228,6 @@ function MainVisual({on ,height, typoH, intro}) {
                             setTC(3);
                             setPOn("on");
                         }
-
                     } else if(keyframe <= 1) {
                         setF(1);
                         setMainI(1);
@@ -243,6 +256,7 @@ function MainVisual({on ,height, typoH, intro}) {
         
     }
 
+    // 메인 비디오 opacity 변경 함수
     function profileOff() {
         if(frame === 65) {
             return 0;
@@ -250,6 +264,7 @@ function MainVisual({on ,height, typoH, intro}) {
             return 1;
         }
     }
+    
 
     useEffect(()=>{
         window.addEventListener('scroll',coverEvent);

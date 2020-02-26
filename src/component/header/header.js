@@ -14,7 +14,7 @@ const gnb_info = [
         id : "btn_gnb" ,
         link : "section",
         //title : "기술",
-        title : "workmanship"
+        title : "skill"
     },
     {
         id : "btn_gnb" ,

@@ -12,7 +12,8 @@ function App() {
         [typoPos, setTPos] = useState(0),
         [skillPos, setSPos] = useState(0),
         [webPos, setWPos] = useState(0),
-        [headerOn, setHOn] = useState(0)
+        [headerOn, setHOn] = useState(0),
+        [bodyRatio, setRatio] = useState("vertical")
         ;
         
     const secH = [
@@ -71,13 +72,36 @@ function App() {
         window.requestAnimationFrame(animate);
     }
 
+
+    // 가로 세로 비율 맞추기
+    function ratio() {
+        let 
+            windowW = window.innerWidth,
+            windowH = window.innerHeight
+            ;
+        console.log(windowH)
+        if(windowW > windowH) {
+            setRatio("horizontal")
+        } else {
+            setRatio("vertical")
+        }
+    }
+
+    
+    
+    useEffect(()=>{
+        ratio();
+        window.addEventListener("resize", ratio);
+    }, [bodyRatio]);
+
+
     useEffect(()=> {
         document.title = `황준희 포트폴리오`;
     });
 
  
     return (
-        <div className="App">
+        <div className={`App ${bodyRatio}`}>
             <div className="wrap">
                 <Header 
                     setHPos={setHPos}

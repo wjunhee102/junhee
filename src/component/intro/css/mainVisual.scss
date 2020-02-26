@@ -1,5 +1,9 @@
 @import '../../../css/index.scss';
 
+
+
+
+
 #main {
     .intro {
         .mainVisual {
@@ -366,13 +370,13 @@
                         h3 {
                             display: table-cell;
                             position: relative;
-                            font-family: $poppins;
+                            // font-family: $poppins;
                             text-transform: uppercase;
                             text-align: center;
                             line-height: 1.5;
                             font-size: 2em;
                             white-space: nowrap;
-                            font-weight: 500;
+                            font-weight: 600;
                             color: #262626;
                             text-align: left;
                             &::after {
@@ -469,4 +473,39 @@
             }
         }
     }
+}
+
+
+
+.vertical {
+    #main {
+        .mainVisual {
+            .contents {
+                .cover {
+                    .inner {
+                        .video_box {
+                            .imgBox {
+                                img {
+                                    height: 100vh;
+                                    position: absolute;
+                                    left: 50%;
+                                    top: 50%;
+                                    transform: translate(-50%, -50%);
+                                }
+                            }
+                            .keyframe {
+                                height: 100vh;
+                                position: absolute;
+                                left: 50%;
+                                top: 50%;
+                                transform: translate(-50%, -50%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    
 }
