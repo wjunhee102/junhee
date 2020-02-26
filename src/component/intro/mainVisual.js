@@ -34,20 +34,28 @@ function AboutMe({classname, content}) {
 function ProfileText({on}) {
     const titEvent = (x, y) => {
         if(x === y) return "on"
+        if(x === 3)  {
+            return "end";
+        }
         return "off";
     }
 
     return (
-        
-        <h2 className={`tit ${titEvent(on, 1)}`}>
-            "더 나은 내일이 되길 위하여<br />
-            &nbsp;&nbsp;<span>항상 노력 합니다.</span>"
-        </h2>
-        <ul className="about">
-            {about.map((ele, idx)=>(
-            <AboutMe />
-            ))}
-        </ul>
+        <div className="text-box">
+            <h2 className={`tit ${titEvent(on, 1)}`}>
+                "더 나은 내일이 되길 위하여<br />
+                &nbsp;&nbsp;<span>항상 노력 합니다.</span>"
+            </h2>
+            <ul className={`about ${titEvent(on, 2)}`}>
+                { about.map((ele, idx)=>(
+                    <AboutMe 
+                        classname={ele.type}
+                        content={ele.content}
+                        key={idx}
+                    />
+                ))}
+            </ul>
+        </div>
     )
 }
 
@@ -97,9 +105,7 @@ function Skills({classname}) {
 function Profile({on, text}) {
     return (
         <div className="profile">
-            <div className="text-box">
-                <ProfileText on={text}/>
-            </div>
+            <ProfileText on={text}/>
             <ul className={`iconBox ${on}`} >
                 {skillKind.map((ele , idx)=>(
                     <Skills 
@@ -107,6 +113,12 @@ function Profile({on, text}) {
                         key={idx}
                     />
                 ))}
+                <li className="tit">
+                    <h3>
+                        workmanship <br />
+                        <span>활용 가능한 기술</span>
+                    </h3>
+                </li>
             </ul>
         </div>
     )
@@ -177,7 +189,7 @@ function MainVisual({on ,height, typoH, intro}) {
         }
 
         if( typo <= scroll_y && scroll_y <= intro){
-            keyframe = Math.round((scroll_y - (typo + contentNode.width))/40)
+            keyframe = Math.round((scroll_y - (typo + contentNode.width))/70)
             lateX = scroll_y - typo
             if(scroll_y <= typo + contentNode.width) {
                 coverEle.current.style.transform = `translate(${-lateX}px, 0)`;
@@ -191,15 +203,18 @@ function MainVisual({on ,height, typoH, intro}) {
                 setOp(0);
                 setPOn("off");
                 if (scroll_y > typo + contentNode.width) {
+
                     if (keyframe >= 65) {
                         setF(65);
                         setMainI(2);
                         setOp(1);
                         setPOn("off");
-                        if(keyframe >= 100) {
+                        setTC(2);
+                        if(keyframe >= 90) {
+                            setTC(3);
                             setPOn("on");
-                            setTC(0);
                         }
+
                     } else if(keyframe <= 1) {
                         setF(1);
                         setMainI(1);
