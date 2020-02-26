@@ -38,6 +38,7 @@ function ProfileText({on}) {
     }
 
     return (
+        
         <h2 className={`tit ${titEvent(on, 1)}`}>
             "더 나은 내일이 되길 위하여<br />
             &nbsp;&nbsp;<span>항상 노력 합니다.</span>"
