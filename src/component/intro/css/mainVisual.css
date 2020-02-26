@@ -197,6 +197,11 @@ body {
   height: 100%;
 }
 
+#main .mainVisual .contents .cover .video_box .keyframe {
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
 #main .mainVisual .contents .cover .video_box .imgBox {
   position: absolute;
   left: 0;
@@ -614,7 +619,7 @@ body {
           transform: translate(-280px, 280px);
 }
 
-.vertical #main .mainVisual .contents .cover .inner .video_box .imgBox img {
+.vertical #main .mainVisual .contents .cover .inner .video_box .imgBox.off img {
   height: 100vh;
   position: absolute;
   left: 50%;

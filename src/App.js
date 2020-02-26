@@ -79,7 +79,6 @@ function App() {
             windowW = window.innerWidth,
             windowH = window.innerHeight
             ;
-        console.log(windowH)
         if(windowW > windowH) {
             setRatio("horizontal")
         } else {

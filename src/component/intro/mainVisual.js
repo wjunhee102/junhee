@@ -133,14 +133,6 @@ function Profile({on, text}) {
     )
 } 
 
-// 비디오 컴포넌트
-function MainVideo({num, on}) {
-    return(
-        <img className="keyframe" style={{opacity : on , transition: `0.3s ease-in-out`}} src={`./video/keyframe/jun${num}.jpg`} />
-    )
-}
-//
-
 
 
 //on class 함수
@@ -288,9 +280,9 @@ function MainVisual({on ,height, typoH, intro}) {
                     <div className="inner">
                         <div className="video_box">
                             <div className={`imgBox ${proOn}`} style={{opacity : op}}>
-                                <img src={`./video/junheeMain${mainI}.jpg`} />
+                                <img src={`./video/junheeMain${mainI}.jpg`} alt="junhee"/>
                             </div>
-                            <MainVideo num={frame} on={profileOff()} />
+                            <img className="keyframe" style={{opacity : profileOff()}} src={`./video/keyframe/jun${frame}.jpg`} alt="junhee"/>
                         </div>
                         <Profile on={proOn} text={textChane}/>
                     </div>

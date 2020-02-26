@@ -143,6 +143,9 @@
                     img {
                         height: 100%;
                     }
+                    .keyframe {
+                        transition: 0.3s ease-in-out;
+                    }
                     .imgBox {
                         position: absolute;
                         left: 0;
@@ -485,13 +488,18 @@
                     .inner {
                         .video_box {
                             .imgBox {
-                                img {
-                                    height: 100vh;
-                                    position: absolute;
-                                    left: 50%;
-                                    top: 50%;
-                                    transform: translate(-50%, -50%);
+                                &.off {
+                                    img {
+                                        height: 100vh;
+                                        position: absolute;
+                                        left: 50%;
+                                        top: 50%;
+                                        transform: translate(-50%, -50%);
+                                    }
                                 }
+                                
+                                
+                                
                             }
                             .keyframe {
                                 height: 100vh;

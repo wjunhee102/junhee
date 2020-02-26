@@ -37,6 +37,14 @@ function useFetch(url){
     return { payload, loading, error}
 }
 
+function createComponet(x, y) {
+    let ratio = x/y,
+        width = 150,
+        height = 150*ratio
+        ;
+        
+}
+
 
 
 function Connect() {

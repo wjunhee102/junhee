@@ -220,6 +220,7 @@ function Slide() {
                     onMouseLeave={slideStop}
                     onTouchStart={(e)=>((slideDownT(e),{passive : false}))}
                     onTouchMove={(e)=>((slideMovingT(e),{passive:false}))}
+                    onTouchCancel={(e)=>((slideStop(e),{passive : false}))}
                     onTouchEnd={(e)=>((slideStop(e),{passive : false}))}
                 >
                     {slideMove <= 0 ? (
