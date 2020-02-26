@@ -218,8 +218,8 @@ body {
 }
 
 #main .mainVisual .contents .cover .video_box .imgBox.off {
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 
 #main .mainVisual .contents .cover .video_box .imgBox.on {
@@ -281,7 +281,7 @@ body {
           box-sizing: border-box;
 }
 
-#main .contents .cover .profile .inner {
+#main .contents .cover .profile .text-box {
   width: 1024px;
   height: auto;
   position: absolute;
@@ -289,6 +289,28 @@ body {
   top: 50%;
   -webkit-transform: translate(-30%, -50%);
           transform: translate(-30%, -50%);
+}
+
+#main .contents .cover .profile .text-box h2.tit {
+  width: 100%;
+  text-align: left;
+  font-size: 4.25em;
+  font-weight: 600;
+  color: #262626;
+  line-height: 1.5;
+  opacity: 0;
+  -webkit-transition: 0.6s ease-in-out;
+  transition: 0.6s ease-in-out;
+}
+
+#main .contents .cover .profile .text-box h2.tit.on {
+  opacity: 1;
+}
+
+#main .contents .cover .profile .text-box h2.tit span {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
 }
 
 #main .contents .cover .profile .iconBox {

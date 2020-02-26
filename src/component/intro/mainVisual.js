@@ -3,6 +3,52 @@ import useNode from '../hooks/useNode';
 import useHeight from '../hooks/useHeight';
 import './css/mainVisual.css'
 
+const about = [
+    {
+        type : "name",
+        content : "황준희"
+    },
+    {
+        type : "year",
+        content : "1993년 1월 생"
+    },
+    {
+        type : "education",
+        content : "신한대학교 경영학과 졸업"
+    },
+    {
+        type : "Awards1",
+        content : "신한대 2018 하반기 창업 경진 대회 장려상"
+    },
+    {
+        type : "Awards2",
+        content : "계명대학교 제5회 전국 대학생토론대회 입선"
+    }
+]
+function AboutMe({classname, content}) {
+    return (
+        <li className={`about ${classname}`}><span>{content}</span></li>
+    )
+}
+
+function ProfileText({on}) {
+    const titEvent = (x, y) => {
+        if(x === y) return "on"
+        return "off";
+    }
+
+    return (
+        <h2 className={`tit ${titEvent(on, 1)}`}>
+            "더 나은 내일이 되길 위하여<br />
+            &nbsp;&nbsp;<span>항상 노력 합니다.</span>"
+        </h2>
+        <ul className="about">
+            {about.map((ele, idx)=>(
+            <AboutMe />
+            ))}
+        </ul>
+    )
+}
 
 //skillkind 내용
 const skillKind = [
@@ -47,11 +93,11 @@ function Skills({classname}) {
 }
 
 // profile 컴포넌트
-function Profile({on}) {
+function Profile({on, text}) {
     return (
         <div className="profile">
-            <div className="inner">
-                
+            <div className="text-box">
+                <ProfileText on={text}/>
             </div>
             <ul className={`iconBox ${on}`} >
                 {skillKind.map((ele , idx)=>(
@@ -94,7 +140,8 @@ function MainVisual({on ,height, typoH, intro}) {
         [op, setOp] = useState(1),
         [frame , setF] = useState(1),
         [mainI , setMainI] = useState(1),
-        [proOn , setPOn] = useState("off")
+        [proOn , setPOn] = useState("off"),
+        [textChane , setTC] = useState(0)
     ;
     const 
         main_visual = useHeight(),
@@ -133,11 +180,13 @@ function MainVisual({on ,height, typoH, intro}) {
             lateX = scroll_y - typo
             if(scroll_y <= typo + contentNode.width) {
                 coverEle.current.style.transform = `translate(${-lateX}px, 0)`;
-                setOp(1)
+                setOp(1);
                 setMainI(1);
-                setF(1)
+                setF(1);
+                setTC(0);
             } else {
                 coverEle.current.style.transform = `translate(${-contentNode.width}px,0)`;
+                
                 setOp(0);
                 setPOn("off");
                 if (scroll_y > typo + contentNode.width) {
@@ -148,14 +197,17 @@ function MainVisual({on ,height, typoH, intro}) {
                         setPOn("off");
                         if(keyframe >= 100) {
                             setPOn("on");
+                            setTC(0);
                         }
                     } else if(keyframe <= 1) {
                         setF(1);
                         setMainI(1);
                     } else {
+                        setTC(1);
                         setPOn("off");
-                        if(keyframe > 40) {
+                        if(keyframe > 32) {
                             setMainI(2);
+                            setTC(2);
                         }
                         setF(keyframe)
                         setOp(0)
@@ -174,6 +226,7 @@ function MainVisual({on ,height, typoH, intro}) {
         }
         
     }
+
     function profileOff() {
         if(frame === 65) {
             return 0;
@@ -185,7 +238,7 @@ function MainVisual({on ,height, typoH, intro}) {
     useEffect(()=>{
         window.addEventListener('scroll',coverEvent);
         return ()=> window.removeEventListener('scroll', coverEvent);
-    },[typoH, contentNode.width, visualOn, frame, intro, mainI, proOn])
+    },[typoH, contentNode.width, visualOn, frame, intro, mainI, proOn, textChane])
 
 
     return (
@@ -208,7 +261,7 @@ function MainVisual({on ,height, typoH, intro}) {
                             </div>
                             <MainVideo num={frame} on={profileOff()} />
                         </div>
-                        <Profile on={proOn} />
+                        <Profile on={proOn} text={textChane}/>
                     </div>
                 </div>
             </div>`

@@ -129,7 +129,7 @@ function Slide() {
         if(!mouseEnter) {
             if(wrapMove === 0) return false
             inum = Math.round(wrapMove/slideW);
-            moving(inum, wrapMove, 1000);
+            moving(inum, wrapMove, 400);
         }
         
     }
