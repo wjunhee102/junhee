@@ -35,15 +35,6 @@ body {
   background-color: #000;
 }
 
-#main .intro .bg {
-  background-color: #fff;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
 #main .intro .typo {
   width: 100%;
   height: 150vh;
@@ -52,16 +43,13 @@ body {
   overflow: hidden;
 }
 
-#main .intro .typo.typo3 {
-  background-color: transparent;
-}
-
 #main .intro .typo h2 {
   text-align: center;
   color: #fff;
   font-weight: 600;
   font-size: 7.5em;
   white-space: nowrap;
+  will-change: opacity;
 }
 
 #main .intro .typo h2.off {

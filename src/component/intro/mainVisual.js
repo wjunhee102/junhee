@@ -152,14 +152,15 @@ function MainVisual({on ,height, typoH, intro}) {
         [frame , setF] = useState(1),
         [mainI , setMainI] = useState(1),
         [proOn , setPOn] = useState("off"),
-        [textChane , setTC] = useState(0),
-        [mainImageW , setImageW] = useState(1024),
-        [mainImageH , setImageH] = useState(1024)
+        [textChane , setTC] = useState(0)
     ;
     const 
         main_visual = useHeight(),
         contentNode = useNode(),
-        coverEle = useRef()
+        coverEle = useRef(),
+        mainImage = useRef(),
+        contentBox = useRef(),
+        keyframeImg = useRef()
         ;
     height(main_visual.height);
 
@@ -178,38 +179,39 @@ function MainVisual({on ,height, typoH, intro}) {
             lateX,
             keyframe
             ;
-        
+        let contentWidth = contentBox.current.getBoundingClientRect().width
         
         if(startContent <= scroll_y) {
             opac = (scroll_y-startContent)/500
             if(scroll_y <= startContent+500) {
-                contentNode.ele.style.opacity = opac;
+                contentBox.current.style.opacity = opac;
                 setVOn('off')
             } else {
-                contentNode.ele.style.opacity = 1;
+                contentBox.current.style.opacity = 1;
                 setVOn('on')
             }
         } else {
-            contentNode.ele.style.opacity = 0;
+            contentBox.current.style.opacity = 0;
             setVOn('off')
         }
 
         if( typo <= scroll_y && scroll_y <= intro){
-            keyframe = Math.round((scroll_y - (typo + contentNode.width))/70)
+            keyframe = Math.round((scroll_y - (typo + contentWidth))/70)
             lateX = scroll_y - typo
-            if(scroll_y <= typo + contentNode.width) {
+            if(scroll_y <= typo + contentWidth) {
                 coverEle.current.style.transform = `translate(${-lateX}px, 0)`;
                 setOp(1);
                 setMainI(1);
                 setF(1);
                 setTC(0);
             } else {
-                coverEle.current.style.transform = `translate(${-contentNode.width}px,0)`;
+                coverEle.current.style.transform = `translate(${-contentWidth}px,0)`;
                 setOp(0);
                 setPOn("off");
-                if (scroll_y > typo + contentNode.width) {
+                if (scroll_y > typo + contentWidth) {
 
                     if (keyframe >= 65) {
+                        keyframeImg.current.style.opacity = 0
                         setF(65);
                         setMainI(2);
                         setOp(1);
@@ -220,17 +222,19 @@ function MainVisual({on ,height, typoH, intro}) {
                             setPOn("on");
                         }
                     } else if(keyframe <= 1) {
+                        keyframeImg.current.style.opacity = 1
                         setF(1);
                         setMainI(1);
                     } else {
+                        keyframeImg.current.style.opacity = 1
                         setTC(1);
                         setPOn("off");
+                        setF(keyframe)
+                        setOp(0)
                         if(keyframe > 32) {
                             setMainI(2);
                             setTC(2);
                         }
-                        setF(keyframe)
-                        setOp(0)
                     }
                 } 
             } 
@@ -249,28 +253,23 @@ function MainVisual({on ,height, typoH, intro}) {
     function mainWidth() {
         let width = window.innerWidth
         if(width > 1024) {
-            setImageW(1024)
+            mainImage.current.style.width =  `1024px`
+            width = 1024
         } else {
-            setImageW(width)
+            mainImage.current.style.width =  `${width}px`
         }
-        let heigth = Math.round(mainImageW*0.9)
-        setImageH(heigth)
+        let height = Math.round(width*0.9)
+        mainImage.current.style.height = `${height}px`
     }
 
     // 메인 비디오 opacity 변경 함수
-    function profileOff() {
-        if(frame === 65) {
-            return 0;
-        } else {
-            return 1;
-        }
-    }
+
     
     useEffect(()=>{
         mainWidth();
         window.addEventListener("resize" , mainWidth);
         return ()=> window.removeEventListener("resize" , mainWidth);
-    },[mainImageW, mainImageH])
+    },[])
 
     useEffect(()=>{
         window.addEventListener('scroll',coverEvent);
@@ -280,9 +279,9 @@ function MainVisual({on ,height, typoH, intro}) {
 
     return (
         <article className={`mainVisual`} ref={main_visual.value}>
-            <div className={`contents ${mainOn(on,3)}`} ref={contentNode.nodeGet}>
+            <div className={`contents ${mainOn(on,3)}`} ref={contentBox}>
                 <div className="img_box">
-                    <div className="img" style={{width: `${mainImageW}px`, height : `${mainImageH}px`}}>
+                    <div className="img" ref={mainImage}>
                         <span>황준희</span>
                     </div>
                 </div>
@@ -296,12 +295,12 @@ function MainVisual({on ,height, typoH, intro}) {
                             <div className={`imgBox ${proOn}`} style={{opacity : op}}>
                                 <img src={`./video/junheeMain${mainI}.jpg`} alt="junhee"/>
                             </div>
-                            <img className="keyframe" style={{opacity : profileOff()}} src={`./video/keyframe/jun${frame}.jpg`} alt="junhee"/>
+                            <img className="keyframe" ref={keyframeImg} src={`./video/keyframe/jun${frame}.jpg`} alt="junhee"/>
                         </div>
                         <Profile on={proOn} text={textChane}/>
                     </div>
                 </div>
-            </div>`
+            </div>
         </article>
     )
 }

@@ -16,15 +16,13 @@
                 overflow: hidden;
                 width: 100%;
                 height: 100vh;
-                min-width:815px;
-                min-height: 815px;
                 left: 50%;
                 opacity: 0;
                 transform: translateX(-50%);
                 background: #fff;
                 &.off {
                     position: absolute;
-                    top:100px;
+                    top:0px;
                 }
                 &.on {
                     position: fixed;
@@ -340,6 +338,8 @@
                     left: 50%;
                     top: 50%;
                     transform: translate(-50%, -50%);
+    
+                    will-change: scale;
                     &::after {
                         @include after();
                         width:615px;

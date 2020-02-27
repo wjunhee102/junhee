@@ -84,12 +84,11 @@ function App() {
             setRatio("vertical")
         }
     }
-
-    
     
     useEffect(()=>{
-        window.addEventListener("resize", ratio);
-        return ()=> window.removeEventListener("resize", ratio);
+        ratio();
+        window.addEventListener("resize", ratio, true);
+        return ()=> window.removeEventListener("resize", ratio , true);
     }, [bodyRatio]);
 
 
