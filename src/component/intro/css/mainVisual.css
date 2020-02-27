@@ -83,6 +83,7 @@ body {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   background: url("../../../images/junhee.png") no-repeat center bottom;
+  background-size: cover;
 }
 
 #main .intro .mainVisual .contents .img_box .img span {
@@ -231,13 +232,13 @@ body {
 
 #main .mainVisual .contents .cover .video_box .imgBox.on {
   opacity: 0;
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border: 4px solid #cbcbcb;
   overflow: hidden;
-  left: calc(50% - 75px);
+  left: calc(50% - 65px);
   top: 50%;
   -webkit-transform: translate(0, -50%);
           transform: translate(0, -50%);
@@ -249,8 +250,8 @@ body {
 }
 
 #main .mainVisual .contents .cover .video_box .imgBox.on img {
-  width: 150px;
-  height: 267px;
+  width: 130px;
+  height: 231px;
   position: absolute;
   left: 50%;
   top: 40%;
@@ -446,8 +447,8 @@ body {
   display: block;
   position: absolute;
   content: "";
-  width: 815px;
-  height: 815px;
+  width: 615px;
+  height: 615px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 50%;
@@ -458,6 +459,7 @@ body {
           transform: translate(-50%, -50%);
   opacity: 0;
   background: url("../../../images/border.png") no-repeat center center;
+  background-size: cover;
 }
 
 #main .contents .cover .profile .iconBox.off {
@@ -551,11 +553,11 @@ body {
 
 #main .contents .cover .profile .iconBox .icon {
   position: absolute;
-  left: calc(50% - 75px);
-  top: calc(50% - 75px);
-  width: 150px;
-  height: 150px;
-  border-radius: 70px;
+  left: calc(50% - 55px);
+  top: calc(50% - 55px);
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -575,50 +577,50 @@ body {
 
 #main .contents .cover .profile .iconBox .icon.html5 {
   background-image: url("../../../images/html5i.png");
-  -webkit-transform: translate(-400px, 0);
-          transform: translate(-400px, 0);
+  -webkit-transform: translate(-300px, 0);
+          transform: translate(-300px, 0);
 }
 
 #main .contents .cover .profile .iconBox .icon.css3 {
   background-image: url("../../../images/css3i.png");
-  -webkit-transform: translate(-280px, -280px);
-          transform: translate(-280px, -280px);
+  -webkit-transform: translate(-215px, -215px);
+          transform: translate(-215px, -215px);
 }
 
 #main .contents .cover .profile .iconBox .icon.jQuery {
   background-image: url("../../../images/jq.png");
-  -webkit-transform: translate(0, -400px);
-          transform: translate(0, -400px);
+  -webkit-transform: translate(0, -300px);
+          transform: translate(0, -300px);
 }
 
 #main .contents .cover .profile .iconBox .icon.javascript {
   background-image: url("../../../images/js.png");
-  -webkit-transform: translate(280px, -280px);
-          transform: translate(280px, -280px);
+  -webkit-transform: translate(215px, -215px);
+          transform: translate(215px, -215px);
 }
 
 #main .contents .cover .profile .iconBox .icon.react {
   background-image: url("../../../images/react.png");
-  -webkit-transform: translate(400px, 0);
-          transform: translate(400px, 0);
+  -webkit-transform: translate(300px, 0);
+          transform: translate(300px, 0);
 }
 
 #main .contents .cover .profile .iconBox .icon.photoshop {
   background-image: url("../../../images/photoshop.png");
-  -webkit-transform: translate(280px, 280px);
-          transform: translate(280px, 280px);
+  -webkit-transform: translate(215px, 215px);
+          transform: translate(215px, 215px);
 }
 
 #main .contents .cover .profile .iconBox .icon.illustrator {
   background-image: url("../../../images/illu.png");
-  -webkit-transform: translate(0, 400px);
-          transform: translate(0, 400px);
+  -webkit-transform: translate(0, 300px);
+          transform: translate(0, 300px);
 }
 
 #main .contents .cover .profile .iconBox .icon.scss {
   background-image: url("../../../images/scss.png");
-  -webkit-transform: translate(-280px, 280px);
-          transform: translate(-280px, 280px);
+  -webkit-transform: translate(-215px, 215px);
+          transform: translate(-215px, 215px);
 }
 
 .vertical #main .mainVisual .contents .cover .inner .video_box .imgBox.off img {

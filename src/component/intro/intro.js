@@ -60,18 +60,15 @@ function Intro({iPos, hOn, tPos}) {
     // App에 값 전달    
     iPos(introH.height);
     tPos(typo-typo/3);
-    // scroll 변수   
-    let 
-        ticking = false
-        ;
     
     // intro섹션 parallex함수
     function move(scroll_pos) {
          
-        let typoH = typo/4,
+        let 
+            // typoH = typo/4,
             mainArea = mainH + typo*2 + typo/3
             ;
-            if (scroll_pos < typo-typoH ) {
+            if (scroll_pos < typo ) {
                 setOn(0)
             } else if(scroll_pos >= typo && scroll_pos <= typo*2) {
                 setOn(1)
@@ -81,21 +78,13 @@ function Intro({iPos, hOn, tPos}) {
                 setOn(3)
             } else if (scroll_pos >= mainArea){
                 setOn(4)
-            } else {
-                setOn(-1)
-            }
+            } 
     }
    
     // 스크롤 이벤트 실행 함수
     function introScroll() {
-        if(!ticking) {
-            window.requestAnimationFrame(()=> {
                 move(window.pageYOffset);
                 hOn(valueOn);
-            })
-            ticking = true ;
-        }
-            ticking = false ;
     }
 
 

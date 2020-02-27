@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React from 'react';
 import './css/skill.css';
 import Slide from './slide';
 import useHeight from '../hooks/useHeight';

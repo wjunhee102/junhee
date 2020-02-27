@@ -3,6 +3,8 @@ import useNode from '../hooks/useNode';
 import useHeight from '../hooks/useHeight';
 import './css/mainVisual.css'
 
+
+
 const about = [
     {
         type : "name",
@@ -121,8 +123,7 @@ function Profile({on, text}) {
                     </h3>
                 </li>   
                 <li className="box">
-                    <h4></h4>
-                    <p></p>
+                    
                 </li>
             </ul>
         </div>

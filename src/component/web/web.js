@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import './css/web.css';
 import './css/team.css';
 import useHeight from '../hooks/useHeight';

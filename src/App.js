@@ -3,7 +3,6 @@ import Header from './component/header/header';
 import Intro from './component/intro/intro';
 import Skill from './component/skill/skill';
 import Web from './component/web/web';
-import Connect from './component/connect/connect';
 
 function App() {
     const 
@@ -89,12 +88,12 @@ function App() {
     
     
     useEffect(()=>{
-        ratio();
         window.addEventListener("resize", ratio);
     }, [bodyRatio]);
 
 
     useEffect(()=> {
+        ratio();
         document.title = `황준희 포트폴리오`;
     });
 
