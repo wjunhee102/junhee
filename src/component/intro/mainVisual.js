@@ -104,10 +104,6 @@ function Skills({classname}) {
 // profile 컴포넌트
 function Profile({on, text}) {
 
-    useEffect(()=>{
-        
-    })
-
     return (
         <div className="profile">
             <ProfileText on={text}/>

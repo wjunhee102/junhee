@@ -39,6 +39,8 @@ body {
   overflow: hidden;
   width: 100%;
   height: 100vh;
+  min-width: 815px;
+  min-height: 815px;
   left: 50%;
   opacity: 0;
   -webkit-transform: translateX(-50%);

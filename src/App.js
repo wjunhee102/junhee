@@ -119,7 +119,7 @@ function App() {
                 <Web 
                     wPos={setWPos}
                 />
-                <Connect />
+      
                 </main>
             </div>
         </div> 
