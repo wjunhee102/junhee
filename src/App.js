@@ -89,6 +89,7 @@ function App() {
     
     useEffect(()=>{
         window.addEventListener("resize", ratio);
+        return ()=> window.removeEventListener("resize", ratio);
     }, [bodyRatio]);
 
 

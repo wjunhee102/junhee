@@ -152,7 +152,9 @@ function MainVisual({on ,height, typoH, intro}) {
         [frame , setF] = useState(1),
         [mainI , setMainI] = useState(1),
         [proOn , setPOn] = useState("off"),
-        [textChane , setTC] = useState(0)
+        [textChane , setTC] = useState(0),
+        [mainImageW , setImageW] = useState(1024),
+        [mainImageH , setImageH] = useState(1024)
     ;
     const 
         main_visual = useHeight(),
@@ -244,6 +246,16 @@ function MainVisual({on ,height, typoH, intro}) {
         }
         
     }
+    function mainWidth() {
+        let width = window.innerWidth
+        if(width > 1024) {
+            setImageW(1024)
+        } else {
+            setImageW(width)
+        }
+        let heigth = Math.round(mainImageW*0.9)
+        setImageH(heigth)
+    }
 
     // 메인 비디오 opacity 변경 함수
     function profileOff() {
@@ -254,6 +266,11 @@ function MainVisual({on ,height, typoH, intro}) {
         }
     }
     
+    useEffect(()=>{
+        mainWidth();
+        window.addEventListener("resize" , mainWidth);
+        return ()=> window.removeEventListener("resize" , mainWidth);
+    },[mainImageW, mainImageH])
 
     useEffect(()=>{
         window.addEventListener('scroll',coverEvent);
@@ -265,7 +282,7 @@ function MainVisual({on ,height, typoH, intro}) {
         <article className={`mainVisual`} ref={main_visual.value}>
             <div className={`contents ${mainOn(on,3)}`} ref={contentNode.nodeGet}>
                 <div className="img_box">
-                    <div className="img">
+                    <div className="img" style={{width: `${mainImageW}px`, height : `${mainImageH}px`}}>
                         <span>황준희</span>
                     </div>
                 </div>
