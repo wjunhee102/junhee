@@ -12,7 +12,8 @@ function App() {
         [skillPos, setSPos] = useState(0),
         [webPos, setWPos] = useState(0),
         [headerOn, setHOn] = useState(0),
-        [bodyRatio, setRatio] = useState("vertical")
+        [bodyRatio, setRatio] = useState("vertical"),
+        [skillOn, setSOn] = useState(0)
         ;
         
     const secH = [
@@ -24,7 +25,6 @@ function App() {
         ]
 
     let moveStart = false;
-
 	
 	// moveSection 정지 
     window.addEventListener('wheel', ()=>{
@@ -91,11 +91,13 @@ function App() {
         return ()=> window.removeEventListener("resize", ratio , true);
     }, [bodyRatio]);
 
-
+    
     useEffect(()=> {
-        ratio();
+        setSOn(secH[2]-typoPos);
+        console.log(skillOn);
         document.title = `황준희 포트폴리오`;
-    });
+        
+    },[skillOn]);
 
  
     return (
@@ -114,6 +116,7 @@ function App() {
                 />
                 <Skill
                     sPos={setSPos}
+                    onon={skillOn}
                 />
                 <Web 
                     wPos={setWPos}
