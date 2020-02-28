@@ -10,10 +10,11 @@ function Skill({sPos, onon}) {
         skillH = useHeight();
     
     const h3Style = {
+        zIndex: `1000`,
         width : `100%`,
         height: `300px`,
         backgroundColor: `red`,
-        position: 'absolute',
+        position: 'fixed',
         left: `50%`,
         top: `50%`,
         transform: `translate(-50%, -50%)`,

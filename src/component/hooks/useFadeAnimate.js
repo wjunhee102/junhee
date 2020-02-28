@@ -23,9 +23,10 @@ function useFadeAnimate(P_offsetY) {
         } else {
 
         const START_SECTION = DISTANCE/2 ;
-        const MIDDLE_SECTION = START_SECTION + (DISTANCE/10)*2;
+        const MIDDLE_SECTION = START_SECTION;
         
         let start = pY - START_PONIT;
+
         function animate() {
             let end;
             let increase;
@@ -34,24 +35,18 @@ function useFadeAnimate(P_offsetY) {
             
 
             if (start <= START_SECTION) {
-                op_value = (pY - START_PONIT)/500
+                op_value = (pY - START_PONIT)/START_SECTION
                 end = START_SECTION;
-                increase = START_SECTION/2500;
+                increase = START_SECTION/(START_SECTION*2.5);
                 final = 1;
                 distance = Math.abs((end-start))/5
-            } else if (start > START_PONIT && start < MIDDLE_SECTION) {
-                op_value = 1
-                end = MIDDLE_SECTION;
-                distance = 1000;
-                increase = 0;
-                final = 1;
-            } else {
-                end = DISTANCE;
-                op_value = (END_POINT - pY)/300
-                increase = -(DISTANCE - 3*DISTANCE/10)/500;
+            }  else {
+                end = DISTANCE*0.7;
+                op_value = (END_POINT - pY)/200
+                increase = -(end - 3*DISTANCE/10)/(DISTANCE+START_SECTION);
                 final = 0;
-                distance = Math.abs((end-start))/3
-                start = 1000-start
+                distance = Math.abs((end-start))
+                start = DISTANCE-start
             }
        
             op_value += increase
