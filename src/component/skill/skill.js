@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './css/skill.css';
 import Slide from './slide';
 import useHeight from '../hooks/useHeight';
@@ -11,7 +11,7 @@ function Skill({sPos, onon}) {
     
     const h3Style = {
         width : `100%`,
-        height: `400px`,
+        height: `300px`,
         backgroundColor: `red`,
         position: 'absolute',
         left: `50%`,
@@ -20,8 +20,9 @@ function Skill({sPos, onon}) {
         fontSize: '2em'
     }
     sPos(skillH.height)
+    
 
-    const skillH2 = useFadeAnimate(18300);
+    const skillH2 = useFadeAnimate(18820.5);
 
     return (
         <section className="skill">

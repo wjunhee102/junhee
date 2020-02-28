@@ -93,7 +93,6 @@ function App() {
 
     
     useEffect(()=> {
-        setSOn(secH[2]-typoPos);
         console.log(skillOn);
         document.title = `황준희 포트폴리오`;
         
@@ -116,7 +115,7 @@ function App() {
                 />
                 <Skill
                     sPos={setSPos}
-                    onon={skillOn}
+                    onon={introPos}
                 />
                 <Web 
                     wPos={setWPos}
