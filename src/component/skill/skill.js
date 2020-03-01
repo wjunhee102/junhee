@@ -14,22 +14,29 @@ function Skill({sPos, onon}) {
         width : `100%`,
         height: `300px`,
         backgroundColor: `red`,
-        position: 'fixed',
+        position: 'absolute',
         left: `50%`,
         top: `50%`,
         transform: `translate(-50%, -50%)`,
-        fontSize: '2em'
+        fontSize: '2em',
+        opacity: 0
     }
     sPos(skillH.height)
     
 
-    const skillH2 = useFadeAnimate(18820.5);
+    const skillH2 = useFadeAnimate();
+    console.log(onon);
+
+    useEffect(()=>{
+        
+        skillH2.start = onon;
+    },[])
 
     return (
         <section className="skill">
             <h2>skill</h2>
-            <div className="skill12" ref={skillH2.NODE} style={{width: `100%` , height : `1000px`}}>
-                <h3 ref={skillH2.moving_NODE} style={h3Style}>안녕하세요</h3>
+            <div className="skill12" ref={skillH2.parent} style={{width: `100%` , height : `1000px`}}>
+                <h3 ref={skillH2.node} style={h3Style}>안녕하세요</h3>
             </div>
             <Slide />
         </section>

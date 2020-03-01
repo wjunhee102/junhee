@@ -26,19 +26,30 @@
         .logo {
             position: relative;
             line-height: 50px;
+            &::before {
+                @include after();
+                width: 96%;
+                height: 1px;
+                background: #000;
+                position: absolute;
+                border-top-right-radius: 50%;
+                border-bottom-left-radius: 50%;
+                left: 2%;
+                top: 63%;
+            }
             &::after {
                 @include after();
-                width: 30px;
+                width: 24px;
                 height: 30px;
                 box-sizing: border-box;
                 border-radius: 50%;
-                background: url("../../../images/logo6.svg") no-repeat center center;
+                background: url("../../../images/logoB.svg") no-repeat center center;
                 text-align: center;
                 font-family: $poppins;
                 font-weight: 600;
                 position: absolute;
-                top: 50%;
-                left: 65%;
+                top: 43%;
+                left: 105%;
                 font-size: 8px;
                 transform: translate(-50%, -50%);
             }
@@ -47,9 +58,11 @@
                 color: inherit;
                 font-family: $poppins;
                 font-style: italic;
+                text-transform: uppercase;
                 font-weight: 600;
                 position: relative;
                 z-index: 4;
+                font-size: 15px;
             }
             span {
                 @include blind();

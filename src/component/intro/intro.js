@@ -73,11 +73,11 @@ function Intro({iPos, hOn, tPos}) {
             mainArea = mainH + typo*2 + typo/3
             ;
             if (scroll_pos < typo ) {
-                setOn(-1)
+                setOn(0)
             } else if(scroll_pos >= typo && scroll_pos <= typo*2) {
-                setOn(-1)
-            } else if(scroll_pos >= typo*2 && scroll_pos <= typo*3 - typoH) {
-                setOn(-2)
+                setOn(1)
+            } else if(scroll_pos >= typo*2 && scroll_pos <= typo*3) {
+                setOn(2)
             } else if(scroll_pos >= typo*3 && scroll_pos < mainArea ) {
                 setOn(3)
             } else if (scroll_pos >= mainArea){

@@ -55,13 +55,15 @@ body {
 #main .intro .typo h2.off {
   position: absolute;
   left: 50%;
-  opacity: 1;
+  opacity: 0;
   top: 50vh;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
 
 #main .intro .typo h2.on {
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
   opacity: 1;
   position: fixed;
   left: 50%;

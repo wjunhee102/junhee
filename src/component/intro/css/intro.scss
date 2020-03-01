@@ -24,12 +24,12 @@
                     // transition: 0.3s ease ;
                     position: absolute;
                     left: 50%;
-                    opacity: 1;
+                    opacity: 0;
                     top: 50vh;
                     transform: translate(-50%, -50%);
                 }
                 &.on {
-                    // transition: 0.5s ease-in-out ;
+                    transition: 0.5s ease-in-out ;
                     opacity: 1;
                     position: fixed;
                     left: 50%;
