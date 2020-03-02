@@ -51,7 +51,7 @@ function useFadeAnimate() {
             op_value += increase
 
             NODE.current.style.opacity = op_value;
-            console.log(distance, start , end , op_value)
+            // console.log(distance, start , end , op_value)
        
             if(Math.abs(op_value) <= distance/1000) {
                 requestAnimationFrame(animate);
@@ -68,7 +68,7 @@ function useFadeAnimate() {
             } 
 
         }
-        console.log(NODE_OPACITY, START)
+        // console.log(NODE_OPACITY, START)
         window.requestAnimationFrame(animate);
         }     
        

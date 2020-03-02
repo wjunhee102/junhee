@@ -7,31 +7,26 @@ const gnb_info = [
     {
         id : "btn_gnb" ,
         link : "section",
-        //title : "소개",
         title : "intro"
     },
     {
         id : "btn_gnb" ,
         link : "section",
-        //title : "기술",
         title : "skill"
     },
     {
         id : "btn_gnb" ,
         link : "section",
-        //title : "웹",
         title : "web"
     },
     {
         id : "btn_gnb" ,
         link : "section",
-        //title : "디자인",
         title : "design"
     },
     {
         id : "btn_gnb" ,
         link : "section",
-        //title : "연결",
         title : "connect"
     }
 ]
@@ -77,7 +72,6 @@ function Header({setHPos , moveS, hOn}) {
             <div className="inner">
                 <h1 className="logo">
                     <a href="https://wjunhee102.github.io/junhee/">
-                        Junhee
                         <span>황준희 포트폴리오 로고</span>
                     </a>
                 </h1>

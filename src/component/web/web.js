@@ -40,120 +40,12 @@ const port_site = [
         img : "./images/podo_large.jpg",
         link : "https://wjunhee102.github.io/port_sub/podo/index.html",
         sub : false
-    },
-    {
-        title : "CGV",
-        keyword : "팀 프로젝트",
-        title2 : "",
-        lang : ["html5", "css3", "javascript"],
-        divice : "데스크탑",
-        personnel : ["황준희", "서정린", "김영훈", "이제현", "홍승표"],
-        content : ' 팀 프로젝트로 만든 CGV리뉴얼 사이트입니다. 저는 이 프로젝트에서 기획 및 제작 총괄을 맡았습니다. 넷플릭스와 롯데시네마를 벤치마킹하여 디자인하였고, 웹 접근성을 고려하여 만들었습니다. 동적 기능은 라이브러리와 플러그인을 사용하지 않고 만들었습니다.',
-        kind : [
-            {
-                title : "web",
-                sub : "웹",
-                img : "./images/cgv_large.jpg",
-                link : "https://wjunhee102.github.io/TeamProJ/"
-            },
-            {
-                title : "psd",
-                sub : "디자인 시안",
-                img : "./images/podo_large.jpg",
-                link : "https://wjunhee102.github.io/TeamProJ/"
-            },
-            {
-                title : "word",
-                sub : "기획서",
-                img : "./images/naver_large.jpg",
-                link : "https://wjunhee102.github.io/TeamProJ/"
-            }
-        ],
-        sub : true
     }
 ]
 
-//이미지 박스
-function ImgBox({idx, img, title, link, on}) {
-    
-    return (
-        <li className={`img img${idx} ${on}`} >
-            <a href={link} className={`img${idx}`} target="_blink">
-                <img src={img} title={title} alt={title} />
-            </a>
-        </li>
-    )
-}
-//버튼
-function BtnTeam({title, value, sub, on}) {
-    return (
-        <button className={`btn_team ${title} ${on}`} onClick={value}>{sub}</button>
-    )
-}
-
-//팀프로젝트 요소 
-function Team({kind}) {
-    const 
-        [con, setCon] = useState(0),
-        [activeW, setActivW] = useState(0)
-        ;
-    const    
-        width = useCallback(node => {
-        if (node !== null) {
-          setActivW(node.getBoundingClientRect().width);
-        }},[])
-        ;
-
-    function onClass(x) {
-        if(con === x) {
-            return "on"
-        } else {
-            return ''
-        }
-    }
-
-    function active(x) {
-        return activeW*x
-    }
-
-    return(
-        <div className="wrap_team">
-            <ul className="contents">
-                {kind.map((ele,idx)=>(
-                    <ImgBox 
-                        idx={idx}
-                        img={ele.img}
-                        title={ele.title}
-                        link={ele.link}
-                        on={onClass(idx)}
-                        key={idx}
-                    />
-                ))}
-            </ul>
-            <div className="menu_team">
-                <div className="inner">
-                {kind.map((ele, idx)=>(
-                    <BtnTeam 
-                        title={ele.title}  
-                        value={()=>setCon(idx)}
-                        sub={ele.sub}
-                        on={onClass(idx)}
-                        key={idx}
-                    />
-                ))}
-                </div>
-                <div className="active">
-                    <span className="active_bar" style={{transform: `translate(${active(con)}px)`}} ref={width}></span>
-                </div>
-            </div>
-        </div>
-        
-    )
-}
-
 
 //기본 구성 요소
-function Port({title, divi, content, img, lang, personnel, link, title2, keyword, sub ,idx, kind}) {  
+function Port({title, divi, content, img, lang, personnel, link, title2, keyword, idx}) {  
     return (
         <article className={`port_site site${idx}`}>
             <div className="inner">
@@ -162,13 +54,9 @@ function Port({title, divi, content, img, lang, personnel, link, title2, keyword
                     <span className="key">{keyword}</span>{title2}
                 </h3>
                 <div className="imgbox">
-                    { !sub ? (
-                        <a href={link} className="img01" target="_blink">
-                            <img src={img} title={title} alt={title} />
-                        </a>
-                    ):(
-                        <Team kind={kind}/>
-                    )}  
+                    <a href={link} className="img01" target="_blink">
+                        <img src={img} title={title} alt={title} />
+                    </a>
                 </div>
                 <div className="contents">
                     <p className="exp">{content}</p>

@@ -11,14 +11,7 @@
     transition: 0.5s ease-in-out;
     background-color: rgba(255, 255, 255, 0.7);
     color: #000;
-    &.off {
-        background-color: rgba(255, 255, 255, 0);
-        color: #fff ;
-    }
-    &.on {
-        background-color: rgba(255, 255, 255, 0.7);
-        color: #000;
-    }
+    
     .inner {
         @include inner();
         @include flexBox(space-between);
@@ -26,48 +19,29 @@
         .logo {
             position: relative;
             line-height: 50px;
-            &::before {
-                @include after();
-                width: 96%;
-                height: 1px;
-                background: #000;
-                position: absolute;
-                border-top-right-radius: 50%;
-                border-bottom-left-radius: 50%;
-                left: 2%;
-                top: 63%;
-            }
-            &::after {
-                @include after();
-                width: 24px;
-                height: 30px;
-                box-sizing: border-box;
-                border-radius: 50%;
-                background: url("../../../images/logoB.svg") no-repeat center center;
-                text-align: center;
-                font-family: $poppins;
-                font-weight: 600;
-                position: absolute;
-                top: 43%;
-                left: 105%;
-                font-size: 8px;
-                transform: translate(-50%, -50%);
-            }
             a {
-                display: table-cell;
+                display: block;
+                width: 71px;
+                height: 50px;
                 color: inherit;
                 font-family: $poppins;
+                background-repeat: no-repeat;
+                background-position: center 10px;
+                background-size: 71px 19px;
                 font-style: italic;
                 text-transform: uppercase;
                 font-weight: 600;
                 position: relative;
                 z-index: 4;
-                font-size: 15px;
+                
             }
             span {
                 @include blind();
             }
         }
+
+
+
         .gnb {
             height: 50px;
             .menu_gnb {
@@ -105,7 +79,25 @@
             }
         }
     }
-    &.off .gnb li::after {
-        background-color: #fff !important;
+    &.off {
+        background-color: rgba(255, 255, 255, 0);
+        color: #fff ;
+        .logo {
+            a {
+                background-image: url("../../../images/junlogoW.svg");
+            }
+        }
+        .gnb li::after {
+            background-color: #fff !important;
+        }
+    }
+    &.on {
+        background-color: rgba(255, 255, 255, 0.7);
+        color: #000;
+        .logo {
+            a {
+                background-image: url("../../../images/junlogoB.svg");
+            }
+        }
     }
 }

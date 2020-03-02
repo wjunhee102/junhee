@@ -25,7 +25,7 @@ function Skill({sPos, onon}) {
     
 
     const skillH2 = useFadeAnimate();
-    console.log(onon);
+    // console.log(onon);
 
     useEffect(()=>{
         
