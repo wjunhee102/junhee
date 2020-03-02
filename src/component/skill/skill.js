@@ -25,15 +25,10 @@ function Skill({sPos, onon}) {
     
 
     const skillH2 = useFadeAnimate();
-    // console.log(onon);
 
-    useEffect(()=>{
-        
-        skillH2.start = onon;
-    },[])
 
     return (
-        <section className="skill">
+        <section className="skill" ref={skillH.value}>
             <h2>skill</h2>
             <div className="skill12" ref={skillH2.parent} style={{width: `100%` , height : `1000px`}}>
                 <h3 ref={skillH2.node} style={h3Style}>안녕하세요</h3>
