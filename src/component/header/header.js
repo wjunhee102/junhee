@@ -105,8 +105,8 @@ function Header({setHPos , moveS, hOn}) {
         let i = x-y 
         if(i <= 0) {
             i = 0
-        } else if (i >= 170) {
-            i = 170
+        } else if (i >= 230) {
+            i = 230
         }
         return i 
     };
@@ -116,11 +116,12 @@ function Header({setHPos , moveS, hOn}) {
         e.preventDefault();
         const touch = e.changedTouches[0];
         firstTouchY = touch.clientY;
-        M_GNB.current.style.height = `170px`;
+        M_GNB.current.style.height = `230px`;
         TOUCH_ON = true;
     }
     const BTN_MOVE = (e)=> {
         if(!TOUCH_ON) return false; 
+        e.preventDefault();
         const touch = e.changedTouches[0];
         touchMove = touch.clientY;
         position =  POINT(firstTouchY, touchMove);
@@ -128,8 +129,8 @@ function Header({setHPos , moveS, hOn}) {
     }
     const BTN_END = ()=> {
         TOUCH_ON = false;
-        if(position > 35 ) {
-            let i = 4 - Math.round((position - 35)/34);
+        if(position > 51 ) {
+            let i = 4 - Math.round((position - 51)/44);
             moveS(i);
         } 
         BTN_GNB.current.style.transform = `translateY(${0}px)`;

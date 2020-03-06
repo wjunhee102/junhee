@@ -27,12 +27,13 @@ function Port() {
     let moveStart = false;
 	
 	// moveSection 정지 
-    window.addEventListener('wheel', ()=>{
+    const scrollSkip = ()=> {
+        if(!moveStart) return false;
         moveStart = false;
-    })
-    window.addEventListener('touched', ()=>{
-        moveStart = false;
-    })
+    }
+    window.addEventListener('wheel', scrollSkip)
+    window.addEventListener('touchmove',scrollSkip ,{passive : false})
+    
 
     // 섹션간 이동 함수
     function moveSection(x) {  
@@ -91,7 +92,6 @@ function Port() {
         return ()=> window.removeEventListener("resize", ratio , true);
     }, [bodyRatio]);
 
-    
     useEffect(()=> {
         document.title = `황준희 포트폴리오`;
         
