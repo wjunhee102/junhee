@@ -9,12 +9,6 @@ body {
   font-size: 16px;
 }
 
-@media screen and (max-width: 1024px) {
-  body {
-    font-size: 14px;
-  }
-}
-
 .wrap {
   width: 100%;
   height: auto;
@@ -47,7 +41,7 @@ body {
   background-color: transparent;
 }
 
-@media screen and (max-width: 1024px) and (min-width: 769px) {
+@media screen and (max-width: 1024px) {
   #main .web .foreword .inner {
     max-width: 1024px;
   }
@@ -61,7 +55,7 @@ body {
   border-bottom: 1px solid #888;
 }
 
-@media screen and (max-width: 1024px) and (min-width: 769px) {
+@media screen and (max-width: 1024px) {
   #main .web .foreword .inner .tit {
     font-size: 4em;
     text-indent: 10px;
@@ -76,7 +70,7 @@ body {
   color: #888;
 }
 
-@media screen and (max-width: 1024px) and (min-width: 769px) {
+@media screen and (max-width: 1024px) {
   #main .web .foreword .inner .exp {
     font-size: 1.8em;
     text-indent: 10px;
@@ -86,7 +80,13 @@ body {
 #main .web .port_site {
   width: 100%;
   padding-bottom: 100px;
-  margin: 50px 0;
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  #main .web .port_site {
+    padding-bottom: 50px;
+  }
 }
 
 #main .web .port_site .inner {
@@ -103,7 +103,7 @@ body {
   height: 700px;
 }
 
-@media screen and (max-width: 1024px) and (min-width: 769px) {
+@media screen and (max-width: 1024px) {
   #main .web .port_site .inner {
     max-width: 1024px;
     height: auto;
@@ -112,8 +112,9 @@ body {
   }
 }
 
-@media screen and (max-width: 768px) and (min-width: 415px) {
+@media screen and (max-width: 768px) {
   #main .web .port_site .inner {
+    height: auto;
     font-size: 0.9em;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -124,27 +125,19 @@ body {
 
 #main .web .port_site .inner .textbox {
   position: relative;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  height: auto;
+  height: 700px;
   margin: auto;
   padding: 20px;
+  width: 600px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-@media screen and (max-width: 1024px) and (min-width: 769px) {
+@media screen and (max-width: 1024px) {
   #main .web .port_site .inner .textbox {
+    width: auto;
     height: auto;
     margin: auto;
-    padding: 20px;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-  }
-}
-
-@media screen and (max-width: 768px) and (min-width: 415px) {
-  #main .web .port_site .inner .textbox {
-    width: 100%;
   }
 }
 
@@ -157,6 +150,14 @@ body {
           transform: translate(0%, -50%);
 }
 
+@media screen and (max-width: 1024px) {
+  #main .web .port_site .inner .textbox .contents {
+    left: 0;
+    -webkit-transform: translate(0%, 0);
+            transform: translate(0%, 0);
+  }
+}
+
 #main .web .port_site .inner .textbox .contents .tit {
   font-size: 3.125em;
   margin-bottom: 20px;
@@ -164,7 +165,7 @@ body {
   height: 60px;
 }
 
-@media screen and (max-width: 1024px) and (min-width: 769px) {
+@media screen and (max-width: 1024px) {
   #main .web .port_site .inner .textbox .contents .tit {
     font-size: 1em;
     height: 50px;
@@ -181,7 +182,7 @@ body {
   height: 60px;
 }
 
-@media screen and (max-width: 1024px) and (min-width: 769px) {
+@media screen and (max-width: 1024px) {
   #main .web .port_site .inner .textbox .contents .tit .text {
     font-size: 3em;
     height: 50px;
@@ -336,21 +337,10 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
 }
 
-@media screen and (max-width: 1024px) and (min-width: 769px) {
+@media screen and (max-width: 1024px) {
   #main .web .port_site .inner .imgbox {
-    height: auto;
-    margin: auto;
-  }
-}
-
-@media screen and (max-width: 768px) and (min-width: 415px) {
-  #main .web .port_site .inner .imgbox {
-    width: 100%;
     height: auto;
     margin: auto;
   }

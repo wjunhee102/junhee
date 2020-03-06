@@ -18,10 +18,10 @@ $bg0: transparent;
 $border: 1px solid #000;
 
 //media 
-$tabletH : "screen and (max-width : 1024px) and (min-width : 769px)";
-$tabletV : "screen and (max-width : 768px) and (min-width : 415px)";
+$tabletH : "screen and (max-width : 1024px)";
+$tabletV : "screen and (max-width : 768px)";
 $phoneV : "screen and (max-width : 414px) ";
-$phoneH : "screen and (max-width : 736px) and (min-width : 415px)";
+$phoneH : "screen and (max-width : 736px)";
 
 // mixin 
 @mixin box {
@@ -85,11 +85,7 @@ body {
     background-color: $mainbg;
     font-size: 16px;
 }
-@media screen and (max-width: 1024px) {
-    body {
-        font-size: 14px;
-    }
-}
+
 
 .wrap {
     @include box();
