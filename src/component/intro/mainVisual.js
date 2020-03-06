@@ -144,6 +144,8 @@ function mainOn(s,x){
 }
 //
 
+
+
 //메인 비주얼 컴포넌트
 function MainVisual({on ,height, typoH, intro}) {
     const 
@@ -179,7 +181,8 @@ function MainVisual({on ,height, typoH, intro}) {
             lateX,
             keyframe
             ;
-        let contentWidth = contentBox.current.getBoundingClientRect().width
+
+        let contentWidth = contentBox.current.getBoundingClientRect().width;
         
         if(startContent <= scroll_y) {
             opac = (scroll_y-startContent)/500

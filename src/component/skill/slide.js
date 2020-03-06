@@ -167,6 +167,7 @@ function Slide() {
                 if (progress < second) {
                     requestAnimationFrame(animate);
                 } else {
+                    
                     if(i <= -slideW) {
                         setSMove(sWrapW-slideW);
                     } else if(i >= sWrapW){
@@ -246,8 +247,8 @@ function Slide() {
                 
                 {slide_item.map((ele, idx)=>(
                     <div className={`slide_dot slide_dot${idx} ${(slideOn(idx))}`} key={idx}>
-                        <a 
-                            href="#btn" 
+                        <button
+                            type="button" 
                             onClick={(e)=>((
                             e.preventDefault,
                             setSMove(slideW*idx+1),
@@ -256,7 +257,7 @@ function Slide() {
                             ))}
                         >
                             {ele.content}
-                        </a>
+                        </button>
                     </div>
                 ))}
             </div>

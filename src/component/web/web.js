@@ -8,11 +8,11 @@ const port_site = [
     {
         title : "naver",
         keyword : "네이버",
-        title2 : "",
+        title2 : "네이버를 다크모드로 만들어 보았습니다.",
         lang : ["html5", "css3"],
         divice : "데스크탑",
         personnel : ["황준희"],
-        content : ' HTML5/CSS를 배우고 만든 웹입니다.',
+        content : ' 만들면서 제일 고민 했었던 부분은 뉴스 스탠드 입니다. 언론사 로고가 흰색 배경에 JPG파일로 되어 있어서 검은색 배경과 어울리게 하려고 현실에 있는 신문 가판대처럼 꾸며 그 안에 로고를 집어 넣었습니다. ',
         img : "naver",
         link : "https://wjunhee102.github.io/port_sub/naver/index.html",
         sub : false
@@ -20,11 +20,11 @@ const port_site = [
     {
         title : "apple",
         keyword : "Apple",
-        title2 : "",
+        title2 : "애플 메인페이지입니다.",
         lang : ["html5", "css3"],
         divice : "반응형",
         personnel : ["황준희"],
-        content : ' 웹 퍼블리싱을 알기 전부터 많이 관심이 있었고 꼭 한번 만들어 보고 싶었던 사이트 입니다. 반응형으로 제작하였고, HTML5/CSS3로만 만들었습니다.',
+        content : ' 저에게 영감을 많이 주던 사이트입니다. 그래서 웹 분야를 알기 전부터 만들어 보고 싶었습니다. 버튼을 눌렀을 때 메뉴가 나오게 하는 동작은 input과 label을 이용하였습니다. 반응형으로 제작되었습니다.',
         img : "apple",
         link : "https://wjunhee102.github.io/port_sub/applemain/appleindex.html",
         sub : false
@@ -32,11 +32,11 @@ const port_site = [
     {
         title : "podopod",
         keyword : "포도팟",
-        title2 : "",
+        title2 : "포도팟 프로모션 사이트입니다.",
         lang : ["html5", "css3","jQuery", "javascript"],
         divice : "데스크탑",
         personnel : ["황준희"],
-        content : ' jQuery를 배우고 만든 사이트입니다. 각 섹션마다 애니메이션을 넣어서 동적인 느낌을 들게 만들었습니다.',
+        content : ' 제이쿼리를 이용하여 동적인 사이트를 만들었습니다. Scroll 위치가 각섹션 위치에 오면 애니메이션이 동작하도록 만들었습니다.',
         img : "podopod",
         link : "https://wjunhee102.github.io/port_sub/podo/index.html",
         sub : false
@@ -45,31 +45,34 @@ const port_site = [
 
 
 //기본 구성 요소
-function Port({title, divi, content, img, lang, personnel, link, keyword, idx}) {  
+function Port({title, divi, title2, content, img, lang, personnel, link, keyword, idx}) {  
     return (
         <article className={`port_site site${idx} ${title}`}>
             <div className="inner">
-                <div className={`textbox ${title}`}>
-                    <h3 className="tit">
-                        <span className="text">{keyword}</span>
-                        <span className="line"></span>
-                    </h3>
-                    <div className="contents">
-                    <p className="exp">{content}</p>
-                    <div className="detail">
+
+                <div className={`textbox`}>
+                    
+                    <div className={`contents ${title}`}>
+                        <h3 className="tit">
+                            <span className="text">{keyword}</span>
+                            <span className="line"></span>
+                        </h3>
+                        <h4 className="divi">{divi}</h4>
                         <ul className="lang_menu">
                             {lang.map((ele , idx)=> (
                                 <li className={`lang ${ele}`} key={idx}></li>
                             ))}
                         </ul>
-                        <h4 className="divi">{divi}</h4>
+                        
                         <ul className="pers_menu">
                             {personnel.map((ele , idx)=> (
                                 <li className={`pers${idx}`} key={idx}>{ele}</li>
                             ))}
                         </ul>
+                        <h5 className="tit2">{title2}</h5>
+                        <p className="exp">{content}</p>
                     </div>
-                </div>
+
                 </div>
                
                 <div className={`imgbox ${img}`}>

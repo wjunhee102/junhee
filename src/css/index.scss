@@ -1,6 +1,6 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
 
 // 변수 
 
@@ -16,6 +16,12 @@ $bg0: transparent;
 
 // border
 $border: 1px solid #000;
+
+//media 
+$tabletH : "screen and (max-width : 1024px)";
+$tabletV : "screen and (max-width : 768px)";
+$phoneV : "screen and (max-width : 414px)";
+$phoneH : "screen and (max-width : 736px)";
 
 // mixin 
 @mixin box {
@@ -77,11 +83,11 @@ body {
     @include box();
     font-family: $noto, $defaultFont;
     background-color: $mainbg;
-    font-size: 1em;
+    font-size: 16px;
 }
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1024px) {
     body {
-        font-size: 1em;
+        font-size: 14px;
     }
 }
 
