@@ -9,12 +9,6 @@ body {
   font-size: 16px;
 }
 
-@media screen and (max-width: 1024px) {
-  body {
-    font-size: 14px;
-  }
-}
-
 .wrap {
   width: 100%;
   height: auto;
@@ -31,14 +25,30 @@ body {
   width: 100%;
   height: auto;
   position: fixed;
-  left: 0;
-  top: 0;
   z-index: 20;
   border-bottom: 1px solid #000;
   -webkit-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
   background-color: rgba(255, 255, 255, 0.7);
   color: #000;
+}
+
+@media screen and (min-width: 737px) {
+  #header {
+    left: 0;
+    top: 0;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #header {
+    height: 0;
+    width: 0;
+    right: 15px;
+    bottom: 15px;
+    border: 0;
+    background-color: transparent;
+  }
 }
 
 #header .inner {
@@ -53,11 +63,26 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   height: 50px;
+  padding: 0 15px;
+}
+
+@media screen and (max-width: 736px) {
+  #header .inner {
+    height: auto;
+    width: 30px;
+    padding: 0;
+  }
 }
 
 #header .inner .logo {
   position: relative;
   line-height: 50px;
+}
+
+@media screen and (max-width: 736px) {
+  #header .inner .logo {
+    display: none;
+  }
 }
 
 #header .inner .logo a {
@@ -87,7 +112,13 @@ body {
 }
 
 #header .inner .gnb {
-  height: 50px;
+  width: auto;
+  height: auto;
+  position: relative;
+}
+
+#header .inner .gnb .menu_m_gnb {
+  display: none;
 }
 
 #header .inner .gnb .menu_gnb {
@@ -99,6 +130,12 @@ body {
           justify-content: space-between;
   line-height: 50px;
   width: 500px;
+}
+
+@media screen and (max-width: 736px) {
+  #header .inner .gnb .menu_gnb {
+    display: none;
+  }
 }
 
 #header .inner .gnb .menu_gnb li {
@@ -137,6 +174,80 @@ body {
   z-index: 2;
 }
 
+#header .inner .gnb .btn_gnb {
+  display: none;
+}
+
+#header .inner .gnb .btn_gnb .blind {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  z-index: -2;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+@media screen and (max-width: 736px) {
+  #header .inner .gnb {
+    position: absolute;
+    right: 100%;
+    bottom: 100%;
+  }
+  #header .inner .gnb .menu_m_gnb {
+    display: block;
+    width: 30px;
+    height: 0;
+    background-color: #383838;
+    border-radius: 15px;
+    -webkit-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    overflow: hidden;
+    padding-bottom: 30px;
+  }
+  #header .inner .gnb .menu_m_gnb li {
+    margin-bottom: 10px;
+  }
+  #header .inner .gnb .menu_m_gnb li a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    width: 30px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+  }
+  #header .inner .gnb .btn_gnb {
+    display: block;
+    border: none;
+    padding: 0;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    left: calc(50% - 12px);
+    bottom: 3px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: url("../../../images/btn_gnb.png") no-repeat center center;
+    background-size: 26px 26px;
+    -webkit-box-shadow: 0px 0px 2px 1px #f44e5d;
+            box-shadow: 0px 0px 2px 1px #f44e5d;
+  }
+  #header .inner .gnb .btn_gnb .blind {
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    z-index: -2;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+}
+
 #header.off {
   background-color: rgba(255, 255, 255, 0);
   color: #fff;
@@ -150,6 +261,18 @@ body {
   background-color: #fff !important;
 }
 
+@media screen and (max-width: 736px) {
+  #header.off {
+    background-color: transparent;
+  }
+  #header.off .gnb .menu_m_gnb {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  #header.off .gnb .menu_m_gnb li a {
+    color: #262626;
+  }
+}
+
 #header.on {
   background-color: rgba(255, 255, 255, 0.7);
   color: #000;
@@ -157,5 +280,11 @@ body {
 
 #header.on .logo a {
   background-image: url("../../../images/junlogoB.svg");
+}
+
+@media screen and (max-width: 736px) {
+  #header.on {
+    background-color: transparent;
+  }
 }
 /*# sourceMappingURL=header.css.map */

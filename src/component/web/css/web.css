@@ -41,12 +41,6 @@ body {
   background-color: transparent;
 }
 
-@media screen and (max-width: 1024px) {
-  #main .web .foreword .inner {
-    max-width: 1024px;
-  }
-}
-
 #main .web .foreword .inner .tit {
   font-size: 4.0625em;
   font-weight: 600;
@@ -58,6 +52,13 @@ body {
 @media screen and (max-width: 1024px) {
   #main .web .foreword .inner .tit {
     font-size: 4em;
+    text-indent: 10px;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .web .foreword .inner .tit {
+    font-size: 3em;
     text-indent: 10px;
   }
 }
@@ -77,10 +78,23 @@ body {
   }
 }
 
+@media screen and (max-width: 736px) {
+  #main .web .foreword .inner .exp {
+    font-size: 1.5em;
+    text-indent: 10px;
+  }
+}
+
 #main .web .port_site {
   width: 100%;
   padding-bottom: 100px;
   margin-top: 50px;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .web .port_site {
+    font-size: 0.9em;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -135,6 +149,16 @@ body {
 
 @media screen and (max-width: 1024px) {
   #main .web .port_site .inner .textbox {
+    max-width: 512px;
+    width: auto;
+    height: auto;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #main .web .port_site .inner .textbox {
+    max-width: 540px;
     width: auto;
     height: auto;
     margin: auto;
@@ -142,6 +166,7 @@ body {
 }
 
 #main .web .port_site .inner .textbox .contents {
+  width: 100%;
   max-width: 540px;
   position: relative;
   left: 20px;
@@ -153,8 +178,8 @@ body {
 @media screen and (max-width: 1024px) {
   #main .web .port_site .inner .textbox .contents {
     left: 0;
-    -webkit-transform: translate(0%, 0);
-            transform: translate(0%, 0);
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
   }
 }
 
@@ -206,15 +231,38 @@ body {
   bottom: 3px;
 }
 
+@media screen and (max-width: 1024px) {
+  #main .web .port_site .inner .textbox .contents.naver .tit .line {
+    width: 110px;
+    bottom: 0px;
+    background-size: 110px 18px;
+  }
+}
+
 #main .web .port_site .inner .textbox .contents.apple .tit .line {
   width: 140px;
   background-image: url("../../../images/appleTit_L.png");
+}
+
+@media screen and (max-width: 1024px) {
+  #main .web .port_site .inner .textbox .contents.apple .tit .line {
+    width: 115px;
+    background-size: 115px 18px;
+  }
 }
 
 #main .web .port_site .inner .textbox .contents.podopod .tit .line {
   width: 135px;
   background-image: url("../../../images/podopodTit_L.png");
   bottom: 3px;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .web .port_site .inner .textbox .contents.podopod .tit .line {
+    width: 110px;
+    bottom: 0px;
+    background-size: 110px 18px;
+  }
 }
 
 #main .web .port_site .inner .textbox .contents .divi {
@@ -318,6 +366,12 @@ body {
   text-indent: 10px;
 }
 
+@media screen and (max-width: 414px) {
+  #main .web .port_site .inner .textbox .contents .tit2 {
+    font-size: 1.4em;
+  }
+}
+
 #main .web .port_site .inner .textbox .contents .exp {
   text-indent: 10px;
   font-size: 1.5em;
@@ -341,16 +395,32 @@ body {
 
 @media screen and (max-width: 1024px) {
   #main .web .port_site .inner .imgbox {
+    width: auto;
     height: auto;
     margin: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #main .web .port_site .inner .imgbox {
+    max-width: 600px;
+    width: auto;
+    height: auto;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .web .port_site .inner .imgbox {
+    width: 100%;
   }
 }
 
 #main .web .port_site .inner .imgbox a.link {
   position: relative;
   display: block;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -361,8 +431,14 @@ body {
           box-shadow: 3px 3px 7px 0px rgba(0, 0, 0, 0.5);
 }
 
+@media screen and (max-width: 414px) {
+  #main .web .port_site .inner .imgbox a.link {
+    padding: 25px 39px 25px 41px;
+  }
+}
+
 #main .web .port_site .inner .imgbox a.link .img {
-  width: 100%;
+  width: 410px;
   padding-bottom: 135%;
   display: block;
   background-repeat: no-repeat;
@@ -380,6 +456,24 @@ body {
   height: 1px;
   z-index: -2;
   clip: rect(1px, 1px, 1px, 1px);
+}
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  #main .web .port_site .inner .imgbox a.link .img {
+    max-width: 320px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 737px) {
+  #main .web .port_site .inner .imgbox a.link .img {
+    max-width: 410px;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .web .port_site .inner .imgbox a.link .img {
+    max-width: 100%;
+  }
 }
 
 #main .web .port_site .inner .imgbox.naver .link {

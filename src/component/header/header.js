@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './css/header.css'
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import useHeight from '../hooks/useHeight';
 
 const gnb_info = [
@@ -22,20 +22,48 @@ const gnb_info = [
     {
         id : "btn_gnb" ,
         link : "section",
-        title : "design"
+        title : "Team"
     },
     {
         id : "btn_gnb" ,
         link : "section",
-        title : "connect"
+        title : "Connect"
     }
 ]
 
-gnb_info.propTypes = {
-    id: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
-};
+const m_gnb_info = [
+    {
+        id : "btn_gnb" ,
+        link : "section",
+        title : "I"
+    },
+    {
+        id : "btn_gnb" ,
+        link : "section",
+        title : "S"
+    },
+    {
+        id : "btn_gnb" ,
+        link : "section",
+        title : "W"
+    },
+    {
+        id : "btn_gnb" ,
+        link : "section",
+        title : "T"
+    },
+    {
+        id : "btn_gnb" ,
+        link : "section",
+        title : "C"
+    }
+]
+
+// gnb_info.propTypes = {
+//     id: PropTypes.string.isRequired,
+//     link: PropTypes.string.isRequired,
+//     title: PropTypes.string.isRequired
+// };
 
 function headerOn(x) {
     if(x < 3) {
@@ -67,6 +95,53 @@ function Header({setHPos , moveS, hOn}) {
 
         setHPos(headerH.height);
 
+    const BTN_GNB = useRef();
+    const M_GNB = useRef();
+
+    let firstTouchY = 0;
+    let touchMove = 0;
+    let position = 0;
+    let POINT = (x, y) => {
+        let i = x-y 
+        if(i <= 0) {
+            i = 0
+        } else if (i >= 170) {
+            i = 170
+        }
+        return i 
+    };
+    let TOUCH_ON = false;
+    
+    const BTN_ACTION = (e)=>{
+        e.preventDefault();
+        const touch = e.changedTouches[0];
+        firstTouchY = touch.clientY;
+        M_GNB.current.style.height = `170px`;
+        TOUCH_ON = true;
+    }
+    const BTN_MOVE = (e)=> {
+        if(!TOUCH_ON) return false; 
+        const touch = e.changedTouches[0];
+        touchMove = touch.clientY;
+        position =  POINT(firstTouchY, touchMove);
+        BTN_GNB.current.style.transform = `translateY(${-position}px)`;
+    }
+    const BTN_END = ()=> {
+        TOUCH_ON = false;
+        if(position > 35 ) {
+            let i = 4 - Math.round((position - 35)/34);
+            moveS(i);
+        } 
+        BTN_GNB.current.style.transform = `translateY(${0}px)`;
+        M_GNB.current.style.height = `0px`;
+    } 
+         
+    useEffect(()=>{
+        BTN_GNB.current.addEventListener("touchstart" , BTN_ACTION ,{passive: false});
+        BTN_GNB.current.addEventListener("touchmove", BTN_MOVE ,{passive: false});
+        BTN_GNB.current.addEventListener("touchend", BTN_END ,{passive: false});
+        return ()=> BTN_GNB.current.removeEventListener("touchmove", BTN_MOVE ,{passive: false});
+    },[moveS])
     return (
         <header id="header" className={`header ${headerOn(hOn)}`} ref={headerH.value} >
             <div className="inner">
@@ -89,7 +164,23 @@ function Header({setHPos , moveS, hOn}) {
                             />
                         ))}
                     </ul>
+                    <ul className="menu_m_gnb" ref={M_GNB} >
+                        {m_gnb_info.map((info, idx)=>(
+                            <Gnb 
+                                id={info.id} 
+                                index={idx} 
+                                link={info.link} 
+                                title={info.title} 
+                                key={idx} 
+                                move={moveS} 
+                            />
+                        ))}
+                    </ul>
+                    <button type="button" className={`btn_gnb`} ref={BTN_GNB}>
+                        <span className="blind">gnb 이동 버튼</span>
+                    </button>
                 </nav>
+                
             </div>
         </header>
     );

@@ -15,9 +15,7 @@
             @include inner();
 
             // 태블릿 가로모드
-            @media #{$tabletH} {
-                max-width: 1024px;
-            }
+
             .tit {
                 font-size: 4.0625em;
                 font-weight: 600;
@@ -29,6 +27,10 @@
                 // 태블릿 가로모드
                 @media #{$tabletH} {
                     font-size: 4em;
+                    text-indent: 10px;
+                }
+                @media #{$phoneH} {
+                    font-size: 3em;
                     text-indent: 10px;
                 }
             }
@@ -44,6 +46,10 @@
                     font-size: 1.8em;
                     text-indent: 10px;
                 }
+                @media #{$phoneH} {
+                    font-size: 1.5em;
+                    text-indent: 10px;
+                }
             }
         }
     }
@@ -53,6 +59,9 @@
         width: 100%;
         padding-bottom: 100px;
         margin-top: 50px;
+        @media #{$tabletH} {
+            font-size: 0.9em;
+        }
         @media #{$tabletV} {
             padding-bottom: 50px;
         }
@@ -81,11 +90,19 @@
                 box-sizing: border-box;
                 // 태블릿 가로모드
                 @media #{$tabletH} {
+                    max-width: 512px;
+                    width: auto;
+                    height: auto;
+                    margin: auto;
+                }
+                @media #{$tabletV} {
+                    max-width: 540px;
                     width: auto;
                     height: auto;
                     margin: auto;
                 }
                 .contents {
+                    width: 100%;
                     max-width: 540px;
                     position: relative;
                     left: 20px;
@@ -93,7 +110,7 @@
                     transform: translate(0%, -50%);
                     @media #{$tabletH} {
                         left: 0;
-                        transform: translate(0%, 0); 
+                        transform: translate(0, 0); 
                     }
                     .tit {
                         font-size: 3.125em;
@@ -135,12 +152,21 @@
                             width: 130px;
                             background-image: url("../../../images/naverTit_L.png");
                             bottom: 3px;
+                            @media #{$tabletH} {
+                                width: 110px;
+                                bottom: 0px;
+                                background-size: 110px 18px;
+                            }
                         }
                     }
                     &.apple {
                         .tit .line  {
                             width: 140px;
                             background-image: url("../../../images/appleTit_L.png");
+                            @media #{$tabletH} {
+                                width: 115px;
+                                background-size: 115px 18px;
+                            }
                         }
                     }
                     &.podopod {
@@ -148,6 +174,11 @@
                             width: 135px;
                             background-image: url("../../../images/podopodTit_L.png");
                             bottom: 3px;
+                            @media #{$tabletH} {
+                                width: 110px;
+                                bottom: 0px;
+                                background-size: 110px 18px;
+                            }
                         }
                     }
                     .divi {
@@ -225,6 +256,9 @@
                         color: #333;
                         margin-bottom: 20px;
                         text-indent: 10px;
+                        @media #{$phoneV} {
+                            font-size: 1.4em;
+                        }
                     }
                     .exp {
                         text-indent: 10px;
@@ -250,14 +284,25 @@
                 box-sizing: border-box;
                 position: relative;
                 @media #{$tabletH} {
+                    // max-width: 600px;
+                    width: auto;
                     height: auto;
                     margin: auto;
+                }
+                @media #{$tabletV} {
+                    max-width: 600px;
+                    width: auto;
+                    height: auto;
+                    margin: auto;
+                }
+                @media #{$phoneH} {
+                    width: 100%;
                 }
                 a.link {
                     position: relative;
                     display: block;
-                    width: 100%;
-                    height: 100%;
+                    width: auto;
+                    height: auto;
                     background-repeat: no-repeat;
                     background-position: center center;
                     background-size: cover;
@@ -268,8 +313,11 @@
                     //     width: 472px;
                     //     height: 560px;
                     // }
+                    @media #{$phoneV} {
+                        padding: 25px 39px 25px 41px;
+                    }
                     .img {
-                        width: 100%;
+                        width: 410px;
                         padding-bottom: 135%;
                         display: block;
                         background-repeat: no-repeat;
@@ -279,7 +327,16 @@
                         0 8px 16px -8px rgba(0,0,0,.7),0 -6px 16px -6px rgba(0,0,0,0.08); 
                         .blind {
                             @include blind();
-                        }    
+                        }   
+                        @media screen and (max-width : 1024px) and (min-width : 769px) {
+                            max-width: 320px;
+                        } 
+                        @media screen and (min-width : 768px) and (max-width : 737px) {
+                            max-width: 410px;
+                        } 
+                        @media #{$phoneH} {
+                            max-width: 100%
+                        } 
                     }
                 }
                 &.naver {

@@ -15,6 +15,7 @@ const port_site = [
         content : ' 만들면서 제일 고민 했었던 부분은 뉴스 스탠드 입니다. 언론사 로고가 흰색 배경에 JPG파일로 되어 있어서 검은색 배경과 어울리게 하려고 현실에 있는 신문 가판대처럼 꾸며 그 안에 로고를 집어 넣었습니다. ',
         img : "naver",
         link : "https://wjunhee102.github.io/port_sub/naver/index.html",
+        git : "https://github.com/wjunhee102/port_sub/tree/master/naver",
         sub : false
     },
     {
@@ -27,6 +28,7 @@ const port_site = [
         content : ' 저에게 영감을 많이 주던 사이트입니다. 그래서 웹 분야를 알기 전부터 만들어 보고 싶었습니다. 버튼을 눌렀을 때 메뉴가 나오게 하는 동작은 input과 label을 이용하였습니다. 반응형으로 제작되었습니다.',
         img : "apple",
         link : "https://wjunhee102.github.io/port_sub/applemain/appleindex.html",
+        git : "https://github.com/wjunhee102/port_sub/tree/master/applemain",
         sub : false
     },
     {
@@ -39,13 +41,14 @@ const port_site = [
         content : ' 제이쿼리를 이용하여 동적인 사이트를 만들었습니다. Scroll 위치가 각섹션 위치에 오면 애니메이션이 동작하도록 만들었습니다.',
         img : "podopod",
         link : "https://wjunhee102.github.io/port_sub/podo/index.html",
+        git : "https://github.com/wjunhee102/port_sub/tree/master/podo",
         sub : false
     }
 ]
 
 
 //기본 구성 요소
-function Port({title, divi, title2, content, img, lang, personnel, link, keyword, idx}) {  
+function Port({title, divi, title2, content, img, lang, personnel, link, keyword, idx, git}) {  
     return (
         <article className={`port_site site${idx} ${title}`}>
             <div className="inner">
@@ -69,6 +72,9 @@ function Port({title, divi, title2, content, img, lang, personnel, link, keyword
                                 <li className={`pers${idx}`} key={idx}>{ele}</li>
                             ))}
                         </ul>
+                        <p className="git">
+                            <a href={git} className="gitlink" target="_blink">소스코드 주소</a>
+                        </p>
                         <h5 className="tit2">{title2}</h5>
                         <p className="exp">{content}</p>
                     </div>
@@ -125,6 +131,7 @@ function Web({wPos}) {
                     sub={ele.sub}
                     idx={idx}
                     kind={ele.kind}
+                    git={ele.git}
                 />
             ))}
         </section>
