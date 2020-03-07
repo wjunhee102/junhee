@@ -287,13 +287,10 @@
                         
                         a.gitlink {
                             display: block;
-                            // width: 180px;
                             text-indent: 10px;
                             line-height: 1;
                             color: #0066cc;
                             font-size: 1.3em;
-                            // border-bottom: 1px solid #333;
-                            // border-radius: 5px;
                             font-weight: 500;
                             @media #{$tabletV} {
                                 text-indent: 0;
@@ -313,7 +310,6 @@
                 box-sizing: border-box;
                 position: relative;
                 @media #{$tabletH} {
-                    // max-width: 600px;
                     width: auto;
                     height: auto;
                     margin: auto;
