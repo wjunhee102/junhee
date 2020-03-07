@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4721c737dd154e11bd4c45179a9641e5",
+    "revision": "7c41842743b7f91916acadf2dbc4abc9",
     "url": "/junhee/index.html"
   },
   {
-    "revision": "7a4e34b48ba109691db5",
-    "url": "/junhee/static/css/main.667235c0.chunk.css"
+    "revision": "fad4aec0cbae500adad7",
+    "url": "/junhee/static/css/main.289c433b.chunk.css"
   },
   {
     "revision": "6560ef40f42e9b46e627",
@@ -16,16 +16,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/junhee/static/js/2.27b7ac26.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7a4e34b48ba109691db5",
-    "url": "/junhee/static/js/main.adc7fa71.chunk.js"
+    "revision": "fad4aec0cbae500adad7",
+    "url": "/junhee/static/js/main.94c95340.chunk.js"
   },
   {
     "revision": "5228dde056d328f4a6ad",
     "url": "/junhee/static/js/runtime-main.a0c84785.js"
   },
   {
-    "revision": "6ad03fd62668f2bbc0105ad554c4b0c5",
-    "url": "/junhee/static/media/apple_L.6ad03fd6.jpg"
+    "revision": "3db21da16acc05502840d2ce929f48ce",
+    "url": "/junhee/static/media/apple_2x.3db21da1.jpg"
   },
   {
     "revision": "e9121f2629bf3e5b1136337c3b340196",
@@ -64,16 +64,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/junhee/static/media/mainimage1.82390aa8.png"
   },
   {
-    "revision": "ba133c8c692436cd61d3cfb39d939764",
-    "url": "/junhee/static/media/naver_L.ba133c8c.jpg"
+    "revision": "c67970c6ebe563b78ed109aca7ffb15d",
+    "url": "/junhee/static/media/naver_2x.c67970c6.jpg"
   },
   {
     "revision": "8fab2b0f41348f24b4b56d9b17150633",
     "url": "/junhee/static/media/photoshop.8fab2b0f.png"
   },
   {
-    "revision": "deea1128d50061a5c53567c3040818c1",
-    "url": "/junhee/static/media/podopod_L.deea1128.jpg"
+    "revision": "8852665fa9a750db1742ef7f97a9893b",
+    "url": "/junhee/static/media/podo_2x.8852665f.jpg"
   },
   {
     "revision": "35b1fd6e90fdc45bb66477f96fe3135b",
