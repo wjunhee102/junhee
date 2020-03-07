@@ -92,16 +92,18 @@ function Header({setHPos , moveS, hOn}) {
     //헤더 height 값 가져오기
     const
         headerH = useHeight();
-
         setHPos(headerH.height);
 
+    // 모바일 버튼 이벤트 
     const BTN_GNB = useRef();
     const M_GNB = useRef();
 
     let firstTouchY = 0;
     let touchMove = 0;
     let position = 0;
-    let POINT = (x, y) => {
+    let TOUCH_ON = false;
+
+    const POINT = (x, y) => {
         let i = x-y 
         if(i <= 0) {
             i = 0
@@ -110,7 +112,6 @@ function Header({setHPos , moveS, hOn}) {
         }
         return i 
     };
-    let TOUCH_ON = false;
     
     const BTN_ACTION = (e)=>{
         e.preventDefault();
@@ -143,6 +144,8 @@ function Header({setHPos , moveS, hOn}) {
         BTN_GNB.current.addEventListener("touchend", BTN_END ,{passive: false});
         return ()=> BTN_GNB.current.removeEventListener("touchmove", BTN_MOVE ,{passive: false});
     },[moveS])
+    //
+
     return (
         <header id="header" className={`header ${headerOn(hOn)}`} ref={headerH.value} >
             <div className="inner">
@@ -173,7 +176,6 @@ function Header({setHPos , moveS, hOn}) {
                                 link={info.link} 
                                 title={info.title} 
                                 key={idx} 
-                                move={moveS} 
                             />
                         ))}
                     </ul>
