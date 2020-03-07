@@ -17,7 +17,7 @@
         height: 0;
         width: 0;
         right: 30px;
-        bottom: 60px;
+        bottom: 40px;
         border: 0;
         background-color: transparent;
     }
@@ -119,6 +119,7 @@
                 position: absolute;
                 right: 100%;
                 bottom: 100%;
+                opacity: 0.7;
                 .menu_m_gnb {
                     display: block;
                     width: 46px;
@@ -148,14 +149,38 @@
                     display: block;
                     z-index: 20;
                     position: absolute;
-                    left: calc(50% - 17px);
-                    bottom: 6px;
-                    width: 34px;
-                    height: 34px;
-                    border-radius: 50%;
-                    background: url("../../../images/btn_gnb.png") no-repeat center center;
-                    background-size: 40px 40px;
-                    box-shadow: 0px 0px 2px 1px rgba(244,78,93, 1);
+                    left: calc(50% - 23px);
+                    bottom: 0;
+                    width: 46px;
+                    height: 46px;
+                    // background: url("../../../images/btn_gnb.png") no-repeat center center;
+                    // background-size: 40px 40px;
+                    // box-shadow: 0px 0px 2px 1px rgba(244,78,93, 1);
+                    .btn_logo {
+                        position: absolute;
+                        width: 36px;
+                        height: 36px;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                        border-radius: 50%;
+                        background-color: #fff;
+                        font-size: 8px;
+                        font-weight: 800;
+                        font-style: italic;
+                        line-height: 36px;
+                        &::after {
+                            @include after();
+                            width: 32px;
+                            height: 32px;
+                            border-radius: 50%;
+                            border: 1px solid #262626;
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
                     .blind {
                         @include blind();
                     }
@@ -182,10 +207,20 @@
             background-color: transparent;
             .gnb {
                 .menu_m_gnb {
-                    background-color: rgba(255, 255, 255, 0.9);
+                    background-color: rgba(255, 255, 255, 1);
                     li {
                         a {
                             color: #262626;
+                        }
+                    }
+                }
+                .btn_gnb {
+                    
+                    .btn_logo {
+                        background-color: #262626;
+                        color: #fff;
+                        &::after {
+                            border-color: #fff;
                         }
                     }
                 }

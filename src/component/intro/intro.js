@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './css/intro.css';
 import MainVisual from './mainVisual';
 import useHeight from '../hooks/useHeight';
-import useFadeAnimate from '../hooks/useFadeAnimate';
+// import useFadeAnimate from '../hooks/useFadeAnimate';
 
 
 

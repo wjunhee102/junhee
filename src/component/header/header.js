@@ -97,6 +97,7 @@ function Header({setHPos , moveS, hOn}) {
     // 모바일 버튼 이벤트 
     const BTN_GNB = useRef();
     const M_GNB = useRef();
+    const GNB = useRef();
 
     let firstTouchY = 0;
     let touchMove = 0;
@@ -118,6 +119,7 @@ function Header({setHPos , moveS, hOn}) {
         const touch = e.changedTouches[0];
         firstTouchY = touch.clientY;
         M_GNB.current.style.height = `230px`;
+        GNB.current.style.opacity = 1;
         TOUCH_ON = true;
     }
     const BTN_MOVE = (e)=> {
@@ -136,6 +138,7 @@ function Header({setHPos , moveS, hOn}) {
         } 
         BTN_GNB.current.style.transform = `translateY(${0}px)`;
         M_GNB.current.style.height = `0px`;
+        GNB.current.style.opacity = 0.7;
     } 
          
     useEffect(()=>{
@@ -155,7 +158,7 @@ function Header({setHPos , moveS, hOn}) {
                     </a>
                 </h1>
             
-                <nav className="gnb">
+                <nav className="gnb" ref={GNB}>
                     <ul className="menu_gnb">
                         {gnb_info.map((info, idx)=>(
                             <Gnb 
@@ -180,6 +183,7 @@ function Header({setHPos , moveS, hOn}) {
                         ))}
                     </ul>
                     <button type="button" className={`btn_gnb`} ref={BTN_GNB}>
+                        <span className="btn_logo">JUN</span>
                         <span className="blind">gnb 이동 버튼</span>
                     </button>
                 </nav>
