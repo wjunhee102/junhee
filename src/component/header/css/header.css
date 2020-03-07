@@ -42,12 +42,19 @@ body {
 
 @media screen and (max-width: 736px) {
   #header {
+    border: 0;
+    background-color: transparent;
     height: 0;
     width: 0;
     right: 30px;
-    bottom: 40px;
-    border: 0;
-    background-color: transparent;
+    bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  #header {
+    right: 40px;
+    bottom: 90px;
   }
 }
 
@@ -236,6 +243,7 @@ body {
   }
   #header .inner .gnb .btn_gnb .btn_logo {
     position: absolute;
+    display: block;
     width: 36px;
     height: 36px;
     left: 50%;
@@ -244,7 +252,8 @@ body {
             transform: translate(-50%, -50%);
     border-radius: 50%;
     background-color: #fff;
-    font-size: 8px;
+    font-size: 10px;
+    text-align: center;
     font-weight: 800;
     font-style: italic;
     line-height: 36px;
