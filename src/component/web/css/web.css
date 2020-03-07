@@ -81,7 +81,6 @@ body {
 @media screen and (max-width: 736px) {
   #main .web .foreword .inner .exp {
     font-size: 1.5em;
-    text-indent: 10px;
   }
 }
 
@@ -159,9 +158,6 @@ body {
 @media screen and (max-width: 768px) {
   #main .web .port_site .inner .textbox {
     max-width: 540px;
-    width: auto;
-    height: auto;
-    margin: auto;
   }
 }
 
@@ -177,9 +173,16 @@ body {
 
 @media screen and (max-width: 1024px) {
   #main .web .port_site .inner .textbox .contents {
+    max-width: 4720px;
     left: 0;
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #main .web .port_site .inner .textbox .contents {
+    max-width: 540px;
   }
 }
 
@@ -341,7 +344,7 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 #main .web .port_site .inner .textbox .contents .pers_menu li {
@@ -357,6 +360,12 @@ body {
   color: #262626;
 }
 
+@media screen and (max-width: 768px) {
+  #main .web .port_site .inner .textbox .contents .pers_menu li {
+    text-indent: 0;
+  }
+}
+
 #main .web .port_site .inner .textbox .contents .tit2 {
   font-size: 1.5625em;
   font-weight: 600;
@@ -364,6 +373,12 @@ body {
   color: #333;
   margin-bottom: 20px;
   text-indent: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  #main .web .port_site .inner .textbox .contents .tit2 {
+    text-indent: 0;
+  }
 }
 
 @media screen and (max-width: 414px) {
@@ -382,6 +397,27 @@ body {
   line-height: 1.5;
   color: #888;
   text-indent: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  #main .web .port_site .inner .textbox .contents .exp {
+    text-indent: 5px;
+  }
+}
+
+#main .web .port_site .inner .textbox .contents .git a.gitlink {
+  display: block;
+  text-indent: 10px;
+  line-height: 1;
+  color: #0066cc;
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  #main .web .port_site .inner .textbox .contents .git a.gitlink {
+    text-indent: 0;
+  }
 }
 
 #main .web .port_site .inner .imgbox {

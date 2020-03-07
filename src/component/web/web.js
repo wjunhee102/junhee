@@ -72,11 +72,11 @@ function Port({title, divi, title2, content, img, lang, personnel, link, keyword
                                 <li className={`pers${idx}`} key={idx}>{ele}</li>
                             ))}
                         </ul>
-                        <p className="git">
-                            <a href={git} className="gitlink" target="_blink">소스코드 주소</a>
-                        </p>
                         <h5 className="tit2">{title2}</h5>
                         <p className="exp">{content}</p>
+                        <p className="git">
+                            <a href={git} className="gitlink" target="_blink">소스코드 주소 &#62;</a>
+                        </p>
                     </div>
 
                 </div>
