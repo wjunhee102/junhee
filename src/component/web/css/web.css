@@ -173,7 +173,7 @@ body {
 
 @media screen and (max-width: 1024px) {
   #main .web .port_site .inner .textbox .contents {
-    max-width: 4720px;
+    max-width: 472px;
     left: 0;
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
@@ -390,13 +390,14 @@ body {
 #main .web .port_site .inner .textbox .contents .exp {
   text-indent: 10px;
   font-size: 1.5em;
-  height: 180px;
+  height: auto;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 600;
   line-height: 1.5;
   color: #888;
   text-indent: 10px;
+  margin-bottom: 30px;
 }
 
 @media screen and (max-width: 768px) {
@@ -513,26 +514,26 @@ body {
 }
 
 #main .web .port_site .inner .imgbox.naver .link {
-  background-image: url("../../../images/naverBg.png");
+  background-image: url("../../../images/naverBG_2x.png");
 }
 
 #main .web .port_site .inner .imgbox.naver .link .img {
-  background-image: url("../../../images/naver_L.jpg");
+  background-image: url("../../../images/naver_2x.jpg");
 }
 
 #main .web .port_site .inner .imgbox.apple .link {
-  background-image: url("../../../images/appleBg.png");
+  background-image: url("../../../images/appleBG_2x.png");
 }
 
 #main .web .port_site .inner .imgbox.apple .link .img {
-  background-image: url("../../../images/apple_L.jpg");
+  background-image: url("../../../images/apple_2x.jpg");
 }
 
 #main .web .port_site .inner .imgbox.podopod .link {
-  background-image: url("../../../images/podopodBg.png");
+  background-image: url("../../../images/podoBG_2x.png");
 }
 
 #main .web .port_site .inner .imgbox.podopod .link .img {
-  background-image: url("../../../images/podopod_L.jpg");
+  background-image: url("../../../images/podo_2x.jpg");
 }
 /*# sourceMappingURL=web.css.map */

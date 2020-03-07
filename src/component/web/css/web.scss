@@ -106,7 +106,7 @@
                     top: 50%;
                     transform: translate(0%, -50%);
                     @media #{$tabletH} {
-                        max-width: 4720px;
+                        max-width: 472px;
                         left: 0;
                         transform: translate(0, 0); 
                     }
@@ -271,13 +271,14 @@
                     .exp {
                         text-indent: 10px;
                         font-size: 1.5em;
-                        height: 180px;
+                        height: auto;
                         overflow: hidden;
                         text-overflow: ellipsis;
                         font-weight: 600;
                         line-height: 1.5;
                         color: #888;
                         text-indent: 10px;
+                        margin-bottom: 30px;
                         @media #{$tabletV} {
                             text-indent: 5px;
                         }
@@ -369,25 +370,25 @@
                 }
                 &.naver {
                     .link {
-                        background-image: url("../../../images/naverBg.png");
+                        background-image: url("../../../images/naverBG_2x.png");
                         .img {
-                            background-image: url("../../../images/naver_L.jpg");
+                            background-image: url("../../../images/naver_2x.jpg");
                         }
                     } 
                 }
                 &.apple {
                     .link {
-                        background-image: url("../../../images/appleBg.png");
+                        background-image: url("../../../images/appleBG_2x.png");
                         .img {
-                            background-image: url("../../../images/apple_L.jpg");
+                            background-image: url("../../../images/apple_2x.jpg");
                         }
                     } 
                 }
                 &.podopod {
                     .link {
-                        background-image: url("../../../images/podopodBg.png");
+                        background-image: url("../../../images/podoBG_2x.png");
                         .img {
-                            background-image: url("../../../images/podopod_L.jpg");
+                            background-image: url("../../../images/podo_2x.jpg");
                         }
                     } 
                 }
