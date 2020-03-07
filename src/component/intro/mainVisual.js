@@ -5,6 +5,10 @@ import './css/mainVisual.css'
 
 
 
+const profile = {
+
+}
+
 const about = [
     {
         type : "name",
@@ -64,36 +68,28 @@ function ProfileText({on}) {
 //skillkind 내용
 const skillKind = [
     {
-        name : 'html5',
-        img : 'html5i.png'
+        name : 'html5'
     },
     {
-        name : 'css3',
-        img : 'css3i.png'
+        name : 'css3'
     },
     {
-        name : 'jQuery',
-        img : 'jq.png'
+        name : 'jQuery'
     },
     {
-        name : 'javascript',
-        img : 'js.png'
+        name : 'javascript'
     },
     {
-        name : 'react',
-        img : 'react.png'
+        name : 'react'
     },
     {
-        name : 'photoshop',
-        img : 'photoshop.png'
+        name : 'photoshop'
     },
     {
-        name : 'illustrator',
-        img : 'illu.png'
+        name : 'illustrator'
     },
     {
-        name : 'scss',
-        img : 'scss.png'
+        name : 'scss'
     }
 ]
 
@@ -272,7 +268,7 @@ function MainVisual({on ,height, typoH, intro}) {
         mainWidth();
         window.addEventListener("resize" , mainWidth);
         return ()=> window.removeEventListener("resize" , mainWidth);
-    },[])
+    },[mainImage])
 
     useEffect(()=>{
         window.addEventListener('scroll',coverEvent);

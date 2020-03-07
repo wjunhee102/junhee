@@ -77,6 +77,12 @@ body {
   }
 }
 
+@media screen and (max-width: 736px) {
+  #main .intro .typo h2 {
+    font-weight: 700;
+  }
+}
+
 #main .intro .typo h2.off {
   position: absolute;
   left: 50%;

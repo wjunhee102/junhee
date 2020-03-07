@@ -68,10 +68,8 @@ function Intro({iPos, hOn, tPos}) {
     //intro섹션 parallex함수
     function move(scroll_pos) {
          
-        let 
-            typoH = typo/4,
-            mainArea = mainH + typo*2 + typo/3
-            ;
+        let mainArea = mainH + typo*2 + typo/3;
+        
             if (scroll_pos < typo ) {
                 setOn(0)
             } else if(scroll_pos >= typo && scroll_pos <= typo*2) {

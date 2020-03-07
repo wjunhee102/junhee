@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import './css/web.css';
 import './css/team.css';
 import useHeight from '../hooks/useHeight';
@@ -12,7 +12,7 @@ const port_site = [
         lang : ["html5", "css3"],
         divice : "데스크탑",
         personnel : ["황준희"],
-        content : ' 만들면서 제일 고민 했었던 부분은 뉴스 스탠드 입니다. 언론사 로고가 흰색 배경에 JPG파일로 되어 있어서 검은색 배경과 어울리게 하려고 현실에 있는 신문 가판대처럼 꾸며 그 안에 로고를 집어 넣었습니다. ',
+        content : ' 만들면서 제일 고민 했었던 부분은 뉴스 스탠드 영역입니다. 언론사 로고가 흰색 배경에 JPG파일로 되어 있어서 검은색 배경과 어울리게 하려고 현실에 있는 신문 가판대처럼 꾸며 그 안에 로고를 집어 넣었습니다. ',
         img : "naver",
         link : "https://wjunhee102.github.io/port_sub/naver/index.html",
         git : "https://github.com/wjunhee102/port_sub/tree/master/naver",
