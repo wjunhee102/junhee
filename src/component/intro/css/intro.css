@@ -9,12 +9,6 @@ body {
   font-size: 16px;
 }
 
-@media screen and (max-width: 1024px) {
-  body {
-    font-size: 14px;
-  }
-}
-
 .wrap {
   width: 100%;
   height: auto;
@@ -43,6 +37,30 @@ body {
   overflow: hidden;
 }
 
+@media screen and (max-width: 1024px) {
+  #main .intro .typo {
+    font-size: 0.86em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #main .intro .typo {
+    font-size: 0.5em;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .intro .typo {
+    font-size: 0.47em;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  #main .intro .typo {
+    font-size: 0.27em;
+  }
+}
+
 #main .intro .typo h2 {
   text-align: center;
   color: #fff;
@@ -51,6 +69,12 @@ body {
   letter-spacing: 3px;
   white-space: nowrap;
   will-change: opacity;
+}
+
+@media screen and (max-width: 768px) {
+  #main .intro .typo h2 {
+    white-space: wrap;
+  }
 }
 
 #main .intro .typo h2.off {

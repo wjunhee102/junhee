@@ -13,6 +13,18 @@
             position: relative;
             background: transparent;
             overflow: hidden;
+            @media #{$tabletH} {
+                font-size: 0.86em;
+            }
+            @media #{$tabletV} {
+                font-size: 0.5em;
+            }
+            @media #{$phoneH} {
+                font-size: 0.47em;
+            }
+            @media #{$phoneV} {
+                font-size: 0.27em;
+            }
             h2 {
                 text-align: center;
                 color: #fff;
@@ -21,6 +33,15 @@
                 letter-spacing: 3px;
                 white-space: nowrap;
                 will-change: opacity;
+                @media #{$tabletV} {
+                    white-space: wrap;
+                }
+                // @media #{$phoneH} {
+                //     font-size: 0.7em;
+                // }
+                // @media #{$phoneV} {
+                //     font-size: 0.6em;
+                // }
                 &.off {
                     // transition: 0.3s ease ;
                     position: absolute;
