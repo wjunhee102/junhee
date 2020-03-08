@@ -9,12 +9,6 @@ body {
   font-size: 16px;
 }
 
-@media screen and (max-width: 1024px) {
-  body {
-    font-size: 14px;
-  }
-}
-
 .wrap {
   width: 100%;
   height: auto;

@@ -3,6 +3,8 @@ import Header from './component/header/header';
 import Intro from './component/intro/intro';
 import Skill from './component/skill/skill';
 import Web from './component/web/web';
+import Team from './component/team/team';
+import Connect from './component/connect/connect';
 
 
 function Port() {
@@ -111,13 +113,10 @@ function Port() {
                     hOn={setHOn}
                     tPos={setTPos}
                 />
-                <Skill
-                    sPos={setSPos}
-                />
-                <Web 
-                    wPos={setWPos}
-                />
-      
+                <Skill sPos={setSPos} />
+                <Web wPos={setWPos} />
+                <Team />
+                <Connect />
                 </main>
             </div>
         </div> 

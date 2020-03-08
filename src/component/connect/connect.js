@@ -1,18 +1,19 @@
-import React, { useState} from 'react';
+import React from 'react';
+import './css/connect.css';
 
 
-function useInput(defaultValue) {
-    const [value, setValue] = useState(defaultValue);
+// function useInput(defaultValue) {
+//     const [value, setValue] = useState(defaultValue);
 
-    const onChange = e => {
-        const {
-            target: { value }
-        } = e;
-        setValue(value);
-    };
+//     const onChange = e => {
+//         const {
+//             target: { value }
+//         } = e;
+//         setValue(value);
+//     };
 
-    return { value, onChange };
-}
+//     return { value, onChange };
+// }
 
 // function useFetch(url){
 //     const [payload, setPayload] = useState(null);
@@ -47,17 +48,43 @@ function useInput(defaultValue) {
 
 
  
+// function Connect() {
+//     const name = useInput("")
+//     return (
+//         <section className="connect">
+//             <h1>use Hooks</h1>
+//             <br />
+//             <input {...name} placeholder="whats your name" />
+//             <input value={name.value} onChange={name.onChange} placeholder="whats your name" />
+//             <h4>{name.value}</h4>
+//             <br />
+//         </section>
+//     )
+// }
+
+const connect_info = {
+    name : "황준희",
+    phone : "010-9878-8227",
+    email : "wjunhee102@naver.com",
+    cv : ""
+}
+
 function Connect() {
-    const name = useInput("")
     return (
+        <>
         <section className="connect">
-            <h1>use Hooks</h1>
-            <br />
-            <input {...name} placeholder="whats your name" />
-            <input value={name.value} onChange={name.onChange} placeholder="whats your name" />
-            <h4>{name.value}</h4>
-            <br />
+            <div className="inner">
+                <h2 className="name">{connect_info.name}</h2>
+                <p className="phone">{connect_info.phone}</p>
+                <p className="email">{connect_info.email}</p>
+            </div>
         </section>
+        <footer id="footer">
+            <div className="inner">
+                <p className="copy">&#169;황준희</p>
+            </div>
+        </footer>
+        </>
     )
 }
 
