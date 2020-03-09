@@ -8,7 +8,7 @@
     .intro {
         .mainVisual {
             width: 100%;
-            height:  15000px;
+            height:  14000px;
             overflow: hidden;
             position: relative;
             background-color: transparent;
@@ -42,8 +42,28 @@
                         left: 50%;
                         bottom: 0;
                         transform: translate(-50%, 0);
-                        background: url("../../../images/mainimage1.png") no-repeat center center;
+                        background-repeat: no-repeat;
+                        background-position: center center;
                         background-size: cover;
+                        background-image: url("../../../images/mainimage1.png");
+                        @media (max-width: 1200px) {
+                            background-image: url("../../../images/mainvisual_m6.png");
+                        }
+                        @media #{$tabletH} {
+                            left: 50%;
+                            bottom: 50%;
+                            transform: translate(-50%, 50%);
+                            background-size: 900px 800px;
+                        }
+                        @media #{$tabletV} {
+                            left: 50%;
+                            bottom: 50%;
+                            transform: translate(-50%, 50%);
+                            background-size: cover;
+                        }
+                        @media #{$phoneH} {
+                            background-size: 250px 222px;
+                        }
                         span {
                             @include blind();
                         }
@@ -61,12 +81,31 @@
     .mainVisual {
         .contents {
             .text_box {
-                @include center(absolute);
-                transform: translate(-120%, -50%);
+                position: absolute;
+                left: calc(50% - 300px);
+                top: 50%;
+                transform: translate(-50%, -50%);
                 transition: 0.3s ease;
+                white-space: nowrap;
                 background-color: transparent;
-                width: 500px;
+                width: 200px;
                 height: 65px;
+                @media #{$tabletH} {
+                    left: calc(50% - 250px);
+                }
+                @media #{$tabletV} {
+                    left: 60%;
+                    top: 20%;
+                }
+                @media #{$phoneH} {
+                    left: 38%;
+                    top: 15%;
+                    font-size: 0.9em;
+                }
+                @media #{$phoneV} {
+                    left: 70%;
+                    top: 20%;
+                }
                 h3 {
                     position: absolute;
                     left: 0px;
@@ -75,7 +114,7 @@
                     text-align: left;
                     color: #000;
                     font-weight: 500;
-                    font-size: 1.600em;
+                    font-size: 1.6em;
                     margin-bottom :10px;
                     opacity: 0;
                 }
