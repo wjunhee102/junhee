@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+안녕하세요 신입 웹 퍼블리셔 황준희 포트폴리오 사이트입니다.
 
 ## Available Scripts
 
