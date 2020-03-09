@@ -282,6 +282,9 @@
                         @media #{$tabletV} {
                             text-indent: 5px;
                         }
+                        @media #{$phoneV} {
+                            font-size: 1.375em;
+                        }
                     }
                     .git {
                         

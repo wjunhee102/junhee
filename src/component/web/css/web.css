@@ -406,6 +406,12 @@ body {
   }
 }
 
+@media screen and (max-width: 414px) {
+  #main .web .port_site .inner .textbox .contents .exp {
+    font-size: 1.375em;
+  }
+}
+
 #main .web .port_site .inner .textbox .contents .git a.gitlink {
   display: block;
   text-indent: 10px;

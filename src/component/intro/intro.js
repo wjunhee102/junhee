@@ -46,7 +46,7 @@ function Visual({typo, idx, on, height}) {
 
 
 //intro 컴포넌트
-function Intro({iPos, hOn, tPos}) {
+function Intro({iPos, hOn}) {
 
     const 
         [valueOn, setOn] = useState(0)
@@ -61,7 +61,6 @@ function Intro({iPos, hOn, tPos}) {
         
     // App에 값 전달    
     iPos(introH.height);
-    tPos(typo-typo/3);
     
 
 

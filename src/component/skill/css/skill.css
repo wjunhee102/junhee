@@ -23,7 +23,558 @@ body {
 
 #main .skill {
   position: relative;
-  height: 100px;
   background-color: #fff;
+}
+
+#main .skill .inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  background-color: transparent;
+  height: 1000px;
+}
+
+#main .skill .tit {
+  position: relative;
+  width: auto;
+  height: auto;
+}
+
+#main .skill .tit h3 {
+  position: relative;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1;
+  font-size: 4.0625em;
+  white-space: nowrap;
+  font-weight: 600;
+  color: #262626;
+  text-align: left;
+  z-index: 10;
+  border-bottom: 1px solid #888;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .tit h3 {
+    font-size: 4em;
+    text-indent: 10px;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .tit h3 {
+    font-size: 3em;
+    text-indent: 10px;
+  }
+}
+
+#main .skill .tit p {
+  font-family: "Noto Sans KR";
+  font-size: 1.875em;
+  font-weight: 600;
+  color: #888;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .tit p {
+    font-size: 1.8em;
+    text-indent: 10px;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .tit p {
+    font-size: 1.5em;
+  }
+}
+
+#main .skill .junimg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-image: url("../../../images/junheeSkill.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  width: 150px;
+  height: 150px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-animation: imgbox 1.3s ease forwards;
+          animation: imgbox 1.3s ease forwards;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .junimg {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #main .skill .junimg {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+#main .skill .junimg .name {
+  font-size: 1.125em;
+  font-weight: 500;
+  color: #262626;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+
+#main .skill .iconBox {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  will-change: scale;
+}
+
+#main .skill .iconBox::after {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 615px;
+  height: 615px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 0;
+  background: url("../../../images/border.png") no-repeat center center;
+  background-size: cover;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .iconBox::after {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #main .skill .iconBox::after {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox::after {
+    display: none;
+  }
+}
+
+#main .skill .iconBox.off {
+  -webkit-transform: translate(-50%, -50%) scale(0);
+          transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  -webkit-transition: 0.5s cubic-bezier(0, 1.19, 1, 1.07);
+  transition: 0.5s cubic-bezier(0, 1.19, 1, 1.07);
+}
+
+#main .skill .iconBox.on {
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  -webkit-transition: 1s cubic-bezier(0, 1.44, 0.71, 0.8) 0.3s;
+  transition: 1s cubic-bezier(0, 1.44, 0.71, 0.8) 0.3s;
+}
+
+#main .skill .iconBox.on::after {
+  opacity: 1;
+  -webkit-transition: 0.6s ease-in-out 1.3s;
+  transition: 0.6s ease-in-out 1.3s;
+}
+
+#main .skill .iconBox .icon {
+  position: absolute;
+  z-index: 10;
+  left: calc(50% - 55px);
+  top: calc(50% - 55px);
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .iconBox .icon {
+    left: calc(50% - 45px);
+    top: calc(50% - 45px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #main .skill .iconBox .icon {
+    left: calc(50% - 40px);
+    top: calc(50% - 40px);
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox .icon {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    margin-top: 10px;
+  }
+}
+
+#main .skill .iconBox .icon .iconImg {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 5;
+  cursor: pointer;
+}
+
+#main .skill .iconBox .icon .iconImg span {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  z-index: -2;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .iconBox .icon .iconImg {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #main .skill .iconBox .icon .iconImg {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox .icon .iconImg {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 70px;
+    height: 70px;
+    margin-top: 10px;
+  }
+}
+
+#main .skill .iconBox .icon .iconcontents {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translate(-100%, -50%);
+          transform: translate(-100%, -50%);
+  color: #262626;
+}
+
+#main .skill .iconBox .icon .iconcontents h4.icontit {
+  color: inherit;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+#main .skill .iconBox .icon .iconcontents p.content {
+  color: #888888;
+  width: 200px;
+  font-weight: 500;
+}
+
+#main .skill .iconBox .icon .iconcontents p.content span {
+  display: block;
+  font-weight: inherit;
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox .icon .iconcontents {
+    position: relative;
+    left: 0;
+    top: 0;
+  }
+}
+
+#main .skill .iconBox .icon.html5 {
+  -webkit-transform: translate(-300px, 0);
+          transform: translate(-300px, 0);
+}
+
+#main .skill .iconBox .icon.html5 .iconImg {
+  background-image: url("../../../images/html5i.png");
+}
+
+#main .skill .iconBox .icon.html5 .iconcontents .icontit {
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .iconBox .icon.html5 {
+    -webkit-transform: translate(-240px, 0);
+            transform: translate(-240px, 0);
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox .icon.html5 {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    position: relative;
+  }
+}
+
+#main .skill .iconBox .icon.css3 {
+  -webkit-transform: translate(-215px, -215px);
+          transform: translate(-215px, -215px);
+}
+
+#main .skill .iconBox .icon.css3 .iconImg {
+  background-image: url("../../../images/css3i.png");
+}
+
+#main .skill .iconBox .icon.css3 .iconcontents .icontit {
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .iconBox .icon.css3 {
+    -webkit-transform: translate(-175px, -175px);
+            transform: translate(-175px, -175px);
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox .icon.css3 {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+#main .skill .iconBox .icon.jQuery {
+  -webkit-transform: translate(0, -300px);
+          transform: translate(0, -300px);
+}
+
+#main .skill .iconBox .icon.jQuery .iconImg {
+  background-image: url("../../../images/jq.png");
+}
+
+#main .skill .iconBox .icon.jQuery .iconcontents {
+  -webkit-transform: translate(-20%, 100%);
+          transform: translate(-20%, 100%);
+}
+
+#main .skill .iconBox .icon.jQuery .iconcontents .icontit {
+  text-transform: none;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .iconBox .icon.jQuery {
+    -webkit-transform: translate(0, -240px);
+            transform: translate(0, -240px);
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox .icon.jQuery {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+#main .skill .iconBox .icon.javascript {
+  -webkit-transform: translate(215px, -215px);
+          transform: translate(215px, -215px);
+}
+
+#main .skill .iconBox .icon.javascript .iconImg {
+  background-image: url("../../../images/js.png");
+}
+
+#main .skill .iconBox .icon.javascript .iconcontents {
+  -webkit-transform: translate(60%, -50%);
+          transform: translate(60%, -50%);
+}
+
+#main .skill .iconBox .icon.javascript .iconcontents .icontit {
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .iconBox .icon.javascript .iconcontents {
+    -webkit-transform: translate(45%, -50%);
+            transform: translate(45%, -50%);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .iconBox .icon.javascript {
+    -webkit-transform: translate(175px, -175px);
+            transform: translate(175px, -175px);
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox .icon.javascript {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+#main .skill .iconBox .icon.react {
+  -webkit-transform: translate(300px, 0);
+          transform: translate(300px, 0);
+}
+
+#main .skill .iconBox .icon.react .iconImg {
+  background-image: url("../../../images/react.png");
+}
+
+#main .skill .iconBox .icon.react .iconcontents {
+  -webkit-transform: translate(60%, -50%);
+          transform: translate(60%, -50%);
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .iconBox .icon.react .iconcontents {
+    -webkit-transform: translate(45%, -50%);
+            transform: translate(45%, -50%);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .iconBox .icon.react {
+    -webkit-transform: translate(240px, 0);
+            transform: translate(240px, 0);
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox .icon.react {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+#main .skill .iconBox .icon.photoshop {
+  -webkit-transform: translate(215px, 215px);
+          transform: translate(215px, 215px);
+}
+
+#main .skill .iconBox .icon.photoshop .iconImg {
+  background-image: url("../../../images/photoshop.png");
+}
+
+#main .skill .iconBox .icon.photoshop .iconcontents {
+  -webkit-transform: translate(60%, -50%);
+          transform: translate(60%, -50%);
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .iconBox .icon.photoshop .iconcontents {
+    -webkit-transform: translate(45%, -50%);
+            transform: translate(45%, -50%);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .iconBox .icon.photoshop {
+    -webkit-transform: translate(175px, 175px);
+            transform: translate(175px, 175px);
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox .icon.photoshop {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+#main .skill .iconBox .icon.illustrator {
+  -webkit-transform: translate(0, 300px);
+          transform: translate(0, 300px);
+}
+
+#main .skill .iconBox .icon.illustrator .iconImg {
+  background-image: url("../../../images/illu.png");
+}
+
+#main .skill .iconBox .icon.illustrator .iconcontents {
+  -webkit-transform: translate(60%, 0%);
+          transform: translate(60%, 0%);
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .iconBox .icon.illustrator {
+    -webkit-transform: translate(0, 240px);
+            transform: translate(0, 240px);
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox .icon.illustrator {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+#main .skill .iconBox .icon.scss {
+  -webkit-transform: translate(-215px, 215px);
+          transform: translate(-215px, 215px);
+}
+
+#main .skill .iconBox .icon.scss .iconImg {
+  background-image: url("../../../images/scss.png");
+}
+
+#main .skill .iconBox .icon.scss .iconcontents .icontit {
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .iconBox .icon.scss {
+    -webkit-transform: translate(-175px, 175px);
+            transform: translate(-175px, 175px);
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox .icon.scss {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox .icon .iconcontents {
+    position: absolute;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
 }
 /*# sourceMappingURL=skill.css.map */
