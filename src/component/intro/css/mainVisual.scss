@@ -320,29 +320,24 @@
                         width: auto;
                         height: auto;
                         opacity: 0;
-                        padding: 0 20px ;
+                        padding: 10px 50px ;
                         box-sizing: border-box;
-                        background-color: rgba(255, 255, 255, 0.3);
-                        // &::after {
-                        //     @include after();
-                        //     position: absolute;
-                        //     left: 0px;
-                        //     width: 1px;
-                        //     height: 0;
-                        //     top: 50%;
-                        //     transform: translateY(-50%);
-                        //     background-color: #262626;
-                        // }
+                        background-color: rgba(0, 0, 0, 0.6);
+                        box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.7);
+                        @media #{$phoneH} {
+                            padding: 10px 20px ;
+                        }
                         li {
                             position: relative;
-                            line-height: 4;
+                            line-height: 3.2;
                             width: 100%;
                             white-space: nowrap;
+                            color: #fff;
                             span {
                                 display: block;
                                 font-size: 2em;
-                                font-weight: 600;
-                                color: #262626;
+                                font-weight: 500;
+                                color: inherit;
                             }
                             @media #{$tabletH} {
                                 font-size: 0.9em;
@@ -380,6 +375,10 @@
                                 transform: translateY(0px);
                                 &:first-child {
                                     transition: 0.6s ease-out;
+                                    color: rgba(255, 255, 255,0.9);
+                                    border-bottom: 0.5px solid #fff;
+                                    // margin-bottom: 5px;
+                                    line-height: 2;
                                 }
                                 &:nth-child(2) {
                                     transition: 0.6s ease-out 0.1s;

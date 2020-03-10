@@ -6,6 +6,9 @@
     .skill {
         position: relative;
         background-color: #fff;
+        margin-top: 30px;
+        padding-top: 60px;
+        // box-shadow: 0px 0px 1px 0px #888;
         .inner {
             @include inner();
             height: 1000px;

@@ -12,7 +12,7 @@ body {
 .wrap {
   width: 100%;
   height: auto;
-  height: 4000px;
+  height: auto;
 }
 
 #main {
