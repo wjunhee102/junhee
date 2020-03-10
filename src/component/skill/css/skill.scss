@@ -9,6 +9,10 @@
         .inner {
             @include inner();
             height: 1000px;
+            padding-bottom: 50px;
+            @media #{$phoneH} {
+                height: auto
+            }
         }   
             .tit {
                 position: relative;
@@ -19,7 +23,7 @@
                     text-transform: uppercase;
                     text-align: center;
                     line-height: 1;
-                    font-size: 4.0625em;
+                    font-size: 3.2em;
                     white-space: nowrap;
                     font-weight: 600;
                     color: #262626;
@@ -27,7 +31,7 @@
                     z-index: 10;
                     border-bottom: 1px solid #888;
                     @media #{$tabletH} {
-                        font-size: 4em;
+                        font-size: 3.8em;
                         text-indent: 10px;
                     }
                     @media #{$phoneH} {
@@ -72,7 +76,15 @@
                     width: 110px;
                     height: 110px;
                 }
+                @media #{$phoneH} {
+                    position: relative;
+                    transform: translate(0, 0);
+                    left: 0;
+                    top: 0;
+                    margin-top: 20px;
+                }
                 .name {
+                    display: block;
                     font-size: 1.125em;
                     font-weight: 500;
                     color: #262626;
@@ -80,6 +92,12 @@
                     left: 50%;
                     top: 100%;
                     transform: translate(-50%, 0);
+                    @media #{$phoneH} {
+                        width: 100%;
+                        transform: translate(0, -50%);
+                        left: 100%;
+                        top: 50%;
+                    }
                 }
             }
             .iconBox {
@@ -128,13 +146,27 @@
                         opacity: 1;
                         transition: 0.6s ease-in-out 1.3s;
                     }
+                    @media #{$phoneH} {
+                        transform: translate(0, 0) scale(1);
+                    }
                 }
-                
+                @media #{$phoneH} {
+                    position: relative;
+                    transform: translate(0, 0);
+                    left: 0;
+                    top: 0;
+                    // display: flex;
+                    // flex-wrap: wrap;
+                    // height: 100px;
+                }
+
                 .icon {
                     position: absolute;
                     z-index: 10;
                     left: calc(50% - 55px);
                     top: calc(50% - 55px);
+                   
+                    box-sizing: border-box;
                     @media #{$tabletH} {
                         left: calc(50% - 45px);
                         top: calc(50% - 45px);
@@ -144,10 +176,16 @@
                         top: calc(50% - 40px);
                     }
                     @media #{$phoneH} {
+                        display: flex;
+                        justify-content: flex-start;
+                        width: 100%;
+                        // flex-wrap: nowrap;
                         position: relative;
                         left: 0px;
                         top: 0px;
-                        margin-top: 10px;
+                        margin-top: 20px;
+                        padding-left: 10px;
+                        overflow: hidden;
                     }
                     .iconImg {
                         width: 110px;
@@ -175,11 +213,12 @@
                             top: 0px;
                             width: 70px;
                             height: 70px;
-                            margin-top: 10px;
+                            float: left;
                         }
                     }
                     .iconcontents {
                         position: absolute;
+                        overflow: hidden;
                         left: 0;
                         top: 50%;
                         transform: translate(-100%, -50%);
@@ -192,28 +231,44 @@
                         }
                         p.content {
                             color: #888888;
-                            width: 200px;
+                            width: 160px;
                             font-weight: 500;
                             span {
                                 display: block;
                                 font-weight: inherit;
                             }
+                            @media #{$phoneH}{
+                                width: auto;
+                            }
                         }
                         @media #{$phoneH} {
                             position: relative;
-                            
+                            flex: 1;
                             left: 0;
                             top: 0;
+                            margin-left: 20px;
+                            padding-right: 10px;
+                            transform: translate(0, 0);
+                            h4.icontit {
+                                // margin-top: 10px;
+                            }
                         }
                         
                     }
 
                     &.html5 {
-                        transform: translate(-300px, 0);
+
+                        @media screen and (min-width: 1025px){
+                            transform: translate(-300px, 0);
+                        }
+
                         .iconImg {
                             background-image: url("../../../images/html5i.png");
                         }
+
                         .iconcontents {
+                            @media screen and (min-width: 769px) {
+                            }
                             .icontit {
                                 text-transform: uppercase;
                             }
@@ -227,11 +282,18 @@
                         }
                     }
                     &.css3 {
+
+                        @media screen and (min-width: 1025px){
+                            transform: translate(-215px, -215px);
+                        }
+
                         .iconImg {
                             background-image: url("../../../images/css3i.png");
                         }
-                        transform: translate(-215px, -215px);
+
                         .iconcontents {
+                            @media screen and (min-width: 769px) {
+                            }
                             .icontit {
                                 text-transform: uppercase;
                             }
@@ -244,16 +306,24 @@
                         }
                     }
                     &.jQuery {
+
+                        @media screen and (min-width: 1025px){
+                            transform: translate(0, -300px);
+                        }
+
                         .iconImg {
                             background-image: url("../../../images/jq.png");
                         }
-                        transform: translate(0, -300px);
+
                         .iconcontents {
-                            transform: translate(-20%, 100%);
+                            @media screen and (min-width: 769px) {
+                                transform: translate(65%, -115%);
+                            }
                             .icontit {
                                 text-transform: none;
                             }
                         }
+
                         @media #{$tabletH} {
                             transform: translate(0, -240px);
                         }
@@ -262,19 +332,27 @@
                         }
                     }
                     &.javascript {
+
+                        @media screen and (min-width: 1025px){
+                            transform: translate(215px, -215px);
+                        }
+
                         .iconImg {
                             background-image: url("../../../images/js.png");
                         }
-                        transform: translate(215px, -215px);
+
                         .iconcontents {
-                            transform: translate(60%, -50%);
+                            @media screen and (min-width: 1025px) {
+                                transform: translate(70%, -50%);
+                            }
+                            @media screen and (min-width: 769px) and (max-width: 1024px) {
+                                transform: translate(60%, -50%);
+                            }
                             .icontit {
                                 text-transform: capitalize;
                             }
-                            @media #{$tabletH} {
-                                transform: translate(45%, -50%);
-                            }
                         }
+
                         @media #{$tabletH} {
                             transform: translate(175px, -175px);
                         }
@@ -283,17 +361,21 @@
                         }
                     }
                     &.react {
+                        @media screen and (min-width: 1025px){
+                            transform: translate(300px, 0);
+                        }
                         .iconImg {
                             background-image: url("../../../images/react.png");
                         }
-                        transform: translate(300px, 0);
                         .iconcontents {
-                            transform: translate(60%, -50%);
+                            @media screen and (min-width: 1025px) {
+                                transform: translate(70%, -50%);
+                            }
+                            @media screen and (min-width: 769px) and (max-width: 1024px) {
+                                transform: translate(60%, -50%);
+                            }
                             .icontit {
                                 
-                            }
-                            @media #{$tabletH} {
-                                transform: translate(45%, -50%);
                             }
                         }
                         @media #{$tabletH} {
@@ -304,17 +386,21 @@
                         }
                     }
                     &.photoshop {
+                        @media screen and (min-width: 1025px){
+                            transform: translate(215px, 215px);
+                        }
                         .iconImg {
                             background-image: url("../../../images/photoshop.png");
                         }
-                        transform: translate(215px, 215px);
                         .iconcontents {
-                            transform: translate(60%, -50%);
+                            @media screen and (min-width: 1025px) {
+                                transform: translate(70%, -50%);
+                            }
+                            @media screen and (min-width: 769px) and (max-width: 1024px) {
+                                transform: translate(60%, -50%);
+                            }
                             .icontit {
                                 
-                            }
-                            @media #{$tabletH} {
-                                transform: translate(45%, -50%);
                             }
                         }
                         @media #{$tabletH} {
@@ -325,12 +411,16 @@
                         }
                     }
                     &.illustrator {
+                        @media screen and (min-width: 1025px){
+                            transform: translate(0, 300px);
+                        }
                         .iconImg {
                             background-image: url("../../../images/illu.png");
                         }
-                        transform: translate(0, 300px);
                         .iconcontents {
-                            transform: translate(60%, 0%);
+                            @media screen and (min-width: 769px) {
+                                transform: translate(60%, 0%);
+                            }
                             .icontit {
                                 
                             }
@@ -343,11 +433,15 @@
                         }
                     }
                     &.scss {
+                        @media screen and (min-width: 1025px){
+                            transform: translate(-215px, 215px);
+                        }
                         .iconImg {
                             background-image: url("../../../images/scss.png");
                         }
-                        transform: translate(-215px, 215px);
                         .iconcontents {
+                            @media screen and (min-width: 769px) {
+                            }
                             .icontit {
                                 text-transform: uppercase;
                             }
@@ -358,23 +452,7 @@
                         @media #{$phoneH} {
                             transform: translate(0, 0);
                         }
-                    }
-                    .iconcontents {
-                        h4.icontit {
-                        }
-                        p.content {
-                        }
-                        @media #{$tabletH} {
-                        }
-                        @media #{$phoneH} {
-                            position: absolute;
-                            // left: -200%;
-                            // top: 0;
-                            transform: translate(0, 0);
-                        }
-                        
-                    }
-                    
+                    }                    
                 }
         }
         

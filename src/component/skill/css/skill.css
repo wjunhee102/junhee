@@ -12,7 +12,7 @@ body {
 .wrap {
   width: 100%;
   height: auto;
-  height: 4000px;
+  height: auto;
 }
 
 #main {
@@ -32,6 +32,13 @@ body {
   position: relative;
   background-color: transparent;
   height: 1000px;
+  padding-bottom: 50px;
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .inner {
+    height: auto;
+  }
 }
 
 #main .skill .tit {
@@ -45,7 +52,7 @@ body {
   text-transform: uppercase;
   text-align: center;
   line-height: 1;
-  font-size: 4.0625em;
+  font-size: 3.2em;
   white-space: nowrap;
   font-weight: 600;
   color: #262626;
@@ -56,7 +63,7 @@ body {
 
 @media screen and (max-width: 1024px) {
   #main .skill .tit h3 {
-    font-size: 4em;
+    font-size: 3.8em;
     text-indent: 10px;
   }
 }
@@ -125,7 +132,19 @@ body {
   }
 }
 
+@media screen and (max-width: 736px) {
+  #main .skill .junimg {
+    position: relative;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    left: 0;
+    top: 0;
+    margin-top: 20px;
+  }
+}
+
 #main .skill .junimg .name {
+  display: block;
   font-size: 1.125em;
   font-weight: 500;
   color: #262626;
@@ -134,6 +153,16 @@ body {
   top: 100%;
   -webkit-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .junimg .name {
+    width: 100%;
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+    left: 100%;
+    top: 50%;
+  }
 }
 
 #main .skill .iconBox {
@@ -208,11 +237,30 @@ body {
   transition: 0.6s ease-in-out 1.3s;
 }
 
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox.on {
+    -webkit-transform: translate(0, 0) scale(1);
+            transform: translate(0, 0) scale(1);
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox {
+    position: relative;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    left: 0;
+    top: 0;
+  }
+}
+
 #main .skill .iconBox .icon {
   position: absolute;
   z-index: 10;
   left: calc(50% - 55px);
   top: calc(50% - 55px);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 @media screen and (max-width: 1024px) {
@@ -231,10 +279,19 @@ body {
 
 @media screen and (max-width: 736px) {
   #main .skill .iconBox .icon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    width: 100%;
     position: relative;
     left: 0px;
     top: 0px;
-    margin-top: 10px;
+    margin-top: 20px;
+    padding-left: 10px;
+    overflow: hidden;
   }
 }
 
@@ -280,12 +337,13 @@ body {
     top: 0px;
     width: 70px;
     height: 70px;
-    margin-top: 10px;
+    float: left;
   }
 }
 
 #main .skill .iconBox .icon .iconcontents {
   position: absolute;
+  overflow: hidden;
   left: 0;
   top: 50%;
   -webkit-transform: translate(-100%, -50%);
@@ -302,7 +360,7 @@ body {
 
 #main .skill .iconBox .icon .iconcontents p.content {
   color: #888888;
-  width: 200px;
+  width: 160px;
   font-weight: 500;
 }
 
@@ -312,16 +370,31 @@ body {
 }
 
 @media screen and (max-width: 736px) {
-  #main .skill .iconBox .icon .iconcontents {
-    position: relative;
-    left: 0;
-    top: 0;
+  #main .skill .iconBox .icon .iconcontents p.content {
+    width: auto;
   }
 }
 
-#main .skill .iconBox .icon.html5 {
-  -webkit-transform: translate(-300px, 0);
-          transform: translate(-300px, 0);
+@media screen and (max-width: 736px) {
+  #main .skill .iconBox .icon .iconcontents {
+    position: relative;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    left: 0;
+    top: 0;
+    margin-left: 20px;
+    padding-right: 10px;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  #main .skill .iconBox .icon.html5 {
+    -webkit-transform: translate(-300px, 0);
+            transform: translate(-300px, 0);
+  }
 }
 
 #main .skill .iconBox .icon.html5 .iconImg {
@@ -347,9 +420,11 @@ body {
   }
 }
 
-#main .skill .iconBox .icon.css3 {
-  -webkit-transform: translate(-215px, -215px);
-          transform: translate(-215px, -215px);
+@media screen and (min-width: 1025px) {
+  #main .skill .iconBox .icon.css3 {
+    -webkit-transform: translate(-215px, -215px);
+            transform: translate(-215px, -215px);
+  }
 }
 
 #main .skill .iconBox .icon.css3 .iconImg {
@@ -374,18 +449,22 @@ body {
   }
 }
 
-#main .skill .iconBox .icon.jQuery {
-  -webkit-transform: translate(0, -300px);
-          transform: translate(0, -300px);
+@media screen and (min-width: 1025px) {
+  #main .skill .iconBox .icon.jQuery {
+    -webkit-transform: translate(0, -300px);
+            transform: translate(0, -300px);
+  }
 }
 
 #main .skill .iconBox .icon.jQuery .iconImg {
   background-image: url("../../../images/jq.png");
 }
 
-#main .skill .iconBox .icon.jQuery .iconcontents {
-  -webkit-transform: translate(-20%, 100%);
-          transform: translate(-20%, 100%);
+@media screen and (min-width: 769px) {
+  #main .skill .iconBox .icon.jQuery .iconcontents {
+    -webkit-transform: translate(65%, -115%);
+            transform: translate(65%, -115%);
+  }
 }
 
 #main .skill .iconBox .icon.jQuery .iconcontents .icontit {
@@ -406,29 +485,33 @@ body {
   }
 }
 
-#main .skill .iconBox .icon.javascript {
-  -webkit-transform: translate(215px, -215px);
-          transform: translate(215px, -215px);
+@media screen and (min-width: 1025px) {
+  #main .skill .iconBox .icon.javascript {
+    -webkit-transform: translate(215px, -215px);
+            transform: translate(215px, -215px);
+  }
 }
 
 #main .skill .iconBox .icon.javascript .iconImg {
   background-image: url("../../../images/js.png");
 }
 
-#main .skill .iconBox .icon.javascript .iconcontents {
-  -webkit-transform: translate(60%, -50%);
-          transform: translate(60%, -50%);
+@media screen and (min-width: 1025px) {
+  #main .skill .iconBox .icon.javascript .iconcontents {
+    -webkit-transform: translate(70%, -50%);
+            transform: translate(70%, -50%);
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #main .skill .iconBox .icon.javascript .iconcontents {
+    -webkit-transform: translate(60%, -50%);
+            transform: translate(60%, -50%);
+  }
 }
 
 #main .skill .iconBox .icon.javascript .iconcontents .icontit {
   text-transform: capitalize;
-}
-
-@media screen and (max-width: 1024px) {
-  #main .skill .iconBox .icon.javascript .iconcontents {
-    -webkit-transform: translate(45%, -50%);
-            transform: translate(45%, -50%);
-  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -445,24 +528,28 @@ body {
   }
 }
 
-#main .skill .iconBox .icon.react {
-  -webkit-transform: translate(300px, 0);
-          transform: translate(300px, 0);
+@media screen and (min-width: 1025px) {
+  #main .skill .iconBox .icon.react {
+    -webkit-transform: translate(300px, 0);
+            transform: translate(300px, 0);
+  }
 }
 
 #main .skill .iconBox .icon.react .iconImg {
   background-image: url("../../../images/react.png");
 }
 
-#main .skill .iconBox .icon.react .iconcontents {
-  -webkit-transform: translate(60%, -50%);
-          transform: translate(60%, -50%);
+@media screen and (min-width: 1025px) {
+  #main .skill .iconBox .icon.react .iconcontents {
+    -webkit-transform: translate(70%, -50%);
+            transform: translate(70%, -50%);
+  }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
   #main .skill .iconBox .icon.react .iconcontents {
-    -webkit-transform: translate(45%, -50%);
-            transform: translate(45%, -50%);
+    -webkit-transform: translate(60%, -50%);
+            transform: translate(60%, -50%);
   }
 }
 
@@ -480,24 +567,28 @@ body {
   }
 }
 
-#main .skill .iconBox .icon.photoshop {
-  -webkit-transform: translate(215px, 215px);
-          transform: translate(215px, 215px);
+@media screen and (min-width: 1025px) {
+  #main .skill .iconBox .icon.photoshop {
+    -webkit-transform: translate(215px, 215px);
+            transform: translate(215px, 215px);
+  }
 }
 
 #main .skill .iconBox .icon.photoshop .iconImg {
   background-image: url("../../../images/photoshop.png");
 }
 
-#main .skill .iconBox .icon.photoshop .iconcontents {
-  -webkit-transform: translate(60%, -50%);
-          transform: translate(60%, -50%);
+@media screen and (min-width: 1025px) {
+  #main .skill .iconBox .icon.photoshop .iconcontents {
+    -webkit-transform: translate(70%, -50%);
+            transform: translate(70%, -50%);
+  }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
   #main .skill .iconBox .icon.photoshop .iconcontents {
-    -webkit-transform: translate(45%, -50%);
-            transform: translate(45%, -50%);
+    -webkit-transform: translate(60%, -50%);
+            transform: translate(60%, -50%);
   }
 }
 
@@ -515,18 +606,22 @@ body {
   }
 }
 
-#main .skill .iconBox .icon.illustrator {
-  -webkit-transform: translate(0, 300px);
-          transform: translate(0, 300px);
+@media screen and (min-width: 1025px) {
+  #main .skill .iconBox .icon.illustrator {
+    -webkit-transform: translate(0, 300px);
+            transform: translate(0, 300px);
+  }
 }
 
 #main .skill .iconBox .icon.illustrator .iconImg {
   background-image: url("../../../images/illu.png");
 }
 
-#main .skill .iconBox .icon.illustrator .iconcontents {
-  -webkit-transform: translate(60%, 0%);
-          transform: translate(60%, 0%);
+@media screen and (min-width: 769px) {
+  #main .skill .iconBox .icon.illustrator .iconcontents {
+    -webkit-transform: translate(60%, 0%);
+            transform: translate(60%, 0%);
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -543,9 +638,11 @@ body {
   }
 }
 
-#main .skill .iconBox .icon.scss {
-  -webkit-transform: translate(-215px, 215px);
-          transform: translate(-215px, 215px);
+@media screen and (min-width: 1025px) {
+  #main .skill .iconBox .icon.scss {
+    -webkit-transform: translate(-215px, 215px);
+            transform: translate(-215px, 215px);
+  }
 }
 
 #main .skill .iconBox .icon.scss .iconImg {
@@ -565,14 +662,6 @@ body {
 
 @media screen and (max-width: 736px) {
   #main .skill .iconBox .icon.scss {
-    -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
-  }
-}
-
-@media screen and (max-width: 736px) {
-  #main .skill .iconBox .icon .iconcontents {
-    position: absolute;
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
   }

@@ -76,7 +76,6 @@ function Skill({sPos, iPos}) {
         } else {
             setSkillOn('off')
         }
-        console.log(iPos)
     }
     
     sPos(skillH.height)
@@ -97,6 +96,9 @@ function Skill({sPos, iPos}) {
                         활용 가능한 기술
                     </p>
                 </div> 
+                <div className="junimg">
+                    <span className="name">황준희</span>
+                </div>
                 <ul className={`iconBox ${skillOn}`} >
                     {skillKind.map((ele , idx)=>(
                         <Skills 
@@ -108,9 +110,6 @@ function Skill({sPos, iPos}) {
                     ))}
                       
                 </ul>
-                <div className="junimg">
-                    <span className="name">황준희</span>
-                </div>
             </div>
         </section>
     )

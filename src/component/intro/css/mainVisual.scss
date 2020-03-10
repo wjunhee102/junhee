@@ -19,10 +19,10 @@
                 height:  13000px;
             }
             @media #{$phoneH} {
-                height:  10000px;
+                height:  8000px;
             }
             @media #{$phoneV} {
-                height:  11000px;
+                height:  9000px;
             }
             .contents {
                 overflow: hidden;
@@ -38,7 +38,7 @@
                 }
                 &.on {
                     position: fixed;
-                    bottom: 0px;
+                    top: 0px;
                 }
                 &.end {
                     position: absolute;
@@ -170,7 +170,8 @@
                 left: 100%;
                 bottom: 0;
                 width: 100%;
-                height: 100%;
+                height: 100vh;
+                overflow: hidden;
                 background-color: rgba(255, 255, 255, 1);
                 will-change: transform;
                 
@@ -275,12 +276,12 @@
                 box-sizing: border-box;
                 .text-box {
                     // border: 1px solid red;
-                    width: 1024px;
+                    width: 100%;
                     height: auto;
                     position: absolute;
                     left: 50%;
                     top: 50%;
-                    transform: translate(-30% , -50%);
+                    transform: translate(-50% , -50%);
 
                     // title
                     h2.tit {
@@ -290,7 +291,7 @@
                         transform: translate(-50% , -50%);
                         width: 100%;
                         text-align: left;
-                        font-size: 4.25em;
+                        font-size: 4.025em;
                         font-weight: 600;
                         color: #262626;
                         line-height: 1.5;
@@ -312,29 +313,52 @@
 
                     // about
                     ul.about {
-                        position: relative;
-                        width: 100%;
-                        height: 100%;
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                        width: auto;
+                        height: auto;
                         opacity: 0;
-                        padding: 0 15px ;
+                        padding: 0 20px ;
                         box-sizing: border-box;
-                        &::after {
-                            @include after();
-                            position: absolute;
-                            left: -20px;
-                            width: 1px;
-                            height: 0;
-                            top: 50%;
-                            transform: translateY(-50%);
-                            background-color: #262626;
-                        }
+                        background-color: rgba(255, 255, 255, 0.3);
+                        // &::after {
+                        //     @include after();
+                        //     position: absolute;
+                        //     left: 0px;
+                        //     width: 1px;
+                        //     height: 0;
+                        //     top: 50%;
+                        //     transform: translateY(-50%);
+                        //     background-color: #262626;
+                        // }
                         li {
                             position: relative;
-                            line-height: 80px;
+                            line-height: 4;
+                            width: 100%;
+                            white-space: nowrap;
                             span {
-                                font-size: 2.5em;
+                                display: block;
+                                font-size: 2em;
                                 font-weight: 600;
-                                color: #000;
+                                color: #262626;
+                            }
+                            @media #{$tabletH} {
+                                font-size: 0.9em;
+                                line-height: 2;
+                            }
+                            @media #{$tabletV} {
+                                font-size: 0.8em;
+                                line-height: 3;
+                            }
+                            @media #{$phoneH} {
+                                font-size: 0.7em;
+                                line-height: 2;
+                            }
+                            @media #{$phoneV} {
+                                font-size: 0.5em;
+                                line-height: 3;
                             }
                         }
                         &.off {
@@ -385,16 +409,6 @@
     }
 }
 
-
-#main {
-    .contents {
-        .cover {
-            .profile {
-                
-            }
-        }
-    }
-}
 
 
 

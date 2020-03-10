@@ -46,8 +46,8 @@ function ProfileText({on}) {
     return (
         <div className="text-box">
             <h2 className={`tit ${titEvent(on, 1)}`}>
-                asdasdkl;sd<br />
-                &nbsp;&nbsp;<span>항상 노력 합니다.</span>"
+                 <br />
+                &nbsp;&nbsp;<span></span>
             </h2>
             <ul className={`about ${titEvent(on, 2)}`}>
                 { about.map((ele, idx)=>(
