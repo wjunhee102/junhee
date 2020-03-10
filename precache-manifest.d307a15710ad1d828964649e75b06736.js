@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "53d7b7e335131800774dc9750e64692d",
+    "revision": "fa88f65cd08a370b032b50320a51b288",
     "url": "/junhee/index.html"
   },
   {
-    "revision": "c02ba7ff5bda4538c740",
-    "url": "/junhee/static/css/main.ee5cbf41.chunk.css"
+    "revision": "ee3aa2be303ee93d4acc",
+    "url": "/junhee/static/css/main.22836ce2.chunk.css"
   },
   {
     "revision": "4d67e0b6668b99ef2af1",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/junhee/static/js/2.7e964f2d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c02ba7ff5bda4538c740",
-    "url": "/junhee/static/js/main.5c6ff3d6.chunk.js"
+    "revision": "ee3aa2be303ee93d4acc",
+    "url": "/junhee/static/js/main.22b3590f.chunk.js"
   },
   {
     "revision": "5228dde056d328f4a6ad",
@@ -50,6 +50,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2d2dcddee3f1b181a2511a642765a5b6",
     "url": "/junhee/static/media/js.2d2dcdde.png"
+  },
+  {
+    "revision": "c1f3c0c37466df15c9cc5334e23f7afc",
+    "url": "/junhee/static/media/junheeSkill.c1f3c0c3.png"
   },
   {
     "revision": "7fde15b7c8a87779ec8f84868d69a82d",
