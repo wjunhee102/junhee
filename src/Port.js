@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './component/header/header';
 import Intro from './component/intro/intro';
 import Skill from './component/skill/skill';
@@ -19,15 +19,15 @@ function Port() {
     const [secH, setSH] = useState([]);
         
     
-    const secH1 = useCallback(()=>{
-        setSH([
-            0,
-            introPos-headerPos,
-            introPos+skillPos-headerPos,
-            introPos+skillPos+1000-headerPos,
-            introPos+skillPos+1200-headerPos
-        ])
-    },[setSH])
+    // const secH1 = useCallback(()=>{
+    //     setSH([
+    //         0,
+    //         introPos-headerPos,
+    //         introPos+skillPos-headerPos,
+    //         introPos+skillPos+1000-headerPos,
+    //         introPos+skillPos+1200-headerPos
+    //     ])
+    // },[setSH])
 
     let moveStart = false;
 	
@@ -90,6 +90,8 @@ function Port() {
             setRatio("vertical")
         }
     }
+
+    
     
     useEffect(()=>{
         ratio();
@@ -100,16 +102,18 @@ function Port() {
     useEffect(()=> {
         document.title = `황준희 포트폴리오`;
     },[]);
+
     
     useEffect(()=> {
         setSH([
             0,
-            introPos-headerPos,
+            introPos+60-headerPos,
             introPos+skillPos-headerPos,
             introPos+skillPos+1000-headerPos,
             introPos+skillPos+1200-headerPos
         ])
-    },[introPos, skillPos, headerPos])
+        console.log(introPos);
+    },[introPos, skillPos, headerPos, setSH])
 
  
     return (
@@ -125,8 +129,8 @@ function Port() {
                     iPos={setIPos}
                     hOn={setHOn}
                 />
-                <Skill sPos={setSPos} />
-                <Web wPos={setWPos} iPos={secH[1]}/>
+                <Skill sPos={setSPos} iPos={secH[1]}/>
+                <Web wPos={setWPos} />
                 <Team />
                 <Connect />
                 </main>

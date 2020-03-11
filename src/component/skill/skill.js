@@ -69,21 +69,25 @@ function Skill({sPos, iPos}) {
     const
         skillH = useHeight();
 
+    
     function skillAni() {
         let scrollY = window.pageYOffset;
-        if(scrollY >= iPos) {
+        if(scrollY >= iPos-1) {
             setSkillOn('on')
         } else {
             setSkillOn('off')
         }
-    }
-    
+    }    
+    // console.log(iPos)
+    // useEffect(()=>{
+    //     console.log(iPos)
+    // },[iPos])
     sPos(skillH.height)
-    // window.addEventListener("scroll", skillAni);
-    // useEffect(()=> {
-        
-    //     return ()=> window.removeEventListener("scroll", skillAni);
-    // },[skillOn, iPos, skillAni])
+    
+    useEffect(()=> {
+        window.addEventListener("scroll", skillAni);
+        return ()=> window.removeEventListener("scroll", skillAni);
+    },[skillOn, iPos, skillAni])
 
     return (
         <section className="skill" ref={skillH.value}>
