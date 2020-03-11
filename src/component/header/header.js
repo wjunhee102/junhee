@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import './css/header.css'
 // import PropTypes from 'prop-types';
 import useHeight from '../hooks/useHeight';
@@ -75,6 +75,7 @@ function headerOn(x) {
 
 
 
+
 function Gnb({id ,link , title , index, move}) {
     return (
         <li className={id + index}>
@@ -99,6 +100,7 @@ function Header({setHPos , moveS, hOn}) {
     const M_GNB = useRef();
     const GNB = useRef();
 
+
     let firstTouchY = 0;
     let touchMove = 0;
     let position = 0;
@@ -114,6 +116,8 @@ function Header({setHPos , moveS, hOn}) {
         return i 
     };
     
+
+
     const BTN_ACTION = (e)=>{
         e.preventDefault();
         const touch = e.changedTouches[0];
@@ -176,12 +180,12 @@ function Header({setHPos , moveS, hOn}) {
         BTN_GNB.current.addEventListener("touchstart" , BTN_ACTION ,{passive: false});
         BTN_GNB.current.addEventListener("touchmove", BTN_MOVE ,{passive: false});
         BTN_GNB.current.addEventListener("touchend", BTN_END ,{passive: false});
-        // return ()=> {
-        //     BTN_GNB.current.removeEventListener("touchstart" , BTN_ACTION ,{passive: false});
-        //     BTN_GNB.current.removeEventListener("touchmove", BTN_MOVE ,{passive: false});
-        //     BTN_GNB.current.removeEventListener("touchend", BTN_END ,{passive: false});
-        // }
-    },[moveS]);
+        return ()=> {
+            BTN_GNB.current.removeEventListener("touchstart" , BTN_ACTION ,{passive: false});
+            BTN_GNB.current.removeEventListener("touchmove", BTN_MOVE ,{passive: false});
+            BTN_GNB.current.removeEventListener("touchend", BTN_END ,{passive: false});
+        }
+    },[moveS, TOUCH_ON]);
     //
 
     return (
