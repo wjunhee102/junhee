@@ -98,7 +98,7 @@ function MainVisual({on ,height, typoH, intro}) {
         [frame , setF] = useState(1),
         [mainI , setMainI] = useState(1),
         [proOn , setPOn] = useState("off"),
-        [textChane , setTC] = useState(0)
+        [textChange , setTC] = useState(0)
     ;
     const 
         main_visual = useHeight(),
@@ -143,7 +143,7 @@ function MainVisual({on ,height, typoH, intro}) {
         }
 
         if( typo <= scroll_y && scroll_y <= intro){
-            keyframe = Math.round((scroll_y - (typo + contentWidth))/70)
+            keyframe = Math.round((scroll_y - (typo + contentWidth))/40)
             lateX = scroll_y - typo
             if(scroll_y <= typo + contentWidth) {
                 coverEle.current.style.transform = `translate(${-lateX}px, 0)`;
@@ -214,7 +214,7 @@ function MainVisual({on ,height, typoH, intro}) {
     useEffect(()=>{
         window.addEventListener('scroll',coverEvent);
         return ()=> window.removeEventListener('scroll', coverEvent);
-    },[typoH, contentNode.width, visualOn, frame, intro, mainI, proOn, textChane])
+    },[typoH, contentNode.width, visualOn, frame, intro, mainI, proOn, textChange, coverEvent])
 
 
     return (
@@ -237,7 +237,7 @@ function MainVisual({on ,height, typoH, intro}) {
                             </div>
                             <img className="keyframe" ref={keyframeImg} src={`./video/keyframe/jun${frame}.jpg`} alt="junhee"/>
                         </div>
-                        <Profile on={proOn} text={textChane}/>
+                        <Profile on={proOn} text={textChange}/>
                     </div>
                 </div>
             </div>

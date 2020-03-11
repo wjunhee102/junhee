@@ -94,28 +94,30 @@
         .contents {
             .text_box {
                 position: absolute;
-                left: calc(50% - 300px);
-                top: 50%;
-                transform: translate(-50%, -50%);
+                // left: calc(50% - 300px);
+                left: 20%;
+                top: 10%;
+                transform: translate(0, -50%);
                 transition: 0.3s ease;
                 white-space: nowrap;
                 background-color: transparent;
                 width: 200px;
                 height: 65px;
                 @media #{$tabletH} {
-                    left: calc(50% - 250px);
+                    // left: calc(50% - 250px);
+                    top: 15%;
                 }
                 @media #{$tabletV} {
-                    left: 60%;
+                    left: 20%;
                     top: 20%;
                 }
                 @media #{$phoneH} {
-                    left: 38%;
+                    left: 20%;
                     top: 15%;
                     font-size: 0.9em;
                 }
                 @media #{$phoneV} {
-                    left: 70%;
+                    left: 20%;
                     top: 20%;
                 }
                 h3 {
@@ -142,7 +144,7 @@
                     opacity: 0;
                 }
                 &.on {
-                    transform: translate(-120%, -50%);
+                    // transform: translate(-120%, -50%);
                     transition: 0.3s ease;
                     h3 {
                         opacity: 1;

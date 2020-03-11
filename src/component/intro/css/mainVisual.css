@@ -146,10 +146,10 @@ body {
 
 #main .mainVisual .contents .text_box {
   position: absolute;
-  left: calc(50% - 300px);
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  left: 20%;
+  top: 10%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   white-space: nowrap;
@@ -160,20 +160,20 @@ body {
 
 @media screen and (max-width: 1024px) {
   #main .mainVisual .contents .text_box {
-    left: calc(50% - 250px);
+    top: 15%;
   }
 }
 
 @media screen and (max-width: 768px) {
   #main .mainVisual .contents .text_box {
-    left: 60%;
+    left: 20%;
     top: 20%;
   }
 }
 
 @media screen and (max-width: 736px) {
   #main .mainVisual .contents .text_box {
-    left: 38%;
+    left: 20%;
     top: 15%;
     font-size: 0.9em;
   }
@@ -181,7 +181,7 @@ body {
 
 @media screen and (max-width: 414px) {
   #main .mainVisual .contents .text_box {
-    left: 70%;
+    left: 20%;
     top: 20%;
   }
 }
@@ -214,8 +214,6 @@ body {
 }
 
 #main .mainVisual .contents .text_box.on {
-  -webkit-transform: translate(-120%, -50%);
-          transform: translate(-120%, -50%);
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }

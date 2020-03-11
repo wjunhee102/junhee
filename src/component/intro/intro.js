@@ -60,8 +60,11 @@ function Intro({iPos, hOn}) {
         ;
         
     // App에 값 전달    
-    iPos(introH.height);
     
+    useEffect(()=>{
+        iPos(introH.height);
+        // console.log(introH.height)
+    },[introH, iPos])
 
 
     //intro섹션 parallex함수
@@ -86,8 +89,8 @@ function Intro({iPos, hOn}) {
    
     //스크롤 이벤트 실행 함수
     function introScroll() {
-                move(window.pageYOffset);
-                hOn(valueOn);
+        move(window.pageYOffset);
+        hOn(valueOn);
     }
 
 
@@ -95,7 +98,7 @@ function Intro({iPos, hOn}) {
         move(window.pageYOffset);
         window.addEventListener('scroll',introScroll)
         return ()=> window.removeEventListener('scroll',introScroll)
-    },[valueOn, typo, mainH])
+    },[valueOn, typo, mainH, move, introScroll])
 
     return (
         <section 
