@@ -182,6 +182,18 @@
                             }
                         }
                     }
+                    &.cgv {
+                        .tit .line  {
+                            width: 135px;
+                            background-image: url("../../../images/podopodTit_L.png");
+                            bottom: 3px;
+                            @media #{$tabletH} {
+                                width: 110px;
+                                bottom: 0px;
+                                background-size: 110px 18px;
+                            }
+                        }
+                    }
                     .divi {
                         position: absolute;
                         top: 30px;

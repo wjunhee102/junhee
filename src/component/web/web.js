@@ -43,6 +43,19 @@ const port_site = [
         link : "https://wjunhee102.github.io/port_sub/podo/index.html",
         git : "https://github.com/wjunhee102/port_sub/tree/master/podo",
         sub : false
+    },
+    {
+        title : "cgv",
+        keyword : "CGV",
+        title2 : "CGV 메인페이지 리뉴얼 사이트입니다.",
+        lang : ["html5", "css3", "javascript"],
+        divice : "데스크탑",
+        personnel : ["황준희", "서정린", "홍승표", "김영훈", "이제현"],
+        content : ' 제이쿼리를 이용하여 동적인 사이트를 만들었습니다. Scroll 위치가 각섹션 위치에 오면 애니메이션이 동작하도록 만들었습니다.',
+        img : "podopod",
+        link : "https://wjunhee102.github.io/port_sub/podo/index.html",
+        git : "https://github.com/wjunhee102/port_sub/tree/master/podo",
+        sub : false
     }
 ]
 

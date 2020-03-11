@@ -1,0 +1,29 @@
+.ticketing {
+    background-color: #262626;
+}
+.ticketing .inner {
+    width: 1200px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.ticketing .inner article {
+    width: 280px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.ticketing .inner article.empty {
+    background-color: #ccc;
+}
+.ticketing .inner article.few {
+    background-color: #f00;
+}
+.ticketing .inner article.some {
+    background-color: #ff0;
+}
+.ticketing .inner article.plenty {
+    background-color: #0ff;
+}
