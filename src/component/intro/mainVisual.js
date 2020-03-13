@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import useNode from '../hooks/useNode';
 import useHeight from '../hooks/useHeight';
 import './css/mainVisual.css'
 
@@ -65,7 +64,7 @@ function ProfileText({on}) {
 
 
 // profile 컴포넌트
-function Profile({on, text}) {
+function Profile({text}) {
 
     return (
         <div className="profile">
@@ -98,39 +97,52 @@ function MainVisual({on ,height, typoH, intro}) {
         [frame , setF] = useState(1),
         [mainI , setMainI] = useState(1),
         [proOn , setPOn] = useState("off"),
-        [textChange , setTC] = useState(0)
+        [textChange , setTC] = useState(0),
+        [coverOn, setCOn] = useState(0),
+        [mainH, setMH] = useState(0)
+        ;
     ;
     const 
         main_visual = useHeight(),
-        contentNode = useNode(),
+        contentNode = useRef(),
         coverEle = useRef(),
         mainImage = useRef(),
         contentBox = useRef(),
         keyframeImg = useRef()
+
         ;
     height(main_visual.height);
 
-
+    function mainHeight() {
+        let height = typoH - typoH/3;
+        setMH(height);
+    }
+    useEffect(()=>{
+        mainHeight();
+        window.addEventListener("resize", mainHeight, false);
+        return ()=> window.removeEventListener("resize", mainHeight, false);
+    },[typoH, mainH])
     // cover event
     function coverEvent() {
         // intro 이외에 이벤트 발생 막기
         if(window.pageYOffset > intro) return false
 
 
-        let 
-            startContent = typoH*3,
-            scroll_y = window.pageYOffset,
-            typo = typoH*4 + typoH/3,
-            opac,
+        let startContent = typoH*3;
+        let scroll_y = window.pageYOffset;
+        let CoverStart = startContent + 2000;
+        let contentWidth = contentBox.current.getBoundingClientRect().width;
+        let innerH = 1700;
+        let MOVEPoint = contentWidth/innerH
+        let opac,
             lateX,
             keyframe
             ;
 
-        let contentWidth = contentBox.current.getBoundingClientRect().width;
-        
+            
         if(startContent <= scroll_y) {
-            opac = (scroll_y-startContent)/500
-            if(scroll_y <= startContent+500) {
+            opac = (scroll_y-startContent)/1000
+            if(scroll_y <= startContent+1000) {
                 contentBox.current.style.opacity = opac;
                 setVOn('off')
             } else {
@@ -142,50 +154,62 @@ function MainVisual({on ,height, typoH, intro}) {
             setVOn('off')
         }
 
-        if( typo <= scroll_y && scroll_y <= intro){
-            keyframe = Math.round((scroll_y - (typo + contentWidth))/40)
-            lateX = scroll_y - typo
-            if(scroll_y <= typo + contentWidth) {
+        if( CoverStart <= scroll_y && scroll_y <= CoverStart + 5000){
+            keyframe = Math.round((scroll_y - CoverStart)/(innerH /65))
+            lateX = (scroll_y - CoverStart)*(MOVEPoint)
+            if(scroll_y <= CoverStart + innerH ) {
                 coverEle.current.style.transform = `translate(${-lateX}px, 0)`;
-                setOp(1);
-                setMainI(1);
-                setF(1);
+                setOp(0);
+                setMainI(2);
                 setTC(0);
+                setF(keyframe);
+                setCOn(1);
             } else {
                 coverEle.current.style.transform = `translate(${-contentWidth}px,0)`;
-                setOp(0);
+                setOp(1);
                 setPOn("off");
-                if (scroll_y > typo + contentWidth) {
-                    if (keyframe >= 65) {
-                        keyframeImg.current.style.opacity = 0
-                        setF(65);
-                        setOp(1);
-                        setPOn("off");
-                    } else if(keyframe <= 1) {
-                        keyframeImg.current.style.opacity = 1
-                        setF(1);
-                        setMainI(1);
-                    } else {
-                        keyframeImg.current.style.opacity = 1
-                        setTC(1);
-                        setPOn("off");
-                        setF(keyframe)
-                        setOp(0)
-                        if(keyframe > 32) {
-                            setMainI(2);
-                            setTC(2);
-                        }
-                    }
+                setMainI(2);
+                setF(65);
+                setCOn(2);
+                if (scroll_y > CoverStart + contentWidth) {
+                    // if (keyframe >= 65) {
+                    //     keyframeImg.current.style.opacity = 0
+                        
+                    //     setOp(1);
+                    //     setTC(3);
+                    //     if(keyframe >= 75) {
+                    //         setPOn("on");
+                    //     } else {
+                    //         setPOn("off");
+                    //     }
+                    // } else if(keyframe <= 1) {
+                    //     keyframeImg.current.style.opacity = 1
+                    //     setF(1);
+                    //     setMainI(1);
+                    // } else {
+                    //     keyframeImg.current.style.opacity = 1
+                    //     setTC(1);
+                    //     setPOn("off");
+                        
+                    //     setOp(0)
+                    //     if(keyframe > 9) {
+                    //         setMainI(2);
+                    //         setTC(2);
+                    //     }
+                    // }
                 } 
             } 
 
         } else {
-            if(typo > scroll_y ) {
+            if(CoverStart > scroll_y ) {
                 coverEle.current.style.transform = `translate(0, ${0}px)`;
-                setF(1)
-                setMainI(1)
+                setOp(0);
+                setF(0)
+                setMainI(0)
+                setCOn(1);
             } else {
                 setMainI(2)
+                // setOp(1);
             }
         }
         
@@ -214,12 +238,14 @@ function MainVisual({on ,height, typoH, intro}) {
     useEffect(()=>{
         window.addEventListener('scroll',coverEvent);
         return ()=> window.removeEventListener('scroll', coverEvent);
-    },[typoH, contentNode.width, visualOn, frame, intro, mainI, proOn, textChange, coverEvent])
+    },[typoH, visualOn, frame, intro, mainI, proOn, textChange, coverEvent])
 
 
     return (
-        <article className={`mainVisual`} ref={main_visual.value}>
-            <div className={`contents ${mainOn(on,3)}`} ref={contentBox}>
+        <>
+        <article className={`mainVisual ${visualOn}`} ref={main_visual.value}>
+            <div className="container"  ref={contentNode} style={{marginBottom : `${mainH}px`}}>
+            <div className={`contents ${mainOn(coverOn,1)}`} ref={contentBox}>
                 <div className="img_box">
                     <div className="img" ref={mainImage}>
                         <span>황준희</span>
@@ -231,17 +257,19 @@ function MainVisual({on ,height, typoH, intro}) {
                 </div>
                 <div className="cover" ref={coverEle}>
                     <div className="inner">
-                        <div className="video_box">
-                            <div className={`imgBox ${proOn}`} style={{opacity : op}}>
+                        <div className={`video_box`}>
+                            <div className={`imgBox`} style={{opacity : op}}>
                                 <img src={`./video/junheeMain${mainI}.jpg`} alt="junhee"/>
                             </div>
-                            <img className="keyframe" ref={keyframeImg} src={`./video/keyframe/jun${frame}.jpg`} alt="junhee"/>
+                            <img className={`keyframe ${mainOn(coverOn,1)}`} ref={keyframeImg} src={`./video/keyframe/jun${frame}.jpg`} alt="junhee" />
                         </div>
-                        <Profile on={proOn} text={textChange}/>
                     </div>
                 </div>
             </div>
+            </div>
+            <Profile text={textChange}/>
         </article>
+        </>
     )
 }
 

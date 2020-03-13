@@ -21,36 +21,25 @@ body {
   position: relative;
 }
 
+#main .intro .mainVisual .container {
+  position: relative;
+  width: 100%;
+  height: 3700px;
+}
+
 #main .intro .mainVisual {
   width: 100%;
-  height: 14000px;
+  height: auto;
   overflow: hidden;
   position: relative;
+}
+
+#main .intro .mainVisual.off {
   background-color: transparent;
 }
 
-@media screen and (max-width: 1024px) {
-  #main .intro .mainVisual {
-    height: 12000px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  #main .intro .mainVisual {
-    height: 13000px;
-  }
-}
-
-@media screen and (max-width: 736px) {
-  #main .intro .mainVisual {
-    height: 8000px;
-  }
-}
-
-@media screen and (max-width: 414px) {
-  #main .intro .mainVisual {
-    height: 9000px;
-  }
+#main .intro .mainVisual.on {
+  background-color: #fff;
 }
 
 #main .intro .mainVisual .contents {
@@ -76,7 +65,7 @@ body {
 
 #main .intro .mainVisual .contents.end {
   position: absolute;
-  bottom: 0px;
+  top: 100%;
 }
 
 #main .intro .mainVisual .contents .img_box {
@@ -155,7 +144,12 @@ body {
   white-space: nowrap;
   background-color: transparent;
   width: 200px;
-  height: 65px;
+}
+
+@media (min-height: 1200px) and (min-width: 1300px) {
+  #main .mainVisual .contents .text_box {
+    top: 50%;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -192,6 +186,7 @@ body {
   top: 0px;
   -webkit-transform: translate(0, 30px);
           transform: translate(0, 30px);
+  line-height: 1.5;
   text-align: left;
   color: #000;
   font-weight: 500;
@@ -202,6 +197,7 @@ body {
 
 #main .mainVisual .contents .text_box p {
   position: absolute;
+  line-height: 1.5;
   left: 0px;
   bottom: 0px;
   -webkit-transform: translate(0, 30px);
@@ -243,6 +239,10 @@ body {
   overflow: hidden;
   background-color: white;
   will-change: transform;
+  -webkit-transition: -webkit-transform 0.1s linear;
+  transition: -webkit-transform 0.1s linear;
+  transition: transform 0.1s linear;
+  transition: transform 0.1s linear, -webkit-transform 0.1s linear;
 }
 
 #main .mainVisual .contents .cover .inner {
@@ -258,6 +258,7 @@ body {
 }
 
 #main .mainVisual .contents .cover .video_box {
+  overflow: hidden;
   position: absolute;
   left: 0;
   top: 50%;
@@ -265,83 +266,56 @@ body {
           transform: translate(0, -50%);
   width: 100%;
   height: 100%;
-  padding: 15px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-}
-
-#main .mainVisual .contents .cover .video_box img {
-  height: 100%;
 }
 
 #main .mainVisual .contents .cover .video_box .keyframe {
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
+  height: 100%;
+}
+
+#main .mainVisual .contents .cover .video_box .keyframe.on {
+  opacity: 1;
+}
+
+#main .mainVisual .contents .cover .video_box .keyframe.end {
+  opacity: 0;
 }
 
 #main .mainVisual .contents .cover .video_box .imgBox {
+  overflow: hidden;
   position: absolute;
-  left: 0;
+  z-index: 10%;
   top: 50%;
   width: 100%;
   height: 100%;
   opacity: 1;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 15px;
   -webkit-transform: translate(0, -50%);
           transform: translate(0, -50%);
 }
 
 #main .mainVisual .contents .cover .video_box .imgBox img {
+  z-index: 10;
   display: block;
   height: 100%;
   will-change: opacity;
 }
 
-#main .mainVisual .contents .cover .video_box .imgBox.off {
-  -webkit-transition: opacity 0.5s ease;
-  transition: opacity 0.5s ease;
-}
-
-#main .mainVisual .contents .cover .video_box .imgBox.on {
-  opacity: 0;
-  width: 130px;
-  height: 130px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border: 4px solid #cbcbcb;
-  overflow: hidden;
-  left: calc(50% - 65px);
-  top: 50%;
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
-  border-radius: 50%;
-  -webkit-animation: imgbox 1.3s ease forwards;
-          animation: imgbox 1.3s ease forwards;
-  -webkit-box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.4), 0 8px 16px -8px rgba(0, 0, 0, 0.7), 0 -6px 16px -6px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.4), 0 8px 16px -8px rgba(0, 0, 0, 0.7), 0 -6px 16px -6px rgba(0, 0, 0, 0.08);
-}
-
-#main .mainVisual .contents .cover .video_box .imgBox.on img {
-  width: 130px;
-  height: 231px;
+.horizontal .mainVisual .video_box .imgBox img {
   position: absolute;
-  left: 50%;
-  top: 40%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  left: 0;
 }
 
-@media screen and (max-width: 768px) {
-  #main .mainVisual .contents .cover .video_box .imgBox.on {
-    width: 110px;
-    height: 110px;
-  }
-  #main .mainVisual .contents .cover .video_box .imgBox.on img {
-    width: 110px;
-    height: 195px;
-  }
+.horizontal .mainVisual .video_box .imgBox.on img {
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: 1s ease;
+  transition: 1s ease;
+  left: 50%;
 }
 
 @-webkit-keyframes imgbox {
@@ -368,10 +342,10 @@ body {
   }
 }
 
-#main .contents .cover .profile {
-  position: absolute;
+#main .profile {
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: 1000px;
   right: 0;
   top: 50%;
   -webkit-transform: translate(0, -50%);
@@ -380,7 +354,7 @@ body {
           box-sizing: border-box;
 }
 
-#main .contents .cover .profile .text-box {
+#main .profile .text-box {
   width: 100%;
   height: auto;
   position: absolute;
@@ -390,7 +364,7 @@ body {
           transform: translate(-50%, -50%);
 }
 
-#main .contents .cover .profile .text-box h2.tit {
+#main .profile .text-box h2.tit {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -405,25 +379,25 @@ body {
   opacity: 0;
 }
 
-#main .contents .cover .profile .text-box h2.tit.off {
+#main .profile .text-box h2.tit.off {
   opacity: 0;
   -webkit-transition: 0.4s ease-in-out;
   transition: 0.4s ease-in-out;
 }
 
-#main .contents .cover .profile .text-box h2.tit.on {
+#main .profile .text-box h2.tit.on {
   opacity: 1;
   -webkit-transition: 0.6s ease-in-out;
   transition: 0.6s ease-in-out;
 }
 
-#main .contents .cover .profile .text-box h2.tit span {
+#main .profile .text-box h2.tit span {
   font-size: inherit;
   font-weight: inherit;
   color: inherit;
 }
 
-#main .contents .cover .profile .text-box ul.about {
+#main .profile .text-box ul.about {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -432,21 +406,18 @@ body {
   width: auto;
   height: auto;
   opacity: 0;
-  padding: 10px 50px;
+  padding: 10px 70px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.6);
-  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.7);
-          box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.7);
 }
 
 @media screen and (max-width: 736px) {
-  #main .contents .cover .profile .text-box ul.about {
+  #main .profile .text-box ul.about {
     padding: 10px 20px;
   }
 }
 
-#main .contents .cover .profile .text-box ul.about li {
+#main .profile .text-box ul.about li {
   position: relative;
   line-height: 3.2;
   width: 100%;
@@ -454,7 +425,7 @@ body {
   color: #fff;
 }
 
-#main .contents .cover .profile .text-box ul.about li span {
+#main .profile .text-box ul.about li span {
   display: block;
   font-size: 2em;
   font-weight: 500;
@@ -462,63 +433,66 @@ body {
 }
 
 @media screen and (max-width: 1024px) {
-  #main .contents .cover .profile .text-box ul.about li {
+  #main .profile .text-box ul.about li {
     font-size: 0.9em;
     line-height: 2;
   }
 }
 
 @media screen and (max-width: 768px) {
-  #main .contents .cover .profile .text-box ul.about li {
+  #main .profile .text-box ul.about li {
     font-size: 0.8em;
     line-height: 3;
   }
 }
 
 @media screen and (max-width: 736px) {
-  #main .contents .cover .profile .text-box ul.about li {
+  #main .profile .text-box ul.about li {
     font-size: 0.7em;
     line-height: 2;
   }
 }
 
 @media screen and (max-width: 414px) {
-  #main .contents .cover .profile .text-box ul.about li {
+  #main .profile .text-box ul.about li {
     font-size: 0.5em;
     line-height: 3;
   }
 }
 
-#main .contents .cover .profile .text-box ul.about.off {
+#main .profile .text-box ul.about.off {
   opacity: 0;
   -webkit-transition: opacity 0.1s ease-in-out;
   transition: opacity 0.1s ease-in-out;
 }
 
-#main .contents .cover .profile .text-box ul.about.off li {
+#main .profile .text-box ul.about.off li {
   opacity: 0;
   -webkit-transform: translateY(70px);
           transform: translateY(70px);
 }
 
-#main .contents .cover .profile .text-box ul.about.on {
+#main .profile .text-box ul.about.on {
+  background-color: rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.7);
+          box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.7);
   opacity: 1;
   -webkit-transition: 1.2s ease-in-out;
   transition: 1.2s ease-in-out;
 }
 
-#main .contents .cover .profile .text-box ul.about.on::after {
+#main .profile .text-box ul.about.on::after {
   height: 90%;
   -webkit-transition: height 0.9s ease-in-out;
   transition: height 0.9s ease-in-out;
 }
 
-#main .contents .cover .profile .text-box ul.about.on li {
+#main .profile .text-box ul.about.on li {
   -webkit-transform: translateY(0px);
           transform: translateY(0px);
 }
 
-#main .contents .cover .profile .text-box ul.about.on li:first-child {
+#main .profile .text-box ul.about.on li:first-child {
   -webkit-transition: 0.6s ease-out;
   transition: 0.6s ease-out;
   color: rgba(255, 255, 255, 0.9);
@@ -526,33 +500,50 @@ body {
   line-height: 2;
 }
 
-#main .contents .cover .profile .text-box ul.about.on li:nth-child(2) {
+#main .profile .text-box ul.about.on li:nth-child(2) {
   -webkit-transition: 0.6s ease-out 0.1s;
   transition: 0.6s ease-out 0.1s;
 }
 
-#main .contents .cover .profile .text-box ul.about.on li:nth-child(3) {
+#main .profile .text-box ul.about.on li:nth-child(3) {
   -webkit-transition: 0.6s ease-out 0.2s;
   transition: 0.6s ease-out 0.2s;
 }
 
-#main .contents .cover .profile .text-box ul.about.on li:nth-child(4) {
+#main .profile .text-box ul.about.on li:nth-child(4) {
   -webkit-transition: 0.6s ease-out 0.3s;
   transition: 0.6s ease-out 0.3s;
 }
 
-#main .contents .cover .profile .text-box ul.about.on li:last-child {
+#main .profile .text-box ul.about.on li:last-child {
   -webkit-transition: 0.6s ease-out 0.4s;
   transition: 0.6s ease-out 0.4s;
 }
 
-#main .contents .cover .profile .text-box ul.about.end li {
+#main .profile .text-box ul.about.end {
+  opacity: 1;
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+
+#main .profile .text-box ul.about.end li {
+  color: #000;
   opacity: 0;
   -webkit-transform: translateY(-70px);
           transform: translateY(-70px);
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
-.vertical #main .mainVisual .contents .cover .inner .video_box .imgBox.off img {
+.vertical #main .mainVisual .contents .cover .inner .video_box {
+  overflow: hidden;
+}
+
+.vertical #main .mainVisual .contents .cover .inner .video_box .imgBox {
+  overflow: hidden;
+}
+
+.vertical #main .mainVisual .contents .cover .inner .video_box .imgBox img {
   height: 100vh;
   position: absolute;
   left: 50%;
