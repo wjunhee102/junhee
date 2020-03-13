@@ -535,8 +535,8 @@ body {
 
 @media screen and (min-width: 1025px) {
   #main .skill .iconBox .icon.javascript .iconcontents {
-    -webkit-transform: translate(70%, -50%);
-            transform: translate(70%, -50%);
+    -webkit-transform: translate(65%, -50%);
+            transform: translate(65%, -50%);
   }
 }
 
@@ -578,8 +578,8 @@ body {
 
 @media screen and (min-width: 1025px) {
   #main .skill .iconBox .icon.react .iconcontents {
-    -webkit-transform: translate(70%, -50%);
-            transform: translate(70%, -50%);
+    -webkit-transform: translate(65%, -50%);
+            transform: translate(65%, -50%);
   }
 }
 
@@ -617,8 +617,8 @@ body {
 
 @media screen and (min-width: 1025px) {
   #main .skill .iconBox .icon.photoshop .iconcontents {
-    -webkit-transform: translate(70%, -50%);
-            transform: translate(70%, -50%);
+    -webkit-transform: translate(65%, -50%);
+            transform: translate(65%, -50%);
   }
 }
 

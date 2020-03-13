@@ -161,16 +161,13 @@ function MainVisual({on ,height, typoH, intro}) {
                 coverEle.current.style.transform = `translate(${-lateX}px, 0)`;
                 setOp(0);
                 setMainI(2);
-                setTC(0);
                 setF(keyframe);
                 setCOn(1);
             } else {
                 coverEle.current.style.transform = `translate(${-contentWidth}px,0)`;
                 setOp(1);
-                setPOn("off");
                 setMainI(2);
                 setF(65);
-                setTC(2);
                 setCOn(2);
             } 
 
@@ -182,10 +179,7 @@ function MainVisual({on ,height, typoH, intro}) {
                 setMainI(0)
                 setCOn(1);
             } else if (scroll_y > CoverStart + innerH + mainH) {
-                setPOn("on");
-                setTC(3);
-                setMainI(3);
-                // setOp(1);
+                setCOn(2);
             } 
         }
         
@@ -214,11 +208,10 @@ function MainVisual({on ,height, typoH, intro}) {
     useEffect(()=>{
         window.addEventListener('scroll',coverEvent);
         return ()=> window.removeEventListener('scroll', coverEvent);
-    },[typoH, visualOn, frame, intro, mainI, proOn, textChange, coverEvent])
+    },[typoH, visualOn, frame, intro, mainI, coverEvent])
 
 
     return (
-        <>
         <article className={`mainVisual ${visualOn}`} ref={main_visual.value}>
             <div className="container"  ref={contentNode} style={{marginBottom : `${mainH}px`}}>
             <div className={`contents ${mainOn(coverOn,1)}`} ref={contentBox}>
@@ -233,6 +226,7 @@ function MainVisual({on ,height, typoH, intro}) {
                 </div>
                 <div className="cover" ref={coverEle}>
                     <div className="inner">
+                        <h2 className="greeting"><span>만나서</span>반가워요!</h2>
                         <div className={`video_box`}>
                             <div className={`imgBox`} style={{opacity : op}}>
                                 <img src={`./video/junheeMain${mainI}.jpg`} alt="junhee"/>
@@ -243,9 +237,8 @@ function MainVisual({on ,height, typoH, intro}) {
                 </div>
             </div>
             </div>
-            <Profile text={textChange}/>
+            <Profile text={coverOn}/>
         </article>
-        </>
     )
 }
 

@@ -247,6 +247,7 @@ body {
 
 #main .mainVisual .contents .cover .inner {
   position: absolute;
+  z-index: 5;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -257,9 +258,69 @@ body {
           box-sizing: border-box;
 }
 
+#main .mainVisual .contents .cover .greeting {
+  display: block;
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  font-size: 7em;
+  letter-spacing: 20px;
+  font-weight: 600;
+  overflow: hidden;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+#main .mainVisual .contents .cover .greeting span {
+  display: block;
+  color: #888;
+  font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+  #main .mainVisual .contents .cover .greeting {
+    right: 0;
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #main .mainVisual .contents .cover .greeting {
+    right: 0;
+    font-size: 6.5em;
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #main .mainVisual .contents .cover .greeting {
+    right: 0%;
+    font-size: 4em;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .mainVisual .contents .cover .greeting {
+    right: 0%;
+    font-size: 3em;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  #main .mainVisual .contents .cover .greeting {
+    right: 0%;
+    font-size: 2em;
+  }
+}
+
 #main .mainVisual .contents .cover .video_box {
   overflow: hidden;
   position: absolute;
+  z-index: 5;
   left: 0;
   top: 50%;
   -webkit-transform: translate(0, -50%);
@@ -352,54 +413,16 @@ body {
 }
 
 #main .profile .text-box {
-  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  background-color: transparent;
   height: auto;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-#main .profile .text-box h2.tit {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 100%;
-  text-align: left;
-  font-size: 4.025em;
-  font-weight: 600;
-  color: #262626;
-  line-height: 1.5;
-  opacity: 0;
-}
-
-#main .profile .text-box h2.tit.off {
-  opacity: 1;
-  -webkit-transition: 0.4s ease-in-out;
-  transition: 0.4s ease-in-out;
-}
-
-#main .profile .text-box h2.tit.on {
-  opacity: 1;
-  -webkit-transition: 0.6s ease-in-out;
-  transition: 0.6s ease-in-out;
-}
-
-#main .profile .text-box h2.tit span {
-  font-size: inherit;
-  font-weight: inherit;
-  color: inherit;
+  position: relative;
 }
 
 #main .profile .text-box ul.about {
   position: relative;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
   width: auto;
   height: auto;
   opacity: 0;
@@ -419,7 +442,7 @@ body {
   line-height: 3.2;
   width: 100%;
   white-space: nowrap;
-  color: #fff;
+  color: #000;
 }
 
 #main .profile .text-box ul.about li span {
@@ -458,21 +481,18 @@ body {
 }
 
 #main .profile .text-box ul.about.off {
-  opacity: 1;
+  opacity: 0;
   -webkit-transition: opacity 0.1s ease-in-out;
   transition: opacity 0.1s ease-in-out;
 }
 
 #main .profile .text-box ul.about.off li {
-  opacity: 1;
+  opacity: 0;
   -webkit-transform: translateY(70px);
           transform: translateY(70px);
 }
 
 #main .profile .text-box ul.about.on {
-  background-color: rgba(0, 0, 0, 0.6);
-  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.7);
-          box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.7);
   opacity: 1;
   -webkit-transition: 1.2s ease-in-out;
   transition: 1.2s ease-in-out;
@@ -492,8 +512,6 @@ body {
 #main .profile .text-box ul.about.on li:first-child {
   -webkit-transition: 0.6s ease-out;
   transition: 0.6s ease-out;
-  color: rgba(255, 255, 255, 0.9);
-  border-bottom: 0.5px solid #fff;
   line-height: 2;
 }
 
@@ -530,6 +548,10 @@ body {
           transform: translateY(-70px);
   -webkit-transition: 1s ease-in-out;
   transition: 1s ease-in-out;
+}
+
+.vertical #main .mainVisual .contents .cover .greeting {
+  display: none;
 }
 
 .vertical #main .mainVisual .contents .cover .inner .video_box {

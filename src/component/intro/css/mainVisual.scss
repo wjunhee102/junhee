@@ -184,10 +184,10 @@
                 background-color: rgba(255, 255, 255, 1);
                 will-change: transform;
                 transition: transform 0.1s linear;
-                
                 //video
                 .inner {
                     position: absolute;
+                    z-index: 5;
                     left: 50%;
                     top: 50%;
                     transform: translate(-50%, -50%);
@@ -195,9 +195,49 @@
                     height: 100vh;
                     box-sizing: border-box;
                 }
+                .greeting {
+                    display: block;
+                    position: absolute;
+                    right: 50%;
+                    top: 50%;
+                    transform: translate(50%, -50%);
+                    font-size: 7em;
+                    letter-spacing: 20px;
+                    font-weight: 600;
+                    overflow: hidden;
+                    line-height: 1.2;
+                    white-space: nowrap;
+                    span {
+                        display: block;
+                        color: #888;
+                        font-weight: 600;
+                    }
+                    @media (max-width: 1200px) {
+                        right: 0;
+                        transform: translate(0, -50%);
+                    }
+                    @media #{$tabletH} {
+                        right: 0;
+                        font-size: 6.5em;
+                        transform: translate(0, -50%);
+                    }
+                    @media #{$tabletV} {
+                        right: 0%;
+                        font-size: 4em
+                    }
+                    @media #{$phoneH} {
+                        right: 0%;
+                        font-size: 3em
+                    }
+                    @media #{$phoneV} {
+                        right: 0%;
+                        font-size: 2em
+                    }
+                }
                 .video_box {
                     overflow: hidden;
                     position: absolute;
+                    z-index: 5;
                     left: 0;
                     top: 50%;
                     transform: translate(0 , -50%);
@@ -232,6 +272,7 @@
                             display: block;
                             height: 100%;
                             will-change: opacity;
+                            
                             
                         }
                         
@@ -280,47 +321,14 @@
                 box-sizing: border-box;
                 .text-box {
                     // border: 1px solid red;
-                    width: 100%;
+                    @include inner();
                     height: auto;
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50% , -50%);
-
+                    position: relative;
                     // title
-                    h2.tit {
-                        position: absolute;
-                        left: 50%;
-                        top: 50%;
-                        transform: translate(-50% , -50%);
-                        width: 100%;
-                        text-align: left;
-                        font-size: 4.025em;
-                        font-weight: 600;
-                        color: #262626;
-                        line-height: 1.5;
-                        opacity: 0;
-                        &.off {
-                            opacity: 1;
-                            transition: 0.4s ease-in-out;
-                        }
-                        &.on {
-                            opacity: 1;
-                            transition: 0.6s ease-in-out;
-                        }
-                        span {
-                            font-size: inherit;
-                            font-weight: inherit;
-                            color: inherit
-                        }
-                    }
 
                     // about
                     ul.about {
                         position: relative;
-                        left: 50%;
-                        top: 50%;
-                        transform: translate(-50%, -50%);
                         width: auto;
                         height: auto;
                         opacity: 0;
@@ -334,7 +342,7 @@
                             line-height: 3.2;
                             width: 100%;
                             white-space: nowrap;
-                            color: #fff;
+                            color: #000;
                             span {
                                 display: block;
                                 font-size: 2em;
@@ -359,16 +367,14 @@
                             }
                         }
                         &.off {
-                            opacity: 1;
+                            opacity: 0;
                             transition: opacity 0.1s ease-in-out;
                             li {
-                                opacity: 1;
+                                opacity: 0;
                                 transform: translateY(70px);
                             }
                         }
                         &.on {
-                            background-color: rgba(0, 0, 0, 0.6);
-                            box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.7);
                             opacity: 1;
                             transition: 1.2s ease-in-out;
                             &::after {
@@ -379,8 +385,6 @@
                                 transform: translateY(0px);
                                 &:first-child {
                                     transition: 0.6s ease-out;
-                                    color: rgba(255, 255, 255,0.9);
-                                    border-bottom: 0.5px solid #fff;
                                     // margin-bottom: 5px;
                                     line-height: 2;
                                 }
@@ -422,6 +426,9 @@
         .mainVisual {
             .contents {
                 .cover {
+                    .greeting {
+                        display: none;
+                    }
                     .inner {
                         .video_box {
                             overflow: hidden;
