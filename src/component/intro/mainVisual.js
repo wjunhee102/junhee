@@ -182,7 +182,6 @@ function MainVisual({on ,height, typoH, intro}) {
                 setMainI(0)
                 setCOn(1);
             } else if (scroll_y > CoverStart + innerH + mainH) {
-                console.log(intro)
                 setPOn("on");
                 setTC(3);
                 setMainI(3);
