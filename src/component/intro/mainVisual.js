@@ -127,7 +127,7 @@ function MainVisual({on ,height, typoH, intro}) {
         // intro 이외에 이벤트 발생 막기
         if(window.pageYOffset > intro) return false
 
-
+        
         let startContent = typoH*3;
         let scroll_y = window.pageYOffset;
         let CoverStart = startContent + 2000;
@@ -154,7 +154,7 @@ function MainVisual({on ,height, typoH, intro}) {
             setVOn('off')
         }
 
-        if( CoverStart <= scroll_y && scroll_y <= CoverStart + 5000){
+        if( CoverStart <= scroll_y && scroll_y <= CoverStart + innerH + mainH){
             keyframe = Math.round((scroll_y - CoverStart)/(innerH /65))
             lateX = (scroll_y - CoverStart)*(MOVEPoint)
             if(scroll_y <= CoverStart + innerH ) {
@@ -170,47 +170,24 @@ function MainVisual({on ,height, typoH, intro}) {
                 setPOn("off");
                 setMainI(2);
                 setF(65);
+                setTC(2);
                 setCOn(2);
-                if (scroll_y > CoverStart + contentWidth) {
-                    // if (keyframe >= 65) {
-                    //     keyframeImg.current.style.opacity = 0
-                        
-                    //     setOp(1);
-                    //     setTC(3);
-                    //     if(keyframe >= 75) {
-                    //         setPOn("on");
-                    //     } else {
-                    //         setPOn("off");
-                    //     }
-                    // } else if(keyframe <= 1) {
-                    //     keyframeImg.current.style.opacity = 1
-                    //     setF(1);
-                    //     setMainI(1);
-                    // } else {
-                    //     keyframeImg.current.style.opacity = 1
-                    //     setTC(1);
-                    //     setPOn("off");
-                        
-                    //     setOp(0)
-                    //     if(keyframe > 9) {
-                    //         setMainI(2);
-                    //         setTC(2);
-                    //     }
-                    // }
-                } 
             } 
 
         } else {
-            if(CoverStart > scroll_y ) {
+            if(scroll_y < CoverStart ) {
                 coverEle.current.style.transform = `translate(0, ${0}px)`;
                 setOp(0);
                 setF(0)
                 setMainI(0)
                 setCOn(1);
-            } else {
-                setMainI(2)
+            } else if (scroll_y > CoverStart + innerH + mainH) {
+                console.log(intro)
+                setPOn("on");
+                setTC(3);
+                setMainI(3);
                 // setOp(1);
-            }
+            } 
         }
         
     }

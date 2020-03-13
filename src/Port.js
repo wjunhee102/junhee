@@ -112,7 +112,6 @@ function Port() {
             introPos+skillPos+1000-headerPos,
             introPos+skillPos+1200-headerPos
         ])
-        console.log(introPos);
     },[introPos, skillPos, headerPos, setSH])
 
  

@@ -343,13 +343,10 @@ body {
 }
 
 #main .profile {
+  z-index: 10;
   position: relative;
   width: 100%;
   height: 1000px;
-  right: 0;
-  top: 50%;
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -380,7 +377,7 @@ body {
 }
 
 #main .profile .text-box h2.tit.off {
-  opacity: 0;
+  opacity: 1;
   -webkit-transition: 0.4s ease-in-out;
   transition: 0.4s ease-in-out;
 }
@@ -398,7 +395,7 @@ body {
 }
 
 #main .profile .text-box ul.about {
-  position: absolute;
+  position: relative;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -461,13 +458,13 @@ body {
 }
 
 #main .profile .text-box ul.about.off {
-  opacity: 0;
+  opacity: 1;
   -webkit-transition: opacity 0.1s ease-in-out;
   transition: opacity 0.1s ease-in-out;
 }
 
 #main .profile .text-box ul.about.off li {
-  opacity: 0;
+  opacity: 1;
   -webkit-transform: translateY(70px);
           transform: translateY(70px);
 }
