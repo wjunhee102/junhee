@@ -5,6 +5,7 @@ import Skill from './component/skill/skill';
 import Web from './component/web/web';
 import Team from './component/team/team';
 import Connect from './component/connect/connect';
+import useInnerSize from './component/hooks/useInnerSize';
 
 
 function Port() {
@@ -17,17 +18,8 @@ function Port() {
         [bodyRatio, setRatio] = useState("vertical")
         ;
     const [secH, setSH] = useState([]);
+    const { innerWidth, innerHeight} = useInnerSize();
         
-    
-    // const secH1 = useCallback(()=>{
-    //     setSH([
-    //         0,
-    //         introPos-headerPos,
-    //         introPos+skillPos-headerPos,
-    //         introPos+skillPos+1000-headerPos,
-    //         introPos+skillPos+1200-headerPos
-    //     ])
-    // },[setSH])
 
     let moveStart = false;
 	
@@ -77,27 +69,15 @@ function Port() {
         window.requestAnimationFrame(animate);
     }
 
-
+    
     // 가로 세로 비율 맞추기
-    function ratio() {
-        let 
-            windowW = window.innerWidth,
-            windowH = window.innerHeight
-            ;
-        if(windowW > windowH) {
+    useEffect(()=>{
+        if(innerWidth > innerHeight) {
             setRatio("horizontal")
         } else {
             setRatio("vertical")
         }
-    }
-
-    
-    
-    useEffect(()=>{
-        ratio();
-        window.addEventListener("resize", ratio, true);
-        return ()=> window.removeEventListener("resize", ratio , true);
-    }, [bodyRatio]);
+    }, [innerWidth, innerHeight]);
 
     useEffect(()=> {
         document.title = `황준희 포트폴리오`;
@@ -109,10 +89,9 @@ function Port() {
             0,
             introPos+60-headerPos,
             introPos+skillPos-headerPos,
-            introPos+skillPos+1000-headerPos,
-            introPos+skillPos+1200-headerPos
+            introPos+skillPos+1000-headerPos
         ])
-    },[introPos, skillPos, headerPos, setSH])
+    },[introPos, skillPos, headerPos])
 
  
     return (

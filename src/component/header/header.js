@@ -19,11 +19,11 @@ const gnb_info = [
         link : "section",
         title : "web"
     },
-    {
-        id : "btn_gnb" ,
-        link : "section",
-        title : "Team"
-    },
+    // {
+    //     id : "btn_gnb" ,
+    //     link : "section",
+    //     title : "Team"
+    // },
     {
         id : "btn_gnb" ,
         link : "section",
@@ -47,11 +47,11 @@ const m_gnb_info = [
         link : "section",
         title : "W"
     },
-    {
-        id : "btn_gnb" ,
-        link : "section",
-        title : "T"
-    },
+    // {
+    //     id : "btn_gnb" ,
+    //     link : "section",
+    //     title : "T"
+    // },
     {
         id : "btn_gnb" ,
         link : "section",
@@ -145,37 +145,7 @@ function Header({setHPos , moveS, hOn}) {
         GNB.current.style.opacity = 0.7;
     } 
          
-    // const aaa = useCallback(()=>{
-    //     BTN_GNB.current.addEventListener("touchstart",BTN_ACTION,{passive: false});
-    // },[BTN_ACTION])
-    // const aaa1 = useCallback(()=>{
-    //     BTN_GNB.current.removeEventListener("touchstart",BTN_ACTION,{passive: false});
-    // },[BTN_ACTION])
-    // const bbb = useCallback(()=>{
-    //     BTN_GNB.current.addEventListener("touchmove",BTN_MOVE,{passive: false});
-    // },[BTN_MOVE])
-    // const bbb1 = useCallback(()=>{
-    //     BTN_GNB.current.removeEventListener("touchmove", BTN_MOVE ,{passive: false});
-    // },[BTN_MOVE])
-    // const ccc = useCallback(()=>{
-    //     BTN_GNB.current.addEventListener("touchend",BTN_END,{passive: false});
-    // },[BTN_END])
-    // const ccc1 = useCallback(()=>{
-    //     BTN_GNB.current.removeEventListener("touchend",BTN_END,{passive: false});
-    // },[BTN_END])
 
-
-
-    // useEffect(()=>{
-    //     aaa();
-    //     bbb();
-    //     ccc();
-    //     return ()=>{
-    //         aaa1();
-    //         bbb1();
-    //         ccc1();
-    //     }
-    // },[moveS,TOUCH_ON, position , firstTouchY, touchMove, aaa, aaa1, bbb, bbb1, ccc, ccc1])
     useEffect(()=>{
         BTN_GNB.current.addEventListener("touchstart" , BTN_ACTION ,{passive: false});
         BTN_GNB.current.addEventListener("touchmove", BTN_MOVE ,{passive: false});

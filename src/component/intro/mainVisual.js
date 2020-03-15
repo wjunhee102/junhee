@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import useHeight from '../hooks/useHeight';
+import useNode from '../hooks/useNode';
+import useScroll from '../hooks/useScroll';
+import useInnerSize from '../hooks/useInnerSize';
 import './css/mainVisual.css'
 
 
@@ -85,60 +87,68 @@ function mainOn(s,x){
         return 'off'
     }
 }
-//
-
 
 
 //메인 비주얼 컴포넌트
 function MainVisual({on ,height, typoH, intro}) {
     const 
         [visualOn, setVOn] = useState("off"),
-        [op, setOp] = useState(1),
+        // [op, setOp] = useState(1),
         [frame , setF] = useState(1),
         [mainI , setMainI] = useState(1),
-        [proOn , setPOn] = useState("off"),
-        [textChange , setTC] = useState(0),
-        [coverOn, setCOn] = useState(0),
-        [mainH, setMH] = useState(0)
+        [coverOn, setCOn] = useState(0)
         ;
     ;
+    const { innerWidth } = useInnerSize();
+    const { scrollY } = useScroll();
     const 
-        main_visual = useHeight(),
+        main_visual = useNode(),
         contentNode = useRef(),
         coverEle = useRef(),
         mainImage = useRef(),
-        contentBox = useRef(),
-        keyframeImg = useRef()
-
+        contentBox = useRef()
+        // keyframeImg = useRef()
         ;
-    height(main_visual.height);
+    const keyframe = useNode();
 
-    function mainHeight() {
-        let height = typoH - typoH/3;
-        setMH(height);
-    }
+    
+
+    
     useEffect(()=>{
-        mainHeight();
-        window.addEventListener("resize", mainHeight, false);
-        return ()=> window.removeEventListener("resize", mainHeight, false);
-    },[typoH, mainH])
-    // cover event
-    function coverEvent() {
-        // intro 이외에 이벤트 발생 막기
-        if(window.pageYOffset > intro) return false
+        let width = innerWidth
+        if(width > 1024) {
+            mainImage.current.style.width =  `1024px`
+            width = 1024
+        } else {
+            mainImage.current.style.width =  `${width}px`
+        }
+        let height = Math.round(width*0.9)
+        mainImage.current.style.height = `${height}px`
+    },[innerWidth])
+    
 
-        
+    useEffect(()=> {
+        if(contentNode.current) {
+            const { current } = contentNode;
+            let width = 2000 + main_visual.width;
+            current.style.marginBottom = `${typoH - typoH/3}px`;
+            current.style.height = `${width}px`;
+            
+        }   
+    },[typoH, main_visual.width])
+
+    useEffect(()=>{
+
+        let mainH = typoH - typoH/3;
         let startContent = typoH*3;
-        let scroll_y = window.pageYOffset;
+        let scroll_y = scrollY;
         let CoverStart = startContent + 2000;
         let contentWidth = contentBox.current.getBoundingClientRect().width;
-        let innerH = 1700;
-        let MOVEPoint = contentWidth/innerH
+        let innerH = contentWidth;
         let opac,
             lateX,
             keyframe
             ;
-
             
         if(startContent <= scroll_y) {
             opac = (scroll_y-startContent)/1000
@@ -156,16 +166,16 @@ function MainVisual({on ,height, typoH, intro}) {
 
         if( CoverStart <= scroll_y && scroll_y <= CoverStart + innerH + mainH){
             keyframe = Math.round((scroll_y - CoverStart)/(innerH /65))
-            lateX = (scroll_y - CoverStart)*(MOVEPoint)
+            lateX = scroll_y - CoverStart
+            
             if(scroll_y <= CoverStart + innerH ) {
+                
                 coverEle.current.style.transform = `translate(${-lateX}px, 0)`;
-                setOp(0);
                 setMainI(2);
                 setF(keyframe);
                 setCOn(1);
             } else {
-                coverEle.current.style.transform = `translate(${-contentWidth}px,0)`;
-                setOp(1);
+                coverEle.current.style.transform = `translate(${-innerH}px,0)`;
                 setMainI(2);
                 setF(65);
                 setCOn(2);
@@ -174,7 +184,6 @@ function MainVisual({on ,height, typoH, intro}) {
         } else {
             if(scroll_y < CoverStart ) {
                 coverEle.current.style.transform = `translate(0, ${0}px)`;
-                setOp(0);
                 setF(0)
                 setMainI(0)
                 setCOn(1);
@@ -182,38 +191,14 @@ function MainVisual({on ,height, typoH, intro}) {
                 setCOn(2);
             } 
         }
-        
-    }
-    function mainWidth() {
-        let width = window.innerWidth
-        if(width > 1024) {
-            mainImage.current.style.width =  `1024px`
-            width = 1024
-        } else {
-            mainImage.current.style.width =  `${width}px`
-        }
-        let height = Math.round(width*0.9)
-        mainImage.current.style.height = `${height}px`
-    }
+    },[scrollY, intro, typoH, main_visual.width, main_visual.height])
 
-    // 메인 비디오 opacity 변경 함수
-
-    
     useEffect(()=>{
-        mainWidth();
-        window.addEventListener("resize" , mainWidth);
-        return ()=> window.removeEventListener("resize" , mainWidth);
-    },[mainImage])
-    // window.addEventListener('scroll',coverEvent);
-    useEffect(()=>{
-        window.addEventListener('scroll',coverEvent);
-        return ()=> window.removeEventListener('scroll', coverEvent);
-    },[typoH, visualOn, frame, intro, mainI, coverEvent])
-
-
+        height(main_visual.height);
+    },[main_visual.height])
     return (
-        <article className={`mainVisual ${visualOn}`} ref={main_visual.value}>
-            <div className="container"  ref={contentNode} style={{marginBottom : `${mainH}px`}}>
+        <article className={`mainVisual ${visualOn}`} ref={main_visual.nodeGet}>
+            <div className="container"  ref={contentNode}>
             <div className={`contents ${mainOn(coverOn,1)}`} ref={contentBox}>
                 <div className="img_box">
                     <div className="img" ref={mainImage}>
@@ -228,10 +213,10 @@ function MainVisual({on ,height, typoH, intro}) {
                     <div className="inner">
                         <h2 className="greeting"><span>만나서</span>반가워요!</h2>
                         <div className={`video_box`}>
-                            <div className={`imgBox`} style={{opacity : op}}>
-                                <img src={`./video/junheeMain${mainI}.jpg`} alt="junhee"/>
+                            <div className={`imgBox`} style={{opacity: 0}}>
+                                <img src={`./video/junheeMain${mainI}.jpg`} ref={keyframe.nodeGet} alt="junhee"/>
                             </div>
-                            <img className={`keyframe ${mainOn(coverOn,1)}`} ref={keyframeImg} src={`./video/keyframe/jun${frame}.jpg`} alt="junhee" />
+                            <img className={`keyframe ${mainOn(coverOn,1)}`}  src={`./video/keyframe/jun${frame}.jpg`} alt="junhee" />
                         </div>
                     </div>
                 </div>
