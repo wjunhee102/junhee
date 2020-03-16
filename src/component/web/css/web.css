@@ -165,7 +165,6 @@ body {
   width: 100%;
   max-width: 540px;
   position: relative;
-  left: 20px;
   top: 50%;
   -webkit-transform: translate(0%, -50%);
           transform: translate(0%, -50%);
@@ -269,16 +268,17 @@ body {
 }
 
 #main .web .port_site .inner .textbox .contents.cgv .tit .line {
-  width: 135px;
-  background-image: url("../../../images/podopodTit_L.png");
-  bottom: 3px;
+  width: 115px;
+  background-image: url("../../../images/cgvTit_L.png");
+  bottom: 9px;
+  background-size: 115px 18px;
 }
 
 @media screen and (max-width: 1024px) {
   #main .web .port_site .inner .textbox .contents.cgv .tit .line {
-    width: 110px;
-    bottom: 0px;
-    background-size: 110px 18px;
+    width: 103px;
+    bottom: 5px;
+    background-size: 103px 18px;
   }
 }
 
@@ -555,5 +555,13 @@ body {
 
 #main .web .port_site .inner .imgbox.podopod .link .img {
   background-image: url("../../../images/podo_2x.jpg");
+}
+
+#main .web .port_site .inner .imgbox.cgv .link {
+  background-image: url("../../../images/cgv_bg_2x.png");
+}
+
+#main .web .port_site .inner .imgbox.cgv .link .img {
+  background-image: url("../../../images/cgv_2x.png");
 }
 /*# sourceMappingURL=web.css.map */

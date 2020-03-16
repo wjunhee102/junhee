@@ -102,7 +102,6 @@
                     width: 100%;
                     max-width: 540px;
                     position: relative;
-                    left: 20px;
                     top: 50%;
                     transform: translate(0%, -50%);
                     @media #{$tabletH} {
@@ -184,13 +183,14 @@
                     }
                     &.cgv {
                         .tit .line  {
-                            width: 135px;
-                            background-image: url("../../../images/podopodTit_L.png");
-                            bottom: 3px;
+                            width: 115px;
+                            background-image: url("../../../images/cgvTit_L.png");
+                            bottom: 9px;
+                            background-size: 115px 18px;
                             @media #{$tabletH} {
-                                width: 110px;
-                                bottom: 0px;
-                                background-size: 110px 18px;
+                                width: 103px;
+                                bottom: 5px;
+                                background-size: 103px 18px;
                             }
                         }
                     }
@@ -400,6 +400,14 @@
                         background-image: url("../../../images/podoBG_2x.png");
                         .img {
                             background-image: url("../../../images/podo_2x.jpg");
+                        }
+                    } 
+                }
+                &.cgv {
+                    .link {
+                        background-image: url("../../../images/cgv_bg_2x.png");
+                        .img {
+                            background-image: url("../../../images/cgv_2x.png");
                         }
                     } 
                 }

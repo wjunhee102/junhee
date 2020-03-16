@@ -51,19 +51,19 @@ const port_site = [
         lang : ["html5", "css3", "javascript"],
         divice : "데스크탑",
         personnel : ["황준희", "서정린", "홍승표", "김영훈", "이제현"],
-        content : ' 제이쿼리를 이용하여 동적인 사이트를 만들었습니다. Scroll 위치가 각섹션 위치에 오면 애니메이션이 동작하도록 만들었습니다.',
-        img : "podopod",
-        link : "https://wjunhee102.github.io/port_sub/podo/index.html",
-        git : "https://github.com/wjunhee102/port_sub/tree/master/podo",
+        content : '  CGV 메인 페이지를 리뉴얼 해봤습니다. 디자인은 넷플리스와 롯데 시네마를 참고하였습니다. 플러그인을 사용하지 않고 순수 자바스크립트로 제작하였습니다. 저는 이 프로젝트에서 기획 및 전반적인 제작 총괄역할을 맡았습니다. 제작기간은 기획부터 완성 까지 1달 걸렸습니다. ',
+        img : "cgv",
+        link : "https://wjunhee102.github.io/TeamProJ/",
+        git : "https://github.com/wjunhee102/TeamProJ/",
         sub : false
     }
 ]
 
 
 //기본 구성 요소
-function Port({title, divi, title2, content, img, lang, personnel, link, keyword, idx, git}) {  
+function Port({title, divi, title2, content, img, lang, personnel, link, keyword, git}) {  
     return (
-        <article className={`port_site site${idx} ${title}`}>
+        <article className={`port_site ${title}`}>
             <div className="inner">
 
                 <div className={`textbox`}>
