@@ -62,9 +62,9 @@ function Intro({iPos, hOn}) {
     // App에 값 전달    
     
     useEffect(()=>{
-        iPos(introH.height);
-        // console.log(introH.height)
-    },[introH, iPos])
+            let height = mainH + typo*3
+            iPos(height)
+    },[mainH])
 
 
     //intro섹션 parallex함수

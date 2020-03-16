@@ -194,8 +194,10 @@ function MainVisual({on ,height, typoH, intro}) {
     },[scrollY, intro, typoH, main_visual.width, main_visual.height])
 
     useEffect(()=>{
-        height(main_visual.height);
-    },[main_visual.height])
+        let MainVisualHeight = 3000 + main_visual.width + (typoH - typoH/3) 
+        height(MainVisualHeight);
+    },[main_visual.height, typoH])
+    
     return (
         <article className={`mainVisual ${visualOn}`} ref={main_visual.nodeGet}>
             <div className="container"  ref={contentNode}>

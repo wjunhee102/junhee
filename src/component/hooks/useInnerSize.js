@@ -11,7 +11,6 @@ const useInnerSize = ()=> {
             innerWidth : window.innerWidth,
             innerHeight : window.innerHeight
         })
-        console.log(window.innerWidth);
     }
 
     useEffect(()=> {

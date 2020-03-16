@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Header from './component/header/header';
 import Intro from './component/intro/intro';
 import Skill from './component/skill/skill';
 import Web from './component/web/web';
 import Team from './component/team/team';
-import Connect from './component/connect/connect';
+import Contact from './component/contact/contact';
 import useInnerSize from './component/hooks/useInnerSize';
 
 
@@ -83,19 +83,29 @@ function Port() {
         document.title = `황준희 포트폴리오`;
     },[]);
 
-    
+    const AppHeight = useRef();
+
     useEffect(()=> {
+        
+        const contactMove = introPos+skillPos + webPos + 60;
+        const scrollHeight = AppHeight.current.offsetHeight - innerHeight;
+        let last;
+        if(contactMove >= scrollHeight) {
+            last = scrollHeight
+        } else {
+            last = contactMove
+        }
+
         setSH([
             0,
             introPos+60-headerPos,
-            introPos+skillPos-headerPos,
-            introPos+skillPos+1000-headerPos
+            introPos+skillPos+60-headerPos,
+            last
         ])
-    },[introPos, skillPos, headerPos])
+    },[introPos, skillPos, headerPos, innerHeight])
 
- 
     return (
-        <div className={`App ${bodyRatio}`}>
+        <div className={`App ${bodyRatio}`} ref={AppHeight} >
             <div className="wrap">
                 <Header 
                     setHPos={setHPos}
@@ -110,7 +120,7 @@ function Port() {
                 <Skill sPos={setSPos} iPos={secH[1]}/>
                 <Web wPos={setWPos} />
                 <Team />
-                <Connect />
+                <Contact />
                 </main>
             </div>
         </div> 

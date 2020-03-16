@@ -27,7 +27,7 @@ const gnb_info = [
     {
         id : "btn_gnb" ,
         link : "section",
-        title : "Connect"
+        title : "contact"
     }
 ]
 
