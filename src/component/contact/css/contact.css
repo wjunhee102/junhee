@@ -21,7 +21,7 @@ body {
   position: relative;
 }
 
-#main .connect .inner {
+#main .contact .inner {
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
@@ -39,4 +39,4 @@ body {
   background-color: transparent;
   height: 50px;
 }
-/*# sourceMappingURL=connect.css.map */
+/*# sourceMappingURL=contact.css.map */
