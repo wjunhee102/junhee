@@ -1,4 +1,4 @@
-import { useState,  useCallback} from 'react';
+import { useState,  useCallback, useEffect} from 'react';
 
 
 
@@ -14,10 +14,9 @@ function useNode() {
             setHeight(node.getBoundingClientRect().height);
             window.addEventListener('resize',()=>{
                 setWidth(node.getBoundingClientRect().width);
-                setWidth(node.getBoundingClientRect().height);
+                setHeight(node.getBoundingClientRect().height);
             })
         }},[]);
-    
     return { ele , nodeGet, width, height }
 }
 
