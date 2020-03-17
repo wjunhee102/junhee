@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import './css/header.css'
 // import PropTypes from 'prop-types';
 import useHeight from '../hooks/useHeight';
