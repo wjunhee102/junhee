@@ -77,7 +77,7 @@ function Contact() {
                 <p className="closing">
                     <span>...</span>
                     
-                    <br /> 포트폴리오를 봐주셔서 감사합니다.
+                    <br /> 끝까지 봐주셔서 감사합니다.
                     <br /> 
                 
                 </p>
