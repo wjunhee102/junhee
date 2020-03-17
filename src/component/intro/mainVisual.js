@@ -211,6 +211,7 @@ function MainVisual({height, typoH, intro}) {
         }
 
         if( CoverStart <= scroll_y && scroll_y <= CoverStart + innerH + mainH){
+            
             keyframe = Math.round((scroll_y - CoverStart)/(innerH /65))
             lateX = scroll_y - CoverStart
             
