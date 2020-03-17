@@ -266,6 +266,11 @@ body {
     -webkit-transition: 0s;
     transition: 0s;
   }
+  #main .skill .iconBox.on .icon .iconcontents {
+    opacity: 1;
+    -webkit-transition: 0.6s ease-in-out;
+    transition: 0.6s ease-in-out;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -275,6 +280,7 @@ body {
             transform: translate(0, 0);
     left: 0;
     top: 0;
+    margin-bottom: 40px;
   }
 }
 
@@ -313,7 +319,7 @@ body {
     position: relative;
     left: 0px;
     top: 0px;
-    margin-top: 20px;
+    margin-top: 30px;
     padding-left: 10px;
     overflow: hidden;
   }

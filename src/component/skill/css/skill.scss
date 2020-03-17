@@ -167,7 +167,13 @@
                     }
                     @media #{$tabletV} {
                         transform: translate(0, 0) scale(1);
-                        transition: 0s;
+                        transition: 0s; 
+                        .icon {
+                            .iconcontents {
+                                opacity: 1;
+                                transition: 0.6s ease-in-out;
+                            }
+                        }
                     }
                 }
                 @media #{$tabletV} {
@@ -175,6 +181,7 @@
                     transform: translate(0, 0);
                     left: 0;
                     top: 0;
+                    margin-bottom: 40px;
                     // display: flex;
                     // flex-wrap: wrap;
                     // height: 100px;
@@ -203,7 +210,7 @@
                         position: relative;
                         left: 0px;
                         top: 0px;
-                        margin-top: 20px;
+                        margin-top: 30px;
                         padding-left: 10px;
                         overflow: hidden;
                     }
@@ -276,9 +283,6 @@
                             margin-left: 20px;
                             padding-right: 10px;
                             transform: translate(0, 0);
-                            h4.icontit {
-                                // margin-top: 10px;
-                            }
                         }
                         
                     }
