@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './css/skill.css';
 import useHeight from '../hooks/useHeight';
+import useScroll from '../hooks/useScroll';
 
 
 
@@ -66,28 +67,19 @@ function Skills({name, content, tit}) {
 function Skill({sPos, iPos}) {
     const [ skillOn, setSkillOn ] = useState('on');
 
-    const
-        skillH = useHeight();
+    const skillH = useHeight();
+    const { scrollY } = useScroll(); 
 
+
+    sPos(skillH.height);
     
-    function skillAni() {
-        let scrollY = window.pageYOffset;
+    useEffect(()=> {
         if(scrollY >= iPos-1) {
             setSkillOn('on')
         } else {
             setSkillOn('off')
         }
-    }    
-    // console.log(iPos)
-    // useEffect(()=>{
-    //     console.log(iPos)
-    // },[iPos])
-    sPos(skillH.height)
-    
-    useEffect(()=> {
-        window.addEventListener("scroll", skillAni);
-        return ()=> window.removeEventListener("scroll", skillAni);
-    },[skillOn, iPos, skillAni])
+    },[scrollY, iPos])
 
     return (
         <section className="skill" ref={skillH.value}>
