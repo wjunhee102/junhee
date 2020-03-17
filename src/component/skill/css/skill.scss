@@ -405,9 +405,6 @@
                             @media screen and (min-width: 769px) and (max-width: 1024px) {
                                 transform: translate(65%, -50%);
                             }
-                            .icontit {
-                                
-                            }
                         }
                         @media #{$tabletH} {
                             transform: translate(240px, 0);
@@ -430,9 +427,7 @@
                             @media screen and (min-width: 769px) and (max-width: 1024px) {
                                 transform: translate(65%, -50%);
                             }
-                            .icontit {
-                                
-                            }
+
                         }
                         @media #{$tabletH} {
                             transform: translate(175px, 175px);
@@ -451,9 +446,6 @@
                         .iconcontents {
                             @media screen and (min-width: 769px) {
                                 transform: translate(65%, 0%);
-                            }
-                            .icontit {
-                                
                             }
                         }
                         @media #{$tabletH} {
