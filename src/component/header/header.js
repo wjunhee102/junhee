@@ -187,7 +187,8 @@ function Header({setHPos , moveS, hOn}) {
                                 index={idx} 
                                 link={info.link} 
                                 title={info.title} 
-                                key={idx} 
+                                key={idx}
+                                move={moveS} 
                             />
                         ))}
                     </ul>
