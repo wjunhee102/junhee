@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import './css/header.css'
-// import PropTypes from 'prop-types';
+import './css/header.css';
 import useHeight from '../hooks/useHeight';
 
 const gnb_info = [

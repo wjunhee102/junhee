@@ -184,13 +184,13 @@
                     &.cgv {
                         .tit .line  {
                             width: 115px;
-                            background-image: url("../../../images/cgvTit_L.png");
-                            bottom: 9px;
-                            background-size: 115px 18px;
+                            background-image: url("../../../images/cgv_tit.png");
+                            bottom: 6px;
+                            background-size: 110px 18px;
                             @media #{$tabletH} {
-                                width: 103px;
-                                bottom: 5px;
-                                background-size: 103px 18px;
+                                width: 88px;
+                                bottom: 0px;
+                                background-size: 88px 18px;
                             }
                         }
                     }
@@ -405,7 +405,8 @@
                 }
                 &.cgv {
                     .link {
-                        background-image: url("../../../images/cgv_bg_2x.png");
+                        background-color: #dcdcdc;
+                        // background-image: url("../../../images/cgv_bg_2x.png");
                         .img {
                             background-image: url("../../../images/cgv_2x.png");
                         }

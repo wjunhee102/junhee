@@ -4,15 +4,90 @@
     .contact {
         .inner {
             @include inner();
+            height: 500px;
+            padding: 0 10px;
+            padding-bottom: 200px;
+            .closing {
+                padding-bottom: 75px;
+                font-size: 1.5em;
+                line-height: 1.5;
+                font-weight: 500;
+                color: #888;
+                span {
+                    font-family: $poppins;
+                    font-size: 2em;
+                    display: block;
+                    font-weight: 700;
+                    line-height: 2;
+                    margin-bottom: 50px;
+                    font-style: italic;
+                    letter-spacing: 5px;
+                    color: #262626;
+                }
+                @media #{$tabletH} {
+                    font-size: 1.2em;
+                }
+                @media #{$phoneH} {
+                    font-size: 1.1em;
+                }
+            }
+            .contact_info {
+                padding-top: 40px;
+                position: relative;
+                &::after {
+                    @include after();
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 20px;
+                    height: 2px;
+                    background-color: #262626;
+                }
+                p {
+                    font-family: $poppins;
+                    font-style: italic;
+                    font-size: 1.5em;
+                    font-weight: 500;
+                    color: #262626;
+                    line-height: 1.8;
+                    @media #{$tabletH} {
+                        font-size: 1.2em;
+                    }
+                    @media #{$phoneH} {
+                        font-size: 1.1em;
+                    }
+                }
+                a {
+                    font-size: 1.5em;
+                    font-weight: 500;
+                    color: #0066cc;
+                    line-height: 1.8;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                    @media #{$tabletH} {
+                        font-size: 1.2em;
+                    }
+                    @media #{$phoneH} {
+                        font-size: 1.1em;
+                    }
+                }
+            }
         }
     }
 
 }
 
 #footer {
-    border-top: 1px solid #262626;
+    
     .inner {
         @include inner();
-        height: 50px;
+        border-top: 1px solid #262626;
+        width: 100%;
+        height: 40px;
+        padding: 10px;
+        box-sizing: border-box;
+        font-style: italic;
+        color: #3d3d3d;
     }
 }

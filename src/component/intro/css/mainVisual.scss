@@ -7,7 +7,6 @@
             .container {
                 position: relative;
                 width: 100%;
-                // height: 3700px;
             }
         }
     }
@@ -192,16 +191,17 @@
                     // left: 50%;
                     // top: 50%;
                     // transform: translate(-50%, -50%);
-                    // width: 100%;
+                    width: 100%;
                     height: 100vh;
                     box-sizing: border-box;
                 }
                 .greeting {
-                    display: none;
+                    display: block;
                     position: absolute;
-                    right: 50%;
+                    right: 0;
                     top: 50%;
-                    transform: translate(50%, -50%);
+                    overflow: hidden;
+                    transform: translate(-20%, -50%);
                     font-size: 7em;
                     letter-spacing: 20px;
                     font-weight: 600;
@@ -209,22 +209,24 @@
                     line-height: 1.2;
                     white-space: nowrap;
                     span {
-                        display: block;
                         color: #888;
                         font-weight: 600;
                     }
-                    @media (max-width: 1200px) {
+                    @media (max-width: 1400px) {
                         right: 0;
                         transform: translate(0, -50%);
+                        
+                        font-size: 4.8em;
+                        letter-spacing: 10px;
                     }
                     @media #{$tabletH} {
                         right: 0;
-                        font-size: 6.5em;
+                        font-size: 4.5em;
                         transform: translate(0, -50%);
                     }
                     @media #{$tabletV} {
                         right: 0%;
-                        font-size: 4em
+                        font-size: 3.5em
                     }
                     @media #{$phoneH} {
                         right: 0%;
@@ -262,15 +264,16 @@
                         overflow: hidden;
                         position: absolute;
                         z-index: 10;
-                        // left: 0;
+                        left: 0;
                         opacity: 0;
                         top: 50%;
                         width: 100%;
                         height: 100%;
-                        opacity: 1;
                         box-sizing: border-box;
-                        
                         transform: translate(0, -50%);
+                        &.on {
+                            opacity: 1;
+                        }
                         img {
                             position: absolute;
                             left: 0;
@@ -291,56 +294,108 @@
         }
     }
 }
-.horizontal {
-    .mainVisual {
-        .video_box {
-            .imgBox {
-                img {
-                    position: absolute;
-                    left: 0;
-                    
-                }
-                &.on {
-                    img {
-                        transform: translateX(-50%);
-                        transition: 1s ease;
-                        left: 50%;
-                        
-                    }
-                }
-            }
-        }
-    }
-    
-}
-@keyframes imgbox {
-    0% { opacity:  0;}
-    20% {opacity:  0;}
-    100% {opacity: 1;}
-}
 
 #main {
             .profile {
                 z-index: 10;
-                position: relative;
                 width: 100%;
                 height: 1000px;
-                box-sizing: border-box;
+                position: relative;
                 .text-box {
                     // border: 1px solid red;
                     @include inner();
+                    width: 100%;
                     height: auto;
-                    position: relative;
-                    // title
-
-                    // about
-                    ul.about {
+                    position: absolute;
+                    
+                    
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    .tit {
                         position: relative;
                         width: auto;
                         height: auto;
-                        opacity: 0;
-                        padding: 10px 70px ;
+                        margin-bottom: 50px;
+                        h3 {
+                            position: relative;
+                            text-transform: uppercase;
+                            text-align: center;
+                            line-height: 1;
+                            font-size: 3.2em;
+                            white-space: nowrap;
+                            font-weight: 600;
+                            color: #262626;
+                            text-align: left;
+                            z-index: 10;
+                            border-bottom: 1px solid #888;
+                            @media #{$tabletH} {
+                                font-size: 3.8em;
+                                text-indent: 10px;
+                            }
+                            @media #{$tabletV} {
+                                font-size: 3em;
+                                text-indent: 10px;
+                            }
+                        }
+                        p {
+                            font-family: $noto;
+                            font-size: 1.875em;
+                            font-weight: 600;
+                            color: #888;
+                            line-height: 1.5;
+                            @media #{$tabletH} {
+                                font-size: 1.8em;
+                                text-indent: 10px;
+                            }
+                            @media #{$tabletV} {
+                                font-size: 1.5em;
+                            }
+                        }
+                    }
+                    
+                    .about {
+                        display: flex;
+                        justify-content: flex-start;
                         box-sizing: border-box;
+                        padding: 0 10px;
+                    }
+                    .about_tit {
+                        margin-top: 40px;
+                        line-height: 2;
+                        width: 30%;
+                        
+                        span {
+                            color: #888;
+                            font-weight: 600;
+                            font-size: 1.875em;
+                            text-transform: capitalize;
+                        }
+                        @media #{$tabletH} {
+                            font-size: 1em;
+                            line-height: 2;
+                        }
+                        @media #{$tabletV} {
+                            font-size: 0.9em;
+                            line-height: 1.5;
+                        }
+                        @media #{$phoneH} {
+                            font-size: 0.8em;
+                            line-height: 2;
+                        }
+                        @media #{$phoneV} {
+                            font-size: 0.6em;
+                            line-height: 1.5;
+                        }
+                    }
+
+                    ul.about_text {
+                        position: relative;
+                        width: 70%;
+                        height: auto;
+                        opacity: 0;
+                        box-sizing: border-box;
+                        margin-top: 40px;
                         @media #{$phoneH} {
                             padding: 10px 20px ;
                         }
@@ -348,29 +403,29 @@
                             position: relative;
                             line-height: 3.2;
                             width: 100%;
-                            white-space: nowrap;
-                            color: #000;
+                            white-space: wrap;
+                            color: #262626;
                             span {
                                 display: block;
-                                font-size: 2em;
-                                font-weight: 500;
+                                font-size: 1.875em;
+                                font-weight: 600;
                                 color: inherit;
                             }
                             @media #{$tabletH} {
-                                font-size: 0.9em;
+                                font-size: 1em;
                                 line-height: 2;
                             }
                             @media #{$tabletV} {
-                                font-size: 0.8em;
-                                line-height: 3;
+                                font-size: 0.9em;
+                                line-height: 1.5;
                             }
                             @media #{$phoneH} {
-                                font-size: 0.7em;
+                                font-size: 0.8em;
                                 line-height: 2;
                             }
                             @media #{$phoneV} {
                                 font-size: 0.5em;
-                                line-height: 3;
+                                line-height: 1.5;
                             }
                         }
                         &.off {
@@ -378,7 +433,7 @@
                             transition: opacity 0.1s ease-in-out;
                             li {
                                 opacity: 0;
-                                transform: translateY(70px);
+                                transform: translateY(20px);
                             }
                         }
                         &.on {
@@ -391,21 +446,12 @@
                             li {
                                 transform: translateY(0px);
                                 &:first-child {
-                                    transition: 0.6s ease-out;
+                                    transition: 0.6s ease-out 0.2s;
                                     // margin-bottom: 5px;
                                     line-height: 2;
                                 }
                                 &:nth-child(2) {
-                                    transition: 0.6s ease-out 0.1s;
-                                }
-                                &:nth-child(3) {
-                                    transition: 0.6s ease-out 0.2s;
-                                }
-                                &:nth-child(4) {
                                     transition: 0.6s ease-out 0.3s;
-                                }
-                                &:last-child {
-                                    transition: 0.6s ease-out 0.4s;
                                 }
                             }
                         }
@@ -415,7 +461,7 @@
                             li {
                                 color: #000;
                                 opacity: 0;
-                                transform: translateY(-70px);
+                                transform: translateY(-20px);
                                 transition: 1s ease-in-out;
                             }
                         }
@@ -465,6 +511,21 @@
                             }
                         }
                     }
+                }
+            }
+            .profile {
+                .text-box {
+                    padding-top: 50px;
+                    .about {
+                        display: block;
+                        justify-content: none;
+                        overflow: hidden;
+                        .about_text {
+                            margin-top: 0;
+                            width: 100%;
+                        }
+                    }
+                    padding-bottom: 60px;
                 }
             }
         }

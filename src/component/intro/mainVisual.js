@@ -3,65 +3,52 @@ import useNode from '../hooks/useNode';
 import useScroll from '../hooks/useScroll';
 import useInnerSize from '../hooks/useInnerSize';
 import './css/mainVisual.css'
+import useHeight from '../hooks/useHeight';
 
 
 
 
-const about = [
-    {
-        type : "name",
-        content : "황준희"
-    },
-    {
-        type : "year",
-        content : "1993년 1월 생"
-    },
-    {
-        type : "education",
-        content : "신한대학교 경영학과 졸업"
-    },
-    {
-        type : "Awards1",
-        content : "신한대 2018 하반기 창업 경진 대회 장려상"
-    },
-    {
-        type : "Awards2",
-        content : "계명대학교 제5회 전국 대학생토론대회 입선"
-    }
-]
-function AboutMe({classname, content}) {
+const about = {
+
+        profile : [
+            {
+                type : "name",
+                content : "황준희"
+            },
+            {
+                type : "year",
+                content : "1993년 1월 생"
+            }
+        ],
+        education : [
+            {
+                type : "high",
+                content : "부용고등학교 졸업"
+            },
+            {
+                type : "uv",
+                content : "신한대학교 경영학과 졸업"
+            }
+        ],
+        awards : [
+            {
+                type : "Awards1",
+                content : "계명대학교 제5회 전국 대학생토론대회 입선"
+            },
+            {
+                type : "Awards2",
+                content : "신한대 2018 하반기 창업 경진 대회 장려상"
+            }
+        ]
+}
+    
+
+function AboutMe({type, content}) {
     return (
-        <li className={`about ${classname}`}><span>{content}</span></li>
+        <li className={`abouttype ${type}`}><span>{content}</span></li>
     )
 }
 
-function ProfileText({on}) {
-    const titEvent = (x, y) => {
-        if(x === y) return "on"
-        if(x === 3)  {
-            return "end";
-        }
-        return "off";
-    }
-
-    return (
-        <div className="text-box">
-            <h2 className={`tit ${titEvent(on, 1)}`}>
-                 <br />
-                &nbsp;&nbsp;<span></span>
-            </h2>
-            <ul className={`about ${titEvent(on, 2)}`}>
-                { about.map((ele, idx)=>(
-                    <AboutMe 
-                        classname={ele.type}
-                        content={ele.content}
-                        key={idx}
-                    />
-                ))}
-            </ul>
-        </div>
-    )
-}
 
 
 
@@ -70,7 +57,67 @@ function Profile({text}) {
 
     return (
         <div className="profile">
-            <ProfileText on={text}/>
+        
+            <div className="text-box" >
+
+                <div className="tit">
+                    <h3>
+                        intro
+                    </h3>
+                    <p>
+                        저를 소개합니다.
+                    </p>
+                </div> 
+
+                <div className="about a_pro">
+                    <h2 className={`about_tit ${mainOn(text, 2)} pro`}>
+                        <span>profile</span>
+                    </h2>
+
+                    <ul className={`about_text ${mainOn(text, 2)}`}>
+                        { about.profile.map((ele, idx)=>(
+                            <AboutMe 
+                                type={ele.type}
+                                content={ele.content}
+                                key={idx}
+                            />
+                        ))}
+                    </ul>
+                </div>
+
+                <div className="about a_edu">
+                    <h2 className={`about_tit ${mainOn(text, 2)} edu`}>
+                        <span>education</span>
+                    </h2>
+
+                    <ul className={`about_text ${mainOn(text, 2)}`}>
+                        { about.education.map((ele, idx)=>(
+                            <AboutMe 
+                                type={ele.type}
+                                content={ele.content}
+                                key={idx}
+                            />
+                        ))}
+                    </ul>
+                </div>
+
+                <div className="about a_aw">
+                    <h2 className={`about_tit ${mainOn(text, 2)} awards`}>
+                        <span>awards</span>
+                    </h2>
+
+                    <ul className={`about_text ${mainOn(text, 2)}`}>
+                        { about.awards.map((ele, idx)=>(
+                            <AboutMe 
+                                type={ele.type}
+                                content={ele.content}
+                                key={idx}
+                            />
+                        ))}
+                    </ul>
+                </div>
+            
+            </div>
         </div>
     )
 } 
@@ -90,10 +137,9 @@ function mainOn(s,x){
 
 
 //메인 비주얼 컴포넌트
-function MainVisual({on ,height, typoH, intro}) {
+function MainVisual({height, typoH, intro}) {
     const 
         [visualOn, setVOn] = useState("off"),
-        // [op, setOp] = useState(1),
         [frame , setF] = useState(1),
         [mainI , setMainI] = useState(1),
         [coverOn, setCOn] = useState(0)
@@ -194,10 +240,10 @@ function MainVisual({on ,height, typoH, intro}) {
     },[scrollY, intro, typoH, main_visual.width, main_visual.height])
 
     useEffect(()=>{
-        let MainVisualHeight = 3000 + main_visual.width + (typoH - typoH/3) 
+        let MainVisualHeight = 2000 + 1000 + main_visual.width + (typoH - typoH/3) 
         height(MainVisualHeight);
-    },[main_visual.height, typoH])
-    
+    },[main_visual.height, typoH, height])
+
     return (
         <article className={`mainVisual ${visualOn}`} ref={main_visual.nodeGet}>
             <div className="container"  ref={contentNode}>
@@ -213,9 +259,9 @@ function MainVisual({on ,height, typoH, intro}) {
                 </div>
                 <div className="cover" ref={coverEle}>
                     <div className="inner">
-                        <h2 className="greeting"><span>만나서</span>반가워요!</h2>
+                        <h2 className="greeting"><span>만나서</span> 반가워요!</h2>
                         <div className={`video_box`}>
-                            <div className={`imgBox`} style={{opacity: 0}}>
+                            <div className={`imgBox ${mainOn(coverOn,2)}` }>
                                 <img src={`./video/junheeMain${mainI}.jpg`} ref={keyframe.nodeGet} alt="junhee"/>
                             </div>
                             <img className={`keyframe ${mainOn(coverOn,1)}`}  src={`./video/keyframe/jun${frame}.jpg`} alt="junhee" />
@@ -224,7 +270,9 @@ function MainVisual({on ,height, typoH, intro}) {
                 </div>
             </div>
             </div>
-            <Profile text={coverOn}/>
+            <Profile text={coverOn} />
+                
+            
         </article>
     )
 }

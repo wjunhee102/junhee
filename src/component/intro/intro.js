@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './css/intro.css';
 import MainVisual from './mainVisual';
 import useHeight from '../hooks/useHeight';
+import useScroll from '../hooks/useScroll';
 // import useFadeAnimate from '../hooks/useFadeAnimate';
 
 
@@ -58,13 +59,15 @@ function Intro({iPos, hOn}) {
     const
         introH = useHeight()
         ;
-        
+    
+    const { scrollY } = useScroll();
+
     // App에 값 전달    
     
     useEffect(()=>{
             let height = mainH + typo*3
             iPos(height)
-    },[mainH])
+    },[mainH, typo])
 
 
     //intro섹션 parallex함수
@@ -87,18 +90,10 @@ function Intro({iPos, hOn}) {
             }
     }
    
-    //스크롤 이벤트 실행 함수
-    function introScroll() {
-        move(window.pageYOffset);
-        hOn(valueOn);
-    }
-
-
     useEffect(()=>{
-        move(window.pageYOffset);
-        window.addEventListener('scroll',introScroll)
-        return ()=> window.removeEventListener('scroll',introScroll)
-    },[valueOn, typo, mainH, move, introScroll])
+        move(scrollY);
+        hOn(valueOn);
+    },[valueOn, scrollY])
 
     return (
         <section 

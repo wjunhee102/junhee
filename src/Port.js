@@ -86,8 +86,8 @@ function Port() {
     const AppHeight = useRef();
 
     useEffect(()=> {
-        
-        const contactMove = introPos+skillPos + webPos + 60;
+
+        const contactMove = introPos + skillPos + webPos - headerOn;
         const scrollHeight = AppHeight.current.offsetHeight - innerHeight;
         let last;
         if(contactMove >= scrollHeight) {
@@ -98,8 +98,8 @@ function Port() {
 
         setSH([
             0,
-            introPos+60-headerPos,
-            introPos+skillPos+60-headerPos,
+            introPos-headerPos,
+            introPos+skillPos-headerPos,
             last
         ])
     },[introPos, skillPos, headerPos, innerHeight])
