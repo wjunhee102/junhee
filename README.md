@@ -14,16 +14,17 @@
 
 그리고 목차의 구성에 따라 컴포넌트를 분리하였습니다.
 
-### 특이사항
+## 주요사항
 
- ### header 최대한 보는 사람이 답답하지 않을 수 있도록 제작하였습니다.
- 
+ #### header 최대한 보는 사람이 답답하지 않을 수 있도록 제작하였습니다.
+
 
  #### 인트로는 간단한 인사말과 저의 대한 소개를 간략하게 핵심만 읽고 넘어 갈 수 있게 제작했습니다. 
  그래서 scroll위치에서 트리커처럼 animation이 실행하는 트리거를 활용하는 것 뿐만 아니라 스크롤 이동이 동영상의
  keyFrame처럼 scroll을 할때마다 실행하게 되어 있습니다.
  
- ```    if(startContent <= scroll_y) {
+ ```   
+    if(startContent <= scroll_y) {
             opac = (scroll_y-startContent)/1000
             if(scroll_y <= startContent+1000) {
                 contentBox.current.style.opacity = opac;
@@ -38,7 +39,7 @@
         }
     
 
-     if( CoverStart <= scroll_y && scroll_y <= CoverStart + innerH + mainH){
+    if( CoverStart <= scroll_y && scroll_y <= CoverStart + innerH + mainH){
             
             keyframe = Math.round((scroll_y - CoverStart)/(innerH /65))
             lateX = scroll_y - CoverStart
