@@ -14,12 +14,90 @@
 
 그리고 목차의 구성에 따라 컴포넌트를 분리하였습니다.
 
+
+
 ## 주요사항
 
- #### header 최대한 보는 사람이 답답하지 않을 수 있도록 제작하였습니다.
+#### header-gnb는 최대한 보는 사람이 답답하지 않을 수 있도록 제작하였습니다.
+
+ 이 홈페이지에 gnb메뉴를 누르면 이름에 해당하는 섹션으로 이동할 수 있습니다. scrollTop을 이용하여 이동을 하는데, 단순히 그 위치에 이동을 하면 툭툭 끊기는 느낌이 나서 애니메이션을 효과를 이용하였습니다. 
+```
+function moveSection(x) {  
+        let 
+            scrollY = window.pageYOffset,
+            i = secH[x],
+            start = i - scrollY,
+            startTime = null
+            ;
+		// moveSection 재생
+			moveStart = true
 
 
- #### 인트로는 간단한 인사말과 저의 대한 소개를 간략하게 핵심만 읽고 넘어 갈 수 있게 제작했습니다. 
+        //가속도 
+        function easeOut (t, b, c, d) {
+            return c * ( -Math.pow( 2, -12 * t/d ) + 1 ) + b;
+        };
+
+        //animate
+        function animate(timestamp) {
+            
+            if(!startTime) startTime = timestamp
+            let progress = timestamp - startTime
+            let moving = easeOut(progress, scrollY, start, 2500)
+
+            window.scrollTo(0, moving);
+            if (moveStart) {
+                if (progress < 2500) {
+                    requestAnimationFrame(animate);
+                } else {
+                    window.scrollTo(0, i);
+                }
+            }
+            
+        }
+        window.requestAnimationFrame(animate);
+    }
+```
+단순히 일정 속도로만 움직이면 단조로워서 가속도 함수를 이용하여 조금은 다이나믹하고 부드럽게 움직이게 하였습니다.
+
+ 모바일에서는 조금 더 사용자 경험을 고려해서 만들었습니다. 보통 모바일에서는 웹을 한손으로 
+핸드폰을 파지하여 엄지로 스크롤을 하여 봅니다. 그래서 단순히 접었다 폈다하는 토글 메뉴로는 본래 gnb 목적인 편하게 항목을 이동하는 것을 해친다 생각하여 조금 몇가지 기능을 추가 했습니다.
+
+ 먼저 모바일에서 보면 gnb의 위치가 오른쪽 하단에 위치합니다. 그래서 오른쪽 엄지로 쉽게 
+누를 수 있게 하였습니다. 그리고 동그란 gnb를 터치하면 접혀있던 gnb에서 길게 확장 됩니다.
+그리고 로고가 touch down이 되 있는 손가락을 따라 움직입니다. 그리고 멈춘 위치의 좌표를 계산해서 math.round로 반올림 하여 해당 위치의 섹션으로 이동하도록 제작했습니다.
+```
+const BTN_ACTION = (e)=>{
+        e.preventDefault();
+        const touch = e.changedTouches[0];
+        firstTouchY = touch.clientY;
+        M_GNB.current.style.height = `230px`;
+        GNB.current.style.opacity = 1;
+        TOUCH_ON = true;
+    }
+const BTN_MOVE = (e)=> {
+        if(!TOUCH_ON) return false; 
+        e.preventDefault();
+        const touch = e.changedTouches[0];
+        touchMove = touch.clientY;
+        position =  POINT(firstTouchY, touchMove);
+        BTN_GNB.current.style.transform = `translateY(${-position}px)`;
+    }
+const BTN_END = ()=> {
+        TOUCH_ON = false;
+        if(position > 51 ) {
+            let i = 4 - Math.round((position - 51)/44);
+            moveS(i);
+        } 
+        BTN_GNB.current.style.transform = `translateY(${0}px)`;
+        M_GNB.current.style.height = `0px`;
+        GNB.current.style.opacity = 0.7;
+    } 
+```
+
+
+#### 인트로는 간단한 인사말과 저의 대한 소개를 간략하게 핵심만 읽고 넘어 갈 수 있게 제작했습니다. 
+
  그래서 scroll위치에서 트리커처럼 animation이 실행하는 트리거를 활용하는 것 뿐만 아니라 스크롤 이동이 동영상의
  keyFrame처럼 scroll을 할때마다 실행하게 되어 있습니다.
  
@@ -88,10 +166,14 @@
 
  ```
 
+## 문제점
 
+ 하지만 처음 리액트를 사용해서 만드는 사이트여서 그런지 생각보다 여러 문제가 발생 했습니다. 
+주로 가장 큰 문제는 퍼포먼스가 많이 떨어지는 것입니다. 기존의 자바스크립트 처럼 해당 도큐멘트를 불러서 만드는 것이 아니라서 처음 움직임을 주는 것만으로도 애를 썼습니다. 
 
+#### useState
+ 처음에는 css값을 바꿔줄 때 바뀐 값을 state에 저장하여 그 값을 적용하고 업데이트 하는 
+식으로 하였습니다. 하지만 그렇게 만드니까 웹이 굉장히 느렸습니다. 다른 이유 때문에 느렸을 수 도 있지만, 별로 좋은 방법이 아닌 생각이 들었습니다. 그리고 Mouse Move 좌표값에 따라 움직여주질 않았습니다. 그래서 다음 방법으로 바꿨습니다.
 
-
-하지만 처음 리액트를 사용해서 만드는 사이트여서 그런지 생각보다 여러 문제가 발생 했습니다. 
-주로 가장 큰 문제는 퍼포먼스가 많이 떨어지는 것입니다. 
-
+#### useRef, useEffect
+ 그 다음에 시도했던 방법은 useRef으로 기존의 자바스크립트 처럼 도큐멘트를 불러와서 
