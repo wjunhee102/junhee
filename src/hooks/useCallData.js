@@ -9,7 +9,9 @@ function useCallDate( url ) {
     const callUrl = async() => {
         try {
             const { data } = await axios.get(url)
+            console.log("작동함")
             setDate(data)
+            localStorage.setItem("moviesInfo",JSON.stringify(data))
         } catch {
             setError("데이터가 없습니다.")
             console.log("error");
@@ -18,8 +20,18 @@ function useCallDate( url ) {
         }
     }
     useEffect(()=>{
-        callUrl();
+        if(localStorage.getItem("moviesInfo")) {
+            const getDate = JSON.parse(localStorage.getItem("moviesInfo"))
+            setDate(getDate)
+            setLoading(false);
+        } else {
+            callUrl();
+        }
     },[])
+    useEffect(()=>{
+        console.log(localStorage.getItem("moviesInfo"))
+        console.log(JSON.parse(localStorage.getItem("moviesInfo")))
+    },[data])
 
     return ( { data, error, isLoading, callUrl } );
 }
