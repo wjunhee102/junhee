@@ -5,7 +5,9 @@ import './css/others.css';
 function Others() {
     return (
         <section className="others">
-            <Calulator />
+            <div className="inner">
+                <Calulator />
+            </div>
         </section>
     )
 }

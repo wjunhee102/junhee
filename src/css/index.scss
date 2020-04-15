@@ -79,24 +79,5 @@ $phoneH : "screen and (max-width : 736px)";
 }
 
 
-body {
-    @include box();
-    font-family: $noto, $defaultFont;
-    background-color: $mainbg;
-    font-size: 16px;
-}
-
-
-.wrap {
-    @include box();
-    height: auto;
-}
- 
-
-#main {
-    @include box();
-    position: relative;
-}
-
 
 

@@ -3,7 +3,6 @@ import NumberPad from "./numberpad";
 import Func from "./func";
 import Operator from "./operator";
 import Record from "./record";
-import './calc.css';
 import { connect } from "react-redux";
 import { actionCreators } from "../store";
 

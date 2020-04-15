@@ -1,5 +1,6 @@
 import React from 'react';
 import Calc from './component/calc';
+import './calc.css';
 
 function CalApp() {
   return (
