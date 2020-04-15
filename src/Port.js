@@ -3,6 +3,7 @@ import Header from './component/header/header';
 import Intro from './component/intro/intro';
 import Skill from './component/skill/skill';
 import Web from './component/web/web';
+import Calulator from './component/Others/others';
 import Team from './component/team/team';
 import Contact from './component/contact/contact';
 import useInnerSize from './component/hooks/useInnerSize';
@@ -119,6 +120,7 @@ function Port() {
                 />
                 <Skill sPos={setSPos} iPos={secH[1]}/>
                 <Web wPos={setWPos} />
+                <Calulator />
                 <Team />
                 <Contact />
                 </main>

@@ -6,7 +6,6 @@ import Ticketing from './ticketing/ticketing';
 
 function App() {
 
- 
     return (
     <>
         <HashRouter>
