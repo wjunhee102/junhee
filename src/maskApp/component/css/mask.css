@@ -1,0 +1,201 @@
+.mask_wrap {
+    width: 100%;
+    height: auto;
+}
+.mask_wrap::after {
+    display: block;
+    content: '';
+    clear: both;
+}
+.blind {
+    display: block;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.mask_wrap .inner {
+    max-width: 1200px;
+    margin: auto;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.mask_wrap .header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+    padding-top: 88px;
+    position: relative;
+}
+.mask_wrap .header .logo {
+    position: absolute;
+    width: 140px;
+    height: 88px;
+    left: 50%;
+    top: 10px;
+    transform: translate(-50%, 0);
+    background: url("../../images/newLogo.png") no-repeat center center;
+    background-size: cover;
+}
+
+
+.mask_wrap .header .gnb {
+    max-width: 300px;
+    height: 50px;
+    position: relative;
+    left: 0;
+    box-sizing: border-box;
+    padding-left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: flex-start;
+}
+.mask_wrap .gnb select {
+    all: unset;
+    height: 25px;
+    padding: 0 10px;
+    line-height: 25px;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0,0.3);
+}
+.mask_wrap .gnb button {
+    all: unset;
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 25px;
+    margin-left: 20px;
+    color: #000;
+    background-color: rgb(207, 138, 255);
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0,0.3);
+}
+.mask_wrap .gnb button:active {
+    background-color: rgb(207, 138, 255, .5);
+}
+
+
+.mask_wrap .header .selectBtn {
+    background-color: #ccc;
+    height: 20px;
+    width: 50%;
+    display: flex;
+    justify-content: between-space;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.mask_wrap .header .selectBtn .btn_gnb {
+    background-color: #000;
+    height: 20px;
+    width: 40px;
+}
+
+.mask_wrap .store {
+    position: relative;
+    width: 30%;
+    height: 200px;
+    text-align: center;
+    background-color: rgba(255, 255, 255,1);
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0,0.4);
+    box-sizing: border-box;
+    background-color: #3d3d3d;
+    color: #fff;
+    opacity: 0.8;
+}
+@media (max-width: 768px) {
+    .mask_wrap .store {
+        font-size: 0.7em;
+        width: 28%;
+        overflow: hidden;
+    }
+}
+.mask_wrap .store .stat {
+    text-align: center;
+}
+.mask_wrap .store .stat p {
+    display: inline-block;
+    margin: auto;
+    padding-left: 38px;
+    line-height: 28px;
+    position: relative;
+}
+.mask_wrap .store .stat p::after {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 4px 0px rgba(0, 0, 0,0.5);
+    background-image: url("../../images/cmenu_09.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 -9px;
+}
+
+.mask_wrap .store .stat span {
+    display: block;
+    text-decoration: underline;
+    font-size: 1em;
+}
+.mask_wrap .store.on {
+    opacity: 1;
+}
+.mask_wrap .store.off {
+    opacity: 0;
+}
+.mask_wrap .store.plenty {
+    /* border: 2px solid aquamarine; */
+    background-color: #01ffae;
+    color: #161616;
+    opacity: 1;
+}
+.mask_wrap .store.some {
+    /* border: 2px solid yellow; */
+    background-color: #fff9bb;
+    color: #161616;
+    opacity: 1;
+}
+.mask_wrap .store.few {
+    /* border: 2px solid red; */
+    background-color: #f0376b;
+    color: #fff;
+    opacity: 1;
+}
+.mask_wrap .store.empty {
+    background-color: #f3efe1;
+    color: #161616;
+    opacity: 1;
+}
+
+.mask_wrap .store.plenty p::after{
+    /* border: 2px solid aquamarine; */
+    background-position: -29px -9px;
+}
+.mask_wrap .store.some p::after{
+    /* border: 2px solid yellow; */
+    background-position: -58px -9px;
+}
+.mask_wrap .store.few p::after{
+    background-position: -87px -9px;
+}
+.mask_wrap .store.empty p::after{
+    background-position: -117px -9px;
+}
+
+.mask_wrap .store .box {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

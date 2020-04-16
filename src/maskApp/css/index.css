@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Nanum+Gothic:400,700,800&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+body {
+    color: #000;
+    background: #f6ebff;
+    font-family:'Do Hyeon', 'Nanum Gothic', sans-serif;
+}

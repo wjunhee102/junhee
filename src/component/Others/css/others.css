@@ -5,6 +5,62 @@
   background-color: #fff;
 }
 
+#main .others .foreword {
+  width: 100%;
+  height: auto;
+  margin-bottom: 100px;
+}
+
+#main .others .foreword .inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  background-color: transparent;
+}
+
+#main .others .foreword .inner .tit {
+  font-size: 3.2em;
+  font-weight: 600;
+  color: #000;
+  text-transform: uppercase;
+  border-bottom: 1px solid #888;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .others .foreword .inner .tit {
+    font-size: 4em;
+    text-indent: 10px;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .others .foreword .inner .tit {
+    font-size: 3em;
+    text-indent: 10px;
+  }
+}
+
+#main .others .foreword .inner .exp {
+  font-size: 1.875em;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: #888;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .others .foreword .inner .exp {
+    font-size: 1.8em;
+    text-indent: 10px;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #main .others .foreword .inner .exp {
+    font-size: 1.5em;
+  }
+}
+
 #main .others .inner {
   max-width: 1200px;
   margin: 0 auto;

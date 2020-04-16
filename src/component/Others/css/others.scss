@@ -5,6 +5,52 @@
     .others {
         position: relative;
         background-color: #fff;
+        .foreword {
+            width: 100%;
+            height: auto;
+            margin-bottom: 100px;
+            .inner {
+                @include inner();
+    
+                // 태블릿 가로모드
+    
+                .tit {
+                    font-size: 3.2em;
+                    font-weight: 600;
+                    color: #000;
+                    text-transform: uppercase;
+                    border-bottom: 1px solid #888;
+                    // letter-spacing: 0.1em;
+    
+                    // 태블릿 가로모드
+                    @media #{$tabletH} {
+                        font-size: 4em;
+                        text-indent: 10px;
+                    }
+                    @media #{$phoneH} {
+                        font-size: 3em;
+                        text-indent: 10px;
+                    }
+                }
+                .exp {
+                    font-size: 1.875em;
+                    font-weight: 600;
+                    line-height: 1.5;
+                    margin-bottom: 20px;
+                    color: #888;
+    
+                    // 태블릿 가로모드
+                    @media #{$tabletH} {
+                        font-size: 1.8em;
+                        text-indent: 10px;
+                    }
+                    @media #{$phoneH} {
+                        font-size: 1.5em;
+                        // text-indent: 10px;
+                    }
+                }
+            }
+        }
         .inner {
             @include inner();
         }
