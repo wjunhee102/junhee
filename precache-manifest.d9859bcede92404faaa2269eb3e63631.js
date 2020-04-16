@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "71fdc4605b810e3ad8eb49968636f11f",
+    "revision": "1a6efe35cea7571cbe9f9b7d5593f1c8",
     "url": "/junhee/index.html"
   },
   {
-    "revision": "aee7b1501b387aa0970d",
-    "url": "/junhee/static/css/main.34b07850.chunk.css"
+    "revision": "322e5cbfd34ee6e1fe35",
+    "url": "/junhee/static/css/main.338e8fb8.chunk.css"
   },
   {
-    "revision": "8f1bb53e0a1bc6078b29",
-    "url": "/junhee/static/js/2.fae03363.chunk.js"
+    "revision": "90a12626027fdb4577d3",
+    "url": "/junhee/static/js/2.502fdab4.chunk.js"
   },
   {
     "revision": "928d7b5eb39d16fe9a880722c974b51e",
-    "url": "/junhee/static/js/2.fae03363.chunk.js.LICENSE.txt"
+    "url": "/junhee/static/js/2.502fdab4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "aee7b1501b387aa0970d",
-    "url": "/junhee/static/js/main.ee7673d0.chunk.js"
+    "revision": "322e5cbfd34ee6e1fe35",
+    "url": "/junhee/static/js/main.490877e8.chunk.js"
   },
   {
     "revision": "5228dde056d328f4a6ad",
@@ -78,6 +78,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "c67970c6ebe563b78ed109aca7ffb15d",
     "url": "/junhee/static/media/naver_2x.c67970c6.jpg"
+  },
+  {
+    "revision": "587215a98e2eedbc29138ec2092b7aae",
+    "url": "/junhee/static/media/newLogo.587215a9.png"
   },
   {
     "revision": "8fab2b0f41348f24b4b56d9b17150633",
