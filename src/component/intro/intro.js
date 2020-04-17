@@ -10,7 +10,7 @@ import useScroll from '../hooks/useScroll';
 // 타이포 텍스트
 const visualTypo = [
     "안녕하세요",
-    "신입 프론트 엔드 개발자",
+    "신입 개발자",
     "황준희입니다"
 ]
 //

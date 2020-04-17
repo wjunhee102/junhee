@@ -40,7 +40,6 @@ const mReducer = ( state, action ) => {
             data : action.data
         });
         localStorage.setItem("data", JSON.stringify(newState.data));
-        localStorage.setItem("refresh", newState.refresh)
         console.log("실행됨");
  
         return newState;

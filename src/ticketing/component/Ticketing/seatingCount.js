@@ -231,9 +231,7 @@ const SeatingCount = state =>{
         TheaterCheck();
     },[])
 
-    useEffect(()=> {
-        console.log(theaterSeat);
-    },[theaterSeat])
+ 
     return ({theaterSeat, TheaterCheck});
 }
 

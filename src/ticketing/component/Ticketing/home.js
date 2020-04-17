@@ -51,9 +51,9 @@ const Theater = [
 function Ppp({idx, ss}) {
     useEffect(()=>{
         if(ss) {
-            console.log(ss[0])
+            // console.log(ss[0])
         }
-    })
+    },[])
     const color = ()=>{
         if(ss) {
             let check = ss.find(ele=> ele === idx)
@@ -121,10 +121,10 @@ function Ticketing({state, ADD_DATA, CALL_CHECK}) {
         } 
     
 
-    const { data, error, isLoading, callData } = useFetch(`http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${apikey}&targetDt=${Year}${Month()}${Day()}`,state.refresh);
+    const { data, error, isLoading, callData } = useFetch(`https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${apikey}&targetDt=${Year}${Month()}${Day()}`,state.refresh);
 
     useEffect(()=>{
-        console.log(state.seats)
+        // console.log(state.seats)
         if(!state.refresh) {
             setLoading(false);
             setInfo(state.data)
@@ -135,6 +135,10 @@ function Ticketing({state, ADD_DATA, CALL_CHECK}) {
             setInfo(data)
             console.log(data, "data")
             ADD_DATA(data);
+            if(!isLoading) {
+                console.log("aaa")
+                CALL_CHECK(false);
+            }
         }
     },[isLoading, data, state.refresh])
 

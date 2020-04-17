@@ -18,13 +18,15 @@ function Foreword({ title, content }) {
 
 function Others() {
     const othersContents = {
-        title : "Others"
+        title : "Others",
+        content : "현재 제작중입니다."
     }
 
     return (
         <section className="others">
             <Foreword 
                 title={othersContents.title}
+                content={othersContents.content}
             />
             <div className="inner">
                 
