@@ -27,16 +27,16 @@ function KakaoMap() {
     // }, []);
 
 
-    // useEffect(() => {
-    //     console.log(kakao)
-    //     kakao.maps.load(() => {
-    //         let el = document.getElementById('map');
-    //         let map = new kakao.maps.Map(el, {
-    //             center: new kakao.maps.Coords(523951.25, 1085073.75)
-    //         })
-    //     })
+    useEffect(() => {
+        console.log(kakao)
+        kakao.maps.load(() => {
+            let el = document.getElementById('map');
+            let map = new kakao.maps.Map(el, {
+                center: new kakao.maps.Coords(523951.25, 1085073.75)
+            })
+        })
 
-    // }, [kakao.maps]);
+    }, [kakao.maps]);
     
 
     return(

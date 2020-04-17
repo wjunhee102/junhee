@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from'react';
+import React, { useState, useEffect, useRef } from'react';
 import MaskStore from "./maskStore";
 import "./css/mask.css";
 import { address } from '../link/address';
