@@ -18,11 +18,11 @@ const gnb_info = [
         link : "section",
         title : "web"
     },
-    // {
-    //     id : "btn_gnb" ,
-    //     link : "section",
-    //     title : "Team"
-    // },
+    {
+        id : "btn_gnb" ,
+        link : "section",
+        title : "others"
+    },
     {
         id : "btn_gnb" ,
         link : "section",
@@ -46,11 +46,11 @@ const m_gnb_info = [
         link : "section",
         title : "W"
     },
-    // {
-    //     id : "btn_gnb" ,
-    //     link : "section",
-    //     title : "T"
-    // },
+    {
+        id : "btn_gnb" ,
+        link : "section",
+        title : "O"
+    },
     {
         id : "btn_gnb" ,
         link : "section",

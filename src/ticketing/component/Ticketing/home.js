@@ -4,6 +4,7 @@ import useFetch from '../../hooks/useFetch';
 import { connect } from 'react-redux';
 import { actionCreators } from '../../store';
 import Seating from './seating';
+import { Link } from 'react-router-dom';
 
 const Theater = [
     {
@@ -145,6 +146,9 @@ function Ticketing({state, ADD_DATA, CALL_CHECK}) {
     return (
         
         <div className="ticketing">
+            <Link to={{pathname : '/'}}>
+                Home
+            </Link>
             {loading ? (
                 <div>
                     Loading...
