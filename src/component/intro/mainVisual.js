@@ -13,31 +13,54 @@ const about = {
         profile : [
             {
                 type : "name",
-                content : "황준희"
+                content : ["황준희"]
             },
             {
                 type : "year",
-                content : "1993년 1월 생"
+                content : ["1993년 1월 생"]
             }
         ],
-        education : [
+        record : [
             {
                 type : "high",
-                content : "부용고등학교 졸업"
+                content : [
+                    "부용고등학교", 
+                    "2008.03 ~ 2011.02",
+                ]
             },
             {
                 type : "uv",
-                content : "신한대학교 경영학과 졸업"
+                content : [
+                    "신한대학교",
+                    "2011.03 ~ 2019.08",
+                    "글로벌 통상 경영학과"
+                ]
+            },
+            {
+                type : "ac",
+                content : [
+                    "대우직업능력개발원",
+                    "2019.07 ~ 2020.04",
+                    "스마트콘텐츠제작 구직자 과정"
+                ]
+            },
+            {
+                type : "co",
+                content : [
+                    "소프트웨어 인 라이프",
+                    "2020.05 ~ 2020.10",
+                    "서비스 개발팀 프론트엔드 담당"
+                ]
             }
         ],
         awards : [
             {
                 type : "Awards1",
-                content : "계명대학교 제5회 전국 대학생토론대회 입선"
+                content : ["계명대학교 제5회 전국 대학생토론대회 입선"]
             },
             {
                 type : "Awards2",
-                content : "신한대 2018 하반기 창업 경진 대회 장려상"
+                content : ["신한대 2018 하반기 창업 경진 대회 장려상"]
             }
         ]
 }
@@ -45,7 +68,11 @@ const about = {
 
 function AboutMe({type, content}) {
     return (
-        <li className={`abouttype ${type}`}><span>{content}</span></li>
+        <li className={`abouttype ${type}`}>
+            {
+                content.map((con, idx) => <span key={idx} className={`content-${idx + 1}`}>{con}</span>)
+            }
+        </li>
     )
 }
 
@@ -85,13 +112,13 @@ function Profile({text}) {
                     </ul>
                 </div>
 
-                <div className="about a_edu">
-                    <h2 className={`about_tit ${mainOn(text, 2)} edu`}>
-                        <span>education</span>
+                <div className="about a_rec">
+                    <h2 className={`about_tit ${mainOn(text, 2)} rec`}>
+                        <span>Record</span>
                     </h2>
 
                     <ul className={`about_text ${mainOn(text, 2)}`}>
-                        { about.education.map((ele, idx)=>(
+                        { about.record.map((ele, idx)=>(
                             <AboutMe 
                                 type={ele.type}
                                 content={ele.content}

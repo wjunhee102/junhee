@@ -247,14 +247,43 @@
 }
 
 #main .web .port_site .inner .textbox .contents.cgv .tit .line {
-  width: 115px;
+  width: 140px;
   background-image: url("../../../images/cgv_tit.png");
-  bottom: 6px;
+  bottom: 3px;
   background-size: 110px 18px;
 }
 
 @media screen and (max-width: 1024px) {
   #main .web .port_site .inner .textbox .contents.cgv .tit .line {
+    width: 88px;
+    bottom: 0px;
+    background-size: 88px 18px;
+  }
+}
+
+#main .web .port_site .inner .textbox .contents.bklog .tit .line {
+  width: 135px;
+  background-image: url("../../../images/podopodTit_L.png");
+  bottom: -0px;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .web .port_site .inner .textbox .contents.bklog .tit .line {
+    width: 110px;
+    bottom: 0px;
+    background-size: 110px 18px;
+  }
+}
+
+#main .web .port_site .inner .textbox .contents.react .tit .line {
+  width: 140px;
+  background-image: url("../../../images/naverTit_L.png");
+  bottom: 3px;
+  background-size: 110px 18px;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .web .port_site .inner .textbox .contents.react .tit .line {
     width: 88px;
     bottom: 0px;
     background-size: 88px 18px;
@@ -324,6 +353,18 @@
 
 #main .web .port_site .inner .textbox .contents .lang_menu li.lang.javascript {
   background-image: url("../../../images/js.png");
+}
+
+#main .web .port_site .inner .textbox .contents .lang_menu li.lang.typescript {
+  background-image: url("../../../images/ts.png");
+}
+
+#main .web .port_site .inner .textbox .contents .lang_menu li.lang.nestjs {
+  background-image: url("../../../images/nestjs.png");
+}
+
+#main .web .port_site .inner .textbox .contents .lang_menu li.lang.react {
+  background-image: url("../../../images/react.png");
 }
 
 #main .web .port_site .inner .textbox .contents .lang_menu li.lang:last-child {
@@ -542,5 +583,13 @@
 
 #main .web .port_site .inner .imgbox.cgv .link .img {
   background-image: url("../../../images/cgv_2x.png");
+}
+
+#main .web .port_site .inner .imgbox.bklog .link {
+  background-image: url("../../../images/podoBG_2x.png");
+}
+
+#main .web .port_site .inner .imgbox.react .link {
+  background-image: url("../../../images/naverBG_2x.png");
 }
 /*# sourceMappingURL=web.css.map */

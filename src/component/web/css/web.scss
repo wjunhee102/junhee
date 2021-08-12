@@ -183,9 +183,34 @@
                     }
                     &.cgv {
                         .tit .line  {
-                            width: 115px;
+                            width: 140px;
                             background-image: url("../../../images/cgv_tit.png");
-                            bottom: 6px;
+                            bottom: 3px;
+                            background-size: 110px 18px;
+                            @media #{$tabletH} {
+                                width: 88px;
+                                bottom: 0px;
+                                background-size: 88px 18px;
+                            }
+                        }
+                    }
+                    &.bklog {
+                        .tit .line  {
+                            width: 135px;
+                            background-image: url("../../../images/podopodTit_L.png");
+                            bottom: -0px;
+                            @media #{$tabletH} {
+                                width: 110px;
+                                bottom: 0px;
+                                background-size: 110px 18px;
+                            }
+                        }
+                    }
+                    &.react {
+                        .tit .line  {
+                            width: 140px;
+                            background-image: url("../../../images/naverTit_L.png");
+                            bottom: 3px;
                             background-size: 110px 18px;
                             @media #{$tabletH} {
                                 width: 88px;
@@ -240,6 +265,15 @@
                             }
                             &.javascript {
                                 background-image: url("../../../images/js.png");
+                            }
+                            &.typescript {
+                                background-image: url("../../../images/ts.png");
+                            }
+                            &.nestjs {
+                                background-image: url("../../../images/nestjs.png");
+                            }
+                            &.react {
+                                background-image: url("../../../images/react.png");
                             }
                             &:last-child {
                             margin-right:0;
@@ -411,6 +445,19 @@
                             background-image: url("../../../images/cgv_2x.png");
                         }
                     } 
+                }
+                &.bklog {
+                    .link {
+                        background-image: url("../../../images/podoBG_2x.png");
+                        .img {
+                            // background-image: url("../../../images/podo_2x.jpg");
+                        }
+                    } 
+                }
+                &.react {
+                    .link {
+                        background-image: url("../../../images/naverBG_2x.png");
+                    }
                 }
                 
             }

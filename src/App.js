@@ -10,8 +10,6 @@ function App() {
     <>
         <HashRouter>
             <Route path="/" exact={true} component={Port} />
-            <Route path="/maskApp" component={Mask} />
-            <Route path="/ticketing" component={()=> import("./ticketing/ticketing")} />
         </HashRouter>
     </>
     )

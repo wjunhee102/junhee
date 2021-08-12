@@ -1,5 +1,4 @@
 import React from 'react';
-import Calulator from './calulator/calulator';
 import { Link } from 'react-router-dom';
 import './css/others.css';
 
@@ -32,16 +31,6 @@ function Others() {
                 
                 <article className="">
                     <Calulator />
-                </article>
-                <article>
-                    <Link to={{pathname: '/maskApp'}}>
-                        마스크앱
-                    </Link>
-                </article>
-                <article>
-                    <Link to={{pathname: '/ticketing'}}>
-                        예매 앱
-                    </Link>
                 </article>
             </div>
         </section>

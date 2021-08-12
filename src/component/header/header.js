@@ -16,12 +16,7 @@ const gnb_info = [
     {
         id : "btn_gnb" ,
         link : "section",
-        title : "web"
-    },
-    {
-        id : "btn_gnb" ,
-        link : "section",
-        title : "others"
+        title : "project"
     },
     {
         id : "btn_gnb" ,
@@ -44,12 +39,7 @@ const m_gnb_info = [
     {
         id : "btn_gnb" ,
         link : "section",
-        title : "W"
-    },
-    {
-        id : "btn_gnb" ,
-        link : "section",
-        title : "O"
+        title : "p"
     },
     {
         id : "btn_gnb" ,

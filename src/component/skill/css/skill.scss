@@ -249,7 +249,7 @@
                         left: 0;
                         top: 50%;
                         opacity: 0;
-                        transform: translate(-100%, -50%);
+                        transform: translate(-100px, -50%);
                         color: #262626;
                         h4.icontit {
                             color: inherit;
@@ -261,6 +261,7 @@
                             color: #888888;
                             width: 220px;
                             font-weight: 500;
+                            text-transform: capitalize;
                             span {
                                 display: block;
                                 font-weight: inherit;
@@ -282,6 +283,7 @@
                             top: 0;
                             margin-left: 20px;
                             padding-right: 10px;
+                            padding-top: 13px;
                             transform: translate(0, 0);
                         }
                         
@@ -336,14 +338,14 @@
                             transform: translate(0, 0);
                         }
                     }
-                    &.jQuery {
+                    &.javascript {
 
                         @media screen and (min-width: 1025px){
                             transform: translate(0, -300px);
                         }
 
                         .iconImg {
-                            background-image: url("../../../images/jq.png");
+                            background-image: url("../../../images/js.png");
                         }
 
                         .iconcontents {
@@ -351,7 +353,7 @@
                                 transform: translate(65%, -115%);
                             }
                             .icontit {
-                                text-transform: none;
+                                text-transform: capitalize;
                             }
                         }
 
@@ -362,14 +364,14 @@
                             transform: translate(0, 0);
                         }
                     }
-                    &.javascript {
+                    &.typescript {
 
                         @media screen and (min-width: 1025px){
                             transform: translate(215px, -215px);
                         }
 
                         .iconImg {
-                            background-image: url("../../../images/js.png");
+                            background-image: url("../../../images/ts.png");
                         }
 
                         .iconcontents {
@@ -413,12 +415,12 @@
                             transform: translate(0, 0);
                         }
                     }
-                    &.photoshop {
+                    &.vue {
                         @media screen and (min-width: 1025px){
                             transform: translate(215px, 215px);
                         }
                         .iconImg {
-                            background-image: url("../../../images/photoshop.png");
+                            background-image: url("../../../images/vue.png");
                         }
                         .iconcontents {
                             @media screen and (min-width: 1025px) {
@@ -436,12 +438,13 @@
                             transform: translate(0, 0);
                         }
                     }
-                    &.illustrator {
+                    &.nestJs {
                         @media screen and (min-width: 1025px){
                             transform: translate(0, 300px);
                         }
                         .iconImg {
-                            background-image: url("../../../images/illu.png");
+                            background-color: #fff;
+                            background-image: url("../../../images/nestjs.png");
                         }
                         .iconcontents {
                             @media screen and (min-width: 769px) {
@@ -455,18 +458,18 @@
                             transform: translate(0, 0);
                         }
                     }
-                    &.scss {
+                    &.nodeJs {
                         @media screen and (min-width: 1025px){
                             transform: translate(-215px, 215px);
                         }
                         .iconImg {
-                            background-image: url("../../../images/scss.png");
+                            background-image: url("../../../images/nodejs.png");
                         }
                         .iconcontents {
                             @media screen and (min-width: 769px) {
                             }
                             .icontit {
-                                text-transform: uppercase;
+                                text-transform: capitalize;
                             }
                         }
                         @media #{$tabletH} {

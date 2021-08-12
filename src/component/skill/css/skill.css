@@ -356,8 +356,8 @@
   left: 0;
   top: 50%;
   opacity: 0;
-  -webkit-transform: translate(-100%, -50%);
-          transform: translate(-100%, -50%);
+  -webkit-transform: translate(-100px, -50%);
+          transform: translate(-100px, -50%);
   color: #262626;
 }
 
@@ -372,6 +372,7 @@
   color: #888888;
   width: 220px;
   font-weight: 500;
+  text-transform: capitalize;
 }
 
 #main .skill .iconBox .icon .iconcontents p.content span {
@@ -407,6 +408,7 @@
     top: 0;
     margin-left: 20px;
     padding-right: 10px;
+    padding-top: 13px;
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
   }
@@ -472,45 +474,9 @@
 }
 
 @media screen and (min-width: 1025px) {
-  #main .skill .iconBox .icon.jQuery {
+  #main .skill .iconBox .icon.javascript {
     -webkit-transform: translate(0, -300px);
             transform: translate(0, -300px);
-  }
-}
-
-#main .skill .iconBox .icon.jQuery .iconImg {
-  background-image: url("../../../images/jq.png");
-}
-
-@media screen and (min-width: 769px) {
-  #main .skill .iconBox .icon.jQuery .iconcontents {
-    -webkit-transform: translate(65%, -115%);
-            transform: translate(65%, -115%);
-  }
-}
-
-#main .skill .iconBox .icon.jQuery .iconcontents .icontit {
-  text-transform: none;
-}
-
-@media screen and (max-width: 1024px) {
-  #main .skill .iconBox .icon.jQuery {
-    -webkit-transform: translate(0, -240px);
-            transform: translate(0, -240px);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  #main .skill .iconBox .icon.jQuery {
-    -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
-  }
-}
-
-@media screen and (min-width: 1025px) {
-  #main .skill .iconBox .icon.javascript {
-    -webkit-transform: translate(215px, -215px);
-            transform: translate(215px, -215px);
   }
 }
 
@@ -518,17 +484,10 @@
   background-image: url("../../../images/js.png");
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 769px) {
   #main .skill .iconBox .icon.javascript .iconcontents {
-    -webkit-transform: translate(65%, -50%);
-            transform: translate(65%, -50%);
-  }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  #main .skill .iconBox .icon.javascript .iconcontents {
-    -webkit-transform: translate(65%, -50%);
-            transform: translate(65%, -50%);
+    -webkit-transform: translate(65%, -115%);
+            transform: translate(65%, -115%);
   }
 }
 
@@ -538,13 +497,56 @@
 
 @media screen and (max-width: 1024px) {
   #main .skill .iconBox .icon.javascript {
+    -webkit-transform: translate(0, -240px);
+            transform: translate(0, -240px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #main .skill .iconBox .icon.javascript {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  #main .skill .iconBox .icon.typescript {
+    -webkit-transform: translate(215px, -215px);
+            transform: translate(215px, -215px);
+  }
+}
+
+#main .skill .iconBox .icon.typescript .iconImg {
+  background-image: url("../../../images/ts.png");
+}
+
+@media screen and (min-width: 1025px) {
+  #main .skill .iconBox .icon.typescript .iconcontents {
+    -webkit-transform: translate(65%, -50%);
+            transform: translate(65%, -50%);
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #main .skill .iconBox .icon.typescript .iconcontents {
+    -webkit-transform: translate(65%, -50%);
+            transform: translate(65%, -50%);
+  }
+}
+
+#main .skill .iconBox .icon.typescript .iconcontents .icontit {
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: 1024px) {
+  #main .skill .iconBox .icon.typescript {
     -webkit-transform: translate(175px, -175px);
             transform: translate(175px, -175px);
   }
 }
 
 @media screen and (max-width: 768px) {
-  #main .skill .iconBox .icon.javascript {
+  #main .skill .iconBox .icon.typescript {
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
   }
@@ -590,100 +592,101 @@
 }
 
 @media screen and (min-width: 1025px) {
-  #main .skill .iconBox .icon.photoshop {
+  #main .skill .iconBox .icon.vue {
     -webkit-transform: translate(215px, 215px);
             transform: translate(215px, 215px);
   }
 }
 
-#main .skill .iconBox .icon.photoshop .iconImg {
-  background-image: url("../../../images/photoshop.png");
+#main .skill .iconBox .icon.vue .iconImg {
+  background-image: url("../../../images/vue.png");
 }
 
 @media screen and (min-width: 1025px) {
-  #main .skill .iconBox .icon.photoshop .iconcontents {
+  #main .skill .iconBox .icon.vue .iconcontents {
     -webkit-transform: translate(65%, -50%);
             transform: translate(65%, -50%);
   }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-  #main .skill .iconBox .icon.photoshop .iconcontents {
+  #main .skill .iconBox .icon.vue .iconcontents {
     -webkit-transform: translate(65%, -50%);
             transform: translate(65%, -50%);
   }
 }
 
 @media screen and (max-width: 1024px) {
-  #main .skill .iconBox .icon.photoshop {
+  #main .skill .iconBox .icon.vue {
     -webkit-transform: translate(175px, 175px);
             transform: translate(175px, 175px);
   }
 }
 
 @media screen and (max-width: 768px) {
-  #main .skill .iconBox .icon.photoshop {
+  #main .skill .iconBox .icon.vue {
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
   }
 }
 
 @media screen and (min-width: 1025px) {
-  #main .skill .iconBox .icon.illustrator {
+  #main .skill .iconBox .icon.nestJs {
     -webkit-transform: translate(0, 300px);
             transform: translate(0, 300px);
   }
 }
 
-#main .skill .iconBox .icon.illustrator .iconImg {
-  background-image: url("../../../images/illu.png");
+#main .skill .iconBox .icon.nestJs .iconImg {
+  background-color: #fff;
+  background-image: url("../../../images/nestjs.png");
 }
 
 @media screen and (min-width: 769px) {
-  #main .skill .iconBox .icon.illustrator .iconcontents {
+  #main .skill .iconBox .icon.nestJs .iconcontents {
     -webkit-transform: translate(65%, 0%);
             transform: translate(65%, 0%);
   }
 }
 
 @media screen and (max-width: 1024px) {
-  #main .skill .iconBox .icon.illustrator {
+  #main .skill .iconBox .icon.nestJs {
     -webkit-transform: translate(0, 240px);
             transform: translate(0, 240px);
   }
 }
 
 @media screen and (max-width: 768px) {
-  #main .skill .iconBox .icon.illustrator {
+  #main .skill .iconBox .icon.nestJs {
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
   }
 }
 
 @media screen and (min-width: 1025px) {
-  #main .skill .iconBox .icon.scss {
+  #main .skill .iconBox .icon.nodeJs {
     -webkit-transform: translate(-215px, 215px);
             transform: translate(-215px, 215px);
   }
 }
 
-#main .skill .iconBox .icon.scss .iconImg {
-  background-image: url("../../../images/scss.png");
+#main .skill .iconBox .icon.nodeJs .iconImg {
+  background-image: url("../../../images/nodejs.png");
 }
 
-#main .skill .iconBox .icon.scss .iconcontents .icontit {
-  text-transform: uppercase;
+#main .skill .iconBox .icon.nodeJs .iconcontents .icontit {
+  text-transform: capitalize;
 }
 
 @media screen and (max-width: 1024px) {
-  #main .skill .iconBox .icon.scss {
+  #main .skill .iconBox .icon.nodeJs {
     -webkit-transform: translate(-175px, 175px);
             transform: translate(-175px, 175px);
   }
 }
 
 @media screen and (max-width: 768px) {
-  #main .skill .iconBox .icon.scss {
+  #main .skill .iconBox .icon.nodeJs {
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
   }

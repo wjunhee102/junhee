@@ -396,20 +396,37 @@
                         opacity: 0;
                         box-sizing: border-box;
                         margin-top: 40px;
+                        padding-top: 10px;
                         @media #{$phoneH} {
                             padding: 10px 20px ;
                         }
                         li {
                             position: relative;
-                            line-height: 3.2;
                             width: 100%;
                             white-space: wrap;
                             color: #262626;
+                            padding-top: 10px;
+                            padding-bottom: 10px;
                             span {
-                                display: block;
+                                display: inline-block;
+                            }
+                            span.content-1 {
                                 font-size: 1.875em;
                                 font-weight: 600;
+                                height: 44px;
+                                line-height: 44px;
                                 color: inherit;
+                            }
+                            span.content-2 {
+                                padding-left: 10px;
+                                padding-top: 18px;
+                                height: 44px;
+                                box-sizing: border-box;
+                                line-height: 1;
+                            }
+                            span.content-3 {
+                                display: block;
+                                line-height: 1.5;
                             }
                             @media #{$tabletH} {
                                 font-size: 1em;
