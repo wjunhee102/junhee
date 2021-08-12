@@ -14,7 +14,7 @@ const port_site = [
         personnel: ["황준희"],
         content: "React의 핵심 컨셉인 변경된 요소만 돔에 적용 하는 것을 구현해보았습니다.",
         img: "react",
-        link: "https://bklog-app-deploy.vercel.app",
+        link: "https://wjunhee102.github.io/DynamicDom",
         git: "https://github.com/wjunhee102/bklog-app",
         sub: false
     },
@@ -74,11 +74,13 @@ function Port({title, divi, title2, content, img, lang, personnel, link, keyword
                 </div>
                
                 <div className={`imgbox ${img}`}>
-                    <a href={link} className="link" target="_blink">
+                    <div className="link">
                         <div className={`img`}>
                             <span className="blind">{title}</span>
+                            <iframe src={link}></iframe>
                         </div>
-                    </a>
+                    </div>
+                    <a href={link} className="link-box" target="_blink"><span className="blind">{title}</span></a>
                 </div>
                 
             </div>

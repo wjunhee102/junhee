@@ -372,7 +372,18 @@
                 @media #{$phoneH} {
                     width: 100%;
                 }
-                a.link {
+                a.link-box {
+                    position: absolute;
+                    left: 0px;
+                    top: 0px;
+                    z-index: 10;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    background-color: transparent;
+                }
+
+                div.link {
                     position: relative;
                     display: block;
                     width: auto;
@@ -411,6 +422,17 @@
                         @media #{$phoneH} {
                             max-width: 100%
                         } 
+                    }
+
+                    iframe {
+                        overflow: hidden;
+                        position: absolute;
+                        left: 0px;
+                        top: 0px;
+                        padding: 50px 70px;
+                        width: 100%;
+                        height: 100%;
+                        box-sizing: border-box;
                     }
                 }
                 &.naver {
