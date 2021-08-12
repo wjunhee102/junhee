@@ -27,7 +27,7 @@ const port_site = [
         personnel: ["황준희"],
         content: "notion의 블록 형태의 문서 컴포넌트와 실시간으로 업데이트가 되는 서비스를 직접 구현해보았습니다.",
         img: "bklog",
-        link: "https://bklog-app-deploy.vercel.app",
+        link: "https://bklog-app.vercel.app",
         git: [["https://github.com/wjunhee102/bklog-app", "Client 소스코드"], ["https://github.com/wjunhee102/bklog-api", "Server 소스코드"]],
         sub: false
     }
